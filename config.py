@@ -38,12 +38,12 @@ PILLAR_TARGETS = {
 # CORES DAS REDES SOCIAIS
 # ---------------------------------------------------------------------------
 NETWORK_COLORS = {
-    "LinkedIn":   "#0A66C2",
-    "X":          "#E7E7E7",
-    "Instagram":  "#E1306C",
-    "IG Stories": "#F77737",
-    "TikTok":     "#69C9D0",
-    "Threads":    "#A8A8A8",
+    "LinkedIn":   "#0179d5",
+    "X":          "#47c6b2",
+    "Instagram":  "#ff5c38",
+    "IG Stories": "#ff5c38",
+    "TikTok":     "#c73fcc",
+    "Threads":    "#9900ff",
 }
 
 # ---------------------------------------------------------------------------

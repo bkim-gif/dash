@@ -111,6 +111,19 @@ st.markdown(f"""
       letter-spacing: 1px;
       margin: 20px 0 8px 0;
   }}
+
+  /* Calendar date picker — texto preto no popup */
+  [data-baseweb="calendar"] *,
+  [data-baseweb="datepicker"] *,
+  .react-datepicker *,
+  [class*="calendarMonth"] *,
+  [class*="CalendarDay"] {{
+      color: #000000 !important;
+  }}
+  [data-baseweb="calendar"] [aria-selected="true"],
+  [data-baseweb="calendar"] [aria-selected="true"] * {{
+      color: #ffffff !important;
+  }}
 </style>
 """, unsafe_allow_html=True)
 
