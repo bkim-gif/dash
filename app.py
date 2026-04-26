@@ -57,6 +57,12 @@ st.set_page_config(
 # ---------------------------------------------------------------------------
 st.markdown(f"""
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  html, body, [class*="css"], .stApp, .stMarkdown, p, label, div, span, button, input, textarea, select {{
+      font-family: 'Poppins', sans-serif !important;
+  }}
+
   /* Fundo da página */
   .stApp {{ background-color: {THEME['bg_page']}; }}
 
@@ -112,17 +118,18 @@ st.markdown(f"""
       margin: 20px 0 8px 0;
   }}
 
-  /* Calendar date picker — texto preto no popup */
-  [data-baseweb="calendar"] *,
-  [data-baseweb="datepicker"] *,
-  .react-datepicker *,
-  [class*="calendarMonth"] *,
-  [class*="CalendarDay"] {{
+  /* Calendar date picker — fundo escuro, texto branco */
+  [data-baseweb="calendar"],
+  [data-baseweb="calendar"] * {{
+      color: #FFFFFF !important;
+      background-color: {THEME['bg_card']} !important;
+  }}
+  [data-baseweb="calendar"] [aria-selected="true"] {{
+      background-color: {THEME['accent_blue']} !important;
       color: #000000 !important;
   }}
-  [data-baseweb="calendar"] [aria-selected="true"],
-  [data-baseweb="calendar"] [aria-selected="true"] * {{
-      color: #ffffff !important;
+  [data-baseweb="calendar"] button:hover {{
+      background-color: {THEME['bg_card2']} !important;
   }}
 </style>
 """, unsafe_allow_html=True)
