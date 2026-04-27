@@ -7,7 +7,10 @@
       "Bash(git commit:*)",
       "Bash(git remote:*)",
       "Bash(git push:*)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(pip show:*)",
+      "Bash(python3 -c \"import streamlit; print\\(streamlit.__version__\\)\")",
+      "Bash(pip3 show:*)"
     ]
   }
 }

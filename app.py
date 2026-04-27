@@ -144,6 +144,13 @@ if df_all.empty:
     st.error("❌ No data found. Check the file path in data/loader.py")
     st.stop()
 
+# Redes disponíveis — definido aqui para usar no filtro de topo e no sidebar
+all_networks = sorted(df_all["social_network"].unique().tolist())
+
+# Inicializa session state do filtro de rede
+if "sel_network" not in st.session_state:
+    st.session_state.sel_network = "ALL"
+
 
 # ---------------------------------------------------------------------------
 # SIDEBAR — filtros
@@ -181,11 +188,6 @@ with st.sidebar:
 
     st.divider()
 
-    # ── Redes sociais ──────────────────────────────────────────────────────
-    st.markdown('<div class="section-header">Networks</div>', unsafe_allow_html=True)
-    all_networks = sorted(df_all["social_network"].unique().tolist())
-    networks = st.multiselect("", options=all_networks, default=all_networks, label_visibility="collapsed", key="filter_networks")
-
     # ── Pilares ────────────────────────────────────────────────────────────
     st.markdown('<div class="section-header">Pillars</div>', unsafe_allow_html=True)
     all_pillars = sorted(df_all["Pillars"].unique().tolist())
@@ -211,6 +213,10 @@ with st.sidebar:
 # ---------------------------------------------------------------------------
 # APLICA FILTROS
 # ---------------------------------------------------------------------------
+# Rede(s) ativas (vem do session_state — botões no topo da página)
+_sel_net = st.session_state.sel_network
+networks = all_networks if (_sel_net == "ALL" or _sel_net not in all_networks) else [_sel_net]
+
 date_start_ts = pd.Timestamp(date_start)
 date_end_ts   = pd.Timestamp(date_end)
 
@@ -250,6 +256,95 @@ with col_period:
         f'</div>',
         unsafe_allow_html=True,
     )
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+
+# ---------------------------------------------------------------------------
+# NETWORK FILTER BAR — botões com ícone + nome no topo
+# ---------------------------------------------------------------------------
+
+# SVG icons para cada rede (branco, renderizado sobre fundo colorido)
+_NETWORK_SVG = {
+    "Instagram": '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-width="3"/></svg>',
+    "IG Stories": '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="26" height="26"><rect x="2" y="2" width="20" height="20" rx="10" ry="10" stroke-dasharray="3 2"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg>',
+    "X":          '<svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.912-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>',
+    "LinkedIn":   '<svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>',
+    "TikTok":     '<svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.58a8.28 8.28 0 004.84 1.54V6.67a4.82 4.82 0 01-1.07.02z"/></svg>',
+    "Threads":    '<svg viewBox="0 0 192 192" fill="white" width="24" height="24"><path d="M141.537 88.988a66.667 66.667 0 00-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.232c8.248.053 14.474 2.452 18.502 7.13 2.932 3.405 4.893 8.111 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.318-11.319 11.24-24.925 16.1-45.488 16.243-22.761-.163-39.976-7.466-51.154-21.71C36.037 122.848 30.6 104.704 30.4 81.893c.2-22.811 5.637-40.955 16.165-53.933C57.744 13.716 74.958 6.413 97.72 6.25c22.92.163 40.488 7.492 52.208 21.79 5.786 7.025 10.143 15.867 12.974 26.258l16.147-4.333c-3.466-12.798-9-23.744-16.52-32.652C147.042 9.645 125.327.2 97.86 0h-.38C70.132.2 48.744 9.68 34.816 28.186 22.487 44.42 16.096 67.25 15.877 95.985c.22 28.735 6.61 51.565 18.94 67.8 13.927 18.506 35.315 27.986 63.443 28.186h.38c24.678-.172 42.053-6.676 56.315-20.843 18.713-18.616 18.117-42.345 12.011-56.78-4.532-10.564-13.09-19.07-25.429-24.36z"/></svg>',
+    "ALL": '<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>',
+}
+
+# Cor de fundo de cada rede (fallback cinza)
+_NET_BG = {**NETWORK_COLORS, "ALL": THEME["bg_card2"]}
+
+def _set_network(net: str):
+    st.session_state.sel_network = net
+
+# CSS para a barra de filtro de redes
+st.markdown(f"""
+<style>
+  /* Ícone circular de cada rede */
+  .net-icon-wrap {{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 4px;
+  }}
+  .net-icon-circle {{
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }}
+  .net-icon-circle.active {{
+      box-shadow: 0 0 0 3px {THEME['bg_page']}, 0 0 0 5px currentColor;
+      transform: scale(1.08);
+  }}
+  .net-icon-circle.inactive {{
+      opacity: 0.4;
+      filter: grayscale(30%);
+  }}
+</style>
+""", unsafe_allow_html=True)
+
+# Renderiza a barra de filtros
+_items = ["ALL"] + all_networks
+# Limita colunas para não ficar muito espalhado em telas largas
+_spacer = max(1, 8 - len(_items))
+_col_widths = [1] * len(_items) + [_spacer]
+_cols = st.columns(_col_widths, gap="small")
+
+for _col, _net in zip(_cols, _items):
+    with _col:
+        _is_active = (st.session_state.sel_network == _net)
+        _bg_color  = _NET_BG.get(_net, THEME["bg_card2"])
+        _svg       = _NETWORK_SVG.get(_net, _NETWORK_SVG["ALL"])
+        _label     = "All" if _net == "ALL" else _net
+        _cls       = "active" if _is_active else "inactive"
+
+        # Ícone circular (visual apenas)
+        st.markdown(
+            f'<div class="net-icon-wrap">'
+            f'  <div class="net-icon-circle {_cls}"'
+            f'       style="background:{_bg_color};color:{_bg_color}">'
+            f'    {_svg}'
+            f'  </div>'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
+        # Botão com o nome da rede — active usa type="primary"
+        if st.button(
+            _label,
+            key=f"_netbtn_{_net}",
+            use_container_width=True,
+            type="primary" if _is_active else "secondary",
+            on_click=_set_network,
+            args=(_net,),
+        ):
+            st.rerun()
 
 st.markdown("<br>", unsafe_allow_html=True)
 
