@@ -80,20 +80,37 @@ def _fmt_axis(val, suffix=""):
 
 def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
     """
-    Linha do tempo com Impressions (barras) e Engagement (linha).
+    Linha do tempo com Impressions (barras) e ER w/o swipes (linha suave, eixo Y2).
 
-    Por que barras + linha juntos?
-    As barras mostram o volume (impressões), a linha sobreposta
-    mostra a qualidade (engajamento). Facilita ver quando houve
-    muito alcance mas baixo engajamento (ou vice-versa).
+    Por que barras + linha?
+    Barras = volume (impressões). Linha = qualidade (ER w/o swipes, exclui
+    swipes de LinkedIn Document/Pdf). Ajuda a ver quando houve muito alcance
+    mas baixo engajamento real (ou vice-versa).
+
+    Para mudar a série da linha:
+      - Troque "engagement_wo_swipes" por "gdc_total_engagements_sum" para voltar
+        ao engagement bruto, ou por "ER" para usar o ER padrão.
+      - Se voltar a usar engagement absoluto (não %), remova ticksuffix="%" do yaxis2.
+
+    Para mover a legenda:
+      - Ajuste x/y no dict legend= dentro de update_layout abaixo.
+        Ex: x=0.5, y=1.05 coloca a legenda acima do gráfico.
     """
     period_col = "week" if granularity == "Weekly" else "month"
 
     agg = df.groupby(period_col).agg(
-        impressions = ("gdc_impressions_sum",       "sum"),
-        engagement  = ("gdc_total_engagements_sum", "sum"),
-        posts       = ("outbound_post",             "count"),
+        impressions       = ("gdc_impressions_sum",    "sum"),
+        engagement_wo_swp = ("engagement_wo_swipes",   "sum") if "engagement_wo_swipes" in df.columns
+                            else ("gdc_total_engagements_sum", "sum"),
+        posts             = ("outbound_post",           "count"),
     ).reset_index()
+
+    # ER w/o swipes por período (sum engagement / sum impressions * 100)
+    agg["er_wo_swipes"] = (
+        agg["engagement_wo_swp"]
+        / agg["impressions"].replace(0, float("nan"))
+        * 100
+    ).fillna(0).round(2)
 
     agg["period_label"] = agg[period_col].dt.strftime(
         "%b %d" if granularity == "Weekly" else "%b %Y"
@@ -103,35 +120,49 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
 
     # Barras — Impressions (eixo Y principal)
     fig.add_trace(go.Bar(
-        x           = agg["period_label"],
-        y           = agg["impressions"],
-        name        = "Impressions",
-        marker_color= THEME["accent_purple"],
-        opacity     = 0.85,
+        x             = agg["period_label"],
+        y             = agg["impressions"],
+        name          = "Impressions",
+        marker_color  = THEME["accent_purple"],
+        opacity       = 0.85,
         hovertemplate = "<b>%{x}</b><br>Impressions: %{y:,.0f}<extra></extra>",
     ))
 
-    # Linha — Engagement (eixo Y secundário)
+    # Linha suave — ER w/o swipes (eixo Y secundário)
+    # Item 5c: shape="spline" = linha suave; remova para voltar à linha reta.
     fig.add_trace(go.Scatter(
-        x           = agg["period_label"],
-        y           = agg["engagement"],
-        name        = "Engagement",
-        mode        = "lines+markers",
-        line        = dict(color=THEME["accent_blue"], width=2.5),
-        marker      = dict(size=6, color=THEME["accent_blue"]),
-        yaxis       = "y2",
-        hovertemplate = "<b>%{x}</b><br>Engagement: %{y:,.0f}<extra></extra>",
+        x             = agg["period_label"],
+        y             = agg["er_wo_swipes"],
+        name          = "ER w/o swipes",
+        mode          = "lines+markers",
+        line          = dict(color=THEME["accent_blue"], width=2.5, shape="spline"),
+        marker        = dict(size=5, color=THEME["accent_blue"]),
+        yaxis         = "y2",
+        hovertemplate = "<b>%{x}</b><br>ER w/o swipes: %{y:.2f}%<extra></extra>",
     ))
 
     layout = _base_layout(
-        title       = dict(text=f"Performance Over Time — {granularity}", font=dict(size=14)),
-        barmode     = "group",
-        yaxis2      = dict(
+        title   = dict(text=f"Performance Over Time — {granularity}", font=dict(size=14)),
+        barmode = "group",
+        yaxis2  = dict(
             overlaying   = "y",
             side         = "right",
             gridcolor    = "rgba(0,0,0,0)",
             tickfont     = dict(color=THEME["accent_blue"], size=10),
+            ticksuffix   = "%",
             showgrid     = False,
+        ),
+        # Item 5b — legenda dentro do gráfico, próxima ao eixo esquerdo, fonte maior.
+        # Para mover: ajuste x (0=extrema esq, 1=extrema dir) e y (0=baixo, 1=topo).
+        legend  = dict(
+            bgcolor     = "rgba(20,30,50,0.75)",
+            bordercolor = THEME["border"],
+            borderwidth = 1,
+            font        = dict(color=THEME["text_primary"], size=13),
+            x           = 0.01,
+            y           = 0.97,
+            xanchor     = "left",
+            yanchor     = "top",
         ),
     )
     fig.update_layout(layout)

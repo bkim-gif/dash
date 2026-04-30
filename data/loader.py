@@ -166,6 +166,7 @@ def _normalize(df: pd.DataFrame) -> pd.DataFrame:
 
     # ── Colunas de texto ───────────────────────────────────────────────────
     for col in ["social_network", "Pillars", "media_format_outbound_message",
+                "media_type",
                 "campaign_name", "outbound_post", "permalink",
                 "msft_learn_primary_audience_outbound_message"]:
         if col not in df.columns:
@@ -196,6 +197,33 @@ def _normalize(df: pd.DataFrame) -> pd.DataFrame:
     # Evita divisão por zero com where()
     df["ER"] = (
         df["gdc_total_engagements_sum"]
+        .div(df["gdc_impressions_sum"].replace(0, pd.NA))
+        .multiply(100)
+        .fillna(0)
+        .round(2)
+    )
+
+    # ── ER w/o swipes — LinkedIn Document/Pdf posts ────────────────────────
+    # Para posts do LinkedIn com media_type = 'Document' ou 'Pdf',
+    # o engajamento exclui swipes e usa: likes + comments + shares + clicks.
+    # Para todos os outros posts, usa gdc_total_engagements_sum (igual ao ER padrão).
+    #
+    # Para ajustar quais media_types são considerados "Document":
+    #   mude os valores na lista abaixo (case-insensitive).
+    _doc_types = {"document", "pdf"}
+    _is_linkedin_doc = (
+        (df["social_network"].str.lower() == "linkedin") &
+        (df["media_type"].str.lower().isin(_doc_types))
+    )
+    df["engagement_wo_swipes"] = df["gdc_total_engagements_sum"].copy()
+    df.loc[_is_linkedin_doc, "engagement_wo_swipes"] = (
+        df.loc[_is_linkedin_doc, "post_likes_and_reactions_sum"]
+        + df.loc[_is_linkedin_doc, "post_comments_sum"]
+        + df.loc[_is_linkedin_doc, "post_shares_sum"]
+        + df.loc[_is_linkedin_doc, "estimated_clicks_sum"]
+    )
+    df["ER_wo_swipes"] = (
+        df["engagement_wo_swipes"]
         .div(df["gdc_impressions_sum"].replace(0, pd.NA))
         .multiply(100)
         .fillna(0)

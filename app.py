@@ -173,8 +173,12 @@ with st.sidebar:
     min_date = df_all["published_date"].min().date()
     max_date = df_all["published_date"].max().date()
 
-    # Padrão: última semana disponível
-    default_start = max_date - pd.Timedelta(days=6)
+    # Item 5a — Padrão: início do FY26 (01-Aug-2025) ou min_date, o que for maior.
+    # Para voltar ao padrão "última semana": troque a linha abaixo por:
+    #   default_start = max_date - pd.Timedelta(days=6)
+    from config import FY_START
+    _fy26_start   = pd.Timestamp(FY_START).date()
+    default_start = max(min_date, _fy26_start)
 
     date_start = st.date_input("From", value=default_start, min_value=min_date, max_value=max_date)
     date_end   = st.date_input("To",   value=max_date,      min_value=min_date, max_value=max_date)
@@ -307,6 +311,12 @@ st.markdown(f"""
       opacity: 0.4;
       filter: grayscale(30%);
   }}
+
+  /* Item 1 — Reduz fonte dos labels dos botões de rede em 2pt
+     Para ajustar: mude o valor de font-size abaixo (padrão Streamlit ≈ 14px) */
+  [data-testid="stButton"] button p {{
+      font-size: 12px !important;
+  }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -378,12 +388,17 @@ with tab1:
         key="overview_timeline",
     )
 
-    # Barras por rede + ER por rede
+    # Barras por rede + Radar de pilares
+    # Item 7 — "Engagement Rate by Network" removido desta tab.
+    # Para reativar: descomente as linhas abaixo e remova o chart_pillar_radar.
+    # with col_net2:
+    #     st.plotly_chart(chart_er_by_network(df_filtered), use_container_width=True, key="overview_er_by_network")
     col_net1, col_net2 = st.columns(2)
     with col_net1:
         st.plotly_chart(chart_by_network(df_filtered), use_container_width=True, key="overview_by_network")
     with col_net2:
-        st.plotly_chart(chart_er_by_network(df_filtered), use_container_width=True, key="overview_er_by_network")
+        # Item 6 — Radar adicionado na Tab 1
+        st.plotly_chart(chart_pillar_radar(df_filtered), use_container_width=True, key="overview_radar")
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -533,11 +548,9 @@ with tab4:
     )
 
     st.markdown("<br>", unsafe_allow_html=True)
-    col_n1, col_n2 = st.columns(2)
-    with col_n1:
-        st.plotly_chart(chart_by_network(df_filtered), use_container_width=True, key="network_detail_by_network")
-    with col_n2:
-        st.plotly_chart(chart_er_by_network(df_filtered), use_container_width=True, key="network_detail_er_by_network")
+    # Item 7 — "Engagement Rate by Network" removido.
+    # Para reativar: col_n1, col_n2 = st.columns(2) e adicione chart_er_by_network em col_n2.
+    st.plotly_chart(chart_by_network(df_filtered), use_container_width=True, key="network_detail_by_network")
 
 
 # ══════════════════════════════════════════════════════════════════════════

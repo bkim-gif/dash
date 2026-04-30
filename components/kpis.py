@@ -58,6 +58,11 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
     eng_cur    = df_current["gdc_total_engagements_sum"].sum()
     er_cur     = (eng_cur / impr_cur * 100) if impr_cur > 0 else 0
 
+    # ER w/o swipes — usa engagement_wo_swipes calculado no loader
+    # (LinkedIn Document/Pdf: likes+comments+shares+clicks; outros: total engagement)
+    eng_wo_cur     = df_current["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in df_current.columns else eng_cur
+    er_wo_swipes_cur = (eng_wo_cur / impr_cur * 100) if impr_cur > 0 else 0
+
     present    = [c for c in AQE_COLS if c in df_current.columns]
     aqe_total  = df_current[present].sum().sum()
     aqe_cur    = aqe_total / posts_cur if posts_cur > 0 else 0
@@ -67,6 +72,9 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
     impr_prev  = df_previous["gdc_impressions_sum"].sum()
     eng_prev   = df_previous["gdc_total_engagements_sum"].sum()
     er_prev    = (eng_prev / impr_prev * 100) if impr_prev > 0 else 0
+
+    eng_wo_prev      = df_previous["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in df_previous.columns else eng_prev
+    er_wo_swipes_prev = (eng_wo_prev / impr_prev * 100) if impr_prev > 0 else 0
 
     present_p  = [c for c in AQE_COLS if c in df_previous.columns]
     aqe_prev   = (df_previous[present_p].sum().sum() / posts_prev
@@ -89,12 +97,14 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
             "is_pct":   False,
         },
         {
-            "label":    "Eng. Rate",
-            "value":    _fmt(er_cur, is_pct=True),
-            "raw_cur":  er_cur,
-            "raw_prev": er_prev,
-            "is_pct":   True,
-            "suffix":   "pp",    # pontos percentuais, não %
+            "label":       "Eng. Rate",
+            # Exibe ER / ER w/o swipes* no card
+            "value":       f"{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}",
+            "er_note":     "*w/o swipes",   # nota exibida abaixo do valor
+            "raw_cur":     er_cur,
+            "raw_prev":    er_prev,
+            "is_pct":      True,
+            "suffix":      "pp",    # pontos percentuais, não %
         },
         {
             "label":    "AQE / post",
@@ -109,16 +119,19 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
     # ── Renderiza ──────────────────────────────────────────────────────────
     cols = st.columns(4)
     for col, card in zip(cols, cards):
-        delta_val, delta_color = _safe_delta(card["raw_cur"], card["raw_prev"])
-
-        # Delta: pp para ER, % para o resto
-        if delta_val is not None:
-            suffix  = card.get("suffix", "%")
-            sign    = "+" if delta_val >= 0 else ""
-            delta_str = f"{sign}{delta_val:.1f}{suffix}"
-        else:
-            delta_str = "No prev. data"
-            delta_color = THEME["text_muted"]
+        # Item 3 — variação "vs prev period" removida quando se seleciona data.
+        # Descomente o bloco abaixo e remova o "delta_str = ''" para reativar.
+        #
+        # delta_val, delta_color = _safe_delta(card["raw_cur"], card["raw_prev"])
+        # if delta_val is not None:
+        #     suffix    = card.get("suffix", "%")
+        #     sign      = "+" if delta_val >= 0 else ""
+        #     delta_str = f"{sign}{delta_val:.1f}{suffix}"
+        # else:
+        #     delta_str = "No prev. data"
+        #     delta_color = THEME["text_muted"]
+        delta_str   = ""
+        delta_color = THEME["text_muted"]
 
         with col:
             # Tooltip no label (ⓘ) se existir
@@ -127,6 +140,14 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
                 f'{card["label"]} <span title="{tooltip}" '
                 f'style="cursor:help;color:{THEME["text_muted"]}">ⓘ</span>'
                 if tooltip else card["label"]
+            )
+
+            # Nota extra (ex: "*w/o swipes" para o card de ER)
+            er_note = card.get("er_note", "")
+            er_note_html = (
+                f'<div style="color:{THEME["text_muted"]};font-size:10px;margin-top:4px">'
+                f'{er_note}</div>'
+                if er_note else ""
             )
 
             st.markdown(
@@ -147,17 +168,17 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
                     ">{label_html}</div>
                     <div style="
                         color:{THEME['text_primary']};
-                        font-size:32px;
+                        font-size:28px;
                         font-weight:700;
                         line-height:1;
-                        margin-bottom:10px;
+                        margin-bottom:4px;
                     ">{card['value']}</div>
-                    <div style="
-                        color:{delta_color};
-                        font-size:13px;
-                        font-weight:600;
-                    ">{delta_str} <span style="color:{THEME['text_muted']};font-weight:400">vs prev period</span></div>
+                    {er_note_html}
                 </div>
                 """,
                 unsafe_allow_html=True,
             )
+            # Linha de delta comentada — reative acima se quiser mostrar variação
+            # <div style="color:{delta_color};font-size:13px;font-weight:600;margin-top:6px">
+            #   {delta_str} <span style="color:{THEME['text_muted']};font-weight:400">vs prev period</span>
+            # </div>
