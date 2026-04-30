@@ -119,19 +119,10 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
     # ── Renderiza ──────────────────────────────────────────────────────────
     cols = st.columns(4)
     for col, card in zip(cols, cards):
-        # Item 3 — variação "vs prev period" removida quando se seleciona data.
-        # Descomente o bloco abaixo e remova o "delta_str = ''" para reativar.
-        #
-        # delta_val, delta_color = _safe_delta(card["raw_cur"], card["raw_prev"])
-        # if delta_val is not None:
-        #     suffix    = card.get("suffix", "%")
-        #     sign      = "+" if delta_val >= 0 else ""
-        #     delta_str = f"{sign}{delta_val:.1f}{suffix}"
-        # else:
-        #     delta_str = "No prev. data"
-        #     delta_color = THEME["text_muted"]
-        delta_str   = ""
-        delta_color = THEME["text_muted"]
+        # Variação "vs prev period" desativada.
+        # Para reativar: substitua o bloco abaixo por:
+        #   delta_val, delta_color = _safe_delta(card["raw_cur"], card["raw_prev"])
+        #   delta_str = f"+{delta_val:.1f}%" if delta_val is not None else ""
 
         with col:
             # Tooltip no label (ⓘ) se existir
@@ -178,7 +169,3 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
                 """,
                 unsafe_allow_html=True,
             )
-            # Linha de delta comentada — reative acima se quiser mostrar variação
-            # <div style="color:{delta_color};font-size:13px;font-weight:600;margin-top:6px">
-            #   {delta_str} <span style="color:{THEME['text_muted']};font-weight:400">vs prev period</span>
-            # </div>

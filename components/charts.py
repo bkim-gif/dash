@@ -129,14 +129,16 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
     ))
 
     # Linha suave — ER w/o swipes (eixo Y secundário)
-    # Item 5c: shape="spline" = linha suave; remova para voltar à linha reta.
+    # shape="spline" + smoothing=1.3 = curva suave entre pontos.
+    # Para voltar à linha reta: remova shape e smoothing.
     fig.add_trace(go.Scatter(
         x             = agg["period_label"],
         y             = agg["er_wo_swipes"],
         name          = "ER w/o swipes",
         mode          = "lines+markers",
-        line          = dict(color=THEME["accent_blue"], width=2.5, shape="spline"),
-        marker        = dict(size=5, color=THEME["accent_blue"]),
+        line          = dict(color=THEME["accent_blue"], width=2.5,
+                             shape="spline", smoothing=1.3),
+        marker        = dict(size=4, color=THEME["accent_blue"]),
         yaxis         = "y2",
         hovertemplate = "<b>%{x}</b><br>ER w/o swipes: %{y:.2f}%<extra></extra>",
     ))
@@ -152,10 +154,15 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
             ticksuffix   = "%",
             showgrid     = False,
         ),
-        # Item 5b — legenda dentro do gráfico, próxima ao eixo esquerdo, fonte maior.
-        # Para mover: ajuste x (0=extrema esq, 1=extrema dir) e y (0=baixo, 1=topo).
-        legend  = dict(
-            bgcolor     = "rgba(20,30,50,0.75)",
+    )
+    fig.update_layout(layout)
+
+    # Legenda dentro do gráfico, próxima ao eixo esquerdo.
+    # Chamada separada garante override dos defaults do Plotly.
+    # Para mover: ajuste x (0=esq, 1=dir) e y (0=baixo, 1=topo).
+    fig.update_layout(
+        legend=dict(
+            bgcolor     = "rgba(15,25,35,0.80)",
             bordercolor = THEME["border"],
             borderwidth = 1,
             font        = dict(color=THEME["text_primary"], size=13),
@@ -163,9 +170,9 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
             y           = 0.97,
             xanchor     = "left",
             yanchor     = "top",
-        ),
+            orientation = "v",
+        )
     )
-    fig.update_layout(layout)
     return fig
 
 

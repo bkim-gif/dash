@@ -363,11 +363,11 @@ st.markdown("<br>", unsafe_allow_html=True)
 # TABS
 # ---------------------------------------------------------------------------
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "📊  Overview",
-    "🎯  FY Pacing",
-    "🗂  Pillars",
-    "🌐  Networks",
-    "🏆  Top / Bottom",
+    "Overview",
+    "FY Pacing",
+    "Pillars",
+    "Networks",
+    "Top / Bottom",
 ])
 
 
@@ -381,24 +381,19 @@ with tab1:
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Timeline
-    st.plotly_chart(
-        chart_timeline(df_filtered, granularity),
-        use_container_width=True,
-        key="overview_timeline",
-    )
+    # Timeline (menor) + Radar ao lado
+    col_tl, col_rd = st.columns([3, 2])
+    with col_tl:
+        fig_tl = chart_timeline(df_filtered, granularity)
+        fig_tl.update_layout(height=320)
+        st.plotly_chart(fig_tl, use_container_width=True, key="overview_timeline")
+    with col_rd:
+        fig_rd = chart_pillar_radar(df_filtered)
+        fig_rd.update_layout(height=320, margin=dict(l=20, r=20, t=40, b=20))
+        st.plotly_chart(fig_rd, use_container_width=True, key="overview_radar")
 
-    # Barras por rede + Radar de pilares
-    # Item 7 — "Engagement Rate by Network" removido desta tab.
-    # Para reativar: descomente as linhas abaixo e remova o chart_pillar_radar.
-    # with col_net2:
-    #     st.plotly_chart(chart_er_by_network(df_filtered), use_container_width=True, key="overview_er_by_network")
-    col_net1, col_net2 = st.columns(2)
-    with col_net1:
-        st.plotly_chart(chart_by_network(df_filtered), use_container_width=True, key="overview_by_network")
-    with col_net2:
-        # Item 6 — Radar adicionado na Tab 1
-        st.plotly_chart(chart_pillar_radar(df_filtered), use_container_width=True, key="overview_radar")
+    # Barras por rede (abaixo)
+    st.plotly_chart(chart_by_network(df_filtered), use_container_width=True, key="overview_by_network")
 
 
 # ══════════════════════════════════════════════════════════════════════════
