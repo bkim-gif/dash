@@ -22,7 +22,11 @@ import math
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
-from config import THEME, NETWORK_COLORS, PILLAR_TARGETS, FY_TARGET, FY_POSTS_TARGET
+from config import THEME, NETWORK_COLORS, PILLAR_TARGETS, FY_TARGET
+try:
+    from config import FY_POSTS_TARGET
+except ImportError:
+    FY_POSTS_TARGET = 1_600
 
 
 # ---------------------------------------------------------------------------
