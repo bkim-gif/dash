@@ -30,9 +30,10 @@ from config import (
     NETWORK_COLORS, PILLAR_TARGETS, METRIC_LABELS
 )
 from data.loader import (
-    load_raw, apply_filters, get_previous_period, get_fy_monthly
+    load_raw, apply_filters, get_previous_period, get_fy_monthly,
+    load_followers,
 )
-from components.kpis   import render_kpis
+from components.kpis   import render_kpis, render_followers_card
 from components.charts import (
     chart_timeline, chart_by_network, chart_er_by_network,
     chart_pillar_donut, chart_pillar_radar, chart_pillar_by_network,
@@ -138,7 +139,8 @@ st.markdown(f"""
 # ---------------------------------------------------------------------------
 # CARREGA DADOS
 # ---------------------------------------------------------------------------
-df_all = load_raw()
+df_all       = load_raw()
+df_followers = load_followers()
 
 if df_all.empty:
     st.error("❌ No data found. Check the file path in data/loader.py")
@@ -379,6 +381,10 @@ with tab1:
     # KPI Cards
     render_kpis(df_filtered, df_prev)
 
+    # Followers card
+    if not df_followers.empty:
+        render_followers_card(df_followers, date_end_ts)
+
     st.markdown("<br>", unsafe_allow_html=True)
 
     # Timeline (menor) + Radar ao lado
@@ -504,7 +510,17 @@ with tab3:
             Clicks       = ("estimated_clicks_sum",       "mean"),
             ER           = ("ER",                         "mean"),
             AQE          = ("AQE",                        "mean"),
-        ).round(1).reset_index()
+        ).reset_index()
+
+        def _fmt_imp_p(v):
+            if v >= 1_000_000: return f"{v/1_000_000:.1f}M"
+            if v >= 1_000:     return f"{v/1_000:.1f}K"
+            return f"{v:.1f}"
+
+        pillar_table["Impressions"] = pillar_table["Impressions"].apply(_fmt_imp_p)
+        for col in ["Likes", "Comments", "Shares", "Clicks", "AQE"]:
+            pillar_table[col] = pillar_table[col].round(1)
+        pillar_table["ER"] = pillar_table["ER"].round(1).apply(lambda v: f"{v:.1f}%")
 
         st.dataframe(
             pillar_table,
@@ -529,13 +545,16 @@ with tab4:
         Clicks      = ("estimated_clicks_sum",        "sum"),
         ER          = ("ER",                          "mean"),
         AQE_post    = ("AQE",                         "mean"),
-    ).round(2).reset_index()
+    ).round(1).reset_index()
+
+    def _fmt_imp(v):
+        if v >= 1_000_000: return f"{v/1_000_000:.1f}M"
+        if v >= 1_000:     return f"{v/1_000:.1f}K"
+        return f"{v:.0f}"
 
     network_table = network_table.sort_values("Impressions", ascending=False)
-    network_table["Impressions"] = network_table["Impressions"].apply(
-        lambda v: f"{v:,.0f}"
-    )
-    network_table["ER"] = network_table["ER"].apply(lambda v: f"{v:.2f}%")
+    network_table["Impressions"] = network_table["Impressions"].apply(_fmt_imp)
+    network_table["ER"]          = network_table["ER"].apply(lambda v: f"{v:.1f}%")
 
     st.dataframe(
         network_table,

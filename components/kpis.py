@@ -17,7 +17,7 @@ CONCEITO — por que delta é importante:
 from __future__ import annotations
 import pandas as pd
 import streamlit as st
-from config import THEME, AQE_COLS
+from config import THEME, AQE_COLS, NETWORK_COLORS
 
 
 def _safe_delta(current: float, previous: float) -> tuple[float | None, str]:
@@ -99,8 +99,8 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
         {
             "label":       "Eng. Rate",
             # Exibe ER / ER w/o swipes* no card
-            "value":       f"{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}",
-            "er_note":     "*w/o swipes",   # nota exibida abaixo do valor
+            "value":       f"{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}*",
+            "er_note":     "* w/o swipes",   # nota exibida abaixo do valor
             "raw_cur":     er_cur,
             "raw_prev":    er_prev,
             "is_pct":      True,
@@ -112,33 +112,64 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
             "raw_cur":  aqe_cur,
             "raw_prev": aqe_prev,
             "is_pct":   False,
-            "tooltip":  "Avg Qualified Engagement = comments + shares + clicks",
+            "tooltip":  "AQE = Comments + Shares + Clicks",
         },
     ]
+
+    # ── CSS para tooltip hover do ⓘ ──────────────────────────────────────
+    st.markdown(f"""
+    <style>
+      .kpi-tooltip-wrap {{
+          position: relative;
+          display: inline-block;
+          cursor: help;
+          color: {THEME['text_muted']};
+      }}
+      .kpi-tooltip-box {{
+          display: none;
+          position: absolute;
+          bottom: 130%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: {THEME['bg_card2']};
+          border: 1px solid {THEME['border']};
+          border-radius: 6px;
+          padding: 6px 10px;
+          white-space: nowrap;
+          font-size: 11px;
+          color: {THEME['text_secondary']};
+          z-index: 200;
+          pointer-events: none;
+      }}
+      .kpi-tooltip-wrap:hover .kpi-tooltip-box {{
+          display: block;
+      }}
+    </style>
+    """, unsafe_allow_html=True)
 
     # ── Renderiza ──────────────────────────────────────────────────────────
     cols = st.columns(4)
     for col, card in zip(cols, cards):
-        # Variação "vs prev period" desativada.
-        # Para reativar: substitua o bloco abaixo por:
-        #   delta_val, delta_color = _safe_delta(card["raw_cur"], card["raw_prev"])
-        #   delta_str = f"+{delta_val:.1f}%" if delta_val is not None else ""
-
         with col:
-            # Tooltip no label (ⓘ) se existir
+            # Tooltip no label (ⓘ) com hover box
             tooltip = card.get("tooltip", "")
-            label_html = (
-                f'{card["label"]} <span title="{tooltip}" '
-                f'style="cursor:help;color:{THEME["text_muted"]}">ⓘ</span>'
-                if tooltip else card["label"]
-            )
+            if tooltip:
+                label_html = (
+                    f'{card["label"]} '
+                    f'<span class="kpi-tooltip-wrap">ⓘ'
+                    f'<span class="kpi-tooltip-box">{tooltip}</span>'
+                    f'</span>'
+                )
+            else:
+                label_html = card["label"]
 
             # Nota extra (ex: "*w/o swipes" para o card de ER)
             er_note = card.get("er_note", "")
             er_note_html = (
                 f'<div style="color:{THEME["text_muted"]};font-size:10px;margin-top:4px">'
                 f'{er_note}</div>'
-                if er_note else ""
+                if er_note
+                else f'<div style="font-size:10px;margin-top:4px">&nbsp;</div>'
             )
 
             st.markdown(
@@ -149,6 +180,8 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
                     border-radius:12px;
                     padding:20px 24px;
                     margin-bottom:8px;
+                    min-height:120px;
+                    box-sizing:border-box;
                 ">
                     <div style="
                         color:{THEME['text_secondary']};
@@ -169,3 +202,87 @@ def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
                 """,
                 unsafe_allow_html=True,
             )
+
+
+# ---------------------------------------------------------------------------
+# FOLLOWERS CARD
+# ---------------------------------------------------------------------------
+
+# Ordem de exibição e ícones simples por rede
+_FOLLOWER_NET_ORDER = ["LinkedIn", "X", "Instagram", "TikTok", "Threads"]
+_FOLLOWER_NET_LABEL = {
+    "LinkedIn":  "LinkedIn",
+    "X":         "X (Twitter)",
+    "Instagram": "Instagram",
+    "TikTok":    "TikTok",
+    "Threads":   "Threads",
+}
+
+
+def render_followers_card(
+    df_followers: pd.DataFrame,
+    date_end: pd.Timestamp,
+) -> None:
+    """
+    Exibe um card de seguidores por rede com o valor mais próximo (<=) a date_end.
+    """
+    from data.loader import get_followers_at
+
+    snap = get_followers_at(df_followers, date_end)
+
+    if snap.empty:
+        st.info("No follower data available for the selected period.")
+        return
+
+    # Data de referência (máxima entre as redes disponíveis)
+    ref_date = snap["date"].max()
+    ref_label = pd.to_datetime(ref_date).strftime("%b %d, %Y")
+
+    # Monta o HTML de cada rede
+    net_items = ""
+    for net in _FOLLOWER_NET_ORDER:
+        row = snap[snap["network"] == net]
+        if row.empty:
+            continue
+        followers = int(row.iloc[0]["followers"])
+        color     = NETWORK_COLORS.get(net, THEME["text_secondary"])
+        label     = _FOLLOWER_NET_LABEL.get(net, net)
+        fmt       = _fmt(followers)
+        net_items += (
+            f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'
+            f'  <span style="width:8px;height:8px;border-radius:50%;'
+            f'background:{color};display:inline-block;flex-shrink:0"></span>'
+            f'  <span style="color:{THEME["text_secondary"]};font-size:12px;'
+            f'flex:1">{label}</span>'
+            f'  <span style="color:{THEME["text_primary"]};font-size:14px;'
+            f'font-weight:600">{fmt}</span>'
+            f'</div>'
+        )
+
+    st.markdown(
+        f"""
+        <div style="
+            background:{THEME['bg_card']};
+            border:1px solid {THEME['border']};
+            border-radius:12px;
+            padding:16px 20px;
+            margin-bottom:8px;
+        ">
+            <div style="
+                color:{THEME['text_secondary']};
+                font-size:13px;
+                font-weight:500;
+                letter-spacing:0.5px;
+                margin-bottom:12px;
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+            ">
+                <span>Followers</span>
+                <span style="color:{THEME['text_muted']};font-size:10px">as of {ref_label}</span>
+            </div>
+            {net_items}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )

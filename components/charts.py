@@ -72,10 +72,17 @@ def _base_layout(**overrides) -> dict:
 
 
 def _fmt_axis(val, suffix=""):
-    """Formata eixo Y: 1.5M, 500K, 250"""
+    """Formata eixo Y: 1.5M, 500.0K, 250"""
     if val >= 1_000_000: return f"{val/1_000_000:.1f}M{suffix}"
-    if val >= 1_000:     return f"{val/1_000:.0f}K{suffix}"
+    if val >= 1_000:     return f"{val/1_000:.1f}K{suffix}"
     return f"{val:.0f}{suffix}"
+
+
+def _fmt_impressions(v: float) -> str:
+    """Formato padrão de impressões: 1.5M / 500.0K / 250"""
+    if v >= 1_000_000: return f"{v/1_000_000:.1f}M"
+    if v >= 1_000:     return f"{v/1_000:.1f}K"
+    return f"{v:.0f}"
 
 
 # ---------------------------------------------------------------------------
@@ -209,11 +216,6 @@ def chart_by_network(df: pd.DataFrame) -> go.Figure:
 
     fig = go.Figure()
 
-    def _label(v):
-        if v >= 1_000_000: return f"{v/1_000_000:.1f}M"
-        if v >= 1_000:     return f"{v/1_000:.0f}K"
-        return f"{v:.0f}"
-
     fig.add_trace(go.Bar(
         y             = agg["social_network"],
         x             = agg["impressions"],
@@ -221,7 +223,7 @@ def chart_by_network(df: pd.DataFrame) -> go.Figure:
         name          = "Impressions",
         marker_color  = colors,
         opacity       = 0.9,
-        text          = agg["impressions"].apply(_label),
+        text          = agg["impressions"].apply(_fmt_impressions),
         textposition  = "outside",
         textfont      = dict(color=THEME["text_primary"], size=10),
         hovertemplate = "<b>%{y}</b><br>Impressions: %{x:,.0f}<extra></extra>",

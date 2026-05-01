@@ -21,7 +21,8 @@ from config import AQE_COLS, FY_START, FY_END
 # ---------------------------------------------------------------------------
 # CONFIGURAÇÃO — edite o caminho do seu arquivo aqui
 # ---------------------------------------------------------------------------
-DATA_PATH = Path(__file__).parent.parent / "MSFT_Revised_2026 - RAW DATA (1).csv"
+DATA_PATH       = Path(__file__).parent.parent / "MSFT_Revised_2026 - RAW DATA (1).csv"
+FOLLOWERS_PATH  = Path(__file__).parent.parent / "MSFT_Followers - Página1.csv"
 
 # ---------------------------------------------------------------------------
 # FUNÇÃO PRINCIPAL — chamada pelo app.py
@@ -99,6 +100,72 @@ def get_previous_period(
         (df["published_date"] <= prev_end)
     )
     return df[mask].copy()
+
+
+@st.cache_data(ttl=3600)
+def load_followers() -> pd.DataFrame:
+    """
+    Carrega e normaliza o arquivo de seguidores.
+    Suporta dois formatos de data:
+      - DD/MM/AAAA  (ex: 01/08/2025)
+      - Month Day   (ex: February 22) → assume ano 2026
+    Suporta dois formatos de número:
+      - Inteiros simples (ex: 56843)
+      - Ponto como separador de milhar (ex: 1.077.781 → 1077781)
+    """
+    for enc in ["utf-8", "utf-8-sig", "latin-1"]:
+        try:
+            df = pd.read_csv(FOLLOWERS_PATH, encoding=enc)
+            break
+        except UnicodeDecodeError:
+            continue
+
+    def _parse_date(d: str) -> pd.Timestamp:
+        d = str(d).strip()
+        # Format DD/MM/YYYY
+        try:
+            return pd.to_datetime(d, format="%d/%m/%Y")
+        except Exception:
+            pass
+        # Format "Month Day" — assume 2026
+        try:
+            return pd.to_datetime(f"{d} 2026", format="%B %d %Y")
+        except Exception:
+            pass
+        return pd.NaT
+
+    def _parse_num(v) -> int:
+        # Remove dots (thousands separator) and commas
+        return int(str(v).strip().replace(".", "").replace(",", ""))
+
+    _NET_MAP = {
+        "IG": "Instagram",
+        "Twitter": "X",
+        "X": "X",
+        "LinkedIn": "LinkedIn",
+        "TikTok": "TikTok",
+        "Threads": "Threads",
+    }
+
+    df["date"]      = df["Data"].apply(_parse_date)
+    df["followers"] = df["seguidores"].apply(_parse_num)
+    df["network"]   = df["rede-social"].str.strip().map(_NET_MAP).fillna(df["rede-social"])
+
+    return df[["date", "network", "followers"]].dropna(subset=["date"])
+
+
+def get_followers_at(df_followers: pd.DataFrame, date_end: pd.Timestamp) -> pd.DataFrame:
+    """
+    Para cada rede, retorna o registro mais recente com data <= date_end.
+    """
+    df = df_followers[df_followers["date"] <= date_end]
+    if df.empty:
+        return pd.DataFrame(columns=["network", "followers", "date"])
+    return (
+        df.sort_values("date")
+        .groupby("network", as_index=False)
+        .last()
+    )
 
 
 def get_fy_monthly(df_all: pd.DataFrame) -> pd.DataFrame:

@@ -12,7 +12,9 @@
       "Bash(python3 -c \"import streamlit; print\\(streamlit.__version__\\)\")",
       "Bash(pip3 show:*)",
       "Bash(python Pipeline_Local.py)",
-      "Bash(python3 Pipeline_Local.py)"
+      "Bash(python3 Pipeline_Local.py)",
+      "Bash(ls /Users/bkim/Documents/Dash/*.csv)",
+      "Bash(python -c ':*)"
     ]
   }
 }
