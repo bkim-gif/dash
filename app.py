@@ -36,7 +36,7 @@ from components.kpis   import render_kpis
 from components.charts import (
     chart_timeline, chart_by_network, chart_er_by_network,
     chart_pillar_donut, chart_pillar_radar, chart_pillar_by_network,
-    chart_fy_pacing,
+    chart_fy_pacing, chart_fy_posts,
 )
 from components.posts import render_top_bottom
 
@@ -194,12 +194,12 @@ with st.sidebar:
 
     # ── Pilares ────────────────────────────────────────────────────────────
     st.markdown('<div class="section-header">Pillars</div>', unsafe_allow_html=True)
-    all_pillars = sorted(df_all["Pillars"].unique().tolist())
+    all_pillars = sorted([p for p in df_all["Pillars"].unique().tolist() if p != "Unknown"])
     pillars = st.multiselect("", options=all_pillars, default=all_pillars, label_visibility="collapsed", key="filter_pillars")
 
     # ── Tipo de mídia ──────────────────────────────────────────────────────
     st.markdown('<div class="section-header">Media Type</div>', unsafe_allow_html=True)
-    all_media = sorted(df_all["media_format_outbound_message"].unique().tolist())
+    all_media = sorted([m for m in df_all["media_type"].unique().tolist() if pd.notna(m) and str(m).strip()])
     media_types = st.multiselect("", options=all_media, default=all_media, label_visibility="collapsed", key="filter_media")
 
     # ── Campanha ───────────────────────────────────────────────────────────
@@ -384,7 +384,7 @@ with tab1:
     # Timeline (menor) + Radar ao lado
     col_tl, col_rd = st.columns([3, 2])
     with col_tl:
-        fig_tl = chart_timeline(df_filtered, granularity)
+        fig_tl = chart_timeline(df_filtered, granularity, date_start_ts, date_end_ts)
         fig_tl.update_layout(height=320)
         st.plotly_chart(fig_tl, use_container_width=True, key="overview_timeline")
     with col_rd:
@@ -472,6 +472,7 @@ with tab2:
 
     with col_chart:
         st.plotly_chart(chart_fy_pacing(monthly_data), use_container_width=True, key="fy_pacing")
+        st.plotly_chart(chart_fy_posts(monthly_data), use_container_width=True, key="fy_posts")
 
 
 # ══════════════════════════════════════════════════════════════════════════

@@ -17,7 +17,8 @@ CLIENT = {
 # FY TARGET (impressões orgânicas)
 # Período: Aug 2025 → Jul 2026  |  Target: 25 milhões
 # ---------------------------------------------------------------------------
-FY_TARGET = 25_000_000
+FY_TARGET       = 25_000_000
+FY_POSTS_TARGET = 1_600       # meta anual de posts orgânicos
 FY_START  = "2025-08-01"
 FY_END    = "2026-07-31"
 

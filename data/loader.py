@@ -65,10 +65,12 @@ def apply_filters(
         mask &= df["social_network"].isin(networks)
 
     if pillars:
-        mask &= df["Pillars"].isin(pillars)
+        # Posts com pilar "Unknown" passam sempre (não aparecem no filtro mas contam para KPIs)
+        mask &= df["Pillars"].isin(pillars) | (df["Pillars"] == "Unknown")
 
     if media_types:
-        mask &= df["media_format_outbound_message"].isin(media_types)
+        # Posts com media_type vazio passam sempre (sem categoria definida)
+        mask &= df["media_type"].isin(media_types) | (df["media_type"] == "")
 
     if campaigns:
         mask &= df["campaign_name"].isin(campaigns)

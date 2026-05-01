@@ -22,7 +22,7 @@ import math
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
-from config import THEME, NETWORK_COLORS, PILLAR_TARGETS, FY_TARGET
+from config import THEME, NETWORK_COLORS, PILLAR_TARGETS, FY_TARGET, FY_POSTS_TARGET
 
 
 # ---------------------------------------------------------------------------
@@ -78,23 +78,16 @@ def _fmt_axis(val, suffix=""):
 # 1. LINHA DO TEMPO
 # ---------------------------------------------------------------------------
 
-def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
+def chart_timeline(
+    df: pd.DataFrame,
+    granularity: str = "Weekly",
+    date_start=None,
+    date_end=None,
+) -> go.Figure:
     """
     Linha do tempo com Impressions (barras) e ER w/o swipes (linha suave, eixo Y2).
-
-    Por que barras + linha?
-    Barras = volume (impressões). Linha = qualidade (ER w/o swipes, exclui
-    swipes de LinkedIn Document/Pdf). Ajuda a ver quando houve muito alcance
-    mas baixo engajamento real (ou vice-versa).
-
-    Para mudar a série da linha:
-      - Troque "engagement_wo_swipes" por "gdc_total_engagements_sum" para voltar
-        ao engagement bruto, ou por "ER" para usar o ER padrão.
-      - Se voltar a usar engagement absoluto (não %), remova ticksuffix="%" do yaxis2.
-
-    Para mover a legenda:
-      - Ajuste x/y no dict legend= dentro de update_layout abaixo.
-        Ex: x=0.5, y=1.05 coloca a legenda acima do gráfico.
+    date_start / date_end são usados para gerar todos os períodos do range,
+    mesmo aqueles sem posts (barras zeradas), cobrindo o período completo.
     """
     period_col = "week" if granularity == "Weekly" else "month"
 
@@ -105,6 +98,18 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
         posts             = ("outbound_post",           "count"),
     ).reset_index()
 
+    # Preenche todos os períodos do range selecionado (sem lacunas)
+    if date_start is not None and date_end is not None:
+        freq = "7D" if granularity == "Weekly" else "MS"
+        _start = pd.to_datetime(date_start)
+        _end   = pd.to_datetime(date_end)
+        # Alinha ao primeiro período real igual ou anterior a date_start
+        if not agg.empty:
+            _start = min(_start, agg[period_col].min())
+        full_range = pd.date_range(start=_start, end=_end, freq=freq)
+        full_df = pd.DataFrame({period_col: full_range})
+        agg = full_df.merge(agg, on=period_col, how="left").fillna(0)
+
     # ER w/o swipes por período (sum engagement / sum impressions * 100)
     agg["er_wo_swipes"] = (
         agg["engagement_wo_swp"]
@@ -112,7 +117,7 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
         * 100
     ).fillna(0).round(2)
 
-    agg["period_label"] = agg[period_col].dt.strftime(
+    agg["period_label"] = pd.to_datetime(agg[period_col]).dt.strftime(
         "%b %d" if granularity == "Weekly" else "%b %Y"
     )
 
@@ -125,12 +130,10 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
         name          = "Impressions",
         marker_color  = THEME["accent_purple"],
         opacity       = 0.85,
-        hovertemplate = "<b>%{x}</b><br>Impressions: %{y:,.0f}<extra></extra>",
+        hovertemplate = "<b>%{x}</b><br>Impressions: %{y:.2s}<extra></extra>",
     ))
 
     # Linha suave — ER w/o swipes (eixo Y secundário)
-    # shape="spline" + smoothing=1.3 = curva suave entre pontos.
-    # Para voltar à linha reta: remova shape e smoothing.
     fig.add_trace(go.Scatter(
         x             = agg["period_label"],
         y             = agg["er_wo_swipes"],
@@ -138,7 +141,7 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
         mode          = "lines+markers",
         line          = dict(color=THEME["accent_blue"], width=2.5,
                              shape="spline", smoothing=1.3),
-        marker        = dict(size=4, color=THEME["accent_blue"]),
+        marker        = dict(size=9, symbol="diamond", color=THEME["accent_blue"]),
         yaxis         = "y2",
         hovertemplate = "<b>%{x}</b><br>ER w/o swipes: %{y:.2f}%<extra></extra>",
     ))
@@ -146,6 +149,7 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
     layout = _base_layout(
         title   = dict(text=f"Performance Over Time — {granularity}", font=dict(size=14)),
         barmode = "group",
+        yaxis   = dict(tickformat=".2s"),
         yaxis2  = dict(
             overlaying   = "y",
             side         = "right",
@@ -157,9 +161,6 @@ def chart_timeline(df: pd.DataFrame, granularity: str = "Weekly") -> go.Figure:
     )
     fig.update_layout(layout)
 
-    # Legenda dentro do gráfico, próxima ao eixo esquerdo.
-    # Chamada separada garante override dos defaults do Plotly.
-    # Para mover: ajuste x (0=esq, 1=dir) e y (0=baixo, 1=topo).
     fig.update_layout(
         legend=dict(
             bgcolor     = "rgba(15,25,35,0.80)",
@@ -452,7 +453,7 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
         name        = "Impressions Delivered",
         marker_color= bar_colors,
         opacity     = 0.9,
-        hovertemplate = "<b>%{x}</b><br>Delivered: %{y:,.0f}<extra></extra>",
+        hovertemplate = "<b>%{x}</b><br>Delivered: %{y:.2s}<extra></extra>",
     ))
 
     # Barras do pace necessário (transparente, como referência)
@@ -462,7 +463,7 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
         name        = "Required Monthly Pace",
         marker_color= THEME["text_muted"],
         opacity     = 0.3,
-        hovertemplate = "<b>%{x}</b><br>Required pace: %{y:,.0f}<extra></extra>",
+        hovertemplate = "<b>%{x}</b><br>Required pace: %{y:.2s}<extra></extra>",
     ))
 
     # Linha do target restante (eixo Y secundário)
@@ -474,20 +475,8 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
         line        = dict(color=THEME["accent_purple"], width=2.5),
         marker      = dict(size=5),
         yaxis       = "y2",
-        hovertemplate = "<b>%{x}</b><br>Remaining: %{y:,.0f}<extra></extra>",
+        hovertemplate = "<b>%{x}</b><br>Remaining: %{y:.2s}<extra></extra>",
     ))
-
-    # % total atingido
-    total_delivered = full["impressions"].sum()
-    pct_achieved    = total_delivered / FY_TARGET * 100
-
-    fig.add_annotation(
-        text      = f"<b>{pct_achieved:.0f}% of {FY_TARGET/1e6:.0f}M target achieved YTD</b>",
-        xref="paper", yref="paper", x=0.0, y=1.12,
-        font      = dict(color=THEME["accent_blue"], size=13),
-        showarrow = False,
-        align     = "left",
-    )
 
     layout = _base_layout(
         title    = dict(text="FY 2026 Pacing — Organic Impressions", font=dict(size=14)),
@@ -502,9 +491,23 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
         ),
         yaxis    = dict(tickformat=".2s"),
         height   = 340,
-        margin   = dict(l=8, r=8, t=60, b=8),
+        margin   = dict(l=8, r=8, t=50, b=50),
     )
     fig.update_layout(layout)
+
+    # Legenda horizontal abaixo do gráfico para não sobrepor o eixo direito
+    fig.update_layout(
+        legend=dict(
+            orientation = "h",
+            x           = 0,
+            y           = -0.18,
+            xanchor     = "left",
+            yanchor     = "top",
+            bgcolor     = "rgba(0,0,0,0)",
+            bordercolor = THEME["border"],
+            font        = dict(color=THEME["text_secondary"], size=11),
+        )
+    )
     return fig
 
 
@@ -567,4 +570,94 @@ def chart_pillar_by_network(df: pd.DataFrame) -> go.Figure:
         xaxis   = dict(ticksuffix="%", range=[0, 100]),
         height  = 280,
     ))
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# 7. FY POSTS PACING
+# ---------------------------------------------------------------------------
+
+def chart_fy_posts(monthly_df: pd.DataFrame) -> go.Figure:
+    """
+    Gráfico de pacing de posts do FY vs meta anual.
+    Verde = mês bateu a meta mensal; vermelho = ficou abaixo.
+    """
+    from config import FY_START, FY_END
+
+    all_months   = pd.date_range(FY_START, FY_END, freq="MS")
+    n_months     = len(all_months)
+    monthly_pace = FY_POSTS_TARGET / n_months
+
+    monthly_df = monthly_df.copy()
+    monthly_df["month_dt"] = pd.to_datetime(monthly_df["month_dt"])
+
+    full = pd.DataFrame({"month_dt": all_months})
+    full = full.merge(monthly_df[["month_dt", "posts"]], on="month_dt", how="left")
+    full["posts"]       = full["posts"].fillna(0)
+    full["pace"]        = monthly_pace
+    full["month_label"] = full["month_dt"].dt.strftime("%b").str.upper()
+    full["cumulative"]  = full["posts"].cumsum()
+
+    bar_colors = [
+        THEME["accent_green"] if p >= monthly_pace else THEME["accent_red"]
+        for p in full["posts"]
+    ]
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Bar(
+        x             = full["month_label"],
+        y             = full["posts"],
+        name          = "Posts Delivered",
+        marker_color  = bar_colors,
+        opacity       = 0.9,
+        hovertemplate = "<b>%{x}</b><br>Posts: %{y:.0f}<extra></extra>",
+    ))
+
+    fig.add_trace(go.Bar(
+        x             = full["month_label"],
+        y             = full["pace"],
+        name          = "Required Monthly Pace",
+        marker_color  = THEME["text_muted"],
+        opacity       = 0.3,
+        hovertemplate = "<b>%{x}</b><br>Required pace: %{y:.0f}<extra></extra>",
+    ))
+
+    fig.add_trace(go.Scatter(
+        x             = full["month_label"],
+        y             = full["cumulative"],
+        name          = "Cumulative Posts",
+        mode          = "lines+markers",
+        line          = dict(color=THEME["accent_yellow"], width=2.5),
+        marker        = dict(size=5),
+        yaxis         = "y2",
+        hovertemplate = "<b>%{x}</b><br>Cumulative: %{y:.0f}<extra></extra>",
+    ))
+
+    layout = _base_layout(
+        title   = dict(text=f"FY 2026 Pacing — Posts (target: {FY_POSTS_TARGET:,})", font=dict(size=14)),
+        barmode = "overlay",
+        yaxis2  = dict(
+            overlaying = "y",
+            side       = "right",
+            gridcolor  = "rgba(0,0,0,0)",
+            tickfont   = dict(color=THEME["accent_yellow"], size=10),
+            showgrid   = False,
+        ),
+        height  = 320,
+        margin  = dict(l=8, r=8, t=50, b=50),
+    )
+    fig.update_layout(layout)
+    fig.update_layout(
+        legend=dict(
+            orientation = "h",
+            x           = 0,
+            y           = -0.18,
+            xanchor     = "left",
+            yanchor     = "top",
+            bgcolor     = "rgba(0,0,0,0)",
+            bordercolor = THEME["border"],
+            font        = dict(color=THEME["text_secondary"], size=11),
+        )
+    )
     return fig
