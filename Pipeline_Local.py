@@ -218,6 +218,22 @@ def merge_meta(df, meta_path):
     df.loc[mask_stories, "social_network"] = "IG Stories"
     print(f"   Stories identificados: {mask_stories.sum()}")
 
+    # Recalcula gdc_total_engagements_sum para IG Stories.
+    # O Sprinklr conta "navigation taps" (swipes/avanços) como engajamento total,
+    # o que distorce a métrica. O correto é: likes + comments + shares + clicks.
+    eng_cols = [
+        "post_likes_and_reactions_sum",
+        "post_comments_sum",
+        "post_shares_sum",
+        "estimated_clicks_sum",
+    ]
+    present_eng = [c for c in eng_cols if c in df.columns]
+    if present_eng and mask_stories.any():
+        df.loc[mask_stories, "gdc_total_engagements_sum"] = (
+            df.loc[mask_stories, present_eng].sum(axis=1)
+        )
+        print(f"   Stories engagement recalculado (likes+comments+shares+clicks)")
+
     return df
 
 

@@ -209,13 +209,21 @@ def chart_by_network(df: pd.DataFrame) -> go.Figure:
 
     fig = go.Figure()
 
+    def _label(v):
+        if v >= 1_000_000: return f"{v/1_000_000:.1f}M"
+        if v >= 1_000:     return f"{v/1_000:.0f}K"
+        return f"{v:.0f}"
+
     fig.add_trace(go.Bar(
-        y           = agg["social_network"],
-        x           = agg["impressions"],
-        orientation = "h",
-        name        = "Impressions",
-        marker_color= colors,
-        opacity     = 0.9,
+        y             = agg["social_network"],
+        x             = agg["impressions"],
+        orientation   = "h",
+        name          = "Impressions",
+        marker_color  = colors,
+        opacity       = 0.9,
+        text          = agg["impressions"].apply(_label),
+        textposition  = "outside",
+        textfont      = dict(color=THEME["text_primary"], size=10),
         hovertemplate = "<b>%{y}</b><br>Impressions: %{x:,.0f}<extra></extra>",
     ))
 
@@ -224,6 +232,7 @@ def chart_by_network(df: pd.DataFrame) -> go.Figure:
         xaxis  = dict(title="", tickformat=","),
         yaxis  = dict(title=""),
         height = 300,
+        margin = dict(l=8, r=80, t=36, b=8),
     )
     fig.update_layout(layout)
     return fig
