@@ -71,6 +71,15 @@ def _base_layout(**overrides) -> dict:
     return base
 
 
+def _dim_color(hex_color: str, alpha: float = 0.20) -> str:
+    """Converts a hex color to rgba with reduced opacity (for dimming non-selected items)."""
+    h = hex_color.lstrip("#")
+    if len(h) == 6:
+        r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+        return f"rgba({r},{g},{b},{alpha})"
+    return hex_color
+
+
 def _fmt_axis(val, suffix=""):
     """Formata eixo Y: 1.5M, 500.0K, 250"""
     if val >= 1_000_000: return f"{val/1_000_000:.1f}M{suffix}"
@@ -201,10 +210,12 @@ def chart_timeline(
 # 2. BARRAS POR REDE SOCIAL
 # ---------------------------------------------------------------------------
 
-def chart_by_network(df: pd.DataFrame) -> go.Figure:
+def chart_by_network(df: pd.DataFrame, selected_network: str | None = None) -> go.Figure:
     """
     Barras horizontais mostrando Impressions e AQE por rede.
     Horizontal porque os nomes das redes ficam mais legíveis.
+    selected_network: se definido, mantém a rede selecionada com cor cheia
+    e deixa as demais com opacidade reduzida (sem esconder).
     """
     from config import AQE_COLS
 
@@ -221,7 +232,13 @@ def chart_by_network(df: pd.DataFrame) -> go.Figure:
     agg["aqe_per_post"] = agg["aqe_total"] / agg["posts"].replace(0, 1)
     agg = agg.sort_values("impressions", ascending=True)
 
-    colors = [NETWORK_COLORS.get(n, THEME["accent_purple"]) for n in agg["social_network"]]
+    colors = []
+    for n in agg["social_network"]:
+        base = NETWORK_COLORS.get(n, THEME["accent_purple"])
+        if selected_network and n != selected_network:
+            colors.append(_dim_color(base, 0.22))
+        else:
+            colors.append(base)
 
     fig = go.Figure()
 
@@ -611,8 +628,8 @@ def chart_comments_by_network(
         dc = dc[dc["date"] >= pd.to_datetime(date_start)]
     if date_end is not None:
         dc = dc[dc["date"] <= pd.to_datetime(date_end)]
-    if selected_networks:
-        dc = dc[dc["network"].isin(selected_networks)]
+    # Note: NOT filtering by selected_networks here — we show all networks
+    # and dim the non-selected ones for visual context.
 
     if dc.empty:
         fig = go.Figure()
@@ -652,6 +669,31 @@ def chart_comments_by_network(
     # Y-axis labels: rede + avg comentários/post
     y_tick_labels = [f"{net}  {avg:.1f}/post" for net, avg in zip(agg["network"], agg["avg_cpp"])]
 
+    # Per-bar colors: dim networks not in selected_networks
+    def _bar_colors(base_color: str) -> list:
+        result = []
+        for net in agg["network"]:
+            if selected_networks and net not in selected_networks:
+                result.append(_dim_color(base_color, 0.22))
+            else:
+                result.append(base_color)
+        return result
+
+    pos_colors = _bar_colors(THEME["accent_green"])
+    neg_colors = _bar_colors(THEME["accent_red"])
+
+    # Text label colors: dim non-selected
+    def _text_colors() -> list:
+        result = []
+        for net in agg["network"]:
+            if selected_networks and net not in selected_networks:
+                result.append(THEME["text_muted"])
+            else:
+                result.append(THEME["text_primary"])
+        return result
+
+    text_colors = _text_colors()
+
     fig = go.Figure()
 
     fig.add_trace(go.Bar(
@@ -659,8 +701,7 @@ def chart_comments_by_network(
         x             = agg["pct_pos"],
         orientation   = "h",
         name          = "Positive",
-        marker_color  = THEME["accent_green"],
-        opacity       = 0.85,
+        marker_color  = pos_colors,
         text          = agg["pct_pos"].apply(lambda v: f"{v:.0f}%"),
         textposition  = "outside",
         textfont      = dict(color=THEME["text_primary"], size=11),
@@ -672,8 +713,7 @@ def chart_comments_by_network(
         x             = agg["pct_neg"],
         orientation   = "h",
         name          = "Negative",
-        marker_color  = THEME["accent_red"],
-        opacity       = 0.85,
+        marker_color  = neg_colors,
         text          = agg["pct_neg"].apply(lambda v: f"{v:.0f}%"),
         textposition  = "outside",
         textfont      = dict(color=THEME["text_primary"], size=11),
@@ -685,7 +725,13 @@ def chart_comments_by_network(
     layout = _base_layout(
         title   = dict(text="Comment Sentiment by Network", font=dict(size=14)),
         barmode = "group",
-        xaxis   = dict(title="", ticksuffix="%", range=[0, max_pct]),
+        xaxis   = dict(
+            title           = "",
+            showticklabels  = False,
+            showgrid        = False,
+            zeroline        = False,
+            range           = [0, max_pct],
+        ),
         yaxis   = dict(title="", tickfont=dict(size=11)),
         height  = max(260, len(agg) * 60 + 80),
         margin  = dict(l=8, r=80, t=40, b=8),
@@ -693,13 +739,15 @@ def chart_comments_by_network(
     fig.update_layout(layout)
     fig.update_layout(
         legend=dict(
-            orientation = "h",
-            x=0.01, y=0.99,
-            xanchor="left", yanchor="top",
-            bgcolor="rgba(15,25,35,0.80)",
-            bordercolor=THEME["border"],
-            borderwidth=1,
-            font=dict(color=THEME["text_primary"], size=12),
+            orientation = "v",
+            x           = 0.99,
+            y           = 0.01,
+            xanchor     = "right",
+            yanchor     = "bottom",
+            bgcolor     = "rgba(15,25,35,0.75)",
+            bordercolor = THEME["border"],
+            borderwidth = 1,
+            font        = dict(color=THEME["text_primary"], size=9),
         )
     )
     return fig

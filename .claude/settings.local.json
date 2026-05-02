@@ -14,7 +14,12 @@
       "Bash(python Pipeline_Local.py)",
       "Bash(python3 Pipeline_Local.py)",
       "Bash(ls /Users/bkim/Documents/Dash/*.csv)",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "Bash(git fetch:*)",
+      "Bash(wc -l /Users/bkim/Documents/Dash/docs/*.md)",
+      "Bash(python -c \"from components.charts import chart_by_network, chart_comments_by_network; print\\('imports OK'\\)\")",
+      "Bash(python3 -c \"from components.charts import chart_by_network, chart_comments_by_network; print\\('imports OK'\\)\")",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('app.py'\\).read\\(\\)\\); print\\('app.py syntax OK'\\)\")"
     ]
   }
 }

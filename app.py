@@ -145,6 +145,14 @@ st.markdown(f"""
   [data-baseweb="calendar"] button:hover {{
       background-color: {THEME['bg_card2']} !important;
   }}
+
+  /* Caixa em volta de todos os gráficos Plotly */
+  [data-testid="stPlotlyChart"] {{
+      border: 1px solid {THEME['border']};
+      border-radius: 10px;
+      background-color: {THEME['bg_card']};
+      padding: 4px 4px 0 4px;
+  }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -257,6 +265,20 @@ _boosted_mask     = df_filtered["Boosted"].fillna(0) == 1
 df_organic        = df_filtered[~_boosted_mask].copy()
 _boosted_mask_p   = df_prev["Boosted"].fillna(0) == 1
 df_prev_organic   = df_prev[~_boosted_mask_p].copy()
+
+# Versão sem filtro de rede — para gráficos que mostram todas as redes
+# mas com transparência nas não selecionadas
+df_filtered_allnets = apply_filters(
+    df_all,
+    date_start  = date_start_ts,
+    date_end    = date_end_ts,
+    networks    = all_networks,
+    pillars     = pillars,
+    media_types = media_types,
+    campaigns   = campaigns,
+)
+_boosted_mask_allnets = df_filtered_allnets["Boosted"].fillna(0) == 1
+df_organic_allnets    = df_filtered_allnets[~_boosted_mask_allnets].copy()
 
 # Aviso se não há dados no período
 if df_filtered.empty:
@@ -430,7 +452,7 @@ with tab1:
     with col_sent:
         fig_sent = chart_comments_by_network(
             df_comments,
-            df_filtered,
+            df_filtered_allnets,
             date_start        = date_start_ts,
             date_end          = date_end_ts,
             selected_networks = networks if _sel_net != "ALL" else None,
@@ -438,7 +460,10 @@ with tab1:
         fig_sent.update_layout(height=280)
         st.plotly_chart(fig_sent, use_container_width=True, key="overview_comments_sentiment")
     with col_net:
-        fig_net = chart_by_network(df_organic)
+        fig_net = chart_by_network(
+            df_organic_allnets,
+            selected_network = _sel_net if _sel_net != "ALL" else None,
+        )
         fig_net.update_layout(height=280)
         st.plotly_chart(fig_net, use_container_width=True, key="overview_by_network")
 
