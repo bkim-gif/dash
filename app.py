@@ -119,6 +119,19 @@ st.markdown(f"""
       margin: 20px 0 8px 0;
   }}
 
+  /* Multiselect tags — Glass/Tinted (10% bg, 100% text, 30% border) */
+  [data-baseweb="tag"] {{
+      background-color: rgba(155,114,232,0.10) !important;
+      border: 1px solid rgba(155,114,232,0.30) !important;
+      border-radius: 6px !important;
+  }}
+  [data-baseweb="tag"] span {{
+      color: #9B72E8 !important;
+  }}
+  [data-baseweb="tag"] svg {{
+      color: rgba(155,114,232,0.60) !important;
+  }}
+
   /* Calendar date picker — fundo escuro, texto branco */
   [data-baseweb="calendar"],
   [data-baseweb="calendar"] * {{
