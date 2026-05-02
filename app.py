@@ -33,7 +33,7 @@ from data.loader import (
     load_raw, apply_filters, get_previous_period, get_fy_monthly,
     load_followers, load_comments,
 )
-from components.kpis   import render_kpis, render_followers_card, render_comments_card
+from components.kpis   import render_kpi_row, render_kpis, render_followers_card, render_comments_card
 from components.charts import (
     chart_timeline, chart_by_network, chart_er_by_network,
     chart_pillar_donut, chart_pillar_radar, chart_pillar_by_network,
@@ -398,16 +398,13 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # ══════════════════════════════════════════════════════════════════════════
 with tab1:
 
-    # ── Row 1: 5 KPI cards + Followers na mesma linha ─────────────────────
-    kpi_cols = st.columns(5)
-    render_kpis(
+    # ── Row 1: 5 cards na mesma linha (Posts | Impressions | ER | AQE | Followers)
+    render_kpi_row(
         df_filtered, df_prev, df_organic, df_prev_organic,
-        selected_network=_sel_net,
-        cols=kpi_cols[:4],
+        selected_network = _sel_net,
+        df_followers     = df_followers if not df_followers.empty else None,
+        date_end         = date_end_ts,
     )
-    with kpi_cols[4]:
-        if not df_followers.empty:
-            render_followers_card(df_followers, date_end_ts, selected_network=_sel_net)
 
     # ── Row 2: Timeline (largo) + Radar (menor) ───────────────────────────
     col_tl, col_rd = st.columns([3, 2])
