@@ -149,7 +149,7 @@ def chart_timeline(
     fig.add_trace(go.Scatter(
         x             = agg["period_label"],
         y             = agg["er_wo_swipes"],
-        name          = "ER w/o swipes",
+        name          = "ER",
         mode          = "lines",
         line          = dict(color=THEME["accent_blue"], width=2.5,
                              shape="spline", smoothing=1.3),
@@ -183,7 +183,16 @@ def chart_timeline(
             xanchor     = "left",
             yanchor     = "top",
             orientation = "v",
-        )
+        ),
+        margin = dict(l=8, r=8, t=36, b=44),
+    )
+    fig.add_annotation(
+        text      = "ⓘ  ER excludes swipe interactions",
+        xref      = "paper", yref = "paper",
+        x         = 0.0,     y    = -0.13,
+        showarrow = False,
+        font      = dict(size=10, color=THEME["text_muted"]),
+        align     = "left",
     )
     return fig
 
@@ -388,13 +397,13 @@ def chart_pillar_radar(df: pd.DataFrame) -> go.Figure:
                 range      = [0, 50],
                 ticksuffix = "%",
                 tickfont   = dict(color=THEME["text_muted"], size=9),
-                gridcolor  = "rgba(45,42,61,0.10)",   # teia silenciada a 10%
-                linecolor  = "rgba(45,42,61,0.10)",
+                gridcolor  = "rgba(94,91,116,0.55)",
+                linecolor  = "rgba(94,91,116,0.55)",
             ),
             angularaxis = dict(
                 tickfont  = dict(color=THEME["text_secondary"], size=12),
-                linecolor = "rgba(45,42,61,0.30)",
-                gridcolor = "rgba(45,42,61,0.10)",
+                linecolor = "rgba(94,91,116,0.65)",
+                gridcolor = "rgba(94,91,116,0.55)",
             ),
         ),
         paper_bgcolor = "rgba(0,0,0,0)",

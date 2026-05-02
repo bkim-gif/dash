@@ -109,9 +109,9 @@ def render_kpis(
         },
         {
             "label":       "Eng. Rate",
-            # Exibe ER / ER w/o swipes* no card
-            "value":       f"{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}*",
-            "er_note":     "* w/o swipes",   # nota exibida abaixo do valor
+            # Exibe ER / ER w/o swipes no card
+            "value":       f"{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}",
+            "er_note":     "w/o swipes",   # exibido como ⓘ com tooltip
             "raw_cur":     er_cur,
             "raw_prev":    er_prev,
             "is_pct":      True,
@@ -174,11 +174,13 @@ def render_kpis(
             else:
                 label_html = card["label"]
 
-            # Nota extra (ex: "*w/o swipes" para o card de ER)
+            # Nota extra (ⓘ com tooltip "w/o swipes" para o card de ER)
             er_note = card.get("er_note", "")
             er_note_html = (
                 f'<div style="color:{THEME["text_muted"]};font-size:10px;margin-top:4px">'
-                f'{er_note}</div>'
+                f'<span class="kpi-tooltip-wrap">ⓘ'
+                f'<span class="kpi-tooltip-box">{er_note}</span>'
+                f'</span></div>'
                 if er_note
                 else f'<div style="font-size:10px;margin-top:4px">&nbsp;</div>'
             )
