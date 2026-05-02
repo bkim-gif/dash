@@ -48,6 +48,8 @@ def render_kpis(
     df_previous: pd.DataFrame,
     df_organic: "pd.DataFrame | None" = None,
     df_prev_organic: "pd.DataFrame | None" = None,
+    selected_network: str = "ALL",
+    cols: list | None = None,
 ) -> None:
     """
     Renderiza os 4 KPI cards em colunas lado a lado.
@@ -57,6 +59,8 @@ def render_kpis(
       df_previous     → todos os posts do período anterior — usado p/ delta de Posts
       df_organic      → posts sem boosted — usado p/ Impressions, ER, AQE
       df_prev_organic → posts sem boosted do período anterior — usado p/ deltas de Impressions/ER/AQE
+      selected_network → rede selecionada (para lógica de ER LinkedIn)
+      cols            → lista de colunas Streamlit já criadas (opcional); se None, cria 4 internas
     """
     # Posts: conta todos (incluindo boosted)
     posts_cur  = len(df_current)
@@ -91,39 +95,49 @@ def render_kpis(
     present_p  = [c for c in AQE_COLS if c in _prev.columns]
     aqe_prev   = (_prev[present_p].sum().sum() / n_org_prev if n_org_prev > 0 else 0)
 
+    # ── ER value HTML: para LinkedIn mostra ER / ER w/o swipes com ⓘ inline ──
+    is_linkedin = selected_network == "LinkedIn"
+    if is_linkedin:
+        er_value_html = (
+            f'{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}'
+            f'&nbsp;<span class="kpi-tooltip-wrap" style="font-size:13px;vertical-align:middle;font-weight:400">'
+            f'ⓘ<span class="kpi-tooltip-box">2nd value excludes swipe interactions</span>'
+            f'</span>'
+        )
+    else:
+        er_value_html = _fmt(er_cur, is_pct=True)
+
     # ── Configuração dos cards ─────────────────────────────────────────────
     cards = [
         {
-            "label":    "Posts",
-            "value":    _fmt(posts_cur),
-            "raw_cur":  posts_cur,
-            "raw_prev": posts_prev,
-            "is_pct":   False,
+            "label":      "Posts",
+            "value_html": _fmt(posts_cur),
+            "raw_cur":    posts_cur,
+            "raw_prev":   posts_prev,
+            "is_pct":     False,
         },
         {
-            "label":    "Impressions",
-            "value":    _fmt(impr_cur),
-            "raw_cur":  impr_cur,
-            "raw_prev": impr_prev,
-            "is_pct":   False,
+            "label":      "Impressions",
+            "value_html": _fmt(impr_cur),
+            "raw_cur":    impr_cur,
+            "raw_prev":   impr_prev,
+            "is_pct":     False,
         },
         {
-            "label":       "Eng. Rate",
-            # Exibe ER / ER w/o swipes no card
-            "value":       f"{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}",
-            "er_note":     "w/o swipes",   # exibido como ⓘ com tooltip
-            "raw_cur":     er_cur,
-            "raw_prev":    er_prev,
-            "is_pct":      True,
-            "suffix":      "pp",    # pontos percentuais, não %
+            "label":      "Eng. Rate",
+            "value_html": er_value_html,
+            "raw_cur":    er_cur,
+            "raw_prev":   er_prev,
+            "is_pct":     True,
+            "suffix":     "pp",
         },
         {
-            "label":    "AQE / post",
-            "value":    _fmt(aqe_cur),
-            "raw_cur":  aqe_cur,
-            "raw_prev": aqe_prev,
-            "is_pct":   False,
-            "tooltip":  "AQE = Comments + Shares + Clicks",
+            "label":      "AQE / post",
+            "value_html": _fmt(aqe_cur),
+            "raw_cur":    aqe_cur,
+            "raw_prev":   aqe_prev,
+            "is_pct":     False,
+            "tooltip":    "AQE = Comments + Shares + Clicks",
         },
     ]
 
@@ -159,8 +173,8 @@ def render_kpis(
     """, unsafe_allow_html=True)
 
     # ── Renderiza ──────────────────────────────────────────────────────────
-    cols = st.columns(4)
-    for col, card in zip(cols, cards):
+    render_cols = cols if cols is not None else st.columns(4)
+    for col, card in zip(render_cols, cards):
         with col:
             # Tooltip no label (ⓘ) com hover box
             tooltip = card.get("tooltip", "")
@@ -174,26 +188,15 @@ def render_kpis(
             else:
                 label_html = card["label"]
 
-            # Nota extra (ⓘ com tooltip "w/o swipes" para o card de ER)
-            er_note = card.get("er_note", "")
-            er_note_html = (
-                f'<div style="color:{THEME["text_muted"]};font-size:10px;margin-top:4px">'
-                f'<span class="kpi-tooltip-wrap">ⓘ'
-                f'<span class="kpi-tooltip-box">{er_note}</span>'
-                f'</span></div>'
-                if er_note
-                else f'<div style="font-size:10px;margin-top:4px">&nbsp;</div>'
-            )
-
             st.markdown(
                 f"""
                 <div style="
                     background:{THEME['bg_card']};
                     border:1px solid {THEME['border']};
                     border-radius:12px;
-                    padding:20px 24px;
+                    padding:16px 20px;
                     margin-bottom:8px;
-                    min-height:120px;
+                    min-height:100px;
                     box-sizing:border-box;
                 ">
                     <div style="
@@ -202,17 +205,15 @@ def render_kpis(
                         font-weight:500;
                         text-transform:uppercase;
                         letter-spacing:1.2px;
-                        margin-bottom:8px;
+                        margin-bottom:6px;
                     ">{label_html}</div>
                     <div style="
                         color:{THEME['text_primary']};
-                        font-size:28px;
+                        font-size:24px;
                         font-weight:700;
                         line-height:1;
-                        margin-bottom:4px;
                         font-variant-numeric:tabular-nums;
-                    ">{card['value']}</div>
-                    {er_note_html}
+                    ">{card['value_html']}</div>
                 </div>
                 """,
                 unsafe_allow_html=True,
@@ -273,25 +274,24 @@ def render_followers_card(
             background:{THEME['bg_card']};
             border:1px solid {THEME['border']};
             border-radius:12px;
-            padding:20px 24px;
+            padding:16px 20px;
             margin-bottom:8px;
-            min-height:120px;
+            min-height:100px;
             box-sizing:border-box;
         ">
             <div style="
                 color:{THEME['text_secondary']};
                 font-size:10px;font-weight:500;
-                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;
+                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px;
                 display:flex;justify-content:space-between;align-items:center;
             ">
                 <span>Followers · {net_label}</span>
-                <span style="color:{THEME['text_muted']};font-size:10px;text-transform:none;letter-spacing:0">as of {ref_label}</span>
+                <span style="color:{THEME['text_muted']};font-size:9px;text-transform:none;letter-spacing:0">as of {ref_label}</span>
             </div>
             <div style="
-                color:{color};font-size:28px;font-weight:700;line-height:1;
+                color:{color};font-size:24px;font-weight:700;line-height:1;
                 font-variant-numeric:tabular-nums;
             ">{_fmt(followers)}</div>
-            <div style="font-size:10px;margin-top:4px">&nbsp;</div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -302,12 +302,73 @@ def render_followers_card(
 # COMMENTS CARD
 # ---------------------------------------------------------------------------
 
-def render_comments_card(df_organic: pd.DataFrame) -> None:
+def render_comments_card(
+    df_organic: pd.DataFrame,
+    df_comments: "pd.DataFrame | None" = None,
+    date_start=None,
+    date_end=None,
+    selected_networks: "list | None" = None,
+) -> None:
     """
-    Card com o total de comentários do período (usa post_comments_sum do df orgânico).
+    Card com o total de comentários do período e breakdown de sentimento.
+    Exibe bolinhas coloridas para Positive / Neutral / Negative.
     """
     col = "post_comments_sum"
     total = int(df_organic[col].sum()) if col in df_organic.columns else 0
+
+    # ── Calcula sentimento se df_comments disponível ───────────────────────
+    pos_count = neu_count = neg_count = 0
+    show_sentiment = False
+
+    if df_comments is not None and not df_comments.empty:
+        dc = df_comments.copy()
+        if date_start is not None:
+            dc = dc[dc["date"] >= pd.to_datetime(date_start)]
+        if date_end is not None:
+            dc = dc[dc["date"] <= pd.to_datetime(date_end)]
+        if selected_networks:
+            dc = dc[dc["network"].isin(selected_networks)]
+
+        if not dc.empty:
+            show_sentiment = True
+            pos_count = int((dc["sentiment"] == "POSITIVE").sum())
+            neu_count = int((dc["sentiment"] == "NEUTRAL").sum())
+            neg_count = int((dc["sentiment"] == "NEGATIVE").sum())
+            sent_total = pos_count + neu_count + neg_count
+
+            pos_pct = round(pos_count / sent_total * 100) if sent_total > 0 else 0
+            neu_pct = round(neu_count / sent_total * 100) if sent_total > 0 else 0
+            neg_pct = round(neg_count / sent_total * 100) if sent_total > 0 else 0
+
+    # ── HTML para as bolinhas de sentimento ───────────────────────────────
+    def _dot_row(color: str, label: str, count: int, pct: int) -> str:
+        return (
+            f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'
+            f'  <span style="'
+            f'    width:10px;height:10px;border-radius:50%;'
+            f'    background:{color};flex-shrink:0;display:inline-block'
+            f'  "></span>'
+            f'  <span style="color:{THEME["text_secondary"]};font-size:11px;flex:1">{label}</span>'
+            f'  <span style="color:{THEME["text_primary"]};font-size:11px;font-weight:600">'
+            f'    {count:,}'
+            f'  </span>'
+            f'  <span style="color:{THEME["text_muted"]};font-size:10px;min-width:34px;text-align:right">'
+            f'    {pct}%'
+            f'  </span>'
+            f'</div>'
+        )
+
+    sentiment_html = ""
+    if show_sentiment:
+        sentiment_html = (
+            f'<div style="margin-top:16px;border-top:1px solid {THEME["border"]};padding-top:12px">'
+            f'  <div style="color:{THEME["text_secondary"]};font-size:9px;font-weight:500;'
+            f'    text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Sentiment</div>'
+            + _dot_row(THEME["accent_green"], "Positive", pos_count, pos_pct)
+            + _dot_row(THEME["text_muted"],   "Neutral",  neu_count, neu_pct)
+            + _dot_row(THEME["accent_red"],   "Negative", neg_count, neg_pct)
+            + '</div>'
+        )
 
     st.markdown(
         f"""
@@ -318,11 +379,7 @@ def render_comments_card(df_organic: pd.DataFrame) -> None:
             padding:20px 24px;
             margin-bottom:8px;
             height:100%;
-            min-height:300px;
             box-sizing:border-box;
-            display:flex;
-            flex-direction:column;
-            justify-content:flex-start;
         ">
             <div style="
                 color:{THEME['text_secondary']};
@@ -333,7 +390,7 @@ def render_comments_card(df_organic: pd.DataFrame) -> None:
                 color:{THEME['text_primary']};font-size:28px;font-weight:700;
                 line-height:1;font-variant-numeric:tabular-nums;
             ">{_fmt(total)}</div>
-            <div style="font-size:10px;margin-top:4px">&nbsp;</div>
+            {sentiment_html}
         </div>
         """,
         unsafe_allow_html=True,

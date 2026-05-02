@@ -398,47 +398,52 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # ══════════════════════════════════════════════════════════════════════════
 with tab1:
 
-    # KPI Cards — Posts count inclui boosted; métricas usam apenas orgânicos
-    render_kpis(df_filtered, df_prev, df_organic, df_prev_organic)
+    # ── Row 1: 5 KPI cards + Followers na mesma linha ─────────────────────
+    kpi_cols = st.columns(5)
+    render_kpis(
+        df_filtered, df_prev, df_organic, df_prev_organic,
+        selected_network=_sel_net,
+        cols=kpi_cols[:4],
+    )
+    with kpi_cols[4]:
+        if not df_followers.empty:
+            render_followers_card(df_followers, date_end_ts, selected_network=_sel_net)
 
-    # Followers card — 1 card, reage ao filtro de rede
-    if not df_followers.empty:
-        render_followers_card(df_followers, date_end_ts, selected_network=_sel_net)
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    # Timeline (menor) + Radar ao lado — apenas posts orgânicos
+    # ── Row 2: Timeline (largo) + Radar (menor) ───────────────────────────
     col_tl, col_rd = st.columns([3, 2])
     with col_tl:
         fig_tl = chart_timeline(df_organic, granularity, date_start_ts, date_end_ts)
-        fig_tl.update_layout(height=320)
+        fig_tl.update_layout(height=260)
         st.plotly_chart(fig_tl, use_container_width=True, key="overview_timeline")
     with col_rd:
         fig_rd = chart_pillar_radar(df_organic)
-        fig_rd.update_layout(height=320, margin=dict(l=20, r=20, t=40, b=20))
+        fig_rd.update_layout(height=260, margin=dict(l=20, r=20, t=40, b=20))
         st.plotly_chart(fig_rd, use_container_width=True, key="overview_radar")
 
-    # Comments card (small) + Impressões por rede lado a lado
-    col_comm, col_net = st.columns([1, 2])
+    # ── Row 3: Comments card | Sentiment por rede | Impressões por rede ───
+    col_comm, col_sent, col_net = st.columns([1, 2, 1])
     with col_comm:
-        render_comments_card(df_organic)
+        render_comments_card(
+            df_organic,
+            df_comments   = df_comments,
+            date_start    = date_start_ts,
+            date_end      = date_end_ts,
+            selected_networks = networks if _sel_net != "ALL" else None,
+        )
+    with col_sent:
+        fig_sent = chart_comments_by_network(
+            df_comments,
+            df_filtered,
+            date_start        = date_start_ts,
+            date_end          = date_end_ts,
+            selected_networks = networks if _sel_net != "ALL" else None,
+        )
+        fig_sent.update_layout(height=280)
+        st.plotly_chart(fig_sent, use_container_width=True, key="overview_comments_sentiment")
     with col_net:
         fig_net = chart_by_network(df_organic)
-        fig_net.update_layout(height=300)
+        fig_net.update_layout(height=280)
         st.plotly_chart(fig_net, use_container_width=True, key="overview_by_network")
-
-    # Gráfico de sentimento dos comentários
-    st.plotly_chart(
-        chart_comments_by_network(
-            df_comments,
-            df_filtered,   # para avg comentários/post (contagem total inclui boosted)
-            date_start  = date_start_ts,
-            date_end    = date_end_ts,
-            selected_networks = networks if _sel_net != "ALL" else None,
-        ),
-        use_container_width=True,
-        key="overview_comments_sentiment",
-    )
 
 
 # ══════════════════════════════════════════════════════════════════════════
