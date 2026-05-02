@@ -240,8 +240,9 @@ def render_followers_card(
     selected_network: str = "ALL",
 ) -> None:
     """
-    Exibe um card de seguidores por rede com o valor mais próximo (<=) a date_end.
-    Quando selected_network != "ALL", mostra apenas aquela rede em destaque.
+    Sempre exibe UM card de seguidores.
+    ALL  → soma de todas as redes (total)
+    rede → valor daquela rede em destaque.
     """
     from data.loader import get_followers_at
 
@@ -254,69 +255,17 @@ def render_followers_card(
     ref_date  = snap["date"].max()
     ref_label = pd.to_datetime(ref_date).strftime("%b %d, %Y")
 
-    # Filtra rede se um network específico foi selecionado
-    nets_to_show = (
-        _FOLLOWER_NET_ORDER
-        if selected_network == "ALL"
-        else [selected_network]
-    )
-
-    # Modo destaque: rede única → card compacto com número grande
-    if selected_network != "ALL":
+    if selected_network == "ALL":
+        followers = int(snap[snap["network"].isin(_FOLLOWER_NET_ORDER)]["followers"].sum())
+        color     = THEME["text_primary"]
+        net_label = "All Platforms"
+    else:
         row = snap[snap["network"] == selected_network]
         if row.empty:
             return
         followers = int(row.iloc[0]["followers"])
         color     = NETWORK_COLORS.get(selected_network, THEME["text_secondary"])
-        label     = _FOLLOWER_NET_LABEL.get(selected_network, selected_network)
-        st.markdown(
-            f"""
-            <div style="
-                background:{THEME['bg_card']};
-                border:1px solid {THEME['border']};
-                border-radius:12px;
-                padding:20px 24px;
-                margin-bottom:8px;
-                min-height:120px;
-                box-sizing:border-box;
-            ">
-                <div style="
-                    color:{THEME['text_secondary']};
-                    font-size:10px;font-weight:500;
-                    text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;
-                    display:flex;justify-content:space-between;align-items:center;
-                ">
-                    <span>Followers · {label}</span>
-                    <span style="color:{THEME['text_muted']};font-size:10px;text-transform:none;letter-spacing:0"">as of {ref_label}</span>
-                </div>
-                <div style="
-                    color:{color};font-size:28px;font-weight:700;line-height:1;
-                    font-variant-numeric:tabular-nums;
-                ">{_fmt(followers)}</div>
-                <div style="font-size:10px;margin-top:4px">&nbsp;</div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-        return
-
-    # Modo ALL: lista de redes
-    net_items = ""
-    for net in nets_to_show:
-        row = snap[snap["network"] == net]
-        if row.empty:
-            continue
-        followers = int(row.iloc[0]["followers"])
-        color     = NETWORK_COLORS.get(net, THEME["text_secondary"])
-        label     = _FOLLOWER_NET_LABEL.get(net, net)
-        net_items += (
-            f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'
-            f'  <span style="width:8px;height:8px;border-radius:50%;'
-            f'background:{color};display:inline-block;flex-shrink:0"></span>'
-            f'  <span style="color:{THEME["text_secondary"]};font-size:12px;flex:1">{label}</span>'
-            f'  <span style="color:{THEME["text_primary"]};font-size:14px;font-weight:600">{_fmt(followers)}</span>'
-            f'</div>'
-        )
+        net_label = _FOLLOWER_NET_LABEL.get(selected_network, selected_network)
 
     st.markdown(
         f"""
@@ -324,18 +273,67 @@ def render_followers_card(
             background:{THEME['bg_card']};
             border:1px solid {THEME['border']};
             border-radius:12px;
-            padding:16px 20px;
+            padding:20px 24px;
             margin-bottom:8px;
+            min-height:120px;
+            box-sizing:border-box;
         ">
             <div style="
-                color:{THEME['text_secondary']};font-size:10px;font-weight:500;
-                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px;
+                color:{THEME['text_secondary']};
+                font-size:10px;font-weight:500;
+                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;
                 display:flex;justify-content:space-between;align-items:center;
             ">
-                <span>Followers</span>
+                <span>Followers · {net_label}</span>
                 <span style="color:{THEME['text_muted']};font-size:10px;text-transform:none;letter-spacing:0">as of {ref_label}</span>
             </div>
-            {net_items}
+            <div style="
+                color:{color};font-size:28px;font-weight:700;line-height:1;
+                font-variant-numeric:tabular-nums;
+            ">{_fmt(followers)}</div>
+            <div style="font-size:10px;margin-top:4px">&nbsp;</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+# ---------------------------------------------------------------------------
+# COMMENTS CARD
+# ---------------------------------------------------------------------------
+
+def render_comments_card(df_organic: pd.DataFrame) -> None:
+    """
+    Card com o total de comentários do período (usa post_comments_sum do df orgânico).
+    """
+    col = "post_comments_sum"
+    total = int(df_organic[col].sum()) if col in df_organic.columns else 0
+
+    st.markdown(
+        f"""
+        <div style="
+            background:{THEME['bg_card']};
+            border:1px solid {THEME['border']};
+            border-radius:12px;
+            padding:20px 24px;
+            margin-bottom:8px;
+            height:100%;
+            min-height:300px;
+            box-sizing:border-box;
+            display:flex;
+            flex-direction:column;
+            justify-content:flex-start;
+        ">
+            <div style="
+                color:{THEME['text_secondary']};
+                font-size:10px;font-weight:500;
+                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;
+            ">Comments</div>
+            <div style="
+                color:{THEME['text_primary']};font-size:28px;font-weight:700;
+                line-height:1;font-variant-numeric:tabular-nums;
+            ">{_fmt(total)}</div>
+            <div style="font-size:10px;margin-top:4px">&nbsp;</div>
         </div>
         """,
         unsafe_allow_html=True,

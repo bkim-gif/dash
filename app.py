@@ -33,7 +33,7 @@ from data.loader import (
     load_raw, apply_filters, get_previous_period, get_fy_monthly,
     load_followers, load_comments,
 )
-from components.kpis   import render_kpis, render_followers_card
+from components.kpis   import render_kpis, render_followers_card, render_comments_card
 from components.charts import (
     chart_timeline, chart_by_network, chart_er_by_network,
     chart_pillar_donut, chart_pillar_radar, chart_pillar_by_network,
@@ -401,7 +401,7 @@ with tab1:
     # KPI Cards — Posts count inclui boosted; métricas usam apenas orgânicos
     render_kpis(df_filtered, df_prev, df_organic, df_prev_organic)
 
-    # Followers card — reage ao filtro de rede
+    # Followers card — 1 card, reage ao filtro de rede
     if not df_followers.empty:
         render_followers_card(df_followers, date_end_ts, selected_network=_sel_net)
 
@@ -418,8 +418,14 @@ with tab1:
         fig_rd.update_layout(height=320, margin=dict(l=20, r=20, t=40, b=20))
         st.plotly_chart(fig_rd, use_container_width=True, key="overview_radar")
 
-    # Impressões por rede — apenas orgânicos (remove boosted)
-    st.plotly_chart(chart_by_network(df_organic), use_container_width=True, key="overview_by_network")
+    # Comments card (small) + Impressões por rede lado a lado
+    col_comm, col_net = st.columns([1, 2])
+    with col_comm:
+        render_comments_card(df_organic)
+    with col_net:
+        fig_net = chart_by_network(df_organic)
+        fig_net.update_layout(height=300)
+        st.plotly_chart(fig_net, use_container_width=True, key="overview_by_network")
 
     # Gráfico de sentimento dos comentários
     st.plotly_chart(
