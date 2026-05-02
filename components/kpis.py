@@ -43,42 +43,53 @@ def _fmt(value: float, is_pct: bool = False) -> str:
     return f"{value:.0f}"
 
 
-def render_kpis(df_current: pd.DataFrame, df_previous: pd.DataFrame) -> None:
+def render_kpis(
+    df_current: pd.DataFrame,
+    df_previous: pd.DataFrame,
+    df_organic: "pd.DataFrame | None" = None,
+    df_prev_organic: "pd.DataFrame | None" = None,
+) -> None:
     """
     Renderiza os 4 KPI cards em colunas lado a lado.
 
     Parâmetros:
-      df_current  → posts do período selecionado
-      df_previous → posts do período anterior (mesmo tamanho)
+      df_current      → todos os posts do período (inclui boosted) — usado p/ contagem de Posts
+      df_previous     → todos os posts do período anterior — usado p/ delta de Posts
+      df_organic      → posts sem boosted — usado p/ Impressions, ER, AQE
+      df_prev_organic → posts sem boosted do período anterior — usado p/ deltas de Impressions/ER/AQE
     """
+    # Posts: conta todos (incluindo boosted)
+    posts_cur  = len(df_current)
+    posts_prev = len(df_previous)
+
+    # Métricas orgânicas: usa df_organic se fornecido, senão fallback para df_current
+    _cur  = df_organic  if df_organic  is not None else df_current
+    _prev = df_prev_organic if df_prev_organic is not None else df_previous
 
     # ── Calcula métricas do período atual ──────────────────────────────────
-    posts_cur  = len(df_current)
-    impr_cur   = df_current["gdc_impressions_sum"].sum()
-    eng_cur    = df_current["gdc_total_engagements_sum"].sum()
+    impr_cur   = _cur["gdc_impressions_sum"].sum()
+    eng_cur    = _cur["gdc_total_engagements_sum"].sum()
     er_cur     = (eng_cur / impr_cur * 100) if impr_cur > 0 else 0
 
-    # ER w/o swipes — usa engagement_wo_swipes calculado no loader
-    # (LinkedIn Document/Pdf: likes+comments+shares+clicks; outros: total engagement)
-    eng_wo_cur     = df_current["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in df_current.columns else eng_cur
+    eng_wo_cur       = _cur["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in _cur.columns else eng_cur
     er_wo_swipes_cur = (eng_wo_cur / impr_cur * 100) if impr_cur > 0 else 0
 
-    present    = [c for c in AQE_COLS if c in df_current.columns]
-    aqe_total  = df_current[present].sum().sum()
-    aqe_cur    = aqe_total / posts_cur if posts_cur > 0 else 0
+    n_org_cur  = len(_cur)
+    present    = [c for c in AQE_COLS if c in _cur.columns]
+    aqe_total  = _cur[present].sum().sum()
+    aqe_cur    = aqe_total / n_org_cur if n_org_cur > 0 else 0
 
     # ── Calcula métricas do período anterior ───────────────────────────────
-    posts_prev = len(df_previous)
-    impr_prev  = df_previous["gdc_impressions_sum"].sum()
-    eng_prev   = df_previous["gdc_total_engagements_sum"].sum()
+    impr_prev  = _prev["gdc_impressions_sum"].sum()
+    eng_prev   = _prev["gdc_total_engagements_sum"].sum()
     er_prev    = (eng_prev / impr_prev * 100) if impr_prev > 0 else 0
 
-    eng_wo_prev      = df_previous["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in df_previous.columns else eng_prev
+    eng_wo_prev       = _prev["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in _prev.columns else eng_prev
     er_wo_swipes_prev = (eng_wo_prev / impr_prev * 100) if impr_prev > 0 else 0
 
-    present_p  = [c for c in AQE_COLS if c in df_previous.columns]
-    aqe_prev   = (df_previous[present_p].sum().sum() / posts_prev
-                  if posts_prev > 0 else 0)
+    n_org_prev = len(_prev)
+    present_p  = [c for c in AQE_COLS if c in _prev.columns]
+    aqe_prev   = (_prev[present_p].sum().sum() / n_org_prev if n_org_prev > 0 else 0)
 
     # ── Configuração dos cards ─────────────────────────────────────────────
     cards = [
@@ -222,9 +233,11 @@ _FOLLOWER_NET_LABEL = {
 def render_followers_card(
     df_followers: pd.DataFrame,
     date_end: pd.Timestamp,
+    selected_network: str = "ALL",
 ) -> None:
     """
     Exibe um card de seguidores por rede com o valor mais próximo (<=) a date_end.
+    Quando selected_network != "ALL", mostra apenas aquela rede em destaque.
     """
     from data.loader import get_followers_at
 
@@ -234,28 +247,69 @@ def render_followers_card(
         st.info("No follower data available for the selected period.")
         return
 
-    # Data de referência (máxima entre as redes disponíveis)
-    ref_date = snap["date"].max()
+    ref_date  = snap["date"].max()
     ref_label = pd.to_datetime(ref_date).strftime("%b %d, %Y")
 
-    # Monta o HTML de cada rede
+    # Filtra rede se um network específico foi selecionado
+    nets_to_show = (
+        _FOLLOWER_NET_ORDER
+        if selected_network == "ALL"
+        else [selected_network]
+    )
+
+    # Modo destaque: rede única → card compacto com número grande
+    if selected_network != "ALL":
+        row = snap[snap["network"] == selected_network]
+        if row.empty:
+            return
+        followers = int(row.iloc[0]["followers"])
+        color     = NETWORK_COLORS.get(selected_network, THEME["text_secondary"])
+        label     = _FOLLOWER_NET_LABEL.get(selected_network, selected_network)
+        st.markdown(
+            f"""
+            <div style="
+                background:{THEME['bg_card']};
+                border:1px solid {THEME['border']};
+                border-radius:12px;
+                padding:20px 24px;
+                margin-bottom:8px;
+                min-height:120px;
+                box-sizing:border-box;
+            ">
+                <div style="
+                    color:{THEME['text_secondary']};
+                    font-size:13px;font-weight:500;
+                    letter-spacing:0.5px;margin-bottom:8px;
+                    display:flex;justify-content:space-between;align-items:center;
+                ">
+                    <span>Followers · {label}</span>
+                    <span style="color:{THEME['text_muted']};font-size:10px">as of {ref_label}</span>
+                </div>
+                <div style="
+                    color:{color};font-size:28px;font-weight:700;line-height:1;
+                ">{_fmt(followers)}</div>
+                <div style="font-size:10px;margin-top:4px">&nbsp;</div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
+
+    # Modo ALL: lista de redes
     net_items = ""
-    for net in _FOLLOWER_NET_ORDER:
+    for net in nets_to_show:
         row = snap[snap["network"] == net]
         if row.empty:
             continue
         followers = int(row.iloc[0]["followers"])
         color     = NETWORK_COLORS.get(net, THEME["text_secondary"])
         label     = _FOLLOWER_NET_LABEL.get(net, net)
-        fmt       = _fmt(followers)
         net_items += (
             f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'
             f'  <span style="width:8px;height:8px;border-radius:50%;'
             f'background:{color};display:inline-block;flex-shrink:0"></span>'
-            f'  <span style="color:{THEME["text_secondary"]};font-size:12px;'
-            f'flex:1">{label}</span>'
-            f'  <span style="color:{THEME["text_primary"]};font-size:14px;'
-            f'font-weight:600">{fmt}</span>'
+            f'  <span style="color:{THEME["text_secondary"]};font-size:12px;flex:1">{label}</span>'
+            f'  <span style="color:{THEME["text_primary"]};font-size:14px;font-weight:600">{_fmt(followers)}</span>'
             f'</div>'
         )
 
@@ -269,14 +323,9 @@ def render_followers_card(
             margin-bottom:8px;
         ">
             <div style="
-                color:{THEME['text_secondary']};
-                font-size:13px;
-                font-weight:500;
-                letter-spacing:0.5px;
-                margin-bottom:12px;
-                display:flex;
-                justify-content:space-between;
-                align-items:center;
+                color:{THEME['text_secondary']};font-size:13px;font-weight:500;
+                letter-spacing:0.5px;margin-bottom:12px;
+                display:flex;justify-content:space-between;align-items:center;
             ">
                 <span>Followers</span>
                 <span style="color:{THEME['text_muted']};font-size:10px">as of {ref_label}</span>

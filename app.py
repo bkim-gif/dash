@@ -31,13 +31,13 @@ from config import (
 )
 from data.loader import (
     load_raw, apply_filters, get_previous_period, get_fy_monthly,
-    load_followers,
+    load_followers, load_comments,
 )
 from components.kpis   import render_kpis, render_followers_card
 from components.charts import (
     chart_timeline, chart_by_network, chart_er_by_network,
     chart_pillar_donut, chart_pillar_radar, chart_pillar_by_network,
-    chart_fy_pacing, chart_fy_posts,
+    chart_fy_pacing, chart_fy_posts, chart_comments_by_network,
 )
 from components.posts import render_top_bottom
 
@@ -141,6 +141,7 @@ st.markdown(f"""
 # ---------------------------------------------------------------------------
 df_all       = load_raw()
 df_followers = load_followers()
+df_comments  = load_comments()
 
 if df_all.empty:
     st.error("❌ No data found. Check the file path in data/loader.py")
@@ -237,6 +238,12 @@ df_filtered = apply_filters(
 )
 
 df_prev = get_previous_period(df_all, date_start_ts, date_end_ts)
+
+# Posts orgânicos: excluem boosted de todas as métricas (exceto contagem de posts)
+_boosted_mask     = df_filtered["Boosted"].fillna(0) == 1
+df_organic        = df_filtered[~_boosted_mask].copy()
+_boosted_mask_p   = df_prev["Boosted"].fillna(0) == 1
+df_prev_organic   = df_prev[~_boosted_mask_p].copy()
 
 # Aviso se não há dados no período
 if df_filtered.empty:
@@ -378,28 +385,41 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 # ══════════════════════════════════════════════════════════════════════════
 with tab1:
 
-    # KPI Cards
-    render_kpis(df_filtered, df_prev)
+    # KPI Cards — Posts count inclui boosted; métricas usam apenas orgânicos
+    render_kpis(df_filtered, df_prev, df_organic, df_prev_organic)
 
-    # Followers card
+    # Followers card — reage ao filtro de rede
     if not df_followers.empty:
-        render_followers_card(df_followers, date_end_ts)
+        render_followers_card(df_followers, date_end_ts, selected_network=_sel_net)
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # Timeline (menor) + Radar ao lado
+    # Timeline (menor) + Radar ao lado — apenas posts orgânicos
     col_tl, col_rd = st.columns([3, 2])
     with col_tl:
-        fig_tl = chart_timeline(df_filtered, granularity, date_start_ts, date_end_ts)
+        fig_tl = chart_timeline(df_organic, granularity, date_start_ts, date_end_ts)
         fig_tl.update_layout(height=320)
         st.plotly_chart(fig_tl, use_container_width=True, key="overview_timeline")
     with col_rd:
-        fig_rd = chart_pillar_radar(df_filtered)
+        fig_rd = chart_pillar_radar(df_organic)
         fig_rd.update_layout(height=320, margin=dict(l=20, r=20, t=40, b=20))
         st.plotly_chart(fig_rd, use_container_width=True, key="overview_radar")
 
-    # Barras por rede (abaixo)
-    st.plotly_chart(chart_by_network(df_filtered), use_container_width=True, key="overview_by_network")
+    # Impressões por rede — apenas orgânicos (remove boosted)
+    st.plotly_chart(chart_by_network(df_organic), use_container_width=True, key="overview_by_network")
+
+    # Gráfico de sentimento dos comentários
+    st.plotly_chart(
+        chart_comments_by_network(
+            df_comments,
+            df_filtered,   # para avg comentários/post (contagem total inclui boosted)
+            date_start  = date_start_ts,
+            date_end    = date_end_ts,
+            selected_networks = networks if _sel_net != "ALL" else None,
+        ),
+        use_container_width=True,
+        key="overview_comments_sentiment",
+    )
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -488,18 +508,18 @@ with tab3:
 
     col_radar, col_donut = st.columns(2)
     with col_radar:
-        st.plotly_chart(chart_pillar_radar(df_filtered), use_container_width=True, key="pillar_radar")
+        st.plotly_chart(chart_pillar_radar(df_organic), use_container_width=True, key="pillar_radar")
     with col_donut:
-        st.plotly_chart(chart_pillar_donut(df_filtered), use_container_width=True, key="pillar_donut")
+        st.plotly_chart(chart_pillar_donut(df_organic), use_container_width=True, key="pillar_donut")
 
-    st.plotly_chart(chart_pillar_by_network(df_filtered), use_container_width=True, key="pillar_by_network")
+    st.plotly_chart(chart_pillar_by_network(df_organic), use_container_width=True, key="pillar_by_network")
 
     # Tabela de métricas médias por pilar
     st.markdown(
         f'<div class="section-header" style="margin-top:20px">Average Metrics per Post by Pillar</div>',
         unsafe_allow_html=True,
     )
-    df_p = df_filtered[df_filtered["Pillars"] != "Unknown"]
+    df_p = df_organic[df_organic["Pillars"] != "Unknown"]
     if not df_p.empty:
         pillar_table = df_p.groupby("Pillars").agg(
             Posts        = ("outbound_post",             "count"),
@@ -536,8 +556,16 @@ with tab3:
 # ══════════════════════════════════════════════════════════════════════════
 with tab4:
 
-    network_table = df_filtered.groupby("social_network").agg(
-        Posts       = ("outbound_post",              "count"),
+    # Posts (total incluindo boosted) por rede
+    _posts_count = (
+        df_filtered.groupby("social_network")
+        .size()
+        .rename("Posts")
+        .reset_index()
+    )
+
+    # Métricas orgânicas por rede
+    network_table = df_organic.groupby("social_network").agg(
         Impressions = ("gdc_impressions_sum",        "sum"),
         Likes       = ("post_likes_and_reactions_sum","sum"),
         Comments    = ("post_comments_sum",           "sum"),
@@ -546,6 +574,11 @@ with tab4:
         ER          = ("ER",                          "mean"),
         AQE_post    = ("AQE",                         "mean"),
     ).round(1).reset_index()
+
+    # Junta contagem de posts (com boosted) nas métricas orgânicas
+    network_table = network_table.merge(_posts_count, on="social_network", how="outer")
+    network_table = network_table[["social_network", "Posts", "Impressions", "Likes",
+                                   "Comments", "Shares", "Clicks", "ER", "AQE_post"]]
 
     def _fmt_imp(v):
         if v >= 1_000_000: return f"{v/1_000_000:.1f}M"
@@ -563,9 +596,7 @@ with tab4:
     )
 
     st.markdown("<br>", unsafe_allow_html=True)
-    # Item 7 — "Engagement Rate by Network" removido.
-    # Para reativar: col_n1, col_n2 = st.columns(2) e adicione chart_er_by_network em col_n2.
-    st.plotly_chart(chart_by_network(df_filtered), use_container_width=True, key="network_detail_by_network")
+    st.plotly_chart(chart_by_network(df_organic), use_container_width=True, key="network_detail_by_network")
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -580,4 +611,4 @@ with tab5:
         f'</div>',
         unsafe_allow_html=True,
     )
-    render_top_bottom(df_filtered, sort_by)
+    render_top_bottom(df_organic, sort_by)

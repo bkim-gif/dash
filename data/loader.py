@@ -23,6 +23,7 @@ from config import AQE_COLS, FY_START, FY_END
 # ---------------------------------------------------------------------------
 DATA_PATH       = Path(__file__).parent.parent / "MSFT_Revised_2026 - RAW DATA (1).csv"
 FOLLOWERS_PATH  = Path(__file__).parent.parent / "MSFT_Followers - Página1.csv"
+COMMENTS_PATH   = Path(__file__).parent.parent / "MSFT_Comments - Total Comments.csv"
 
 # ---------------------------------------------------------------------------
 # FUNÇÃO PRINCIPAL — chamada pelo app.py
@@ -166,6 +167,33 @@ def get_followers_at(df_followers: pd.DataFrame, date_end: pd.Timestamp) -> pd.D
         .groupby("network", as_index=False)
         .last()
     )
+
+
+@st.cache_data(ttl=3600)
+def load_comments() -> pd.DataFrame:
+    """
+    Carrega e normaliza o arquivo de comentários (MSFT_Comments - Total Comments.csv).
+    Retorna colunas: network, sentiment, date, Message
+    """
+    for enc in ["utf-8", "utf-8-sig", "latin-1"]:
+        try:
+            df = pd.read_csv(COMMENTS_PATH, encoding=enc, low_memory=False)
+            break
+        except UnicodeDecodeError:
+            continue
+
+    _NET_MAP = {
+        "INSTAGRAM": "Instagram",
+        "LINKEDIN":  "LinkedIn",
+        "TWITTER":   "X",
+        "TIKTOK":    "TikTok",
+        "THREADS":   "Threads",
+    }
+    df["network"]   = df["SocialNetwork"].str.upper().map(_NET_MAP).fillna(df["SocialNetwork"])
+    df["sentiment"] = df["Sentiment"].str.upper().fillna("NEUTRAL")
+    df["date"]      = pd.to_datetime(df["CreatedTime"], dayfirst=True, errors="coerce")
+
+    return df[["network", "sentiment", "date"]].dropna(subset=["date"])
 
 
 def get_fy_monthly(df_all: pd.DataFrame) -> pd.DataFrame:

@@ -589,7 +589,124 @@ def chart_pillar_by_network(df: pd.DataFrame) -> go.Figure:
 
 
 # ---------------------------------------------------------------------------
-# 7. FY POSTS PACING
+# 7. COMMENTS SENTIMENT BY NETWORK
+# ---------------------------------------------------------------------------
+
+def chart_comments_by_network(
+    df_comments: pd.DataFrame,
+    df_posts: pd.DataFrame,
+    date_start=None,
+    date_end=None,
+    selected_networks: list | None = None,
+) -> go.Figure:
+    """
+    Barras horizontais agrupadas mostrando % de sentimento Positivo e Negativo
+    por rede social. Semelhante ao gráfico de performance do relatório DOJO.
+
+    df_comments → resultado de load_comments()
+    df_posts    → df_filtered (para calcular avg comentários/post)
+    """
+    dc = df_comments.copy()
+    if date_start is not None:
+        dc = dc[dc["date"] >= pd.to_datetime(date_start)]
+    if date_end is not None:
+        dc = dc[dc["date"] <= pd.to_datetime(date_end)]
+    if selected_networks:
+        dc = dc[dc["network"].isin(selected_networks)]
+
+    if dc.empty:
+        fig = go.Figure()
+        fig.add_annotation(
+            text="No comment data for this period",
+            xref="paper", yref="paper", x=0.5, y=0.5,
+            font=dict(color=THEME["text_muted"], size=13),
+            showarrow=False,
+        )
+        fig.update_layout(_base_layout(height=280))
+        return fig
+
+    total = dc.groupby("network").size().rename("total")
+    pos   = dc[dc["sentiment"] == "POSITIVE"].groupby("network").size().rename("positive")
+    neg   = dc[dc["sentiment"] == "NEGATIVE"].groupby("network").size().rename("negative")
+
+    agg = pd.concat([total, pos, neg], axis=1).fillna(0).reset_index()
+    agg["pct_pos"] = (agg["positive"] / agg["total"] * 100).round(1)
+    agg["pct_neg"] = (agg["negative"] / agg["total"] * 100).round(1)
+
+    # Avg comentários por post (usando post_comments_sum dos posts orgânicos)
+    if "post_comments_sum" in df_posts.columns and not df_posts.empty:
+        posts_agg = df_posts.groupby("social_network").agg(
+            total_comments=("post_comments_sum", "sum"),
+            n_posts=("outbound_post", "count"),
+        ).reset_index()
+        posts_agg["avg_cpp"] = (
+            posts_agg["total_comments"] / posts_agg["n_posts"].replace(0, 1)
+        ).round(1)
+        avg_map = posts_agg.set_index("social_network")["avg_cpp"]
+        agg["avg_cpp"] = agg["network"].map(avg_map).fillna(0)
+    else:
+        agg["avg_cpp"] = 0.0
+
+    agg = agg.sort_values("pct_pos", ascending=True)
+
+    # Y-axis labels: rede + avg comentários/post
+    y_tick_labels = [f"{net}  {avg:.1f}/post" for net, avg in zip(agg["network"], agg["avg_cpp"])]
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Bar(
+        y             = y_tick_labels,
+        x             = agg["pct_pos"],
+        orientation   = "h",
+        name          = "Positive",
+        marker_color  = THEME["accent_green"],
+        opacity       = 0.85,
+        text          = agg["pct_pos"].apply(lambda v: f"{v:.0f}%"),
+        textposition  = "outside",
+        textfont      = dict(color=THEME["text_primary"], size=11),
+        hovertemplate = "<b>%{y}</b><br>Positive: %{x:.1f}%<extra></extra>",
+    ))
+
+    fig.add_trace(go.Bar(
+        y             = y_tick_labels,
+        x             = agg["pct_neg"],
+        orientation   = "h",
+        name          = "Negative",
+        marker_color  = THEME["accent_red"],
+        opacity       = 0.85,
+        text          = agg["pct_neg"].apply(lambda v: f"{v:.0f}%"),
+        textposition  = "outside",
+        textfont      = dict(color=THEME["text_primary"], size=11),
+        hovertemplate = "<b>%{y}</b><br>Negative: %{x:.1f}%<extra></extra>",
+    ))
+
+    max_pct = max(agg["pct_pos"].max(), 1) * 1.3
+
+    layout = _base_layout(
+        title   = dict(text="Comment Sentiment by Network", font=dict(size=14)),
+        barmode = "group",
+        xaxis   = dict(title="", ticksuffix="%", range=[0, max_pct]),
+        yaxis   = dict(title="", tickfont=dict(size=11)),
+        height  = max(260, len(agg) * 60 + 80),
+        margin  = dict(l=8, r=80, t=40, b=8),
+    )
+    fig.update_layout(layout)
+    fig.update_layout(
+        legend=dict(
+            orientation = "h",
+            x=0.01, y=0.99,
+            xanchor="left", yanchor="top",
+            bgcolor="rgba(15,25,35,0.80)",
+            bordercolor=THEME["border"],
+            borderwidth=1,
+            font=dict(color=THEME["text_primary"], size=12),
+        )
+    )
+    return fig
+
+
+# ---------------------------------------------------------------------------
+# 8. FY POSTS PACING
 # ---------------------------------------------------------------------------
 
 def chart_fy_posts(monthly_df: pd.DataFrame) -> go.Figure:
