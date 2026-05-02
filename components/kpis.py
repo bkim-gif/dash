@@ -196,9 +196,10 @@ def render_kpis(
                 ">
                     <div style="
                         color:{THEME['text_secondary']};
-                        font-size:13px;
+                        font-size:10px;
                         font-weight:500;
-                        letter-spacing:0.5px;
+                        text-transform:uppercase;
+                        letter-spacing:1.2px;
                         margin-bottom:8px;
                     ">{label_html}</div>
                     <div style="
@@ -207,6 +208,7 @@ def render_kpis(
                         font-weight:700;
                         line-height:1;
                         margin-bottom:4px;
+                        font-variant-numeric:tabular-nums;
                     ">{card['value']}</div>
                     {er_note_html}
                 </div>
@@ -278,15 +280,16 @@ def render_followers_card(
             ">
                 <div style="
                     color:{THEME['text_secondary']};
-                    font-size:13px;font-weight:500;
-                    letter-spacing:0.5px;margin-bottom:8px;
+                    font-size:10px;font-weight:500;
+                    text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;
                     display:flex;justify-content:space-between;align-items:center;
                 ">
                     <span>Followers · {label}</span>
-                    <span style="color:{THEME['text_muted']};font-size:10px">as of {ref_label}</span>
+                    <span style="color:{THEME['text_muted']};font-size:10px;text-transform:none;letter-spacing:0"">as of {ref_label}</span>
                 </div>
                 <div style="
                     color:{color};font-size:28px;font-weight:700;line-height:1;
+                    font-variant-numeric:tabular-nums;
                 ">{_fmt(followers)}</div>
                 <div style="font-size:10px;margin-top:4px">&nbsp;</div>
             </div>
@@ -323,12 +326,12 @@ def render_followers_card(
             margin-bottom:8px;
         ">
             <div style="
-                color:{THEME['text_secondary']};font-size:13px;font-weight:500;
-                letter-spacing:0.5px;margin-bottom:12px;
+                color:{THEME['text_secondary']};font-size:10px;font-weight:500;
+                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px;
                 display:flex;justify-content:space-between;align-items:center;
             ">
                 <span>Followers</span>
-                <span style="color:{THEME['text_muted']};font-size:10px">as of {ref_label}</span>
+                <span style="color:{THEME['text_muted']};font-size:10px;text-transform:none;letter-spacing:0">as of {ref_label}</span>
             </div>
             {net_items}
         </div>

@@ -39,40 +39,51 @@ PILLAR_TARGETS = {
 # CORES DAS REDES SOCIAIS
 # ---------------------------------------------------------------------------
 NETWORK_COLORS = {
-    "LinkedIn":   "#0179d5",
-    "X":          "#47c6b2",
-    "Instagram":  "#ff5c38",
-    "IG Stories": "#ff5c38",
-    "TikTok":     "#c73fcc",
-    "Threads":    "#9900ff",
+    "LinkedIn":   "#0179D5",
+    "X":          "#47C6B2",
+    "Instagram":  "#FF5C38",
+    "IG Stories": "#FF5C38",
+    "TikTok":     "#C73FCC",
+    "Threads":    "#9900FF",
 }
 
 # ---------------------------------------------------------------------------
-# CORES DO TEMA (dark mode)
-# Retiradas do relatório DOJO/MSFT
+# CORES DOS PILARES (Muted Qualitative)
+# Paleta pastel/terrosa — não "briga" com as cores das redes sociais
+# ---------------------------------------------------------------------------
+PILLAR_COLORS = {
+    "Brand":         "#D3A85B",   # Ouro velho
+    "Conversation":  "#69A27E",   # Sálvia/Verde suave
+    "Educational":   "#6B8CAE",   # Azul-aço
+    "Informational": "#D17B6D",   # Coral/Terracota suave
+    "Micro-skilling":"#9F86AA",   # Lilás/Púrpura suave
+}
+
+# ---------------------------------------------------------------------------
+# CORES DO TEMA (dark mode) — "Sophisticated Utility" / Quiet UI
 # ---------------------------------------------------------------------------
 THEME = {
     # backgrounds
-    "bg_page":      "#0F1923",   # fundo principal
-    "bg_card":      "#1A2535",   # cards e painéis
-    "bg_card2":     "#232F42",   # cards secundários / hover
-    "bg_table":     "#151E2D",   # tabelas
+    "bg_page":    "#0F0E17",   # App Background — roxo/cinza ultra-escuro
+    "bg_card":    "#1A1826",   # Card Surface — elevação subtil
+    "bg_card2":   "#231F33",   # cards secundários / hover
+    "bg_table":   "#15121F",   # tabelas
 
     # texto
-    "text_primary":   "#FFFFFF",
-    "text_secondary": "#8BA3C0",
-    "text_muted":     "#4A6080",
+    "text_primary":   "#FFFFFE",   # Títulos e métricas — máximo contraste
+    "text_secondary": "#A7A9BE",   # Labels e eixos — cinza lavanda
+    "text_muted":     "#5E5B74",   # Informação muito secundária
 
-    # destaque (vindas do R)
-    "accent_blue":    "#50E6FF",   # current / linha principal
-    "accent_yellow":  "#FFB900",   # target / alerta
-    "accent_green":   "#54D46A",   # positivo / acima do target
-    "accent_red":     "#FF4D6A",   # negativo / abaixo do target
-    "accent_purple":  "#9B72E8",   # pillar cards
+    # destaque semântico
+    "accent_blue":    "#50E6FF",   # linha de destaque principal (timeline)
+    "accent_yellow":  "#FFB900",   # target / linha de referência
+    "accent_green":   "#10B981",   # Success / crescimento (Emerald Green)
+    "accent_red":     "#EF4444",   # Alert / queda (Red)
+    "accent_purple":  "#9B72E8",   # barras de impressões
 
-    # gráficos
-    "grid_line":    "#1E2F42",
-    "border":       "#2A3F58",
+    # estrutura de gráficos
+    "grid_line":  "#2D2A3D",   # Borders & Lines — linhas silenciadas
+    "border":     "#2D2A3D",
 }
 
 # ---------------------------------------------------------------------------

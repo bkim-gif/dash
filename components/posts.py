@@ -15,8 +15,20 @@ def _fmt(value: float, is_pct: bool = False) -> str:
 
 
 def _post_card(row: pd.Series, rank: int, is_top: bool) -> str:
-    border_color = THEME["accent_green"] if is_top else THEME["accent_red"]
-    rank_icon    = "▲" if is_top else "▼"
+    # Ambient Glow: luz difusa no topo do card — sem bordas coloridas grossas
+    if is_top:
+        glow_style = (
+            "border:1px solid rgba(16,185,129,0.20);"
+            "border-top:1px solid rgba(16,185,129,0.30);"
+            "box-shadow:0 -25px 50px -20px rgba(16,185,129,0.12);"
+        )
+    else:
+        glow_style = (
+            "border:1px solid rgba(239,68,68,0.20);"
+            "border-top:1px solid rgba(239,68,68,0.30);"
+            "box-shadow:0 -25px 50px -20px rgba(239,68,68,0.12);"
+        )
+    rank_icon = "▲" if is_top else "▼"
 
     text      = str(row.get("outbound_post", ""))
     text      = (text[:140] + "…") if len(text) > 140 else text
@@ -62,8 +74,8 @@ def _post_card(row: pd.Series, rank: int, is_top: bool) -> str:
     ])
 
     return (
-        f'<div style="background:{THEME["bg_card"]};border:1px solid {border_color}44;'
-        f'border-left:3px solid {border_color};border-radius:10px;padding:16px;margin-bottom:10px;">'
+        f'<div style="background:{THEME["bg_card"]};{glow_style}'
+        f'border-radius:10px;padding:16px;margin-bottom:10px;">'
         f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
         f'<span style="background:{net_color}22;color:{net_color};border:1px solid {net_color}55;'
         f'border-radius:6px;padding:2px 8px;font-size:11px;font-weight:600;">{network}</span>'

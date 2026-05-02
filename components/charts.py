@@ -22,7 +22,7 @@ import math
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
-from config import THEME, NETWORK_COLORS, PILLAR_TARGETS, FY_TARGET
+from config import THEME, NETWORK_COLORS, PILLAR_TARGETS, FY_TARGET, PILLAR_COLORS
 try:
     from config import FY_POSTS_TARGET
 except ImportError:
@@ -145,14 +145,14 @@ def chart_timeline(
     ))
 
     # Linha suave — ER w/o swipes (eixo Y secundário)
+    # Sem marcadores: curva limpa, brilha sozinha
     fig.add_trace(go.Scatter(
         x             = agg["period_label"],
         y             = agg["er_wo_swipes"],
         name          = "ER w/o swipes",
-        mode          = "lines+markers",
+        mode          = "lines",
         line          = dict(color=THEME["accent_blue"], width=2.5,
                              shape="spline", smoothing=1.3),
-        marker        = dict(size=9, symbol="diamond", color=THEME["accent_blue"]),
         yaxis         = "y2",
         hovertemplate = "<b>%{x}</b><br>ER w/o swipes: %{y:.2f}%<extra></extra>",
     ))
@@ -304,15 +304,13 @@ def chart_pillar_donut(df: pd.DataFrame) -> go.Figure:
         fig.update_layout(_base_layout(height=280))
         return fig
 
-    pillar_colors = [
-        "#9B72E8", "#50E6FF", "#FFB900", "#54D46A", "#FF4D6A"
-    ]
+    pillar_color_list = [PILLAR_COLORS.get(p, "#888") for p in agg["Pillars"]]
 
     fig = go.Figure(go.Pie(
         labels       = agg["Pillars"],
         values       = agg["posts"],
         hole         = 0.55,
-        marker_colors= pillar_colors[:len(agg)],
+        marker_colors= pillar_color_list,
         textinfo     = "percent",
         textfont     = dict(size=11, color="white"),
         hovertemplate= "<b>%{label}</b><br>Posts: %{value}<br>%{percent}<extra></extra>",
@@ -390,13 +388,13 @@ def chart_pillar_radar(df: pd.DataFrame) -> go.Figure:
                 range      = [0, 50],
                 ticksuffix = "%",
                 tickfont   = dict(color=THEME["text_muted"], size=9),
-                gridcolor  = THEME["grid_line"],
-                linecolor  = THEME["border"],
+                gridcolor  = "rgba(45,42,61,0.10)",   # teia silenciada a 10%
+                linecolor  = "rgba(45,42,61,0.10)",
             ),
             angularaxis = dict(
-                tickfont  = dict(color=THEME["text_primary"], size=12),
-                linecolor = THEME["border"],
-                gridcolor = THEME["grid_line"],
+                tickfont  = dict(color=THEME["text_secondary"], size=12),
+                linecolor = "rgba(45,42,61,0.30)",
+                gridcolor = "rgba(45,42,61,0.10)",
             ),
         ),
         paper_bgcolor = "rgba(0,0,0,0)",
@@ -555,28 +553,21 @@ def chart_pillar_by_network(df: pd.DataFrame) -> go.Figure:
     )
     pivot_pct = pivot.div(pivot.sum(axis=1), axis=0) * 100
 
-    pillar_colors = {
-        "Brand":         "#9B72E8",
-        "Conversation":  "#50E6FF",
-        "Educational":   "#54D46A",
-        "Informational": "#FFB900",
-        "Micro-skilling":"#FF4D6A",
-    }
-
     fig = go.Figure()
     for pillar in pivot_pct.columns:
         fig.add_trace(go.Bar(
-            y           = pivot_pct.index,
-            x           = pivot_pct[pillar],
-            name        = pillar,
-            orientation = "h",
-            marker_color= pillar_colors.get(pillar, "#aaa"),
+            y             = pivot_pct.index,
+            x             = pivot_pct[pillar],
+            name          = pillar,
+            orientation   = "h",
+            marker_color  = PILLAR_COLORS.get(pillar, "#888"),
+            marker_line   = dict(color=THEME["bg_page"], width=1.5),  # gap entre segmentos
             hovertemplate = f"<b>%{{y}}</b><br>{pillar}: %{{x:.0f}}%<extra></extra>",
-            text        = pivot_pct[pillar].apply(
+            text          = pivot_pct[pillar].apply(
                 lambda v: f"{v:.0f}%" if v >= 8 else ""
             ),
-            textposition = "inside",
-            textfont     = dict(color="white", size=10),
+            textposition  = "inside",
+            textfont      = dict(color="white", size=10),
         ))
 
     fig.update_layout(_base_layout(
