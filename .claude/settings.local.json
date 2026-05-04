@@ -20,7 +20,8 @@
       "Bash(python -c \"from components.charts import chart_by_network, chart_comments_by_network; print\\('imports OK'\\)\")",
       "Bash(python3 -c \"from components.charts import chart_by_network, chart_comments_by_network; print\\('imports OK'\\)\")",
       "Bash(python3 -c \"import ast; ast.parse\\(open\\('app.py'\\).read\\(\\)\\); print\\('app.py syntax OK'\\)\")",
-      "Bash(python3 -c \"import ast; ast.parse\\(open\\('Pipeline_Local.py'\\).read\\(\\)\\); print\\('Sintaxe OK'\\)\")"
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('Pipeline_Local.py'\\).read\\(\\)\\); print\\('Sintaxe OK'\\)\")",
+      "Bash(python3 -c \"import pandas as pd; print\\(pd.__version__\\)\")"
     ]
   }
 }

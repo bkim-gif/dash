@@ -258,7 +258,14 @@ def _normalize(df: pd.DataFrame) -> pd.DataFrame:
         df = df.rename(columns={"boosted": "Boosted"})
 
     # ── Datas ──────────────────────────────────────────────────────────────
-    df["published_date"] = pd.to_datetime(df["published_date"], errors="coerce")
+    # publishedtime é a fonte principal (DD/MM/YYYY HH:MM:SS).
+    # Fallback para published_date (MM-DD-YYYY HH:MM) quando publishedtime é nulo.
+    if "publishedtime" in df.columns:
+        primary  = pd.to_datetime(df["publishedtime"], format="mixed", dayfirst=True, errors="coerce")
+        fallback = pd.to_datetime(df["published_date"], errors="coerce")
+        df["published_date"] = primary.combine_first(fallback)
+    else:
+        df["published_date"] = pd.to_datetime(df["published_date"], errors="coerce")
     df = df.dropna(subset=["published_date"])
 
     # ── Colunas de texto ───────────────────────────────────────────────────

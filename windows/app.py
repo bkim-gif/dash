@@ -204,8 +204,9 @@ with st.sidebar:
     _fy26_start   = pd.Timestamp(FY_START).date()
     default_start = max(min_date, _fy26_start)
 
-    date_start = st.date_input("From", value=default_start, min_value=min_date, max_value=max_date)
-    date_end   = st.date_input("To",   value=max_date,      min_value=min_date, max_value=max_date)
+    today = pd.Timestamp.today().date()
+    date_start = st.date_input("From", value=default_start, min_value=min_date, max_value=today)
+    date_end   = st.date_input("To",   value=max_date,      min_value=min_date, max_value=today)
 
     # Toggle Weekly / Monthly (para o gráfico de timeline)
     granularity = st.radio(
