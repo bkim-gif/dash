@@ -133,17 +133,46 @@ st.markdown(f"""
   }}
 
   /* Calendar date picker — fundo escuro, texto branco */
-  [data-baseweb="calendar"],
-  [data-baseweb="calendar"] * {{
+  [data-baseweb="calendar"] {{
+      background-color: {THEME['bg_card']} !important;
+      color: #FFFFFF !important;
+  }}
+  /* Células de dias e cabeçalhos */
+  [data-baseweb="calendar"] td,
+  [data-baseweb="calendar"] th,
+  [data-baseweb="calendar"] div[role="option"],
+  [data-baseweb="calendar"] div[role="gridcell"] {{
       color: #FFFFFF !important;
       background-color: {THEME['bg_card']} !important;
   }}
+  /* Botões de navegação (setas + seletor de mês/ano) — transparentes para ser clicáveis */
+  [data-baseweb="calendar"] button {{
+      color: #FFFFFF !important;
+      background-color: transparent !important;
+      cursor: pointer !important;
+  }}
+  [data-baseweb="calendar"] button:hover {{
+      background-color: {THEME['bg_card2']} !important;
+  }}
+  /* Seletor de ano/mês (dropdown nativo) */
+  [data-baseweb="calendar"] select {{
+      color: #FFFFFF !important;
+      background-color: {THEME['bg_card2']} !important;
+      border: 1px solid {THEME['border']} !important;
+      cursor: pointer !important;
+  }}
+  [data-baseweb="calendar"] select option {{
+      background-color: {THEME['bg_card']} !important;
+      color: #FFFFFF !important;
+  }}
+  /* Data selecionada */
   [data-baseweb="calendar"] [aria-selected="true"] {{
       background-color: {THEME['accent_blue']} !important;
       color: #000000 !important;
   }}
-  [data-baseweb="calendar"] button:hover {{
-      background-color: {THEME['bg_card2']} !important;
+  /* Dias fora do mês (dimmed) */
+  [data-baseweb="calendar"] [data-baseweb="datepicker-day-outside-month"] {{
+      opacity: 0.35 !important;
   }}
 
   /* Caixa em volta de todos os gráficos Plotly */
@@ -197,12 +226,9 @@ with st.sidebar:
     min_date = df_all["published_date"].min().date()
     max_date = df_all["published_date"].max().date()
 
-    # Item 5a — Padrão: início do FY26 (01-Aug-2025) ou min_date, o que for maior.
-    # Para voltar ao padrão "última semana": troque a linha abaixo por:
-    #   default_start = max_date - pd.Timedelta(days=6)
+    # Padrão: 1 de janeiro de 2026
     from config import FY_START
-    _fy26_start   = pd.Timestamp(FY_START).date()
-    default_start = max(min_date, _fy26_start)
+    default_start = max(min_date, pd.Timestamp("2026-01-01").date())
 
     today = pd.Timestamp.today().date()
     date_start = st.date_input("From", value=default_start, min_value=min_date, max_value=today)
@@ -280,6 +306,19 @@ df_filtered_allnets = apply_filters(
 )
 _boosted_mask_allnets = df_filtered_allnets["Boosted"].fillna(0) == 1
 df_organic_allnets    = df_filtered_allnets[~_boosted_mask_allnets].copy()
+
+# Dados orgânicos do FY completo — usados pelo timeline para mostrar todos os meses
+df_organic_full = apply_filters(
+    df_all,
+    date_start  = pd.Timestamp(FY_START),
+    date_end    = pd.Timestamp.today() + pd.Timedelta(days=1),
+    networks    = networks,
+    pillars     = pillars,
+    media_types = media_types,
+    campaigns   = campaigns,
+)
+_boosted_mask_full = df_organic_full["Boosted"].fillna(0) == 1
+df_organic_full    = df_organic_full[~_boosted_mask_full].copy()
 
 # Aviso se não há dados no período
 if df_filtered.empty:
@@ -432,7 +471,7 @@ with tab1:
     # ── Row 2: Timeline (largo) + Radar (menor) ───────────────────────────
     col_tl, col_rd = st.columns([3, 2])
     with col_tl:
-        fig_tl = chart_timeline(df_organic, granularity, date_start_ts, date_end_ts)
+        fig_tl = chart_timeline(df_organic_full, granularity, date_start_ts, date_end_ts)
         fig_tl.update_layout(height=260)
         st.plotly_chart(fig_tl, use_container_width=True, key="overview_timeline")
     with col_rd:

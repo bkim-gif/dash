@@ -106,29 +106,28 @@ def chart_timeline(
 ) -> go.Figure:
     """
     Linha do tempo com Impressions (barras) e ER w/o swipes (linha suave, eixo Y2).
-    date_start / date_end são usados para gerar todos os períodos do range,
-    mesmo aqueles sem posts (barras zeradas), cobrindo o período completo.
+
+    Sempre mostra o FY completo no eixo X. Barras dentro do período selecionado
+    ficam em roxo; fora ficam transparentes — para dar contexto sem perder foco.
     """
+    from config import FY_START, FY_END
+
     period_col = "week" if granularity == "Weekly" else "month"
 
+    eng_col = "engagement_wo_swipes" if "engagement_wo_swipes" in df.columns else "gdc_total_engagements_sum"
     agg = df.groupby(period_col).agg(
-        impressions       = ("gdc_impressions_sum",    "sum"),
-        engagement_wo_swp = ("engagement_wo_swipes",   "sum") if "engagement_wo_swipes" in df.columns
-                            else ("gdc_total_engagements_sum", "sum"),
-        posts             = ("outbound_post",           "count"),
+        impressions       = ("gdc_impressions_sum", "sum"),
+        engagement_wo_swp = (eng_col,               "sum"),
+        posts             = ("outbound_post",        "count"),
     ).reset_index()
 
-    # Preenche todos os períodos do range selecionado (sem lacunas)
-    if date_start is not None and date_end is not None:
-        freq = "W-MON" if granularity == "Weekly" else "MS"
-        _start = pd.to_datetime(date_start)
-        _end   = pd.to_datetime(date_end)
-        # Alinha ao primeiro período real igual ou anterior a date_start
-        if not agg.empty:
-            _start = min(_start, agg[period_col].min())
-        full_range = pd.date_range(start=_start, end=_end, freq=freq)
-        full_df = pd.DataFrame({period_col: full_range})
-        agg = full_df.merge(agg, on=period_col, how="left").fillna(0)
+    # Sempre exibe o FY completo (até hoje) — sem lacunas
+    freq   = "W-MON" if granularity == "Weekly" else "MS"
+    fy_s   = pd.Timestamp(FY_START)
+    fy_e   = min(pd.Timestamp(FY_END), pd.Timestamp.today())
+    full_range = pd.date_range(start=fy_s, end=fy_e, freq=freq)
+    full_df    = pd.DataFrame({period_col: full_range})
+    agg = full_df.merge(agg, on=period_col, how="left").fillna(0)
 
     # ER w/o swipes por período (sum engagement / sum impressions * 100)
     agg["er_wo_swipes"] = (
@@ -141,6 +140,29 @@ def chart_timeline(
         "%b %d" if granularity == "Weekly" else "%b %Y"
     )
 
+    # Cores: roxo no período selecionado, transparente fora
+    if date_start is not None and date_end is not None:
+        _ds = pd.Timestamp(date_start)
+        _de = pd.Timestamp(date_end)
+        if granularity == "Monthly":
+            _ds_ym = _ds.year * 12 + _ds.month
+            _de_ym = _de.year * 12 + _de.month
+            colors = [
+                THEME["accent_purple"]
+                if _ds_ym <= (pd.Timestamp(p).year * 12 + pd.Timestamp(p).month) <= _de_ym
+                else "rgba(155,114,232,0.15)"
+                for p in agg[period_col]
+            ]
+        else:  # Weekly
+            colors = [
+                THEME["accent_purple"]
+                if _ds - pd.Timedelta(days=6) <= pd.Timestamp(p) <= _de
+                else "rgba(155,114,232,0.15)"
+                for p in agg[period_col]
+            ]
+    else:
+        colors = THEME["accent_purple"]
+
     fig = go.Figure()
 
     # Barras — Impressions (eixo Y principal)
@@ -148,7 +170,7 @@ def chart_timeline(
         x             = agg["period_label"],
         y             = agg["impressions"],
         name          = "Impressions",
-        marker_color  = THEME["accent_purple"],
+        marker_color  = colors,
         opacity       = 0.85,
         hovertemplate = "<b>%{x}</b><br>Impressions: %{y:.2s}<extra></extra>",
     ))
