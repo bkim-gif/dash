@@ -1,0 +1,529 @@
+"""
+components/kpis.py
+==================
+Renderiza os 4 KPI cards do topo:
+  Posts | Impressions | ER | AQE/post
+
+Cada card mostra:
+  - Valor do período atual
+  - Delta (▲▼ %) vs período anterior
+
+CONCEITO — por que delta é importante:
+  Um número absoluto não diz se a semana foi boa ou ruim.
+  O delta contextualiza: 50K impressões é ótimo se semana passada
+  foram 20K, é péssimo se foram 200K.
+"""
+
+from __future__ import annotations
+import pandas as pd
+import streamlit as st
+from config import THEME, AQE_COLS, NETWORK_COLORS
+
+
+def _safe_delta(current: float, previous: float) -> tuple[float | None, str]:
+    """
+    Calcula o delta percentual e retorna (valor, cor_css).
+    Retorna (None, "") se não houver período anterior.
+    """
+    if previous == 0:
+        return None, ""
+    delta = ((current - previous) / previous) * 100
+    color = THEME["accent_green"] if delta >= 0 else THEME["accent_red"]
+    return delta, color
+
+
+def _fmt(value: float, is_pct: bool = False) -> str:
+    """Formata número: 1.234.567 ou 12.3%"""
+    if is_pct:
+        return f"{value:.1f}%"
+    if value >= 1_000_000:
+        return f"{value/1_000_000:.1f}M"
+    if value >= 1_000:
+        return f"{value/1_000:.1f}K"
+    return f"{value:.0f}"
+
+
+def render_kpis(
+    df_current: pd.DataFrame,
+    df_previous: pd.DataFrame,
+    df_organic: "pd.DataFrame | None" = None,
+    df_prev_organic: "pd.DataFrame | None" = None,
+    selected_network: str = "ALL",
+) -> None:
+    """
+    Renderiza os 4 KPI cards em colunas lado a lado.
+
+    Parâmetros:
+      df_current      → todos os posts do período (inclui boosted) — usado p/ contagem de Posts
+      df_previous     → todos os posts do período anterior — usado p/ delta de Posts
+      df_organic      → posts sem boosted — usado p/ Impressions, ER, AQE
+      df_prev_organic → posts sem boosted do período anterior — usado p/ deltas de Impressions/ER/AQE
+      selected_network → rede selecionada (para lógica de ER LinkedIn)
+    """
+    # Posts: conta todos (incluindo boosted)
+    posts_cur  = len(df_current)
+    posts_prev = len(df_previous)
+
+    # Métricas orgânicas: usa df_organic se fornecido, senão fallback para df_current
+    _cur  = df_organic  if df_organic  is not None else df_current
+    _prev = df_prev_organic if df_prev_organic is not None else df_previous
+
+    # ── Calcula métricas do período atual ──────────────────────────────────
+    impr_cur   = _cur["gdc_impressions_sum"].sum()
+    eng_cur    = _cur["gdc_total_engagements_sum"].sum()
+    er_cur     = (eng_cur / impr_cur * 100) if impr_cur > 0 else 0
+
+    eng_wo_cur       = _cur["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in _cur.columns else eng_cur
+    er_wo_swipes_cur = (eng_wo_cur / impr_cur * 100) if impr_cur > 0 else 0
+
+    n_org_cur  = len(_cur)
+    present    = [c for c in AQE_COLS if c in _cur.columns]
+    aqe_total  = _cur[present].sum().sum()
+    aqe_cur    = aqe_total / n_org_cur if n_org_cur > 0 else 0
+
+    # ── Calcula métricas do período anterior ───────────────────────────────
+    impr_prev  = _prev["gdc_impressions_sum"].sum()
+    eng_prev   = _prev["gdc_total_engagements_sum"].sum()
+    er_prev    = (eng_prev / impr_prev * 100) if impr_prev > 0 else 0
+
+    eng_wo_prev       = _prev["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in _prev.columns else eng_prev
+    er_wo_swipes_prev = (eng_wo_prev / impr_prev * 100) if impr_prev > 0 else 0
+
+    n_org_prev = len(_prev)
+    present_p  = [c for c in AQE_COLS if c in _prev.columns]
+    aqe_prev   = (_prev[present_p].sum().sum() / n_org_prev if n_org_prev > 0 else 0)
+
+    # ── ER value HTML: para LinkedIn mostra ER / ER w/o swipes com ⓘ inline ──
+    is_linkedin = selected_network == "LinkedIn"
+    if is_linkedin:
+        er_value_html = (
+            f'{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}'
+            f'&nbsp;<span class="kpi-tooltip-wrap" style="font-size:13px;vertical-align:middle;font-weight:400">'
+            f'ⓘ<span class="kpi-tooltip-box">2nd value excludes swipe interactions</span>'
+            f'</span>'
+        )
+    else:
+        er_value_html = _fmt(er_cur, is_pct=True)
+
+    # ── Configuração dos cards ─────────────────────────────────────────────
+    cards = [
+        {
+            "label":      "Posts",
+            "value_html": _fmt(posts_cur),
+            "raw_cur":    posts_cur,
+            "raw_prev":   posts_prev,
+            "is_pct":     False,
+        },
+        {
+            "label":      "Impressions",
+            "value_html": _fmt(impr_cur),
+            "raw_cur":    impr_cur,
+            "raw_prev":   impr_prev,
+            "is_pct":     False,
+        },
+        {
+            "label":      "Eng. Rate",
+            "value_html": er_value_html,
+            "raw_cur":    er_cur,
+            "raw_prev":   er_prev,
+            "is_pct":     True,
+            "suffix":     "pp",
+        },
+        {
+            "label":      "AQE / post",
+            "value_html": _fmt(aqe_cur),
+            "raw_cur":    aqe_cur,
+            "raw_prev":   aqe_prev,
+            "is_pct":     False,
+            "tooltip":    "AQE = Comments + Shares + Clicks",
+        },
+    ]
+
+    # ── CSS para tooltip hover do ⓘ ──────────────────────────────────────
+    st.markdown(f"""
+    <style>
+      .kpi-tooltip-wrap {{
+          position: relative;
+          display: inline-block;
+          cursor: help;
+          color: {THEME['text_muted']};
+      }}
+      .kpi-tooltip-box {{
+          display: none;
+          position: absolute;
+          bottom: 130%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: {THEME['bg_card2']};
+          border: 1px solid {THEME['border']};
+          border-radius: 6px;
+          padding: 6px 10px;
+          white-space: nowrap;
+          font-size: 11px;
+          color: {THEME['text_secondary']};
+          z-index: 200;
+          pointer-events: none;
+      }}
+      .kpi-tooltip-wrap:hover .kpi-tooltip-box {{
+          display: block;
+      }}
+    </style>
+    """, unsafe_allow_html=True)
+
+    # ── Renderiza ──────────────────────────────────────────────────────────
+    for col, card in zip(st.columns(4), cards):
+        with col:
+            # Tooltip no label (ⓘ) com hover box
+            tooltip = card.get("tooltip", "")
+            if tooltip:
+                label_html = (
+                    f'{card["label"]} '
+                    f'<span class="kpi-tooltip-wrap">ⓘ'
+                    f'<span class="kpi-tooltip-box">{tooltip}</span>'
+                    f'</span>'
+                )
+            else:
+                label_html = card["label"]
+
+            st.markdown(
+                f"""
+                <div style="
+                    background:{THEME['bg_card']};
+                    border:1px solid {THEME['border']};
+                    border-radius:12px;
+                    padding:16px 20px;
+                    margin-bottom:8px;
+                    min-height:100px;
+                    box-sizing:border-box;
+                ">
+                    <div style="
+                        color:{THEME['text_secondary']};
+                        font-size:10px;
+                        font-weight:500;
+                        text-transform:uppercase;
+                        letter-spacing:1.2px;
+                        margin-bottom:6px;
+                    ">{label_html}</div>
+                    <div style="
+                        color:{THEME['text_primary']};
+                        font-size:24px;
+                        font-weight:700;
+                        line-height:1;
+                        font-variant-numeric:tabular-nums;
+                    ">{card['value_html']}</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+
+# ---------------------------------------------------------------------------
+# KPI ROW — 5 cards (KPIs + Followers) na mesma linha
+# ---------------------------------------------------------------------------
+
+def render_kpi_row(
+    df_current: pd.DataFrame,
+    df_previous: pd.DataFrame,
+    df_organic: "pd.DataFrame | None" = None,
+    df_prev_organic: "pd.DataFrame | None" = None,
+    selected_network: str = "ALL",
+    df_followers: "pd.DataFrame | None" = None,
+    date_end: "pd.Timestamp | None" = None,
+) -> None:
+    """
+    Renderiza 5 cards na mesma linha: Posts | Impressions | ER | AQE | Followers.
+    Toda a criação de colunas acontece internamente — sem passar cols externamente.
+    """
+    from data.loader import get_followers_at
+
+    # Posts: conta todos (incluindo boosted)
+    posts_cur  = len(df_current)
+    posts_prev = len(df_previous)
+
+    _cur  = df_organic  if df_organic  is not None else df_current
+    _prev = df_prev_organic if df_prev_organic is not None else df_previous
+
+    impr_cur   = _cur["gdc_impressions_sum"].sum()
+    eng_cur    = _cur["gdc_total_engagements_sum"].sum()
+    er_cur     = (eng_cur / impr_cur * 100) if impr_cur > 0 else 0
+
+    eng_wo_cur       = _cur["engagement_wo_swipes"].sum() if "engagement_wo_swipes" in _cur.columns else eng_cur
+    er_wo_swipes_cur = (eng_wo_cur / impr_cur * 100) if impr_cur > 0 else 0
+
+    n_org_cur  = len(_cur)
+    present    = [c for c in AQE_COLS if c in _cur.columns]
+    aqe_cur    = _cur[present].sum().sum() / n_org_cur if n_org_cur > 0 else 0
+
+    # ER value
+    if selected_network == "LinkedIn":
+        er_val = (
+            f'{_fmt(er_cur, is_pct=True)} / {_fmt(er_wo_swipes_cur, is_pct=True)}'
+            f'&nbsp;<span class="kpi-tooltip-wrap" style="font-size:13px;vertical-align:middle;font-weight:400">'
+            f'ⓘ<span class="kpi-tooltip-box">2nd value excludes swipe interactions</span></span>'
+        )
+    else:
+        er_val = _fmt(er_cur, is_pct=True)
+
+    # Followers value
+    foll_val   = ""
+    foll_color = THEME["text_primary"]
+    foll_sub   = ""
+    if df_followers is not None and not df_followers.empty and date_end is not None:
+        snap = get_followers_at(df_followers, date_end)
+        if not snap.empty:
+            ref_label = pd.to_datetime(snap["date"].max()).strftime("%b %d, %Y")
+            foll_sub  = f'<div style="color:{THEME["text_muted"]};font-size:9px;margin-top:4px">as of {ref_label}</div>'
+            if selected_network == "ALL":
+                followers  = int(snap[snap["network"].isin(_FOLLOWER_NET_ORDER)]["followers"].sum())
+                foll_color = THEME["text_primary"]
+            else:
+                row = snap[snap["network"] == selected_network]
+                if not row.empty:
+                    followers  = int(row.iloc[0]["followers"])
+                    foll_color = NETWORK_COLORS.get(selected_network, THEME["text_secondary"])
+                else:
+                    followers = 0
+            foll_val = _fmt(followers)
+
+    # ── CSS ──────────────────────────────────────────────────────────────────
+    st.markdown(f"""
+    <style>
+      .kpi-tooltip-wrap {{
+          position: relative; display: inline-block;
+          cursor: help; color: {THEME['text_muted']};
+      }}
+      .kpi-tooltip-box {{
+          display: none; position: absolute;
+          bottom: 130%; left: 50%; transform: translateX(-50%);
+          background: {THEME['bg_card2']}; border: 1px solid {THEME['border']};
+          border-radius: 6px; padding: 6px 10px; white-space: nowrap;
+          font-size: 11px; color: {THEME['text_secondary']};
+          z-index: 200; pointer-events: none;
+      }}
+      .kpi-tooltip-wrap:hover .kpi-tooltip-box {{ display: block; }}
+    </style>
+    """, unsafe_allow_html=True)
+
+    def _card_html(label: str, value_html: str, label_extra: str = "", color: str = "") -> str:
+        val_color = color if color else THEME["text_primary"]
+        return f"""
+        <div style="
+            background:{THEME['bg_card']};border:1px solid {THEME['border']};
+            border-radius:12px;padding:16px 20px;margin-bottom:8px;
+            min-height:100px;box-sizing:border-box;
+        ">
+            <div style="color:{THEME['text_secondary']};font-size:10px;font-weight:500;
+                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px;
+                display:flex;justify-content:space-between;align-items:center;">
+                <span>{label}</span>{label_extra}
+            </div>
+            <div style="color:{val_color};font-size:24px;font-weight:700;
+                line-height:1;font-variant-numeric:tabular-nums;">{value_html}</div>
+        </div>"""
+
+    c1, c2, c3, c4, c5 = st.columns(5)
+
+    with c1:
+        st.markdown(_card_html("Posts", _fmt(posts_cur)), unsafe_allow_html=True)
+    with c2:
+        st.markdown(_card_html("Impressions", _fmt(impr_cur)), unsafe_allow_html=True)
+    with c3:
+        st.markdown(_card_html("Eng. Rate", er_val), unsafe_allow_html=True)
+    with c4:
+        aqe_label_extra = (
+            '<span class="kpi-tooltip-wrap" style="font-size:11px">ⓘ'
+            '<span class="kpi-tooltip-box">AQE = Comments + Shares + Clicks</span></span>'
+        )
+        st.markdown(_card_html("AQE / post", _fmt(aqe_cur), label_extra=aqe_label_extra), unsafe_allow_html=True)
+    with c5:
+        if foll_val:
+            net_label = (
+                _FOLLOWER_NET_LABEL.get(selected_network, selected_network)
+                if selected_network != "ALL" else "All Platforms"
+            )
+            st.markdown(
+                _card_html(
+                    f"Followers · {net_label}",
+                    foll_val,
+                    label_extra=foll_sub,
+                    color=foll_color,
+                ),
+                unsafe_allow_html=True,
+            )
+
+
+# ---------------------------------------------------------------------------
+# FOLLOWERS CARD
+# ---------------------------------------------------------------------------
+
+# Ordem de exibição e ícones simples por rede
+_FOLLOWER_NET_ORDER = ["LinkedIn", "X", "Instagram", "TikTok", "Threads"]
+_FOLLOWER_NET_LABEL = {
+    "LinkedIn":  "LinkedIn",
+    "X":         "X (Twitter)",
+    "Instagram": "Instagram",
+    "TikTok":    "TikTok",
+    "Threads":   "Threads",
+}
+
+
+def render_followers_card(
+    df_followers: pd.DataFrame,
+    date_end: pd.Timestamp,
+    selected_network: str = "ALL",
+) -> None:
+    """
+    Sempre exibe UM card de seguidores.
+    ALL  → soma de todas as redes (total)
+    rede → valor daquela rede em destaque.
+    """
+    from data.loader import get_followers_at
+
+    snap = get_followers_at(df_followers, date_end)
+
+    if snap.empty:
+        st.info("No follower data available for the selected period.")
+        return
+
+    ref_date  = snap["date"].max()
+    ref_label = pd.to_datetime(ref_date).strftime("%b %d, %Y")
+
+    if selected_network == "ALL":
+        followers = int(snap[snap["network"].isin(_FOLLOWER_NET_ORDER)]["followers"].sum())
+        color     = THEME["text_primary"]
+        net_label = "All Platforms"
+    else:
+        row = snap[snap["network"] == selected_network]
+        if row.empty:
+            return
+        followers = int(row.iloc[0]["followers"])
+        color     = NETWORK_COLORS.get(selected_network, THEME["text_secondary"])
+        net_label = _FOLLOWER_NET_LABEL.get(selected_network, selected_network)
+
+    st.markdown(
+        f"""
+        <div style="
+            background:{THEME['bg_card']};
+            border:1px solid {THEME['border']};
+            border-radius:12px;
+            padding:16px 20px;
+            margin-bottom:8px;
+            min-height:100px;
+            box-sizing:border-box;
+        ">
+            <div style="
+                color:{THEME['text_secondary']};
+                font-size:10px;font-weight:500;
+                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px;
+                display:flex;justify-content:space-between;align-items:center;
+            ">
+                <span>Followers · {net_label}</span>
+                <span style="color:{THEME['text_muted']};font-size:9px;text-transform:none;letter-spacing:0">as of {ref_label}</span>
+            </div>
+            <div style="
+                color:{color};font-size:24px;font-weight:700;line-height:1;
+                font-variant-numeric:tabular-nums;
+            ">{_fmt(followers)}</div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+# ---------------------------------------------------------------------------
+# COMMENTS CARD
+# ---------------------------------------------------------------------------
+
+def render_comments_card(
+    df_organic: pd.DataFrame,
+    df_comments: "pd.DataFrame | None" = None,
+    date_start=None,
+    date_end=None,
+    selected_networks: "list | None" = None,
+) -> None:
+    """
+    Card com o total de comentários do período e breakdown de sentimento.
+    Exibe bolinhas coloridas para Positive / Neutral / Negative.
+    """
+    col = "post_comments_sum"
+    total = int(df_organic[col].sum()) if col in df_organic.columns else 0
+
+    # ── Calcula sentimento se df_comments disponível ───────────────────────
+    pos_count = neu_count = neg_count = 0
+    show_sentiment = False
+
+    if df_comments is not None and not df_comments.empty:
+        dc = df_comments.copy()
+        if date_start is not None:
+            dc = dc[dc["date"] >= pd.to_datetime(date_start)]
+        if date_end is not None:
+            dc = dc[dc["date"] <= pd.to_datetime(date_end)]
+        if selected_networks:
+            dc = dc[dc["network"].isin(selected_networks)]
+
+        if not dc.empty:
+            show_sentiment = True
+            pos_count = int((dc["sentiment"] == "POSITIVE").sum())
+            neu_count = int((dc["sentiment"] == "NEUTRAL").sum())
+            neg_count = int((dc["sentiment"] == "NEGATIVE").sum())
+            sent_total = pos_count + neu_count + neg_count
+
+            pos_pct = round(pos_count / sent_total * 100) if sent_total > 0 else 0
+            neu_pct = round(neu_count / sent_total * 100) if sent_total > 0 else 0
+            neg_pct = round(neg_count / sent_total * 100) if sent_total > 0 else 0
+
+    # ── HTML para as bolinhas de sentimento ───────────────────────────────
+    def _dot_row(color: str, label: str, count: int, pct: int) -> str:
+        return (
+            f'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">'
+            f'  <span style="'
+            f'    width:10px;height:10px;border-radius:50%;'
+            f'    background:{color};flex-shrink:0;display:inline-block'
+            f'  "></span>'
+            f'  <span style="color:{THEME["text_secondary"]};font-size:11px;flex:1">{label}</span>'
+            f'  <span style="color:{THEME["text_primary"]};font-size:11px;font-weight:600">'
+            f'    {count:,}'
+            f'  </span>'
+            f'  <span style="color:{THEME["text_muted"]};font-size:10px;min-width:34px;text-align:right">'
+            f'    {pct}%'
+            f'  </span>'
+            f'</div>'
+        )
+
+    sentiment_html = ""
+    if show_sentiment:
+        sentiment_html = (
+            f'<div style="margin-top:16px;border-top:1px solid {THEME["border"]};padding-top:12px">'
+            f'  <div style="color:{THEME["text_secondary"]};font-size:9px;font-weight:500;'
+            f'    text-transform:uppercase;letter-spacing:1px;margin-bottom:10px">Sentiment</div>'
+            + _dot_row(THEME["accent_green"], "Positive", pos_count, pos_pct)
+            + _dot_row(THEME["text_muted"],   "Neutral",  neu_count, neu_pct)
+            + _dot_row(THEME["accent_red"],   "Negative", neg_count, neg_pct)
+            + '</div>'
+        )
+
+    st.markdown(
+        f"""
+        <div style="
+            background:{THEME['bg_card']};
+            border:1px solid {THEME['border']};
+            border-radius:12px;
+            padding:20px 24px;
+            margin-bottom:8px;
+            height:100%;
+            box-sizing:border-box;
+        ">
+            <div style="
+                color:{THEME['text_secondary']};
+                font-size:10px;font-weight:500;
+                text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;
+            ">Comments</div>
+            <div style="
+                color:{THEME['text_primary']};font-size:28px;font-weight:700;
+                line-height:1;font-variant-numeric:tabular-nums;
+            ">{_fmt(total)}</div>
+            {sentiment_html}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )

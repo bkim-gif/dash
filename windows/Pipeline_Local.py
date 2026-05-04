@@ -3,12 +3,13 @@ pipeline.py
 
 Script principal — rode toda semana no terminal:
 
-    python pipeline.py
+    python Pipeline_Local.py
 
 COMO USAR:
-1. Edite a seção CONFIGURAÇÃO abaixo com os caminhos dos seus arquivos
-2. Rode: python pipeline.py
-3. O Excel aparece na mesma pasta com o nome configurado
+1. Coloque os CSVs da Sprinklr e Meta nesta mesma pasta
+2. Edite a seção CONFIGURAÇÃO abaixo com os nomes dos arquivos
+3. Rode: python Pipeline_Local.py
+4. O Excel aparece em data/raw/ com o nome da semana
 
 RESULTADO:
 - Aba "RAW DATA" → dados limpos e prontos para análise
@@ -17,33 +18,37 @@ RESULTADO:
 
 from __future__ import annotations
 
-import re                                                  # expressões regulares para limpeza de texto
-from datetime import datetime                              # para formatar a data no nome do arquivo
-from difflib import SequenceMatcher                        # para calcular similaridade entre textos
-from io import StringIO                                    # para ler CSVs com header extra da Sprinklr
-from pathlib import Path                                   # para trabalhar com caminhos de arquivo
+import re
+import sys
+import math
+from datetime import datetime
+from difflib import SequenceMatcher
+from io import StringIO
+from pathlib import Path
 
-import pandas as pd                                        # biblioteca principal de tabelas
+import pandas as pd
+
+# Permite caracteres especiais no terminal do Windows
+sys.stdout.reconfigure(encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------
 # CONFIGURAÇÃO — edite aqui toda semana
 # ---------------------------------------------------------------------------
 
-SPRINKLR_CSV = "/Users/bkim/Documents/Dash/Post Table April 1-May 3.xlsx - Export table.csv"  # CSV exportado da Sprinklr (Posts), com header extra
-META_CSV = "/Users/bkim/Documents/Dash/Apr-01-2026_May-03-2026_1399892332173989.csv"                                            # CSV da Meta (Stories), ou None
+# Pasta onde este script está (não precisa mudar)
+BASE_DIR = Path(__file__).parent
 
-# No pipeline.py
-BASE_DIR = "/Users/bkim/Documents/Dash"
-# Raw data semanal — nome inclui a semana automaticamente (ex: raw_data_2026-W18.xlsx)
-OUTPUT_NAME = f"{BASE_DIR}/data/raw/raw_data_{datetime.now().strftime('%Y-W%V')}.xlsx"
-# Base histórica acumulada — atualizada a cada rodada
-BASE_PATH = f"{BASE_DIR}/MSFT_Revised_2026 - RAW DATA (1).csv"
-# limiar de similaridade para detectar "mesmo post com texto levemente diferente"
-SIMILARITY_THRESHOLD = 0.70                               # 70% de palavras em comum
+# Coloque os nomes dos seus arquivos CSV aqui (devem estar na mesma pasta)
+SPRINKLR_CSV = BASE_DIR / "Post Table September 1 2025-April 5 2026.xlsx - Export table.csv"
+META_CSV      = BASE_DIR / "Sep-01-2025_Apr-06-2026_26478322775167299.csv"
 
-# limiar para decidir se soma métricas na republicação
-# se o post removido tiver >= 20% das impressões do que fica → soma
+# Saídas (não precisa mudar)
+OUTPUT_NAME = BASE_DIR / "data" / "raw" / f"raw_data_{datetime.now().strftime('%Y-W%V')}.xlsx"
+BASE_PATH   = BASE_DIR / "MSFT_Revised_2026 - RAW DATA (1).csv"
+
+# Limiares de limpeza
+SIMILARITY_THRESHOLD       = 0.70
 IMPRESSION_RATIO_THRESHOLD = 0.20
 
 
@@ -52,22 +57,14 @@ IMPRESSION_RATIO_THRESHOLD = 0.20
 # ---------------------------------------------------------------------------
 
 def normalize_col(original):
-    """
-    Transforma nome feio de coluna em nome limpo e usável.
-    Ex: "GDC Impressions (SUM)" → "gdc_impressions_sum"
-    """
-    s = (original or "").strip().lower()                   # remove espaços e deixa minúsculo
-    s = s.replace("|", " ").replace("/", " ").replace("-", " ")  # troca separadores por espaço
-    s = re.sub(r"[^a-z0-9à-ú\s]", " ", s, flags=re.IGNORECASE)  # remove parênteses etc.
-    s = re.sub(r"\s+", "_", s).strip("_")                 # espaços viram underscore
+    s = (original or "").strip().lower()
+    s = s.replace("|", " ").replace("/", " ").replace("-", " ")
+    s = re.sub(r"[^a-z0-9à-ú\s]", " ", s, flags=re.IGNORECASE)
+    s = re.sub(r"\s+", "_", s).strip("_")
     return s or "coluna_sem_nome"
 
 
 def dedupe_names(names):
-    """
-    Garante que não existam nomes de colunas duplicados.
-    Ex: ["account", "account"] → ["account", "account__2"]
-    """
     seen = {}; out = []
     for n in names:
         if n not in seen: seen[n] = 1; out.append(n)
@@ -76,11 +73,7 @@ def dedupe_names(names):
 
 
 def read_sprinklr(path):
-    """
-    Lê o CSV da Sprinklr tratando as ~6 linhas de metadados do header
-    e tentando diferentes encodings e separadores automaticamente.
-    """
-    for enc in ["utf-8", "utf-8-sig", "latin-1"]:         # testa encodings em ordem
+    for enc in ["utf-8", "utf-8-sig", "latin-1"]:
         try:
             with open(path, "r", encoding=enc) as f: content = f.read()
         except UnicodeDecodeError: continue
@@ -88,59 +81,48 @@ def read_sprinklr(path):
         lines = content.split("\n")
         hi = 0
         for i, l in enumerate(lines):
-            if l.strip().strip('"').startswith("Social Network,"):  # linha do header real
+            if l.strip().strip('"').startswith("Social Network,"):
                 hi = i; break
-        csv = "\n".join(lines[hi:])                        # descarta metadados antes do header
+        csv = "\n".join(lines[hi:])
 
-        for sep in [",", ";"]:                             # testa separadores em ordem
+        for sep in [",", ";"]:
             try:
                 df = pd.read_csv(StringIO(csv), sep=sep)
-                if df.shape[1] > 1:                        # mais de 1 coluna = separador correto
+                if df.shape[1] > 1:
                     df.columns = dedupe_names([normalize_col(c) for c in df.columns])
                     print(f"   Lido: {len(df)} linhas, {df.shape[1]} colunas (enc={enc}, sep='{sep}')")
                     return df
             except: pass
-    raise RuntimeError(f"Não consegui ler: {path}")
+    raise RuntimeError(f"Nao consegui ler: {path}")
 
 
 def to_num(df, cols):
-    """
-    Converte colunas para número de forma segura.
-    Se já for numérico, só preenche NaN com 0.
-    Se for texto, limpa separadores de milhar antes de converter.
-    (Evita o bug de 2664.0 → str → remove ponto → 26640)
-    """
     for c in cols:
         if c not in df.columns: df[c] = 0; continue
-        if pd.api.types.is_numeric_dtype(df[c]):           # já é número — só trata NaN
+        if pd.api.types.is_numeric_dtype(df[c]):
             df[c] = df[c].fillna(0)
-        else:                                              # é texto — limpa e converte
+        else:
             df[c] = pd.to_numeric(
                 df[c].astype(str).str.strip()
-                .str.replace(".", "", regex=False)         # remove ponto como separador de milhar
-                .str.replace(",", "", regex=False),        # remove vírgula como separador de milhar
+                .str.replace(".", "", regex=False)
+                .str.replace(",", "", regex=False),
                 errors="coerce"
             ).fillna(0)
     return df
 
 
 def similarity(a, b):
-    """Calcula similaridade entre dois textos — retorna valor de 0 a 1."""
     return SequenceMatcher(None, str(a).lower(), str(b).lower()).ratio()
 
 
 def idx_maior(g):
-    """
-    Retorna o índice do post com maior impressão no grupo.
-    Em caso de empate, desempata pelo mais recente.
-    """
     return g.sort_values(
         ["gdc_impressions_sum", "publishedtime"],
-        ascending=[False, False]                           # maior impressão primeiro, mais recente segundo
+        ascending=[False, False]
     ).index[0]
 
 
-METRIC_COLS = [                                            # colunas de métricas que somamos nas republicações
+METRIC_COLS = [
     "gdc_impressions_sum",
     "gdc_total_engagements_sum",
     "post_likes_and_reactions_sum",
@@ -155,14 +137,6 @@ METRIC_COLS = [                                            # colunas de métrica
 # ---------------------------------------------------------------------------
 
 def merge_meta(df, meta_path):
-    """
-    Incorpora dados de Stories do Instagram da planilha Meta.
-
-    Por que antes da limpeza?
-    Stories no Sprinklr vêm com impressões = 0 (a Sprinklr não mede Stories).
-    Se limpássemos antes, a Regra 1 removeria todos os Stories.
-    Fazendo o merge primeiro, as impressões reais da Meta chegam antes da limpeza.
-    """
     if not meta_path or not Path(meta_path).exists():
         print("   Sem arquivo Meta — pulando merge.")
         return df
@@ -170,43 +144,39 @@ def merge_meta(df, meta_path):
     df_meta = pd.read_csv(meta_path, encoding="utf-8")
     df_meta.columns = [normalize_col(c) for c in df_meta.columns]
 
-    # renomeia colunas da Meta para o padrão do pipeline
     df_meta = df_meta.rename(columns={
-        "permalink":   "permalink",
-        "views":     "meta_impressoes",            # prefixo meta_ evita conflito com Sprinklr
-        "reach":           "stories_alcance",
+        "permalink":      "permalink",
+        "views":          "meta_impressoes",
+        "reach":          "stories_alcance",
         "likes":          "meta_curtidas",
-        "shares": "meta_shares",
+        "shares":         "meta_shares",
         "profile_visits": "stories_visitas_perfil",
-        "replies":         "meta_respostas",
-        "link_clicks":   "meta_clicks",
-        "navigation":         "stories_navegacao",
-        "follows":       "stories_seguimentos",
+        "replies":        "meta_respostas",
+        "link_clicks":    "meta_clicks",
+        "navigation":     "stories_navegacao",
+        "follows":        "stories_seguimentos",
     })
 
-    # garante que as métricas da Meta sejam numéricas
     for c in ["meta_impressoes", "meta_curtidas", "meta_shares", "meta_respostas", "meta_clicks",
               "stories_alcance", "stories_visitas_perfil", "stories_navegacao", "stories_seguimentos"]:
         if c in df_meta.columns:
             df_meta[c] = pd.to_numeric(df_meta[c], errors="coerce").fillna(0)
 
-    df["permalink"] = df["permalink"].astype(str).str.strip()
+    df["permalink"]      = df["permalink"].astype(str).str.strip()
     df_meta["permalink"] = df_meta["permalink"].astype(str).str.strip()
 
-    # join pelo permalink — left join para não perder nenhuma linha da Sprinklr
     join_cols = ["permalink"] + [c for c in [
         "meta_impressoes", "meta_curtidas", "meta_shares", "meta_respostas", "meta_clicks",
         "stories_alcance", "stories_visitas_perfil", "stories_navegacao", "stories_seguimentos"
     ] if c in df_meta.columns]
     df = df.merge(df_meta[join_cols], on="permalink", how="left")
 
-    # substitui métricas da Sprinklr pelas da Meta onde a Meta tem valor
     subs = {
-        "gdc_impressions_sum":            "meta_impressoes",
-        "post_likes_and_reactions_sum":   "meta_curtidas",
-        "post_shares_sum":                "meta_shares",
-        "post_comments_sum":              "meta_respostas",
-        "estimated_clicks_sum":           "meta_clicks",
+        "gdc_impressions_sum":          "meta_impressoes",
+        "post_likes_and_reactions_sum": "meta_curtidas",
+        "post_shares_sum":              "meta_shares",
+        "post_comments_sum":            "meta_respostas",
+        "estimated_clicks_sum":         "meta_clicks",
     }
     for col_spr, col_meta in subs.items():
         if col_meta in df.columns:
@@ -214,14 +184,10 @@ def merge_meta(df, meta_path):
             df.loc[mask, col_spr] = df.loc[mask, col_meta]
             df.drop(columns=[col_meta], inplace=True)
 
-    # identifica IG Stories: qualquer linha que tem "alcance" da Meta
     mask_stories = df["stories_alcance"].notna() & (df["stories_alcance"] > 0)
     df.loc[mask_stories, "social_network"] = "IG Stories"
     print(f"   Stories identificados: {mask_stories.sum()}")
 
-    # Recalcula gdc_total_engagements_sum para IG Stories.
-    # O Sprinklr conta "navigation taps" (swipes/avanços) como engajamento total,
-    # o que distorce a métrica. O correto é: likes + comments + shares + clicks.
     eng_cols = [
         "post_likes_and_reactions_sum",
         "post_comments_sum",
@@ -243,74 +209,49 @@ def merge_meta(df, meta_path):
 # ---------------------------------------------------------------------------
 
 def clean_sprinklr(df):
-    """
-    Aplica as 4 regras de limpeza inicial.
-    Ver CLEANING_RULES.md para detalhes completos.
-    """
     df = df.copy()
-    df = to_num(df, METRIC_COLS)                           # garante que métricas são numéricas
+    df = to_num(df, METRIC_COLS)
 
-    # Regra 1: remove impressions = 0
-    # (Stories já têm impressões da Meta nesse ponto, então não são removidos)
     antes = len(df)
     df = df[df["gdc_impressions_sum"] != 0]
-    print(f"   Regra 1 (impressions=0): -{antes - len(df)} → {len(df)}")
+    print(f"   Regra 1 (impressions=0): -{antes - len(df)} -> {len(df)}")
 
-    # Regra 2: remove social reactive
     antes = len(df)
     df = df[~df["campaign_name"].astype(str).str.lower().str.contains(r"social\s+reactive", na=False)]
-    print(f"   Regra 2 (social reactive): -{antes - len(df)} → {len(df)}")
+    print(f"   Regra 2 (social reactive): -{antes - len(df)} -> {len(df)}")
 
-    # Regra 3: remove permalink vazio
     antes = len(df)
     p = df["permalink"].astype(str).str.strip()
     df = df[(p != "") & (p.str.lower() != "nan")]
-    print(f"   Regra 3 (permalink vazio): -{antes - len(df)} → {len(df)}")
+    print(f"   Regra 3 (permalink vazio): -{antes - len(df)} -> {len(df)}")
 
-    # Regra 4: remove respostas a comentários
-    # condição: Auto Import + texto começa com @mention
     antes = len(df)
-    is_auto = df["campaign_name"].astype(str).str.strip() == "[Auto Import] (Universal)"
+    is_auto      = df["campaign_name"].astype(str).str.strip() == "[Auto Import] (Universal)"
     starts_mention = df["outbound_post"].astype(str).str.strip().str.startswith("@")
     df = df[~(is_auto & starts_mention)]
-    print(f"   Regra 4 (@mention Auto Import): -{antes - len(df)} → {len(df)}")
+    print(f"   Regra 4 (@mention Auto Import): -{antes - len(df)} -> {len(df)}")
 
-    return df.reset_index(drop=True)                       # renumera índices do zero
+    return df.reset_index(drop=True)
 
 
 # ---------------------------------------------------------------------------
-# ETAPA 3 — DEDUPLICAÇÃO
+# ETAPA 3 — DEDUPLICACAO
 # ---------------------------------------------------------------------------
 
 def deduplicate(df):
-    """
-    Remove posts duplicados seguindo os padrões definidos em CLEANING_RULES.md.
-
-    Regra principal: sempre fica o post de MAIOR IMPRESSÃO.
-    Em empate de impressões: fica o mais recente.
-    Métricas são somadas quando a diferença é significativa (>=20%).
-
-    IG Stories são excluídos da deduplicação por texto
-    (todos têm o texto "This message has no text." e são posts únicos).
-    """
     df = df.copy()
     df["publishedtime"] = pd.to_datetime(df["publishedtime"], errors="coerce")
 
-    removidos_ids = set()                                  # índices marcados para remoção
-    log = []                                               # registro de cada remoção
+    removidos_ids = set()
+    log = []
 
     def log_remove(idx, motivo):
-        """Marca um índice para remoção e registra o motivo."""
         row = df.loc[idx].to_dict()
         row["motivo_exclusao"] = motivo
         log.append(row)
         removidos_ids.add(idx)
 
     def soma(df, dest, origens, cols):
-        """Acumula as métricas dos posts removidos no post que fica.
-        Também propaga o flag 'boosted': se qualquer post removido for boosted,
-        o post que fica também é marcado como boosted.
-        """
         for c in cols:
             if c in df.columns:
                 df.loc[dest, c] += df.loc[list(origens), c].sum()
@@ -319,62 +260,54 @@ def deduplicate(df):
                 df.loc[dest, "boosted"] = 1
         return df
 
-    # IG Stories: todos ficam, sem deduplicação por texto
     stories_idx = set(df[df["social_network"] == "IG Stories"].index)
 
-    # Padrão 1: permalink idêntico
     for (rede, plink), g in df.groupby(["social_network", "permalink"]):
         if rede == "IG Stories": continue
         if len(g) <= 1: continue
         mn = idx_maior(g)
         for idx in g.index:
             if idx != mn:
-                log_remove(idx, "Padrão 1 — Duplicata exata: mesmo permalink")
+                log_remove(idx, "Padrao 1 — Duplicata exata: mesmo permalink")
 
-    # Padrões 2-6: texto exato
-    # inclui sobreviventes do Padrão 1 para não perder grupos mistos
     for (rede, texto), g in df.groupby(["social_network", "outbound_post"], sort=False):
         if rede == "IG Stories": continue
-        g = g[~g.index.isin(removidos_ids)]                # exclui apenas os já removidos
+        g = g[~g.index.isin(removidos_ids)]
         if len(g) <= 1: continue
 
-        is_auto = g["campaign_name"].astype(str).str.strip() == "[Auto Import] (Universal)"
+        is_auto  = g["campaign_name"].astype(str).str.strip() == "[Auto Import] (Universal)"
         tem_auto = is_auto.any()
         tem_real = (~is_auto).any()
 
         if tem_auto and tem_real:
-            # Padrão 2: Auto Import vs post real — soma no de maior impressão
             mn = idx_maior(g)
             remover = [i for i in g.index if i != mn]
             df = soma(df, mn, remover, METRIC_COLS)
             camp_mn = df.loc[mn, "campaign_name"]
             for idx in remover:
-                log_remove(idx, f"Padrão 2 — Somado no post de maior impressão ({camp_mn})")
+                log_remove(idx, f"Padrao 2 — Somado no post de maior impressao ({camp_mn})")
 
         elif tem_auto and not tem_real:
-            # Padrão 4: todos Auto Import — fica o de maior impressão
             mn = idx_maior(g)
             for idx in g.index:
                 if idx != mn:
-                    log_remove(idx, "Padrão 4 — Todos Auto Import: mantido maior impressão")
+                    log_remove(idx, "Padrao 4 — Todos Auto Import: mantido maior impressao")
 
         else:
-            # Padrão 5/6: republicação — mesma campanha, permalink diferente
-            mn = idx_maior(g)
-            ma = [i for i in g.index if i != mn]
+            mn  = idx_maior(g)
+            ma  = [i for i in g.index if i != mn]
             imp_mn = df.loc[mn, "gdc_impressions_sum"]
             imp_ma = df.loc[ma, "gdc_impressions_sum"].sum()
 
             if imp_mn > 0 and (imp_ma / imp_mn) >= IMPRESSION_RATIO_THRESHOLD:
                 df = soma(df, mn, ma, METRIC_COLS)
-                motivo = "Padrão 5 — Republicação: métricas somadas no maior"
+                motivo = "Padrao 5 — Republicacao: metricas somadas no maior"
             else:
-                motivo = "Padrão 6 — Republicação: removido sem somar (impressões insignificantes)"
+                motivo = "Padrao 6 — Republicacao: removido sem somar (impressoes insignificantes)"
 
             for idx in ma:
                 log_remove(idx, motivo)
 
-    # Padrões 3/7: texto similar (>=70%)
     df_sim = df[~df.index.isin(removidos_ids | stories_idx)].copy()
     for rede, gr in df_sim.groupby("social_network"):
         if rede == "IG Stories": continue
@@ -391,14 +324,13 @@ def deduplicate(df):
                 mn = ii if df.loc[ii, "gdc_impressions_sum"] >= df.loc[jj, "gdc_impressions_sum"] else jj
                 ma = jj if mn == ii else ii
                 df = soma(df, mn, [ma], METRIC_COLS)
-                log_remove(ma, f"Padrão 3/7 — Texto similar ({sim:.0%}): somado no maior impressão")
+                log_remove(ma, f"Padrao 3/7 — Texto similar ({sim:.0%}): somado no maior impressao")
 
-    # monta resultado final
     todos_mantidos = set(df.index) - removidos_ids
     df_clean = df.loc[sorted(todos_mantidos)].reset_index(drop=True)
-    df_log = pd.DataFrame(log) if log else pd.DataFrame()
+    df_log   = pd.DataFrame(log) if log else pd.DataFrame()
 
-    print(f"   -{len(log)} removidas → {len(df_clean)} restantes")
+    print(f"   -{len(log)} removidas -> {len(df_clean)} restantes")
     print(f"   Redes: {df_clean['social_network'].value_counts().to_dict()}")
 
     return df_clean, df_log
@@ -408,26 +340,14 @@ def deduplicate(df):
 # ETAPA 4 — CALCULAR ER E WEEK
 # ---------------------------------------------------------------------------
 
-import math
-
 def calc_er_week(df):
-    """
-    Calcula as colunas derivadas ER, ER w/o swipes e Week.
-
-    ER         = gdc_total_engagements_sum / gdc_impressions_sum * 100
-    ER w/o sw. = (likes + comments + shares + clicks) / impressions * 100
-                 apenas para LinkedIn Document/Pdf; igual ao ER nos demais
-    Week       = AAAAMM-Wn  onde Wn = semana do mês (ceil(dia / 7))
-    """
     df = df.copy()
 
-    # ── ER ────────────────────────────────────────────────────────────────
     imp = df["gdc_impressions_sum"].replace(0, pd.NA)
     df["ER"] = (
         df["gdc_total_engagements_sum"].div(imp).multiply(100).fillna(0).round(2)
     )
 
-    # ── ER w/o swipes ─────────────────────────────────────────────────────
     eng_wo = (
         df["post_likes_and_reactions_sum"]
         + df["post_comments_sum"]
@@ -442,7 +362,6 @@ def calc_er_week(df):
     er_wo[_doc_mask] = eng_wo[_doc_mask].div(imp[_doc_mask]).multiply(100).fillna(0)
     df["ER w/o swipes"] = er_wo.round(2)
 
-    # ── Week: AAAAMM-Wn ───────────────────────────────────────────────────
     dates = pd.to_datetime(df["published_date"], errors="coerce")
     week_of_month = dates.dt.day.apply(lambda d: math.ceil(d / 7) if pd.notna(d) else pd.NA)
     df["Week"] = dates.dt.strftime("%Y%m").fillna("") + "-W" + week_of_month.astype("Int64").astype(str)
@@ -452,27 +371,19 @@ def calc_er_week(df):
 
 
 # ---------------------------------------------------------------------------
-# ETAPA 5 — ATUALIZAR BASE HISTÓRICA
+# ETAPA 5 — ATUALIZAR BASE HISTORICA
 # ---------------------------------------------------------------------------
 
 def update_base(df_new, base_path):
-    """
-    Merge incremental na base histórica MSFT_Revised_2026.
-
-    - Permalink já existe na base → atualiza métricas e ER/Week
-    - Permalink novo             → acrescenta linha ao final
-    """
     base_path = Path(base_path)
 
     if not base_path.exists():
         df_new.to_csv(base_path, index=False, encoding="utf-8")
-        print(f"   Base criada: {len(df_new)} linhas → {base_path.name}")
+        print(f"   Base criada: {len(df_new)} linhas -> {base_path.name}")
         return
 
-    df_base = pd.read_csv(base_path, low_memory=False)
-    n_antes = len(df_base)
+    df_base  = pd.read_csv(base_path, low_memory=False)
 
-    # Normaliza ER da base (pode estar como '3,30%' em versões antigas)
     for col_er in ["ER", "ER w/o swipes"]:
         if col_er in df_base.columns:
             df_base[col_er] = pd.to_numeric(
@@ -482,18 +393,16 @@ def update_base(df_new, base_path):
                 errors="coerce",
             ).fillna(0)
 
-    df_new["permalink"] = df_new["permalink"].astype(str).str.strip()
+    df_new["permalink"]  = df_new["permalink"].astype(str).str.strip()
     df_base["permalink"] = df_base["permalink"].astype(str).str.strip()
 
-    existing = set(df_base["permalink"])
+    existing    = set(df_base["permalink"])
     mask_update = df_new["permalink"].isin(existing)
     df_upd  = df_new[mask_update].copy()
     df_novo = df_new[~mask_update].copy()
 
-    # Colunas que atualizamos nas linhas existentes
     cols_update = [c for c in METRIC_COLS + ["ER", "ER w/o swipes", "Week"] if c in df_new.columns]
 
-    # Atualiza linhas existentes por permalink
     if not df_upd.empty:
         upd_map = df_upd.set_index("permalink")[cols_update].to_dict("index")
         for i, row in df_base.iterrows():
@@ -502,7 +411,6 @@ def update_base(df_new, base_path):
                 for col in cols_update:
                     df_base.at[i, col] = upd_map[plink][col]
 
-    # Append linhas novas (alinha colunas com a base)
     if not df_novo.empty:
         for col in df_base.columns:
             if col not in df_novo.columns:
@@ -511,7 +419,6 @@ def update_base(df_new, base_path):
         df_base = pd.concat([df_base, df_novo], ignore_index=True)
 
     df_base.to_csv(base_path, index=False, encoding="utf-8")
-
     print(f"   {len(df_upd)} atualizadas | {len(df_novo)} novas | total {len(df_base)} linhas ({base_path.name})")
 
 
@@ -520,7 +427,9 @@ def update_base(df_new, base_path):
 # ---------------------------------------------------------------------------
 
 def generate_output(df_clean, df_log, output_path):
-    # 1. Gera o Excel original com as duas abas (para seu controle)
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
     with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
         df_clean.to_excel(writer, sheet_name="RAW DATA", index=False)
         if len(df_log) > 0:
@@ -530,55 +439,42 @@ def generate_output(df_clean, df_log, output_path):
                 writer, sheet_name="REMOVED", index=False
             )
 
-    # 2. Gera o CSV que o Dashboard espera (na mesma pasta 'raw')
-    # Substitui a extensão .xlsx por .csv no caminho
-    csv_path = output_path.replace(".xlsx", ".csv")
+    csv_path = output_path.with_suffix(".csv")
     df_clean.to_csv(csv_path, index=False, encoding="utf-8")
-    
-    print(f"✅ Dashboard pronto em: {csv_path}")
-   
 
-
-
-    print(f"\n   Arquivo gerado: {output_path}")
+    print(f"   Dashboard pronto em: {csv_path}")
+    print(f"   Arquivo gerado: {output_path}")
     print(f"   Aba RAW DATA: {len(df_clean)} linhas")
     print(f"   Aba REMOVED:  {len(df_log)} linhas removidas")
 
 
 # ---------------------------------------------------------------------------
-# EXECUÇÃO PRINCIPAL
+# EXECUCAO PRINCIPAL
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
 
     print("\n=== PIPELINE SOCIAL ANALYTICS ===\n")
 
-    # Etapa 1: leitura
     print("1) Lendo CSV Sprinklr...")
     df = read_sprinklr(SPRINKLR_CSV)
 
-    # Etapa 2: merge com Meta (antes da limpeza!)
     print("\n2) Merge com Meta...")
     df = merge_meta(df, META_CSV)
 
-    # Etapa 3: limpeza
     print("\n3) Limpeza...")
     df = clean_sprinklr(df)
 
-    # Etapa 4: deduplicação
-    print("\n4) Deduplicação...")
+    print("\n4) Deduplicacao...")
     df, df_log = deduplicate(df)
 
-    # Etapa 5: calcular ER e Week
     print("\n5) Calculando ER e Week...")
     df = calc_er_week(df)
 
-    # Etapa 6: gerar Excel semanal (backup)
     print("\n6) Gerando Excel semanal...")
     generate_output(df, df_log, OUTPUT_NAME)
 
-    # Etapa 7: atualizar base histórica
-    print("\n7) Atualizando base histórica...")
+    print("\n7) Atualizando base historica...")
     update_base(df, BASE_PATH)
 
-    print("\n=== CONCLUÍDO ===\n")
+    print("\n=== CONCLUIDO ===\n")

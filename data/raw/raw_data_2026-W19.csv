@@ -1,0 +1,1096 @@
+social_network,outbound_post,status,account,account_type,author_name,campaign_name,permalink,scheduledtime,publishedtime,tags,published_date,day_of_week,time_of_day,events_outbound_message,media_format_outbound_message,related_product_outbound_message,msft_learn_product_program_outbound_message,c_641deea526668532c520df4c,msft_learn_content_owner_outbound_message,msft_learn_primary_audience_outbound_message,primary_objective_outbound_message,media_type,permalink_1,account_1,msft_learn_approvers_outbound_message,msft_learn_pillar_outbound_message,msft_learn_cta_outbound_message,gdc_impressions_sum,gdc_total_engagements_sum,post_likes_and_reactions_sum,post_comments_sum,post_shares_sum,estimated_clicks_sum,gdc_total_engagement_views_sum,count_of_positive_comments_sum,count_of_neutral_comments_sum,count_of_negative_comments_sum,followers_at_post_time_sum,instagram_business_post_impressions_sum,x_poll_votes_sum,stories_alcance,stories_visitas_perfil,stories_navegacao,ER,ER w/o swipes,Week
+LinkedIn,This message has no text.,SENT,Microsoft Learn,LINKEDIN_COMPANY,SprinklrSystem ,[Auto Import] (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7455990687902167041,2026-05-01 10:45:05,2026-05-01 10:45:05,,05-01-2026 10:45,Friday,10:00,, , ,, ,,,,Video,https://www.linkedin.com/feed/update/urn:li:ugcPost:7455990687902167041,Microsoft Learn,,,,1,0,0,0,0,0,0,0,0,0,1148400,0,,,,,0.0,0.0,202605-W1
+LinkedIn,Test,SENT,Microsoft Learn,LINKEDIN_COMPANY,SprinklrSystem ,[Auto Import] (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7445881432637325312,2026-04-03 13:14:31,2026-04-03 13:14:31,,04-03-2026 13:14,Friday,13:00,, , ,, ,,,,Video,https://www.linkedin.com/feed/update/urn:li:ugcPost:7445881432637325312,Microsoft Learn,,,,14,0,0,0,0,0,0,0,0,0,1118483,0,,,,,0.0,0.0,202604-W1
+X,"Love this goal!! Here go links to all 3:
+
+🌐 Networking basics  
+[Fundamentals of computer networking](https://t.co/zLalqKXNwN)
+
+🔐 Identity & access  
+[Describe identity concepts](https://t.co/TqjPiYVKIF)
+
+💰 Cost implications  
+[Plan and manage your Azure costs](https://t.co/YLOkNvilFi)",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,[Auto Import] (Universal),https://twitter.com/MicrosoftLearn/status/2043324771908091942,2026-04-12 09:46:03,2026-04-12 09:46:03,,04-12-2026 09:46,Sunday,09:00,, , ,, ,,,,Link,https://twitter.com/MicrosoftLearn/status/2043324771908091942,Microsoft Learn,,,,31,2,1,1,0,0,2,1,0,0,491200,0,,,,,6.45,6.45,202604-W2
+Threads,"No idea what Azure Blobs are? Let’s break it down:
+
+Blob storage is a type of storage service in Azure that’s designed to hold massive amounts of unstructured data like media files, logs, backups, and analytics datasets.
+
+You’d use it when you need to:
+• Show images or documents in an app
+• Stream video or audio
+• Keep backups safe
+• Store large data for analytics",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXsIxhkGmXS,2026-04-28 17:00:00,2026-04-28 17:00:21,,04-28-2026 17:00,Tuesday,17:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Text,https://www.threads.com/@microsoftlearn/post/DXsIxhkGmXS,microsoftlearn,,Educational,,102,4,4,0,0,0,4,0,0,0,15385,0,,,,,3.92,3.92,202604-W4
+Threads,"AI can help you learn faster, communicate clearly, and make better decisions at every career stage.
+• Early career: ramp up, build confidence, draft clearer work
+• Mid-career: scale impact, align stakeholders, streamline workflows
+• Leadership: spot patterns, pressure-test strategy, coach effectively
+You’ll also find guidance on AI Skills Navigator.
+👉 Read the blog: https://aka.ms/FY26Q4BusinessUserBlog3_TH",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | OBO (Universal),https://www.threads.com/@microsoftlearn/post/DXrtTytGtQa,2026-04-28 13:00:00,2026-04-28 13:00:24,,04-28-2026 13:00,Tuesday,13:00,, , ,Blog, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.threads.com/@microsoftlearn/post/DXrtTytGtQa,microsoftlearn,,Informational,Other,103,5,5,0,0,5,5,0,0,0,15385,0,,,,,4.85,4.85,202604-W4
+Threads,"Think IT runs all the agents? Not quite.
+
+Different teams help make sure agent approvals support your org’s goals.
+
+• Admins: Manage approvals, apply rules, and check technical details.
+• Business owners: Give context on what the agent is for.
+• Security & compliance: Watch for risky or overly broad access requests.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXpIg1PGjAi,2026-04-27 13:00:00,2026-04-27 13:00:21,,04-27-2026 13:00,Monday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXpIg1PGjAi,microsoftlearn,,Educational,,149,6,5,1,0,0,6,0,1,0,15351,0,,,,,4.03,4.03,202604-W4
+Threads,"If you're new to cybersecurity or AI, Security Copilot agents can make the whole space feel a lot safer and easier to navigate.
+
+What does it actually do?
+
+Think of it as something that can look at a security situation and act on it, not just describe it.
+
+Instead of only surfacing alerts, these agents can:
+• Access the right data with permissions in place
+• Analyze what’s happening across your environment
+• Suggest or take action based on that context",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW4zQoiD96w,2026-04-08 18:30:44,2026-04-08 18:31:07,,04-08-2026 18:31,Wednesday,18:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Biz User,,Text,https://www.threads.com/@microsoftlearn/post/DW4zQoiD96w,microsoftlearn,,Educational,,171,5,5,0,0,0,5,0,0,0,14708,0,,,,,2.92,2.92,202604-W2
+Threads,"Cloud success is built on structure.
+
+Azure has two sides:
+Physical infrastructure → datacenters, regions, availability zones
+Management infrastructure → subscriptions, policies, access controls
+
+The physical side keeps your apps online, and the management side keeps your cloud clean, secure, and organized.
+
+Learn how they fit together, and you’ll build cloud environments that are predictable, resilient, and easy to manage, no matter how big you grow.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW1T_wqFJIE,2026-04-07 10:00:00,2026-04-07 09:59:57,,04-07-2026 09:59,Tuesday,09:00,, , ,Other, ,MSFT Learn | Microsoft created,IT Pro,,Text,https://www.threads.com/@microsoftlearn/post/DW1T_wqFJIE,microsoftlearn,,Educational,,179,10,8,2,0,0,10,0,2,0,14628,0,,,,,5.59,5.59,202604-W1
+Threads,"Need to manage lots of Virtual Machines?
+Azure gives you two tools to manage groups of VMs:
+
+1️⃣ Scale sets → For lots of identical VMs
+• Auto‑scale up/down
+• Built‑in load balancing
+• Keeps every VM configured the same
+
+2️⃣ Availability sets → For keeping VMs online
+• Spread across different power/network sources
+• Staggered maintenance
+• Protects you from everything going down at once",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXZR6CGFsdY,2026-04-21 09:14:14,2026-04-21 09:14:38,,04-21-2026 09:14,Tuesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXZR6CGFsdY,microsoftlearn,,Educational,,179,8,8,0,0,0,8,0,0,0,15218,0,,,,,4.47,4.47,202604-W3
+Threads,"On the job hunt? Know these terms:
+• Certification stack: Combining many credentials to show expertise
+• Competency framework: Set of skills and behaviors needed for success
+• Job matching: Aligning abilities and interests to a role
+• Learning roadmap: Planned path for skill acquisition
+• Micro‑credentials: Verified certifications for skills
+• Skill gap analysis: Identifying missing skills for a desired role
+• STAR Method: Structure for answering questions (Situation, Task, Action Result)",SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXumQK7iYzr,2026-04-29 15:56:05,2026-04-29 15:56:05,,04-29-2026 15:56,Wednesday,15:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXumQK7iYzr,microsoftlearn,,Educational,,185,10,8,0,1,0,10,0,0,0,15412,0,,,,,5.41,5.41,202604-W5
+Threads,"Leveling up your AI skills? These terms will help.
+AI A–Z (part 3):
+System prompt = hidden instructions that define behavior
+Tool = external capability for data/actions
+User intent = underlying goal of a request
+Vector database = retrieves by meaning, not keywords
+Workflow = multi-step execution process
+XAI = explains how outputs were generated
+YAML = config as readable text
+Zero-shot = performs tasks without examples",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXHqLdaGFWB,2026-04-14 13:00:00,2026-04-14 13:00:21,,04-14-2026 13:00,Tuesday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXHqLdaGFWB,microsoftlearn,,Educational,,188,10,8,0,2,0,10,0,0,0,15041,0,,,,,5.32,5.32,202604-W2
+Threads,"When should you use an Azure Virtual Machine?
+More often than you’d expect.
+
+Use it for:
+• Testing & development
+• Apps with variable demand
+• Extending a datacenter to Azure
+• Disaster recovery
+• Lift‑and‑shift migrations
+
+If you need control + reliability, virtual machines are the move.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXotDDTmnGv,2026-04-27 09:00:00,2026-04-27 09:00:21,,04-27-2026 09:00,Monday,09:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXotDDTmnGv,microsoftlearn,,Educational,,200,11,9,2,0,0,11,1,1,0,15351,0,,,,,5.5,5.5,202604-W4
+Threads,"Today felt like the right day to release these.
+
+Microsoft Module: How to politely say ‘per my last email’
+Microsoft Learning Path: Surviving back-to-back meetings
+Microsoft Applied Skills: Troubleshooting your own overthinking
+Microsoft Applied Skills: Advanced Tab Management for People with 87 Open Tabs
+Microsoft Certified: AI prompt whisperer (PW‑900)
+Microsoft Certified: Corporate small talk fundamentals (CS-100)",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DWmStenmEuY,2026-04-01 14:00:00,2026-04-01 14:00:21,,04-01-2026 14:00,Wednesday,14:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DWmStenmEuY,microsoftlearn,,Conversation,,219,11,11,0,0,0,11,0,0,0,14353,0,,,,,5.02,5.02,202604-W1
+Threads,"If you want clearer predictions, faster decisions, and smarter products, machine learning (ML) is how you get there.
+
+It helps teams spot patterns, predict what’s next, and make confident decisions.
+
+And when data science and engineering build together, ML becomes the engine behind personalization, automation, and smarter products.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXKO-WBGFdd,2026-04-15 13:00:00,2026-04-15 13:00:22,,04-15-2026 13:00,Wednesday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Text,https://www.threads.com/@microsoftlearn/post/DXKO-WBGFdd,microsoftlearn,,Educational,,238,12,11,1,0,0,12,1,0,0,15104,0,,,,,5.04,5.04,202604-W3
+Threads,"Part two of our AI A-Z glossary starts now:
+Knowledge source = trusted data (docs, SharePoint, Dataverse)
+Latency = response time
+Memory = retains and reuses information across interactions
+Natural language interface = language as the UI
+Orchestrator = routes tasks and tools
+Prompt = full model input (instructions + context + data)
+Query = targeted retrieval request
+RAG = retrieves external data before generating output",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW94JvsgcyB,2026-04-10 17:49:41,2026-04-10 17:49:48,,04-10-2026 17:49,Friday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW94JvsgcyB,microsoftlearn,,Educational,,254,10,10,0,0,0,10,0,0,0,14794,0,,,,,3.94,3.94,202604-W2
+TikTok,"Save this video so next time someone drops AI in a meeting, you’ll know exactly what they mean.",SENT,Microsoft Learn,TIKTOK_BUSINESS,Emma Casey,MSFT Learn | AON (Universal),https://www.tiktok.com/@microsoftlearn/video/7632070127978155278,2026-04-23 17:30:00,2026-04-23 17:30:00,,04-23-2026 17:30,Thursday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Video,https://www.tiktok.com/@microsoftlearn/video/7632070127978155278,Microsoft Learn,,Educational,,257,15,15,0,0,0,272,0,0,0,9970,0,,,,,5.84,5.84,202604-W4
+Threads,"Dear Algo, connect me to everyone who wants to:
+- Skill quickly
+- Learn AI, practical skills, and smarter habits
+- Simplify their workflow",SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW4NybWFilB,2026-04-08 13:03:19,2026-04-08 13:03:19,,04-08-2026 13:03,Wednesday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW4NybWFilB,microsoftlearn,,Conversation,,262,18,16,0,2,0,18,0,0,0,14708,0,,,,,6.87,6.87,202604-W2
+Threads,"Quick! Cloud models open book quiz:
+When you want full control = IaaS
+When you want it all done for you = SaaS
+When you want something in between = PaaS
+
+How'd you do?",SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW3rpT_Fkd-,2026-04-08 08:04:58,2026-04-08 08:04:58,,04-08-2026 08:04,Wednesday,08:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Carousel,https://www.threads.com/@microsoftlearn/post/DW3rpT_Fkd-,microsoftlearn,,Educational,,356,13,12,0,1,0,8,0,0,0,14708,0,,,,,3.65,3.65,202604-W2
+Threads,"We give you: part 1 of our AI glossary
+
+Agents = execute tasks on your behalf
+
+Boosted conversations = apply custom instructions + grounded knowledge
+
+Copilot Studio = builds & manages agents
+
+Dataverse = a secure, structured data source
+
+Express Mode = reduces response latency
+
+Function calling = triggers APIs/workflows
+
+Governance = defines access & controls
+
+Human oversight = ensures accountability
+
+Inference = model generating output from input
+
+JSON = structured, machine-readable responses",SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW7VDTeCe69,2026-04-09 18:04:31,2026-04-09 18:04:31,,04-09-2026 18:04,Thursday,18:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW7VDTeCe69,microsoftlearn,,Educational,,270,15,14,1,0,0,15,1,0,0,14745,0,,,,,5.56,5.56,202604-W2
+Threads,"Before learning cloud tools, understand:
+• Networking basics
+• Identity & access
+• Cost implications
+
+Which one of these three do you want to learn more of next? We'll send you a link to a module!",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXF8ULgjd0P,2026-04-13 21:00:00,2026-04-13 21:00:20,,04-13-2026 21:00,Monday,21:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://www.threads.com/@microsoftlearn/post/DXF8ULgjd0P,microsoftlearn,,Conversation,,279,18,11,5,2,0,18,1,4,0,15041,0,,,,,6.45,6.45,202604-W2
+TikTok,Want to stay ahead? Microsoft’s research team is breaking down the trends shaping the future of work.,SENT,Microsoft Learn,TIKTOK_BUSINESS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.tiktok.com/@microsoftlearn/video/7628404240465022238,2026-04-13 20:24:45,2026-04-13 20:24:45,,04-13-2026 20:24,Monday,20:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,CLO,,Video,https://www.tiktok.com/@microsoftlearn/video/7628404240465022238,Microsoft Learn,,Educational,,303,21,19,2,0,0,324,2,0,0,9942,0,,,,,6.93,6.93,202604-W2
+Threads,"If you want to build your own Microsoft 365 Copilot Agent, follow this path:
+1. Module: Understand Microsoft 365 Agents SDK
+2. Module: Utilize an Azure OpenAI model to create an Agent
+3. Module: Build your custom Agent using Microsoft 365 Agents SDK",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW1ve1-GKA9,2026-04-07 14:00:00,2026-04-07 14:00:21,,04-07-2026 14:00,Tuesday,14:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW1ve1-GKA9,microsoftlearn,,Informational,,304,11,11,0,0,0,11,0,0,0,14628,0,,,,,3.62,3.62,202604-W1
+Threads,"We love seeing the developer expert community share how they build 👏
+MVPs Jonah Andersson and Håkan Silfvernagel walk through using the Microsoft Learn MCP Server so AI agents can quickly pull best practices from Learn docs as you code.
+https://youtu.be/8HCuV82huEw?t=920",SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DWrJ7B9Ftww,2026-04-03 11:19:25,2026-04-03 11:19:25,,04-03-2026 11:19,Friday,11:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Link,https://www.threads.com/@microsoftlearn/post/DWrJ7B9Ftww,microsoftlearn,,Informational,Microsoft Learn,323,23,19,3,1,0,23,1,2,0,14407,0,,,,,7.12,7.12,202604-W1
+TikTok,"Work IQ is the layer that makes AI feel personal. It understands your workflow, your intent, and your why.",SENT,Microsoft Learn,TIKTOK_BUSINESS,Emma Casey,MSFT Learn | AON (Universal),https://www.tiktok.com/@microsoftlearn/video/7632371622900452622,2026-04-24 13:00:00,2026-04-24 13:00:00,,04-24-2026 13:00,Friday,13:00,, , ,Copilot, ,MSFT Learn | Microsoft created,General,,Video,https://www.tiktok.com/@microsoftlearn/video/7632371622900452622,Microsoft Learn,,Micro-skilling,,348,21,16,4,1,0,369,3,1,0,9971,0,,,,,6.03,6.03,202604-W4
+Threads,"Take a quick detour from doomscrolling:
+Go learn a new skill!
+https://aiskillsnavigator.microsoft.com/",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DWy9xM3EeIH,2026-04-06 12:07:08,2026-04-06 12:07:30,,04-06-2026 12:07,Monday,12:00,, , ,AI Skills Navigator (AISN), ,MSFT Learn | Agency (Dojo) created,General,,Link,https://www.threads.com/@microsoftlearn/post/DWy9xM3EeIH,microsoftlearn,,Conversation,ASN,395,8,7,1,0,24,8,0,1,0,14573,0,,,,,2.03,2.03,202604-W1
+Threads,"Having a ""let's take a study break"" friend is a universal experience.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXuEpJClJp1,2026-04-29 11:02:23,2026-04-29 11:02:43,,04-29-2026 11:02,Wednesday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXuEpJClJp1,microsoftlearn,,Conversation,,407,15,11,4,0,0,15,0,4,0,15412,0,,,,,3.69,3.69,202604-W5
+TikTok,Thinking about learning AI but unsure where to start?  Kim asks Nia one simple question. Her response cuts through the overwhelm with a surprisingly practical way to begin. Press play 👆,SENT,Microsoft Learn,TIKTOK_BUSINESS,Emma Casey,MSFT Learn | OBO (Universal),https://www.tiktok.com/@microsoftlearn/video/7632495241194507534,2026-04-24 21:00:01,2026-04-24 21:00:01,,04-24-2026 21:00,Friday,21:00,, , ,AI Skills Navigator (AISN), ,MSFT Learn | Microsoft created,General,,Video,https://www.tiktok.com/@microsoftlearn/video/7632495241194507534,Microsoft Learn,,Brand,ASN,422,32,26,6,0,0,454,1,5,0,9972,0,,,,,7.58,7.58,202604-W4
+Threads,"Let’s level up your Azure skills this week. If your level is:
+• Beginner: Create an AI agent → Microsoft Applied Skills: Create an AI agent
+• Intermediate: Build a generative AI chat app → Microsoft Applied Skills: Build a generative AI chat app
+• Advanced: Develop generative AI apps with Azure OpenAI and SK → Microsoft Applied Skills: Develop generative AI apps with Azure OpenAI and Semantic Kernel",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW9XABGDYsK,2026-04-10 13:00:00,2026-04-10 13:00:06,,04-10-2026 13:00,Friday,13:00,, , ,Microsoft Applied Skills, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://www.threads.com/@microsoftlearn/post/DW9XABGDYsK,microsoftlearn,,Informational,,452,12,10,0,2,0,12,0,0,0,14794,0,,,,,2.65,2.65,202604-W2
+TikTok,"If it works, it's a study method.",SENT,Microsoft Learn,TIKTOK_BUSINESS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.tiktok.com/@microsoftlearn/video/7629774756887153950,2026-04-17 13:03:07,2026-04-17 13:03:07,,04-17-2026 13:03,Friday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,NextGen,,Video,https://www.tiktok.com/@microsoftlearn/video/7629774756887153950,Microsoft Learn,,Conversation,,463,25,16,6,3,0,488,3,3,0,9945,0,,,,,5.4,5.4,202604-W3
+X,"So that's why we're seeing a 2am spike, makes total sense now!",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,[Auto Import] (Universal),https://twitter.com/MicrosoftLearn/status/2040090769600520689,2026-04-03 11:35:17,2026-04-03 11:35:17,,04-03-2026 11:35,Friday,11:00,, , ,, ,,,,Text,https://twitter.com/MicrosoftLearn/status/2040090769600520689,Microsoft Learn,,,,471,7,5,1,0,0,7,0,1,0,483866,0,,,,,1.49,1.49,202604-W1
+Threads,"The 5 generative AI models every leader should know:
+1. Large Language Models (LLMs) = generate and understand natural language text
+2. Code Models = specialized in programming languages and code generation
+3. Diffusion Models = generate images from text prompts
+4. Multimodal Models = handle multiple input types across text, images, and audio
+5. Domain‑Specific Models = fine-tuned for specific industries or tasks",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXIaPpEjb0c,2026-04-14 20:00:00,2026-04-14 20:00:23,,04-14-2026 20:00,Tuesday,20:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Decision Maker/Executive,,Text,https://www.threads.com/@microsoftlearn/post/DXIaPpEjb0c,microsoftlearn,,Educational,,565,14,12,0,2,0,14,0,0,0,15104,0,,,,,2.48,2.48,202604-W2
+Threads,"Give us your take:
+What’s a human skill AI can amplify, but never replace?
+
+We’ll be spotlighting top comments during an upcoming Microsoft Learn event 💻",SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW2VSiniYgO,2026-04-07 19:30:23,2026-04-07 19:30:23,,04-07-2026 19:30,Tuesday,19:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW2VSiniYgO,microsoftlearn,,Conversation,,592,15,13,2,0,0,15,0,2,0,14628,0,,,,,2.53,2.53,202604-W1
+Threads,"A clear path to getting Excel certified:
+• Intermediate Certification: Microsoft Office Specialist: Excel Associate (Microsoft 365 Apps)
+• Advanced Certification: Microsoft Office Specialist: Excel Expert (Microsoft 365 Apps)",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXpj-tSGpIn,2026-04-27 17:00:00,2026-04-27 17:00:21,,04-27-2026 17:00,Monday,17:00,, , ,Microsoft Certifications, ,MSFT Learn | Agency (Dojo) created,Biz User,,Text,https://www.threads.com/@microsoftlearn/post/DXpj-tSGpIn,microsoftlearn,,Informational,,616,15,11,1,3,0,15,0,1,0,15351,0,,,,,2.44,2.44,202604-W4
+TikTok,Just a little corner déjà vu 📎,SENT,Microsoft Learn,TIKTOK_BUSINESS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.tiktok.com/@microsoftlearn/video/7634509673021869325,2026-04-30 07:17:39,2026-04-30 07:17:39,,04-30-2026 07:17,Thursday,07:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Video,https://www.tiktok.com/@microsoftlearn/video/7634509673021869325,Microsoft Learn,,Conversation,,649,51,46,5,0,0,700,0,5,0,10003,0,,,,,7.86,7.86,202604-W5
+Threads,Do you ever revisit something you learned months ago and realize it finally makes sense now?,SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXHOtl4GIk9,2026-04-14 09:00:00,2026-04-14 09:00:05,,04-14-2026 09:00,Tuesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXHOtl4GIk9,microsoftlearn,,Conversation,,654,33,21,11,1,0,33,2,8,1,15041,0,,,,,5.05,5.05,202604-W2
+Threads,“This should only take a few minutes” …famous last words.,SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXzQTRNmoHJ,2026-05-01 11:20:28,2026-05-01 11:20:48,,05-01-2026 11:20,Friday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXzQTRNmoHJ,microsoftlearn,,Conversation,,678,8,7,0,1,0,8,0,0,0,15432,0,,,,,1.18,1.18,202605-W1
+Threads,Everyone loves the idea of getting better but very few people enjoy the part where it’s confusing.,SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXJ1iAfFlo1,2026-04-15 09:17:41,2026-04-15 09:17:41,,04-15-2026 09:17,Wednesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXJ1iAfFlo1,microsoftlearn,,Conversation,,680,27,18,6,3,0,27,2,4,0,15104,0,,,,,3.97,3.97,202604-W3
+Threads,"Have you ever heard the term “VM” and wondered what it actually means? A Virtual Machine (VM) is basically a computer in the cloud.
+• You install the operating system, apps, and tools just like a physical machine.
+• Azure handles the hardware for you.
+Use a VM when you need control, customization, or a fast way to spin up a server.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXNqs36GGiR,2026-04-16 21:00:00,2026-04-16 21:00:05,,04-16-2026 21:00,Thursday,21:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXNqs36GGiR,microsoftlearn,,Educational,,775,14,10,4,0,0,14,2,2,0,15177,0,,,,,1.81,1.81,202604-W3
+Threads,Dashboards are useless if nobody acts on them. Do it right: connect metrics to decisions so every number tells you what to do next.,SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DWo0EtYlmxz,2026-04-02 13:30:00,2026-04-02 13:30:06,,04-02-2026 13:30,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DWo0EtYlmxz,microsoftlearn,,Conversation,,852,14,14,0,0,0,14,0,0,0,14383,0,,,,,1.64,1.64,202604-W1
+Threads,"The reality is most people don’t need more courses, they need to finish one first before they move on.",SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW2K_hLiVJh,2026-04-07 18:00:24,2026-04-07 18:00:24,,04-07-2026 18:00,Tuesday,18:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW2K_hLiVJh,microsoftlearn,,Conversation,,951,19,18,0,1,0,19,0,0,0,14628,0,,,,,2.0,2.0,202604-W1
+Instagram,"From your first role to leadership, AI can help you learn faster, communicate more clearly, and make better decisions.
+This blog shows how business users apply AI at every career stage:
+• Early career: ramp up faster, build confidence, and draft clearer work
+• Mid-career: scale your impact, align stakeholders, and streamline workflows
+• Leadership: spot patterns, pressure-test strategy, and coach more effectively
+You’ll also find guidance on AI Skills Navigator, with role-based training to keep building the right skills for what’s next.
+🔗 Read the blog at the link in bio.",SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXrtdKMj23J/,2026-04-28 13:03:01,2026-04-28 13:03:01,,04-28-2026 13:03,Tuesday,13:00,, , ,Blog, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.instagram.com/p/DXrtdKMj23J/,microsoftlearn,Thought Leadership Approver Group,Informational,Other,1002,15,10,0,0,0,15,0,0,0,127107,0,,,,,1.5,1.5,202604-W4
+Threads,"Watching the tutorial: got it.
+Doing it alone: I do not got it.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXw25d6GiX_,2026-04-30 13:00:00,2026-04-30 13:00:20,,04-30-2026 13:00,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXw25d6GiX_,microsoftlearn,,Conversation,,1044,17,15,2,0,0,17,0,2,0,15415,0,,,,,1.63,1.63,202604-W5
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3877365876249319459,2026-04-17 11:00:52,2026-04-17 11:00:52,,04-17-2026 11:00,Friday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://www.instagram.com/stories/microsoftlearn/3877365876249319459,microsoftlearn,,Conversation,,1134,11,11,0,0,0,849,0,0,0,125690,947,,940.0,7.0,1056.0,0.97,0.97,202604-W3
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3877558869077987594,2026-04-17 17:24:19,2026-04-17 17:24:19,,04-17-2026 17:24,Friday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3877558869077987594,microsoftlearn,,Conversation,Other,1153,38,15,1,1,21,815,0,0,0,125690,893,,915.0,2.0,999.0,3.3,3.3,202604-W3
+Threads,"Consistency is hard without a system. Find a way to make learning part of your day, even 10 minutes at a time, and you’ll see the difference.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW6dmvUFgRi,2026-04-09 10:00:00,2026-04-09 10:00:20,,04-09-2026 10:00,Thursday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW6dmvUFgRi,microsoftlearn,,Conversation,,1107,21,15,3,3,0,21,0,3,0,14745,0,,,,,1.9,1.9,202604-W2
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3877557716273543318,2026-04-17 17:22:01,2026-04-17 17:22:01,,04-17-2026 17:22,Friday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3877557716273543318,microsoftlearn,,Conversation,,1152,16,16,0,0,0,942,0,0,0,125690,928,,928.0,1.0,1049.0,1.39,1.39,202604-W3
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3867383496247815280,2026-04-03 16:27:40,2026-04-03 16:27:40,,04-03-2026 16:27,Friday,16:00,, , ,Docs, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3867383496247815280,microsoftlearn,,Informational,Microsoft Learn,2101,32,31,0,0,1,960,0,0,0,122391,1024,,1828.0,3.0,1117.0,1.52,1.52,202604-W1
+Threads,Here’s your next course: finish the one you started first.,SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXjqWOslvTj,2026-04-25 10:00:13,2026-04-25 10:00:13,,04-25-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXjqWOslvTj,microsoftlearn,,Conversation,,1251,34,22,10,2,0,34,1,9,0,15311,0,,,,,2.72,2.72,202604-W4
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3877556368299771569,2026-04-17 17:19:20,2026-04-17 17:19:20,,04-17-2026 17:19,Friday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3877556368299771569,microsoftlearn,,Conversation,,1304,14,13,1,0,0,951,0,0,0,125690,1053,,1054.0,6.0,1188.0,1.07,1.07,202604-W3
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3867383102234899444,2026-04-03 16:26:53,2026-04-03 16:26:53,,04-03-2026 16:26,Friday,16:00,, , ,Microsoft Applied Skills, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3867383102234899444,microsoftlearn,,Informational,Microsoft Learn,2235,42,31,0,0,11,1089,0,0,0,122391,1077,,1960.0,1.0,1187.0,1.88,1.88,202604-W1
+TikTok,What’s your go-to Microsoft tool?,SENT,Microsoft Learn,TIKTOK_BUSINESS,Emma Casey,MSFT Learn | AON (Universal),https://www.tiktok.com/@microsoftlearn/video/7631753166127631630,2026-04-22 21:00:00,2026-04-22 21:00:00,,04-22-2026 21:00,Wednesday,21:00,, , ,Copilot, ,MSFT Learn | Microsoft created,General,,Video,https://www.tiktok.com/@microsoftlearn/video/7631753166127631630,Microsoft Learn,,Conversation,,1306,42,39,3,0,0,1348,1,2,0,9970,0,,,,,3.22,3.22,202604-W4
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3877365814148454767,2026-04-17 11:00:45,2026-04-17 11:00:45,,04-17-2026 11:00,Friday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://www.instagram.com/stories/microsoftlearn/3877365814148454767,microsoftlearn,,Conversation,,1367,15,15,0,0,0,810,0,0,0,125690,1173,,1152.0,5.0,1184.0,1.1,1.1,202604-W3
+Threads,"Hot take: If your meeting doesn’t require discussion, it should be an email.",SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DWl3RVeFhEq,2026-04-01 10:00:14,2026-04-01 10:00:14,,04-01-2026 10:00,Wednesday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DWl3RVeFhEq,microsoftlearn,,Conversation,,1361,12,11,0,1,0,12,0,0,0,14353,0,,,,,0.88,0.88,202604-W1
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3876832030059644116,2026-04-16 17:20:13,2026-04-16 17:20:13,,04-16-2026 17:20,Thursday,17:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Developer,,Photo,https://www.instagram.com/stories/microsoftlearn/3876832030059644116,microsoftlearn,,Informational,Other,1405,14,14,0,0,0,915,0,0,0,125523,1136,,1138.0,9.0,1227.0,1.0,1.0,202604-W3
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3867382867320370722,2026-04-03 16:26:25,2026-04-03 16:26:25,,04-03-2026 16:26,Friday,16:00,, , ,Microsoft Certifications, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3867382867320370722,microsoftlearn,,Informational,Microsoft Learn,2453,53,36,0,1,16,1098,0,0,0,122391,1169,,2137.0,2.0,1245.0,2.16,2.16,202604-W1
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3871025711100790581,2026-04-08 17:04:06,2026-04-08 17:04:06,,04-08-2026 17:04,Wednesday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3871025711100790581,microsoftlearn,,Conversation,,1414,13,12,1,0,0,919,0,0,0,123566,1167,,1170.0,5.0,1287.0,0.92,0.92,202604-W2
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | OBO (Universal),https://www.instagram.com/stories/microsoftlearn/3881970909666281458,2026-04-23 19:30:15,2026-04-23 19:30:15,,04-23-2026 19:30,Thursday,19:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,Biz User,,Photo,https://www.instagram.com/stories/microsoftlearn/3881970909666281458,microsoftlearn,,Informational,Microsoft Learn,1433,39,19,0,0,20,872,0,0,0,126629,1156,,1163.0,4.0,1275.0,2.72,2.72,202604-W4
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3867382586553621656,2026-04-03 16:25:51,2026-04-03 16:25:51,,04-03-2026 16:25,Friday,16:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3867382586553621656,microsoftlearn,,Informational,,2691,36,36,0,0,0,1109,0,0,0,122391,1237,,2363.0,3.0,1329.0,1.34,1.34,202604-W1
+Threads,"Save yourself the headache:
+If you can’t trace a number back to its source, don’t use it to make decisions.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXW6tD5lD-W,2026-04-20 11:13:00,2026-04-20 11:13:19,,04-20-2026 11:13,Monday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Biz User,,Text,https://www.threads.com/@microsoftlearn/post/DXW6tD5lD-W,microsoftlearn,,Conversation,,1535,24,19,2,3,0,24,0,2,0,15196,0,,,,,1.56,1.56,202604-W3
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3865865272972387697,2026-04-01 14:11:13,2026-04-01 14:11:13,,04-01-2026 14:11,Wednesday,14:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Video,https://www.instagram.com/stories/microsoftlearn/3865865272972387697,microsoftlearn,,Conversation,,1717,26,24,1,1,0,905,0,0,0,121986,1415,,1426.0,4.0,1243.0,1.51,1.51,202604-W1
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | OBO (Universal),https://www.instagram.com/stories/microsoftlearn/3882598610513296812,2026-04-24 16:17:23,2026-04-24 16:17:23,,04-24-2026 16:17,Friday,16:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3882598610513296812,microsoftlearn,,Informational,Other,1791,54,18,2,3,31,839,0,0,0,126754,1455,,1456.0,14.0,1493.0,3.02,3.02,202604-W4
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3881850214508850167,2026-04-23 15:30:27,2026-04-23 15:30:27,,04-23-2026 15:30,Thursday,15:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3881850214508850167,microsoftlearn,,Conversation,,1775,37,36,1,0,0,957,0,0,0,126629,1497,,1501.0,11.0,1560.0,2.08,2.08,202604-W4
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3872390604932503537,2026-04-10 14:15:53,2026-04-10 14:15:53,,04-10-2026 14:15,Friday,14:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Photo,https://www.instagram.com/stories/microsoftlearn/3872390604932503537,microsoftlearn,,Informational,Other,1793,20,17,2,1,0,963,0,0,0,124012,1488,,1495.0,14.0,1623.0,1.12,1.12,202604-W2
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3876813911194833240,2026-04-16 16:44:13,2026-04-16 16:44:13,,04-16-2026 16:44,Thursday,16:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3876813911194833240,microsoftlearn,,Conversation,,1777,16,15,1,0,0,909,0,0,0,125523,1495,,1480.0,20.0,1553.0,0.9,0.9,202604-W3
+Instagram,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3865865166420275750,2026-04-01 14:11:01,2026-04-01 14:11:01,,04-01-2026 14:11,Wednesday,14:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Video,https://www.instagram.com/stories/microsoftlearn/3865865166420275750,microsoftlearn,,Conversation,,1794,1083,0,0,0,0,1083,0,0,0,121986,1549,,,,,60.37,60.37,202604-W1
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3871025457236345281,2026-04-08 17:03:35,2026-04-08 17:03:35,,04-08-2026 17:03,Wednesday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3871025457236345281,microsoftlearn,,Conversation,,1823,14,14,0,0,0,987,0,0,0,123566,1562,,1520.0,11.0,1601.0,0.77,0.77,202604-W2
+X,Learn more about MCP Server here https://t.co/VmZdQ0VGR7,SENT,Microsoft Learn,TWITTER,SprinklrSystem ,[Auto Import] (Universal),https://twitter.com/MicrosoftLearn/status/2040085127410196626,2026-04-03 11:12:51,2026-04-03 11:12:51,,04-03-2026 11:12,Friday,11:00,, , ,, ,,,,Link,https://twitter.com/MicrosoftLearn/status/2040085127410196626,Microsoft Learn,,,,1858,25,3,1,0,0,25,0,0,1,483866,0,,,,,1.35,1.35,202604-W1
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3884887566474770380,2026-04-27 20:05:07,2026-04-27 20:05:07,,04-27-2026 20:05,Monday,20:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Photo,https://www.instagram.com/stories/microsoftlearn/3884887566474770380,microsoftlearn,,Brand,Other,1961,30,27,3,0,0,1028,0,0,0,127241,1615,,1618.0,15.0,1728.0,1.53,1.53,202604-W4
+Threads,Learning is so funny because what do you mean you can struggle with something for hours then it'll randomly click and you understand it in 30 seconds the next day???,SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW_nMdgmAxA,2026-04-11 10:00:00,2026-04-11 10:00:20,,04-11-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW_nMdgmAxA,microsoftlearn,,Conversation,,1934,19,18,0,1,0,19,0,0,0,14858,0,,,,,0.98,0.98,202604-W2
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3875198580143642283,2026-04-14 11:14:33,2026-04-14 11:14:33,,04-14-2026 11:14,Tuesday,11:00,, , ,Other, ,MSFT Learn | Microsoft created,NextGen,,Video,https://www.instagram.com/stories/microsoftlearn/3875198580143642283,microsoftlearn,,Informational,Other,2062,52,25,10,17,0,954,0,0,0,124962,0,,1631.0,14.0,1704.0,2.52,2.52,202604-W2
+IG Stories,This message has no text.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/stories/microsoftlearn/3867382259649563373,2026-04-03 16:25:12,2026-04-03 16:25:12,,04-03-2026 16:25,Friday,16:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/stories/microsoftlearn/3867382259649563373,microsoftlearn,,Informational,Microsoft Learn,3857,79,49,1,4,25,1047,0,0,0,122391,1711,,3236.0,32.0,1723.0,2.05,2.05,202604-W1
+X,Your expertise drives it. AI builds it: https://aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc/?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_AON&UTM_Term=AON,SENT,Microsoft Learn,TWITTER,Marlon Zanatti,MSFT Learn | Business Users (Universal),https://twitter.com/MicrosoftLearn/status/2045502614695981400,2026-04-18 10:00:00,2026-04-18 10:00:01,,04-18-2026 10:00,Saturday,10:00,, , ,AI Skills Navigator (AISN), ,MSFT Learn | Microsoft created,Biz User,,Link,https://twitter.com/MicrosoftLearn/status/2045502614695981400,Microsoft Learn,,Educational,ASN,10072,339,36,1,9,355,62,0,0,1,493186,0,,,,,3.37,3.37,202604-W3
+Threads,Be honest: How often do you spend time fixing your process vs getting work done?,SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DWtloU8kSKj,2026-04-04 10:00:00,2026-04-04 10:00:20,,04-04-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DWtloU8kSKj,microsoftlearn,,Conversation,,2585,30,21,8,1,0,30,3,3,2,14443,0,,,,,1.16,1.16,202604-W1
+Instagram,"AI is only as smart as the context behind it. Work IQ gives Copilot the “why,” so you can get the most out of your AI automation.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/reel/DXhScYZEtiA/,2026-04-24 13:00:00,2026-04-24 13:00:11,,04-24-2026 13:00,Friday,13:00,, , ,Copilot, ,MSFT Learn | Microsoft created,General,,Video,https://www.instagram.com/reel/DXhScYZEtiA/,microsoftlearn,,Micro-skilling,,2942,99,69,5,5,0,3041,4,1,0,126754,0,,,,,3.37,3.37,202604-W4
+X,"Every team has a workflow that’s embarrassingly manual compared to everything else they’ve built.
+The legacy runbooks that ""work fine"" always seem to stick around.
+What’s the one workflow you can’t seem to automate?",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2039757254568628464,2026-04-02 13:30:00,2026-04-02 13:30:01,,04-02-2026 13:30,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2039757254568628464,Microsoft Learn,,Conversation,,3003,36,30,2,4,0,36,0,2,0,483810,0,,,,,1.2,1.2,202604-W1
+X,"Stop asking for permission. Start building.
+
+Read more on how Alfredo, VP of Revenue Strategy at Microsoft, reframes vibe coding: empower people closest to the work to move, test, and learn faster—without waiting on perfect conditions.
+
+https://aka.ms/StopAskingPermissionStartBuilding",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | Executives (Universal),https://twitter.com/MicrosoftLearn/status/2039829649979486606,2026-04-02 18:17:39,2026-04-02 18:17:41,,04-02-2026 18:17,Thursday,18:00,, , ,Blog, ,MSFT Learn | Microsoft created,Decision Maker/Executive,,Photo,https://twitter.com/MicrosoftLearn/status/2039829649979486606,Microsoft Learn,,Informational,Other,3048,79,48,1,10,48,79,1,0,0,483810,0,,,,,2.59,2.59,202604-W1
+Instagram,Where is everyone at in their AI journey right now? Answer below:,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/p/DWo0BWMD167/,2026-04-02 13:31:21,2026-04-02 13:31:21,,04-02-2026 13:31,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/p/DWo0BWMD167/,microsoftlearn,,Conversation,,3068,45,38,2,2,0,45,0,2,0,122155,0,,,,,1.47,1.47,202604-W1
+Threads,I'm flattered you think I finished this course without a single crash out.,SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXrTh-6Fmdo,2026-04-28 09:14:46,2026-04-28 09:15:07,,04-28-2026 09:15,Tuesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXrTh-6Fmdo,microsoftlearn,,Conversation,,3119,38,24,12,2,0,38,3,8,1,15385,0,,,,,1.22,1.22,202604-W4
+Instagram,"Save this for when you're ready to start your first vibe coding project. It doesn't need to be impressive. It needs to be useful.
+
+Pick one task you repeat every week.
+Describe the inputs and the output.
+Build it in plain language. AI does the rest.
+
+That's it. That's the entry point.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | Business Users (Universal),https://www.instagram.com/p/DW4HYjplVfs/,2026-04-08 12:07:18,2026-04-08 12:07:32,,04-08-2026 12:07,Wednesday,12:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.instagram.com/p/DW4HYjplVfs/,microsoftlearn,,Educational,,3137,71,53,3,3,0,71,1,2,0,123566,0,,,,,2.26,2.26,202604-W2
+Instagram, @robert.triebwasser giving us a Copilot and Excel tip we all need for a mid week pick me up 🔥,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/reel/DXH9xMej8fI/,2026-04-14 15:54:56,2026-04-14 15:54:56,,04-14-2026 15:54,Tuesday,15:00,, , ,Copilot, ,MSFT Learn | Microsoft created,General,,Video,https://www.instagram.com/reel/DXH9xMej8fI/,microsoftlearn,,Educational,,3179,110,63,4,4,0,3289,1,2,1,124962,0,,,,,3.46,3.46,202604-W2
+X,"Join us for a fast kickoff to Azure Cosmos DB, then watch a live, end-to-end build in Visual Studio Code where we create a new Cosmos DB database and wire up an app using modern developer workflows: https://aka.ms/AzD415/x",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2042044825185259637,2026-04-08 21:00:00,2026-04-08 21:00:00,,04-08-2026 21:00,Wednesday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Photo,https://twitter.com/MicrosoftLearn/status/2042044825185259637,Microsoft Learn,,Informational,Other,3217,46,27,1,7,36,46,1,0,0,484631,0,,,,,1.43,1.43,202604-W2
+Threads,"Learning glow up:
+Getting it to run < Understanding why it runs.
+Debugging gets so much easier after that.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DX1r43XGuE4,2026-05-02 10:00:00,2026-05-02 10:00:20,,05-02-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://www.threads.com/@microsoftlearn/post/DX1r43XGuE4,microsoftlearn,,Conversation,,3235,13,11,1,1,0,13,0,0,1,15446,0,,,,,0.4,0.4,202605-W1
+Instagram,Your next lesson is one tap away. ✍️,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/reel/DXhEFL-D6iM/,2026-04-24 09:47:55,2026-04-24 09:47:55,,04-24-2026 09:47,Friday,09:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Video,https://www.instagram.com/reel/DXhEFL-D6iM/,microsoftlearn,,Conversation,,3306,86,65,11,6,0,3392,1,10,0,126754,0,,,,,2.6,2.6,202604-W4
+Threads,Want to instantly improve your analysis? Trace every metric back to its source table.,SENT,microsoftlearn,THREADS,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXhABPGFtAO,2026-04-24 09:11:52,2026-04-24 09:11:52,,04-24-2026 09:11,Friday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://www.threads.com/@microsoftlearn/post/DXhABPGFtAO,microsoftlearn,,Conversation,,3342,12,8,3,1,0,12,1,2,0,15267,0,,,,,0.36,0.36,202604-W4
+Instagram,Microsoft’s research team is exploring new trends and insights on AI. Follow along to stay ahead of what’s coming.,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/reel/DXF3s7fj0qW/,2026-04-13 20:21:15,2026-04-13 20:21:15,,04-13-2026 20:21,Monday,20:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,CLO,,Video,https://www.instagram.com/reel/DXF3s7fj0qW/,microsoftlearn,,Educational,,3346,120,87,7,16,0,3466,3,4,0,124962,0,,,,,3.59,3.59,202604-W2
+Instagram,"Building AI skills shouldn’t feel complicated—or like you need five different tabs open to keep track.
+Here’s what’s new in AI Skills Navigator, based on what learners and team leaders asked for most:
+
+• More structure (and visibility) for learning paths, with real‑time progress tracking (smarter skilling playlists)
+• Learn when it works for you, then pick up right where you left off (more flexible skilling sessions)
+• Quickly find instructor‑led options near you that match your needs (Training Services Partners discovery)
+• A better way to show applied AI capability (not just knowledge) (integrated credentials)
+
+If you’re building AI skills for yourself or helping a team level up, take a look at what’s new at the link in bio.",SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | OBO (Universal),https://www.instagram.com/p/DXXUvpZFfxO/,2026-04-20 15:00:00,2026-04-20 15:00:00,,04-20-2026 15:00,Monday,15:00,, , ,Blog, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/p/DXXUvpZFfxO/,microsoftlearn,,Informational,Other,3355,34,27,1,0,0,34,0,1,0,126144,0,,,,,1.01,1.01,202604-W3
+Instagram,"Save this video so next time someone drops AI in a meeting, you’ll know exactly what they mean.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/reel/DXeyvS3gF0z/,2026-04-23 17:30:00,2026-04-23 17:30:09,,04-23-2026 17:30,Thursday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Video,https://www.instagram.com/reel/DXeyvS3gF0z/,microsoftlearn,,Educational,,3486,134,81,3,16,0,3620,2,1,0,126629,0,,,,,3.84,3.84,202604-W4
+Instagram,"Most AI conversations focus on what’s possible.
+This one focuses on who it’s built for.
+The Ability Summit brings together the people pushing accessible AI forward, and the digital keynote is your way in.
+Sign up using the link in bio.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | OBO (Universal),https://www.instagram.com/p/DXb2HuZDDhz/,2026-04-22 09:09:06,2026-04-22 09:09:20,,04-22-2026 09:09,Wednesday,09:00,, , ,Other, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://www.instagram.com/p/DXb2HuZDDhz/,microsoftlearn,,Informational,Other,3555,28,27,0,1,0,28,0,0,0,126436,0,,,,,0.79,0.79,202604-W4
+Instagram,Any luck? Leave a comment with 🏅 if you found it.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXmU3k6jw5m/,2026-04-27 09:00:00,2026-04-27 09:00:05,,04-27-2026 09:00,Monday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,NextGen,,Photo,https://www.instagram.com/p/DXmU3k6jw5m/,microsoftlearn,,Conversation,,3624,96,79,10,1,0,96,1,9,0,127107,0,,,,,2.65,2.65,202604-W4
+Instagram,"✨ Build skills. Lead with AI. Make an impact that matters.
+The Microsoft Student Ambassadors Program is back—open to students from all areas of study.
+🚀 Learn AI & leadership
+🌍 Join a global community
+📄 Boost your CV
+✅ No application
+👉 Join the program
+📖 Click the link in bio to learn more",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | OBO (Universal),https://www.instagram.com/p/DXHzXTyDuRR/,2026-04-14 15:00:00,2026-04-14 15:00:04,,04-14-2026 15:00,Tuesday,15:00,, , ,Blog, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://www.instagram.com/p/DXHzXTyDuRR/,microsoftlearn,,Brand,Other,3659,43,32,1,0,0,43,1,0,0,124962,0,,,,,1.18,1.18,202604-W2
+X,"Are your AI systems prepared for the risks you can’t see?
+As systems evolve, so do risks. Having good structure keeps everything on track.
+
+Learn how to reduce risks and scale responsibly https://aka.ms/ManageGenAILifecycles",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2044521144519127224,2026-04-15 17:00:00,2026-04-15 17:00:01,,04-15-2026 17:00,Wednesday,17:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Photo,https://twitter.com/MicrosoftLearn/status/2044521144519127224,Microsoft Learn,,Informational,Microsoft Learn,3664,114,74,3,6,60,114,1,0,2,492452,0,,,,,3.11,3.11,202604-W3
+LinkedIn,"Accessibility isn’t a feature you add later. It changes how you build from day one.
+
+That’s the lens behind the Ability Summit. The digital keynote highlights the people driving accessible innovation and shows how their ideas come to life in the tools and workflows they use every day. Save your spot → http://aka.ms/abilitysummit",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7452704470976770048,2026-04-22 09:06:39,2026-04-22 09:06:50,,04-22-2026 09:06,Wednesday,09:00,, , ,Other, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7452704470976770048,Microsoft Learn,,Informational,Other,3815,77,43,1,8,25,77,1,0,0,1140068,0,,,,,2.02,2.02,202604-W4
+Threads,"If your dashboard looks right but decisions feel off, check the data source.
+Not all tables are updated at the same time, and that lag shows up in your results.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXedTR5GslM,2026-04-23 09:30:00,2026-04-23 09:30:22,,04-23-2026 09:30,Thursday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://www.threads.com/@microsoftlearn/post/DXedTR5GslM,microsoftlearn,,Conversation,,3815,10,7,2,1,0,10,0,1,1,15250,0,,,,,0.26,0.26,202604-W4
+Instagram,Seriously. No gatekeeping allowed. 🙅,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/reel/DXPYth8D65h/,2026-04-17 13:02:27,2026-04-17 13:02:27,,04-17-2026 13:02,Friday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,NextGen,,Video,https://www.instagram.com/reel/DXPYth8D65h/,microsoftlearn,,Conversation,,3861,86,62,14,5,0,3947,1,13,0,125690,0,,,,,2.23,2.23,202604-W3
+Instagram,How many are you claiming? Post it to your story and let’s see. 👀,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXicTVnkTp_/,2026-04-25 10:00:00,2026-04-25 10:00:05,,04-25-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/p/DXicTVnkTp_/,microsoftlearn,,Conversation,,4086,96,76,2,5,0,96,0,2,0,126860,0,,,,,2.35,2.35,202604-W4
+Instagram,Today felt like the right day to release these.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DWmExswlDC5/,2026-04-01 14:00:00,2026-04-01 14:00:03,,04-01-2026 14:00,Wednesday,14:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/p/DWmExswlDC5/,microsoftlearn,,Conversation,,4109,108,79,12,5,0,108,5,6,1,121986,0,,,,,2.63,2.63,202604-W1
+Threads,The best way to learn a new tool? Use it to solve a problem you already have.,SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DW87bdxiWXC,2026-04-10 08:59:05,2026-04-10 08:59:25,,04-10-2026 08:59,Friday,08:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DW87bdxiWXC,microsoftlearn,,Conversation,,4126,15,13,2,0,0,15,1,1,0,14794,0,,,,,0.36,0.36,202604-W2
+Instagram,"Your architecture starts with one choice: where your data lives.
+Since every storage option behaves differently, that first decision shapes how fast, scalable, and resilient your system can be.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXvdczZIIiT/,2026-04-30 09:00:00,2026-04-30 09:00:06,,04-30-2026 09:00,Thursday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Developer,,Carousel,https://www.instagram.com/p/DXvdczZIIiT/,microsoftlearn,,Educational,,4160,72,55,0,5,0,72,0,0,0,127444,0,,,,,1.73,1.73,202604-W5
+X,"Cloud success is built on structure.
+
+Azure has two sides:
+Physical infrastructure → datacenters, regions, availability zones
+Management infrastructure → subscriptions, policies, access controls
+
+The physical side keeps your apps online, and the management side keeps your cloud clean, secure, and organized.
+
+Learn how they fit together, and you’ll build cloud environments that are predictable, resilient, and easy to manage, no matter how big you grow.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2041546545397432500,2026-04-07 12:00:00,2026-04-07 12:00:01,,04-07-2026 12:00,Tuesday,12:00,, , ,Other, ,MSFT Learn | Microsoft created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2041546545397432500,Microsoft Learn,,Educational,,4210,77,67,0,10,0,77,0,0,0,484590,0,,,,,1.83,1.83,202604-W1
+X,"Think IT runs all the agents? Not quite.
+
+Different teams help make sure agent approvals support your org’s goals.
+
+• Admins: Manage approvals, apply rules, and check technical details.
+• Business owners: Give context on what the agent is for.
+• Security & compliance: Watch for risky or overly broad access requests.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2048809400320573840,2026-04-27 13:00:00,2026-04-27 13:00:00,,04-27-2026 13:00,Monday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://twitter.com/MicrosoftLearn/status/2048809400320573840,Microsoft Learn,,Educational,,4310,53,44,1,8,0,53,0,0,1,495230,0,,,,,1.23,1.23,202604-W4
+X,"If you’ve been waiting for a clean starting point in AI, AI-900 is it. Today, we're highlighting ICAIRE's Women Elevate program, delivered by Spectrum Networks. This global community is helping women build entry-level AI skills and responsible innovation mindset, then prove it with AI‑900: Azure AI Fundamentals, which is designed for both technical and non-technical learners.
+
+Start today and follow their lead: https://aiskillsnavigator.microsoft.com/explore/search/cert-83587e0a0754cfee561ade3e27d9fa1cdaf15ae03be52d2413b2b858d1b4eda4?UTM_Source=STRY_Social&UTM_Medium=Social&UTM_Campaign=Spectrum_customervoice&UTM_Term=customervoice",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2041138856498438419,2026-04-06 09:00:00,2026-04-06 09:00:00,,04-06-2026 09:00,Monday,09:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,Decision Maker/Executive,,Photo,https://twitter.com/MicrosoftLearn/status/2041138856498438419,Microsoft Learn,Other,Informational,ASN,4338,127,65,2,12,83,127,2,0,0,484614,0,,,,,2.93,2.93,202604-W1
+X,"Devs: if you’ve been meaning to start learning but don’t know where to begin, this one’s for you.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2039402413333815326,2026-04-01 14:00:00,2026-04-01 14:00:00,,04-01-2026 14:00,Wednesday,14:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,Developer,,Photo,https://twitter.com/MicrosoftLearn/status/2039402413333815326,Microsoft Learn,,Informational,,4436,108,91,4,13,0,108,4,0,0,483769,0,,,,,2.43,2.43,202604-W1
+LinkedIn,"Amanda didn’t wait for an AI role to appear—she started learning out of curiosity.
+What began as a side hustle led to multiple AI certifications, new confidence, and an entirely new career path focused on AI enablement.
+Today, she helps others avoid the false starts she once faced—and wakes up excited about the work she does.
+
+👉 Start your own AI skilling journey with AI Skills Navigator: https://aiskillsnavigator.microsoft.com/?UTM_Source=STRY_Social&UTM_Medium=Social&UTM_Campaign=StryPilot1Amanda_LinkedIn&UTM_Term=LinkedIn",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7450226633384300545,2026-04-15 13:00:00,2026-04-15 13:00:48,,04-15-2026 13:00,Wednesday,13:00,, , ,AI Skills Navigator (AISN), ,MSFT Learn | Microsoft created,General,,Video,https://www.linkedin.com/feed/update/urn:li:ugcPost:7450226633384300545,Microsoft Learn,,Brand,ASN,4453,243,48,2,5,42,1486,1,1,0,1131885,0,,,,,5.46,5.46,202604-W3
+X,"Your data already has answers. The problem? Teams define things differently. This module shows how to model business concepts first, connect them to your data, and get answers everyone can trust. https://aka.ms/AA101yii",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2039870499505803419,2026-04-02 21:00:00,2026-04-02 21:00:00,,04-02-2026 21:00,Thursday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Link,https://twitter.com/MicrosoftLearn/status/2039870499505803419,Microsoft Learn,Other,Informational,Microsoft Learn,4462,180,64,0,3,111,180,0,0,0,483866,0,,,,,4.03,4.03,202604-W1
+Instagram,"Whether you’re just getting curious about AI or ready to build something real, this is your moment. Learn how to create your own AI agent with simple, no‑code tools — live, guided, and supported every step of the way.
+Register at the link in bio.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | OBO (Universal),https://www.instagram.com/p/DW41CNcFlmd/,2026-04-09 08:00:00,2026-04-09 08:00:03,,04-09-2026 08:00,Thursday,08:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://www.instagram.com/p/DW41CNcFlmd/,microsoftlearn,,Informational,Other,4553,202,105,5,62,0,202,0,5,0,123805,0,,,,,4.44,4.44,202604-W2
+Threads,"If a workflow depends on people remembering every step, it needs better documentation and potentially automation.",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DWrQSNBEdf1,2026-04-03 12:15:00,2026-04-03 12:15:21,,04-03-2026 12:15,Friday,12:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Biz User,,Text,https://www.threads.com/@microsoftlearn/post/DWrQSNBEdf1,microsoftlearn,,Conversation,,4559,22,17,4,1,0,22,1,3,0,14407,0,,,,,0.48,0.48,202604-W1
+Instagram,Cloud models… but make it make sense. ☁️,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXroFvZj9Vm/,2026-04-28 17:00:00,2026-04-28 17:00:06,,04-28-2026 17:00,Tuesday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Carousel,https://www.instagram.com/p/DXroFvZj9Vm/,microsoftlearn,,Educational,,4585,68,48,0,6,0,68,0,0,0,127241,0,,,,,1.48,1.48,202604-W4
+Instagram,"Machine learning finds patterns we can’t see and improves every time it learns. It’s powering recommendations, forecasts, and automations all around you.
+
+Explore what else it can do.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXKqdkwGVWY/,2026-04-15 17:00:00,2026-04-15 17:00:20,,04-15-2026 17:00,Wednesday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Carousel,https://www.instagram.com/p/DXKqdkwGVWY/,microsoftlearn,,Educational,,4592,73,57,0,5,0,73,0,0,0,125263,0,,,,,1.59,1.59,202604-W3
+Instagram,"Devs, this one’s for you. 🫵
+Explore these modules on Microsoft Learn. Link in bio. 🔗",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DWl38NvjbQk/,2026-04-01 10:06:01,2026-04-01 10:06:17,,04-01-2026 10:06,Wednesday,10:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,Developer,,Photo,https://www.instagram.com/p/DWl38NvjbQk/,microsoftlearn,,Informational,Microsoft Learn,4627,79,68,1,1,0,79,1,0,0,121986,0,,,,,1.71,1.71,202604-W1
+LinkedIn,"Discover how Lenovo helped 30,000 employees build practical AI skills and achieve real gains. Instead of just rolling out tools, they focused on showing people how AI fits into their actual day-to-day work. That shift made the difference across teams. Take a look: https://techcommunity.microsoft.com/blog/skills-hub-blog/lenovo-scales-ai-adoption-worldwide-with-copilot-chat-training/4491682?wt.mc_id=lfo_linkedin_organicsocial_wwl",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7447433031381897216,2026-04-07 20:00:00,2026-04-07 20:00:01,,04-07-2026 20:00,Tuesday,20:00,, , ,Blog, ,MSFT Learn | Microsoft created,Decision Maker/Executive,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7447433031381897216,Microsoft Learn,Commercial Skilling Approver Group,Informational,Other,4630,111,46,5,2,102,111,3,1,1,1122747,0,,,,,2.4,2.4,202604-W1
+X,"Trying to cut cloud costs without breaking things?
+Start here:
+1. Understand usage
+2. Identify waste
+3. Right-size resources",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2047307001529503933,2026-04-23 09:30:00,2026-04-23 09:30:01,,04-23-2026 09:30,Thursday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2047307001529503933,Microsoft Learn,,Conversation,,4662,68,58,2,7,0,68,2,0,0,494262,0,,,,,1.46,1.46,202604-W4
+Instagram,Technical problems are easy to explain. Explaining what they mean for the business is harder.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXH73QJk-yV/,2026-04-14 20:00:00,2026-04-14 20:00:07,,04-14-2026 20:00,Tuesday,20:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Carousel,https://www.instagram.com/p/DXH73QJk-yV/,microsoftlearn,,Educational,,4669,88,54,0,10,0,88,0,0,0,125263,0,,,,,1.88,1.88,202604-W2
+X,"Microsoft Learn User Alignment Chart 
+
+Lawful Good     │    Chaotic Good
+does modules   │ does modules in
+in order,               │ random order,                  
+takes notes        │ somehow passes
+───────┼────────
+Lawful Neutral │ Chaotic Neutral
+reads docs only│ skips to the quiz
+no labs                 │ every time  
+───────┼────────
+Lawful Evil         │    Chaotic Evil
+completes          │ no one knows 
+path, but             │ what they do in
+never uses it        |   there    
+                                    
+All paths lead to the same badge, no judgment here.",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2040111321971101932,2026-04-03 12:56:57,2026-04-03 12:56:57,,04-03-2026 12:56,Friday,12:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://twitter.com/MicrosoftLearn/status/2040111321971101932,Microsoft Learn,,Conversation,,4714,71,60,4,7,0,71,1,1,2,483866,0,,,,,1.51,1.51,202604-W1
+X,"Hot take: If your meeting doesn’t require discussion, it should be an email.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2039342017168175232,2026-04-01 10:00:00,2026-04-01 10:00:00,,04-01-2026 10:00,Wednesday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2039342017168175232,Microsoft Learn,,Conversation,,4766,96,76,10,9,0,96,1,5,4,483769,0,,,,,2.01,2.01,202604-W1
+X,"From your first role to leadership, AI can help you learn faster, communicate more clearly, and make better decisions.
+This blog shows how business users apply AI at every career stage:
+• Early career: ramp up faster, build confidence, and draft clearer work
+• Mid-career: scale your impact, align stakeholders, and streamline workflows
+• Leadership: spot patterns, pressure-test strategy, and coach more effectively
+
+You’ll also find guidance on AI Skills Navigator, with role-based training to keep building the right skills for what’s next.
+👉 Read the blog: https://techcommunity.microsoft.com/blog/skills-hub-blog/ai-at-every-career-stage-start-grow-lead/4494109",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2049171787854844370,2026-04-28 13:00:00,2026-04-28 13:00:01,,04-28-2026 13:00,Tuesday,13:00,, , ,Blog, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://twitter.com/MicrosoftLearn/status/2049171787854844370,Microsoft Learn,,Informational,Other,4779,139,81,1,12,83,139,1,0,0,495275,0,,,,,2.91,2.91,202604-W4
+X,"All models are useful—and fallible. The same is true for generative AI in research.
+Our new blog breaks down how researchers can use AI responsibly, transparently, and effectively—plus a new paper to put it into practice.
+👉 Read the blog and paper: https://aka.ms/EDUResearcherblog_X",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2042271318024872156,2026-04-09 12:00:00,2026-04-09 12:00:00,,04-09-2026 12:00,Thursday,12:00,, , ,Blog, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://twitter.com/MicrosoftLearn/status/2042271318024872156,Microsoft Learn,,Informational,Other,4825,105,51,2,11,91,105,1,0,1,484631,0,,,,,2.18,2.18,202604-W2
+Instagram,You probably have the skills; you just haven’t been taught how to talk about them. Save this to come back to before your next interview.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXuJN70lKXS/,2026-04-29 13:00:00,2026-04-29 13:00:04,,04-29-2026 13:00,Wednesday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Carousel,https://www.instagram.com/p/DXuJN70lKXS/,microsoftlearn,,Educational,,4856,115,75,0,1,0,115,0,0,0,127343,0,,,,,2.37,2.37,202604-W5
+Instagram,"Before you dive deep into Azure, get the basics down. That little bit of clarity can save you time, improve workflows, reduce mistakes, and give you way more confidence.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DW1UCNHlLd_/,2026-04-07 10:00:00,2026-04-07 10:00:16,,04-07-2026 10:00,Tuesday,10:00,, , ,Other, ,MSFT Learn | Microsoft created,IT Pro,,Carousel,https://www.instagram.com/p/DW1UCNHlLd_/,microsoftlearn,,Educational,,5020,65,55,1,1,0,65,1,0,0,123420,0,,,,,1.29,1.29,202604-W1
+Instagram,"Reclaim your focus and leave the workflow automation and rapid response to the Security Copilot agents. There’s a variety of others built to automate, accelerate, and support defenders. Find the ones that fit your environment.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DW4o5Mykt-E/,2026-04-08 17:00:00,2026-04-08 17:00:19,,04-08-2026 17:00,Wednesday,17:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Biz User,,Carousel,https://www.instagram.com/p/DW4o5Mykt-E/,microsoftlearn,,Educational,,5039,76,65,1,1,0,76,1,0,0,123566,0,,,,,1.51,1.51,202604-W2
+Instagram,Wrapping up with part 3 of our AI A-Z Glossary. Save all 3 parts as a quick reference!,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXHdwsXmQ45/,2026-04-14 11:11:19,2026-04-14 11:11:48,,04-14-2026 11:11,Tuesday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Carousel,https://www.instagram.com/p/DXHdwsXmQ45/,microsoftlearn,,Educational,,5092,118,64,4,20,0,118,2,2,0,124962,0,,,,,2.32,2.32,202604-W2
+X,"What does a Security Copilot agent actually do?
+
+Think of it as something that can look at a security situation and act on it, not just describe it.
+
+Instead of only surfacing alerts, these agents can:
+
+• Access the right data with permissions in place
+• Analyze what’s happening across your environment
+• Suggest or take action based on that context
+
+The goal is to help teams respond faster and with more clarity.
+
+",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2042165623979970798,2026-04-09 05:00:00,2026-04-09 05:00:01,,04-09-2026 05:00,Thursday,05:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2042165623979970798,Microsoft Learn,,Educational,,5218,82,68,6,8,0,82,2,3,1,484631,0,,,,,1.57,1.57,202604-W2
+LinkedIn,"Learning a lot but not sure where it all fits? Whether it’s training, labs, community discussions, or even gym days, building skills becomes much more sustainable when it fits your weekly rhythm. Training Services Partners meets you where you are and works with your schedule.
+
+Learn more: https://learn.microsoft.com/en-us/training/training-services-partners?wt.mc_id=tsp_linkedin_organicsocial_wwl",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7453185939838902272,2026-04-23 17:00:00,2026-04-23 17:00:02,,04-23-2026 17:00,Thursday,17:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7453185939838902272,Microsoft Learn,,Informational,Microsoft Learn,5319,165,59,0,9,74,165,0,0,0,1140604,0,,,,,3.1,3.1,202604-W4
+X,"Building AI skills shouldn’t feel complicated—or like you need five different tabs open to keep track.
+Here’s what’s new in AI Skills Navigator, based on what learners and team leaders asked for most:
+
+• More structure (and visibility) for learning paths, with real‑time progress tracking (smarter skilling playlists)
+• Learn when it works for you, then pick up right where you left off (more flexible skilling sessions)
+• Quickly find instructor‑led options near you that match your needs (Training Services Partners discovery)
+• A better way to show applied AI capability (not just knowledge) (integrated credentials)
+
+If you’re building AI skills for yourself or helping a team level up, take a look at what’s new 👇
+https://aka.ms/ASNBlogSeries2_X",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2046302883881050553,2026-04-20 15:00:00,2026-04-20 15:00:00,,04-20-2026 15:00,Monday,15:00,, , ,Blog, ,MSFT Learn | Microsoft created,General,,Photo,https://twitter.com/MicrosoftLearn/status/2046302883881050553,Microsoft Learn,,Informational,Other,5332,185,100,6,14,88,185,5,0,1,493500,0,,,,,3.47,3.47,202604-W3
+Threads,"If you’re not using it, you’re losing it.
+Here’s how to make learning stick:
+1. Use it in real work
+2. Revisit it later
+3. Teach it to someone else",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXb1c9zlJiU,2026-04-22 09:03:19,2026-04-22 09:03:39,,04-22-2026 09:03,Wednesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.threads.com/@microsoftlearn/post/DXb1c9zlJiU,microsoftlearn,,Conversation,,5365,28,21,4,3,0,28,1,3,0,15238,0,,,,,0.52,0.52,202604-W4
+Instagram,Prepping for an IT interview? Start here. Let us know in the comments what other subjects you’d like us to cover.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXJ4W9tk_6q/,2026-04-15 09:42:11,2026-04-15 09:42:31,,04-15-2026 09:42,Wednesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Carousel,https://www.instagram.com/p/DXJ4W9tk_6q/,microsoftlearn,,Educational,,5373,132,70,2,12,0,132,0,1,1,125263,0,,,,,2.46,2.46,202604-W3
+X,"Ops managers know small improvements compound fast. Vibe coding helps build them.
+
+Here are 3 tools teams are shipping:
+1. SOP generator with version control
+2. Intake portal that auto-routes requests
+3. Weekly review pack: KPIs, incidents, and risks, all assembled automatically
+",SENT,Microsoft Learn,TWITTER,Marlon Zanatti,MSFT Learn | Business Users (Universal),https://twitter.com/MicrosoftLearn/status/2045502610438803926,2026-04-18 10:00:00,2026-04-18 10:00:00,,04-18-2026 10:00,Saturday,10:00,, , ,AI Skills Navigator (AISN), ,MSFT Learn | Microsoft created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2045502610438803926,Microsoft Learn,,Educational,ASN,5378,98,81,8,9,0,98,5,2,1,493186,0,,,,,1.82,1.82,202604-W3
+Instagram,"Same prompt, different answer? It comes down to one thing: what Copilot is grounded in, work or web.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXNY4-MEsUc/,2026-04-17 09:00:00,2026-04-17 09:00:05,,04-17-2026 09:00,Friday,09:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Biz User,,Carousel,https://www.instagram.com/p/DXNY4-MEsUc/,microsoftlearn,,Educational,,5382,118,85,0,11,0,118,0,0,0,125690,0,,,,,2.19,2.19,202604-W3
+Threads,"Having trouble maintaining your code? Make it easier for yourself:
+• Keep functions small
+• Name things clearly
+• Avoid clever shortcuts",SENT,microsoftlearn,THREADS,Marlon Zanatti,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXSLF37GHQR,2026-04-18 15:00:00,2026-04-18 15:00:20,,04-18-2026 15:00,Saturday,15:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://www.threads.com/@microsoftlearn/post/DXSLF37GHQR,microsoftlearn,,Conversation,,5466,21,16,2,3,0,21,1,1,0,15182,0,,,,,0.38,0.38,202604-W3
+LinkedIn,"You use machine learning every day, even if you don’t realize it. It’s the part of AI that learns from data instead of relying on hand‑coded rules.
+
+The lifecycle shows how it all comes together, from defining the task to monitoring the model.
+
+Machine learning powers core tasks like numerical prediction, classification, and clustering, and it unlocks real value through predictive analytics, personalization, and automation.
+
+Where do you see machine learning making the biggest impact next?",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:share:7450286881910669313,2026-04-15 17:00:00,2026-04-15 17:00:12,,04-15-2026 17:00,Wednesday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7450286881910669313,Microsoft Learn,,Educational,,5491,245,147,5,21,0,245,4,1,0,1131885,0,,,,,4.46,4.46,202604-W3
+X,"Don’t hold yourself back from the opportunities ahead. Microsoft Certifications span roles, levels, and career paths, helping you validate the skills that power today’s most in‑demand, AI‑driven jobs.
+Build the skills and advance in your career: https://aiskillsnavigator.microsoft.com/credentials/?UTM_Source=Credentials_social&UTM_Medium=social&UTM_Campaign=X",SENT,Microsoft Learn,TWITTER,Marlon Zanatti,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2045306316348895560,2026-04-17 21:00:00,2026-04-17 21:00:00,,04-17-2026 21:00,Friday,21:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,IT Pro,,Photo,https://twitter.com/MicrosoftLearn/status/2045306316348895560,Microsoft Learn,,Informational,ASN,5497,260,134,10,22,129,260,1,9,0,493186,0,,,,,4.73,4.73,202604-W3
+LinkedIn,"From your first role to leadership, AI can help you learn faster, communicate more clearly, and make better decisions.
+This blog shows how business users apply AI at every career stage:
+• Early career: ramp up faster, build confidence, and draft clearer work
+• Mid-career: scale your impact, align stakeholders, and streamline workflows
+• Leadership: spot patterns, pressure-test strategy, and coach more effectively
+
+You’ll also find guidance on AI Skills Navigator, with role-based training to keep building the right skills for what’s next.
+👉 Read the blog: https://aka.ms/FY26Q4BusinessUserBlog3_LN",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7454937479587065856,2026-04-28 13:00:00,2026-04-28 13:00:01,,04-28-2026 13:00,Tuesday,13:00,, , ,Blog, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7454937479587065856,Microsoft Learn,,Informational,Other,5589,168,74,2,9,80,168,2,0,0,1145547,0,,,,,3.01,3.01,202604-W4
+X,"PMs, you already do the hard part: clarifying work and making tradeoffs.
+Vibe coding just handles the rest.
+
+Here are three tools teams are building:
+1. Status generator: notes → RAG, risks, and asks, all ready to send
+2. RAID log: risks, dependencies, escalation triggers are always current
+3. Workback planner: launch date → critical path + owner checklist",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | Business Users (Universal),https://twitter.com/MicrosoftLearn/status/2047367397472903569,2026-04-23 13:30:00,2026-04-23 13:30:00,,04-23-2026 13:30,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2047367397472903569,Microsoft Learn,,Educational,ASN,5834,102,84,6,12,0,102,2,3,1,494262,0,,,,,1.75,1.75,202604-W4
+Instagram,Some days you want full control. Some days you want it done for you. The cloud gets it. ☁️,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DW2QQKTlGXJ/,2026-04-08 08:00:00,2026-04-08 08:00:06,,04-08-2026 08:00,Wednesday,08:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Carousel,https://www.instagram.com/p/DW2QQKTlGXJ/,microsoftlearn,,Educational,,5972,122,93,0,4,0,122,0,0,0,123566,0,,,,,2.04,2.04,202604-W2
+X,"Agent gone rogue? Check your visibility before blaming the model.
+If you can’t explain why your agent made a decision, something’s missing. Start with logs, prompts, and data sources.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2048039327637131771,2026-04-25 10:00:00,2026-04-25 10:00:01,,04-25-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2048039327637131771,Microsoft Learn,,Educational,,6004,97,79,8,10,0,97,1,6,1,494958,0,,,,,1.62,1.62,202604-W4
+LinkedIn,"What if the early warning signs in your team’s workflow were already there, you just didn’t know where to look?
+
+Teams operate differently, which becomes clear in the moments that slow adoption:
+• Some employees stop using Copilot after one week
+• Certain departments barely use Copilot while others use it daily
+• Usage drops before major deadlines
+
+All of these actions reveal patterns. Monitoring AI adoption in your organization shows where friction is building and where support is needed.
+
+Adoption creates value when you see the story behind the numbers, who’s engaging, who’s stuck and how usage changes over time.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:share:7452763199705133056,2026-04-22 13:00:00,2026-04-22 13:00:13,,04-22-2026 13:00,Wednesday,13:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7452763199705133056,Microsoft Learn,,Educational,,6024,121,49,1,5,0,121,0,0,1,1140068,0,,,,,2.01,2.01,202604-W4
+X,"Basic security protocol still matters. Start here:
+• Enable MFA everywhere
+• Limit access by default
+• Review permissions regularly",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2045125122848075944,2026-04-17 09:00:00,2026-04-17 09:00:00,,04-17-2026 09:00,Friday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2045125122848075944,Microsoft Learn,,Conversation,,6040,194,165,6,22,0,194,3,3,0,492936,0,,,,,3.21,3.21,202604-W3
+X,"MVPs 🤝 building with MCP Servers
+
+A great walkthrough from MVPs Jonah Andersson & Håkan Silfvernagel on using MCP Servers + Microsoft Learn to help AI agents find the right guidance faster.
+https://t.co/SLCRJCOb1h",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2040085125103292577,2026-04-03 11:12:51,2026-04-03 11:12:51,,04-03-2026 11:12,Friday,11:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Link,https://twitter.com/MicrosoftLearn/status/2040085125103292577,Microsoft Learn,,Informational,Microsoft Learn,6136,79,46,3,7,0,79,0,3,0,483866,0,,,,,1.29,1.29,202604-W1
+X,"Need to manage lots of Virtual Machines?
+Azure gives you two tools to manage groups of VMs:
+
+1️⃣ Scale sets → For lots of identical VMs
+• Auto‑scale up/down
+• Built‑in load balancing
+• Keeps every VM configured the same
+
+2️⃣ Availability sets → For keeping VMs online
+• Spread across different power/network sources
+• Staggered maintenance
+• Protects you from everything going down at once",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2046578257261109341,2026-04-21 09:14:14,2026-04-21 09:14:14,,04-21-2026 09:14,Tuesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2046578257261109341,Microsoft Learn,,Educational,,6393,126,104,12,10,0,126,4,8,0,493527,0,,,,,1.97,1.97,202604-W3
+X,"Ready to build with AI?
+The AI Credentials Accelerator training event delivers focused, expert-led training in:
+Copilot Studio agents
+AI‑assisted development
+Secure, compliant AI with Microsoft 365 Copilot
+Build skills you can use now.
+👉 Explore training: https://t.co/Jqp74LV3BC https://t.co/NeMmAFgdM4",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2045256008709108019,2026-04-17 17:40:06,2026-04-17 17:40:06,,04-17-2026 17:40,Friday,17:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Photo,https://twitter.com/MicrosoftLearn/status/2045256008709108019,Microsoft Learn,,Informational,Microsoft Learn,6431,376,149,6,22,0,376,1,3,2,492936,0,,,,,5.85,5.85,202604-W3
+Instagram,Sometimes the simplest solutions are the ones hiding in plain sight.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DW-qlTtFlJc/,2026-04-11 10:00:00,2026-04-11 10:00:05,,04-11-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Carousel,https://www.instagram.com/p/DW-qlTtFlJc/,microsoftlearn,,Conversation,,6525,99,80,1,4,0,99,0,0,1,124239,0,,,,,1.52,1.52,202604-W2
+LinkedIn,"AI skilling doesn’t work when it’s generic. 🎯
+This month’s The Spark breaks down what to prioritize for leaders vs. business teams vs. technical teams—with real workflow examples so you can move from experimenting to measurable impact. 💡",SENT,Microsoft Learn,LINKEDIN_COMPANY,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7447016243963985920,2026-04-07 12:00:13,2026-04-07 12:00:13,,04-07-2026 12:00,Tuesday,12:00,, , ,Monthly Newsletter, ,MSFT Learn | Microsoft created,General,,Text,https://www.linkedin.com/feed/update/urn:li:ugcPost:7447016243963985920,Microsoft Learn,,Brand,Other,6577,397,273,25,13,0,397,12,12,1,1121736,0,,,,,6.04,6.04,202604-W1
+X,"When should you use an Azure Virtual Machine?
+More often than you’d expect.
+
+Use it for:
+• Testing & development
+• Apps with variable demand
+• Extending a datacenter to Azure
+• Disaster recovery
+• Lift‑and‑shift migrations
+
+If you need control + reliability, virtual machines are the move.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2048749003798380674,2026-04-27 09:00:00,2026-04-27 09:00:01,,04-27-2026 09:00,Monday,09:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2048749003798380674,Microsoft Learn,,Educational,,6596,102,85,7,10,0,102,3,4,0,495230,0,,,,,1.55,1.55,202604-W4
+Instagram,"Before you jump into containers or serverless, get the virtual machine basics down.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXNdsdilpat/,2026-04-16 21:00:00,2026-04-16 21:00:05,,04-16-2026 21:00,Thursday,21:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Carousel,https://www.instagram.com/p/DXNdsdilpat/,microsoftlearn,,Educational,,6608,156,116,1,9,0,156,1,0,0,125690,0,,,,,2.36,2.36,202604-W3
+X,"Customer service teams: you see the patterns. Vibe coding turns them into tools.
+
+3 builds teams are using:
+→ Case summarizer for clean handoffs
+→ Trend spotter that flags spikes before they escalate
+→ Escalation packets to capture logs, repro, and impact all in one format
+
+Your frontline expertise is the engine: https://aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc/?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_AON&UTM_Term=AON",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2042573307577262516,2026-04-10 08:00:00,2026-04-10 08:00:00,,04-10-2026 08:00,Friday,08:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Link,https://twitter.com/MicrosoftLearn/status/2042573307577262516,Microsoft Learn,,Educational,ASN,6665,114,58,2,5,102,114,0,2,0,485930,0,,,,,1.71,1.71,202604-W2
+LinkedIn,"AI has been part of the conversation for quite some time, but the last twelve months have shown something different: what happens when AI and humans start working together in meaningful, everyday ways.
+
+Microsoft Research is exploring new trends and insights on AI and Dr. Jenna Butler is one of the researchers and editors of this year's New Future of Work Report.
+
+Read the report here: https://msft.it/6042QCHtK",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7449969743903645696,2026-04-14 20:00:00,2026-04-14 20:00:01,,04-14-2026 20:00,Tuesday,20:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,CLO,,Video,https://www.linkedin.com/feed/update/urn:li:ugcPost:7449969743903645696,Microsoft Learn,,Educational,Other,6785,260,78,5,10,54,2972,3,2,0,1131885,0,,,,,3.83,3.83,202604-W2
+LinkedIn,"Kim asks Nia one simple question. Her response cuts through the overwhelm with a surprisingly practical way to begin.
+👇 Press play",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7453608726034432000,2026-04-24 21:00:00,2026-04-24 21:00:02,,04-24-2026 21:00,Friday,21:00,, , ,AI Skills Navigator (AISN), ,MSFT Learn | Microsoft created,General,,Video,https://www.linkedin.com/feed/update/urn:li:ugcPost:7453608726034432000,Microsoft Learn,,Brand,ASN,6909,207,49,0,5,0,2511,0,0,0,1142565,0,,,,,3.0,3.0,202604-W4
+Instagram,What’s your go-to Microsoft tool?,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/reel/DXcew-HgMPS/,2026-04-22 21:00:00,2026-04-22 21:00:15,,04-22-2026 21:00,Wednesday,21:00,, , ,Copilot, ,MSFT Learn | Microsoft created,General,,Video,https://www.instagram.com/reel/DXcew-HgMPS/,microsoftlearn,,Conversation,,6952,200,141,14,27,0,7152,4,8,2,126629,0,,,,,2.88,2.88,202604-W4
+LinkedIn,"Join us for a fast kickoff to Azure Cosmos DB, then watch a live, end-to-end build in Visual Studio Code where we create a new Cosmos DB database and wire up an app using modern developer workflows: https://aka.ms/AzD415/in",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7447810516946857984,2026-04-08 21:00:00,2026-04-08 21:00:01,,04-08-2026 21:00,Wednesday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7447810516946857984,Microsoft Learn,,Informational,Other,7092,151,65,2,6,59,151,1,1,0,1123970,0,,,,,2.13,2.13,202604-W2
+Instagram,"No-code tools are great until your workflow doesn't fit the existing process.
+
+Vibe coding picks up where no-code leaves off. You describe the tool you need in plain language, AI generates real code, and you get something custom-built for your exact problem.
+
+The real skill isn't programming, it's knowing your work well enough to describe what you need. Both have a place. Knowing when to reach for each one is the unlock.
+
+Learn more at the link in bio.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | OBO (Universal),https://www.instagram.com/p/DXErF8iGW4p/,2026-04-13 09:10:04,2026-04-13 09:10:24,,04-13-2026 09:10,Monday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Carousel,https://www.instagram.com/p/DXErF8iGW4p/,microsoftlearn,,Educational,ASN,7171,246,169,2,33,0,246,0,2,0,124705,0,,,,,3.43,3.43,202604-W2
+LinkedIn,"What's the one task you'd automate first?
+You don't need a big idea to start vibe coding. You need a small, annoying one.
+
+The best first projects replace work you're already doing manually every week, the same way. If you can describe the inputs and the output, you can build it.
+
+No programming background. No 10-step tutorial. Just start with one workflow and see what happens.
+
+Learn more about vibe coding here: https://aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc/?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_AON&UTM_Term=AON",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | Business Users (Universal),https://www.linkedin.com/feed/update/urn:li:share:7447677161861271552,2026-04-08 12:09:54,2026-04-08 12:10:07,,04-08-2026 12:10,Wednesday,12:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7447677161861271552,Microsoft Learn,,Educational,ASN,7293,217,95,1,11,70,217,0,1,0,1122747,0,,,,,2.98,2.98,202604-W2
+X,"Early workflow issues often show up in Copilot usage:
+
+Drops after week one, uneven adoption across departments, or declines before key deadlines can signal friction or gaps in your rollout.
+
+If you’re an admin, here’s how to check your org’s patterns:
+Step 1️⃣: Go to the Microsoft 365 admin center
+Step 2️⃣: Navigate to Copilot → Reports
+Step 3️⃣: Review enabled users, active users, and usage trends
+
+Understanding these patterns helps you spot where teams need guidance and what needs to be reinforced.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2047012795971948873,2026-04-22 14:00:56,2026-04-22 14:00:57,,04-22-2026 14:00,Wednesday,14:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2047012795971948873,Microsoft Learn,,Educational,,7301,67,59,3,5,0,67,1,2,0,493616,0,,,,,0.92,0.92,202604-W4
+LinkedIn,"Stop asking for permission. Start building.
+This blog by Alfredo Ramirez, VP of Revenue Strategy at Microsoft, breaks down why empowering people to move, test, and learn faster with vibe coding matters, especially in technical and skilling orgs.
+
+Worth the read if you’re building skills, teams, or products in fast‑moving spaces —> https://aka.ms/StopAskingPermissionStartBuilding",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | Executives (Universal),https://www.linkedin.com/feed/update/urn:li:share:7445594618647175169,2026-04-02 18:14:38,2026-04-02 18:14:50,,04-02-2026 18:14,Thursday,18:00,, , ,Blog, ,MSFT Learn | Microsoft created,Decision Maker/Executive,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7445594618647175169,Microsoft Learn,,Informational,Other,7342,119,49,3,3,35,119,3,0,0,1117549,0,,,,,1.62,1.62,202604-W1
+X,"No idea what Azure Blobs are? Let’s break it down:
+
+Blob storage is a type of storage service in Azure that’s designed to hold massive amounts of unstructured data like media files, logs, backups, and analytics datasets.
+
+You’d use it when you need to:
+• Show images or documents in an app
+• Stream video or audio
+• Keep backups safe
+• Store large data for analytics",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2049232187954774335,2026-04-28 17:00:00,2026-04-28 17:00:01,,04-28-2026 17:00,Tuesday,17:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Text,https://twitter.com/MicrosoftLearn/status/2049232187954774335,Microsoft Learn,,Educational,,7402,123,106,7,10,0,123,4,1,2,495275,0,,,,,1.66,1.66,202604-W4
+X,"Good data is what makes AI useful.
+If an agent’s output feels inconsistent, check the data it’s pulling from first.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2046246376980234498,2026-04-20 11:15:28,2026-04-20 11:15:28,,04-20-2026 11:15,Monday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2046246376980234498,Microsoft Learn,,Conversation,,7497,215,190,11,12,0,215,4,2,5,493500,0,,,,,2.87,2.87,202604-W3
+X,"Learning something new usually looks like:
+• This makes sense
+• Wait what
+• Oh okay
+• Wait what again",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2050576042230686063,2026-05-02 10:00:00,2026-05-02 10:00:01,,05-02-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2050576042230686063,Microsoft Learn,,Conversation,,7608,311,261,19,27,0,311,6,9,4,495610,0,,,,,4.09,4.09,202605-W1
+X,"If you had to cut your dashboard down to 3 numbers, what would make the list?",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2049896564949139594,2026-04-30 13:00:00,2026-04-30 13:00:01,,04-30-2026 13:00,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2049896564949139594,Microsoft Learn,,Conversation,,7663,80,58,18,2,0,80,1,14,3,495535,0,,,,,1.04,1.04,202604-W5
+Instagram,Small prompt tweaks create big clarity gains. Here’s how to level up.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXM4KcCEnST/,2026-04-16 16:00:00,2026-04-16 16:00:07,,04-16-2026 16:00,Thursday,16:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Carousel,https://www.instagram.com/p/DXM4KcCEnST/,microsoftlearn,,Educational,,7800,343,166,10,57,0,343,5,5,0,125523,0,,,,,4.4,4.4,202604-W3
+X,"Best first vibe coding project:
+✓ Small scope: describe it in a few sentences
+✓ Clear outcome: you know what ""done"" looks like
+✓ Replaces manual work: something you do every week
+
+You don't need to code. You need to know your work.
+
+Your expertise drives it. AI builds it: https://aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc/?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_AON&UTM_Term=AON",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | Business Users (Universal),https://twitter.com/MicrosoftLearn/status/2041912040256643467,2026-04-08 12:12:21,2026-04-08 12:12:22,,04-08-2026 12:12,Wednesday,12:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Link,https://twitter.com/MicrosoftLearn/status/2041912040256643467,Microsoft Learn,,Educational,ASN,7803,318,165,8,14,179,318,6,0,2,484571,0,,,,,4.08,4.08,202604-W2
+LinkedIn,"What if understanding Azure’s foundation could make every cloud decision easier?
+When you grasp how the platform is built, you plan better, architect smarter, and avoid the headaches that come from guesswork.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:share:7447372632183832576,2026-04-07 16:00:00,2026-04-07 16:00:01,,04-07-2026 16:00,Tuesday,16:00,, , ,Other, ,MSFT Learn | Microsoft created,IT Pro,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7447372632183832576,Microsoft Learn,,Educational,,8012,290,105,2,11,0,290,2,0,0,1121736,0,,,,,3.62,3.62,202604-W1
+X,"Don’t try to grind prompt engineering.
+Usually that means:
+• falling down a prompt rabbit hole
+• never using what you bookmarked
+• overthinking instead of testing
+What actually works:
+• 15 minutes a day
+• test one prompt in real work
+• tweak it, reuse it, make it yours",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2041969746501837155,2026-04-08 16:01:39,2026-04-08 16:01:40,,04-08-2026 16:01,Wednesday,16:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2041969746501837155,Microsoft Learn,,Conversation,,8199,196,170,10,16,0,196,3,4,3,484571,0,,,,,2.39,2.39,202604-W2
+Instagram,"Learning more about AI starts with learning its terms. Did you learn a new one, or are we missing a few? Stay tuned for Part 3.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DW8QT-TlQ_m/,2026-04-10 17:00:00,2026-04-10 17:00:05,,04-10-2026 17:00,Friday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Carousel,https://www.instagram.com/p/DW8QT-TlQ_m/,microsoftlearn,,Educational,,8224,318,191,7,16,0,318,1,6,0,124012,0,,,,,3.87,3.87,202604-W2
+LinkedIn,"If AI adoption is top of mind, Alfredo Ramirez and Kimberly Cottrell's conversation about the Rise of the Business Builder is for you. Business professionals are the experts in their domain and how vibe coding can help business teams move faster by building, testing, and learning in real work. No coding experience required.
+
+Worth watching on demand.
+
+Watch the full LinkedIn Live replay: https://msft.it/6046Q0osa",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | Business Users (Universal),https://www.linkedin.com/feed/update/urn:li:share:7445908744934346753,2026-04-03 15:02:51,2026-04-03 15:03:03,,04-03-2026 15:03,Friday,15:00,, , ,Other, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7445908744934346753,Microsoft Learn,,Conversation,Other,8224,162,79,2,6,28,162,1,1,0,1118483,0,,,,,1.97,1.97,202604-W1
+LinkedIn,"Do you have a plan to keep your AI secure as it scales? Responsible AI starts with the right foundation.
+
+Designed to help developers learn the skills to address modern AI risks, this plan teaches you how to design, build, observe AI applications and agents with enterprise-grade security, governance, and monitoring built in.
+
+Explore the plan and build safer: https://aka.ms/ManageGenAILifecycles",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7450347232559521792,2026-04-15 21:00:00,2026-04-15 21:00:01,,04-15-2026 21:00,Wednesday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7450347232559521792,Microsoft Learn,,Informational,Microsoft Learn,8366,366,136,5,21,152,366,2,3,0,1133533,0,,,,,4.37,4.37,202604-W3
+LinkedIn,"Not sure where to start your developer learning journey?
+Save this for your next learning session.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:share:7445110032217591808,2026-04-01 10:09:03,2026-04-01 10:09:15,,04-01-2026 10:09,Wednesday,10:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,Developer,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7445110032217591808,Microsoft Learn,,Informational,,8534,161,68,3,6,0,161,2,1,0,1116405,0,,,,,1.89,1.89,202604-W1
+Instagram,"Prompting is great for getting answers, but vibe coding is what actually saves you hours of work.
+
+If you want to make your life easier, knowing how one helps you think, and the other helps you get things done, makes all the difference.",SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DWmYeUWkjcy/,2026-04-01 21:00:00,2026-04-01 21:00:04,,04-01-2026 21:00,Wednesday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,Biz User,,Carousel,https://www.instagram.com/p/DWmYeUWkjcy/,microsoftlearn,,Educational,,8622,222,160,9,13,0,222,3,6,0,122155,0,,,,,2.57,2.57,202604-W1
+X,"Finance analysts: your best hours shouldn't go to copy-paste.
+
+3 vibe-coded tools teams are building:
+ → Variance assistant: actuals vs. plan → narrative in minutes
+ → Scenario modeler: what-if assumptions, side by side
+ → Close tracker: tasks, owners, blockers, reminders",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | Business Users (Universal),https://twitter.com/MicrosoftLearn/status/2044766676512620959,2026-04-16 09:15:39,2026-04-16 09:15:40,,04-16-2026 09:15,Thursday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2044766676512620959,Microsoft Learn,,Educational,ASN,8663,216,184,11,20,0,216,7,1,3,492857,0,,,,,2.49,2.49,202604-W3
+X,"Before you build a dashboard, answer this:
+• What question should it answer?
+• Who will use it?
+• How will you know it helped? ",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2041259653732937761,2026-04-06 17:00:00,2026-04-06 17:00:01,,04-06-2026 17:00,Monday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2041259653732937761,Microsoft Learn,,Conversation,,8830,192,155,17,16,0,192,7,7,3,484614,0,,,,,2.17,2.17,202604-W1
+X,"Not every problem needs a new tool. Before adding one to your stack, ask:
+⦁ Does it solve a real problem?
+⦁ Can your team support it?
+⦁ Is it worth the complexity?",SENT,Microsoft Learn,TWITTER,Marlon Zanatti,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2045578108598685821,2026-04-18 15:00:00,2026-04-18 15:00:00,,04-18-2026 15:00,Saturday,15:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://twitter.com/MicrosoftLearn/status/2045578108598685821,Microsoft Learn,,Conversation,,8909,179,157,3,17,0,179,1,1,1,493186,0,,,,,2.01,2.01,202604-W3
+X,"Give us your take:
+What’s a human skill AI can amplify, but never replace?
+
+We’ll be spotlighting top comments during an upcoming Microsoft Learn event 💻",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2041659782436733365,2026-04-07 19:29:58,2026-04-07 19:29:58,,04-07-2026 19:29,Tuesday,19:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://twitter.com/MicrosoftLearn/status/2041659782436733365,Microsoft Learn,,Conversation,,8941,140,88,47,3,0,140,10,29,8,484590,0,,,,,1.57,1.57,202604-W1
+X,"AI is reshaping work and the skills employers expect.
+The AI Credentials Accelerator training event helps you:
+✅ Apply AI to business workflows
+✅ Lead AI transformation
+✅ Prepare your organization for Microsoft 365 Copilot
+Practical. Focused. Job‑ready.
+👉 Find training now
+https://learn.microsoft.com/en-us/training/training-services-partners?wt.mc_id=credentials_aiaccelerator_social_wwl_x",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2042648806366314513,2026-04-10 13:00:00,2026-04-10 13:00:00,,04-10-2026 13:00,Friday,13:00,, , ,Other, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://twitter.com/MicrosoftLearn/status/2042648806366314513,Microsoft Learn,,Informational,Microsoft Learn,8957,374,133,3,18,259,374,1,2,0,485930,0,,,,,4.18,4.18,202604-W2
+Instagram,Be honest... how many AI terms did you already know? Share part 1 of our A-Z AI Glossary with the friend who might need it.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DW6ytEpDc2z/,2026-04-09 17:00:00,2026-04-09 17:00:05,,04-09-2026 17:00,Thursday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Carousel,https://www.instagram.com/p/DW6ytEpDc2z/,microsoftlearn,,Educational,,8978,379,224,5,23,0,379,0,5,0,123805,0,,,,,4.22,4.22,202604-W2
+LinkedIn,"Sooner or later, we all find ourselves saying:
+“No one taught me how to do this.”
+
+Whether it happens in class, during a graduate program, an internship, or in your first job, that gap is something many of us recognize too late.
+
+And that’s exactly why Microsoft Student Skills exists.
+It’s a space dedicated to helping higher education students build the practical, real‑world skills that aren’t always taught but are often expected. From skills that help you succeed academically to ones that prepare you for the workplace, the goal is to make your learning curve less steep and more intentional.
+
+If you’re a student with a growth mindset and want to actively invest in skills that will support your success, go check them out on Instagram:
+https://www.instagram.com/microsoftstudentskills",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7449924586009169921,2026-04-14 17:00:00,2026-04-14 17:00:34,,04-14-2026 17:00,Tuesday,17:00,, , ,Other, ,MSFT Learn | Microsoft created,NextGen,,Video,https://www.linkedin.com/feed/update/urn:li:ugcPost:7449924586009169921,Microsoft Learn,,Informational,Other,9411,653,116,4,22,57,5082,2,2,0,1130445,0,,,,,6.94,6.94,202604-W2
+LinkedIn,"Most data problems don’t start with data. They start with how we define things. Understand Microsoft Fabric IQ fundamentals breaks down how to model your business concepts first, then connect them to your data. It’s a simple shift that makes answers more consistent and easier to trust.
+Start here: https://aka.ms/AA101yii",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7445636236431482880,2026-04-02 21:00:00,2026-04-02 21:00:12,,04-02-2026 21:00,Thursday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7445636236431482880,Microsoft Learn,Other,Informational,Microsoft Learn,9637,2178,98,9,9,61,2178,3,6,0,1118483,0,,,,,22.6,1.84,202604-W1
+LinkedIn,"Triage work adds up quickly. Security Copilot agents are one way teams are reducing repetitive effort and responding faster, with defenders still in the loop.
+Worth a look if triage is a bottleneck!",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7447750167681814528,2026-04-08 17:00:00,2026-04-08 17:00:12,,04-08-2026 17:00,Wednesday,17:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7447750167681814528,Microsoft Learn,,Educational,,9924,5307,129,7,15,0,5307,5,2,0,1122747,0,,,,,53.48,1.52,202604-W2
+LinkedIn,"Good architecture starts with putting your data in the right place.
+Azure offers five storage services, each optimized for a different pattern. Here’s the quick guide to choosing the right one.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7455601902542798849,2026-04-30 09:00:00,2026-04-30 09:00:12,,04-30-2026 09:00,Thursday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Developer,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7455601902542798849,Microsoft Learn,,Educational,,10194,6443,157,11,19,0,6443,5,6,0,1147462,0,,,,,63.2,1.83,202604-W5
+X,"Ready to shape the future of business with AI?
+Be among the first to get #MicrosoftCertified for an agent-first, Copilot-driven world – explore these new AI certifications and prepare for the upcoming beta exams to level up your role in the AI era!
+• Microsoft Certified: AI Agent Builder Associate (Exam AI-620 beta)
+• Microsoft Certified: Dynamics 365 Sales AI Consultant Associate (Exam AB-210 beta)
+• Microsoft Certified: Dynamics 365 Contact Center AI Engineer Associate (Exam AB-250 beta)
+• Microsoft Certified: Intelligent Applications Builder Associate (Exam AB-410 beta)
+
+Learn more: https://aka.ms/AIBusinessCredentialsBlog?wt.mc_id=credentials_changes_blog_wwl_x",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2040232888197607798,2026-04-03 21:00:00,2026-04-03 21:00:01,,04-03-2026 21:00,Friday,21:00,, , ,Blog, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://twitter.com/MicrosoftLearn/status/2040232888197607798,Microsoft Learn,Credentials Approver Group,Informational,Other,10299,337,168,4,36,257,337,2,2,0,484444,0,,,,,3.27,3.27,202604-W1
+LinkedIn,"Part 3 of our AI Glossary, including everyday concepts to build into your workflow. Download for later!",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7449837997447032832,2026-04-14 11:16:17,2026-04-14 11:16:30,,04-14-2026 11:16,Tuesday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7449837997447032832,Microsoft Learn,,Educational,,10445,6891,123,5,22,0,6891,2,3,0,1130445,0,,,,,65.97,1.44,202604-W2
+Instagram,You’ve been learning your whole life. It just looks a little different now.,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXp8ubREl3R/,2026-04-28 09:00:00,2026-04-28 09:00:04,,04-28-2026 09:00,Tuesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Photo,https://www.instagram.com/p/DXp8ubREl3R/,microsoftlearn,,Conversation,,10520,484,380,9,44,0,484,1,6,2,127241,0,,,,,4.6,4.6,202604-W4
+X,"Prompting asks AI to think.
+Vibe coding asks AI to build.
+
+The difference? Vibe coding puts your domain expertise in the driver's seat. You describe the problem. AI builds the tool.
+
+No programming background required, just knowledge of your work.
+
+Learn more: aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc&?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_X&UTM_Term=X",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2039508110906196019,2026-04-01 21:00:00,2026-04-01 21:00:00,,04-01-2026 21:00,Wednesday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,Biz User,,Link,https://twitter.com/MicrosoftLearn/status/2039508110906196019,Microsoft Learn,,Educational,ASN,10561,399,143,13,24,269,399,5,5,3,483810,0,,,,,3.78,3.78,202604-W1
+X,"AI is now embedded across every part of an organization. Show you’re ready to meet this moment, validating practical, job‑ready skills from security and sales to daily operations.
+
+Explore Microsoft Certifications available today (with more coming soon!), and get started with free self-paced training, practice assessments, and additional exam readiness resources.
+
+See which Certification works for you: https://aiskillsnavigator.microsoft.com/credentials/?UTM_Source=Credentials_social&UTM_Medium=social&UTM_Campaign=X",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2041199255289798941,2026-04-06 13:00:00,2026-04-06 13:00:01,,04-06-2026 13:00,Monday,13:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://twitter.com/MicrosoftLearn/status/2041199255289798941,Microsoft Learn,Credentials Approver Group,Informational,ASN,10647,426,204,4,26,357,426,0,3,1,484614,0,,,,,4.0,4.0,202604-W1
+LinkedIn,"If you’re new to Azure (or cloud in general), starting with Virtual Machines gives you the foundation you need before jumping into containers, Kubernetes, or serverless.
+
+What is a Virtual Machine?
+A Virtual Machine is a computer that runs in the cloud. It works like a normal laptop or server, you install an operating system, apps, and tools, but Azure provides and maintains the physical hardware behind the scenes.
+
+Virtual Machines are ideal when you need:
+• Full control over the operating system
+• The ability to run custom software
+• Custom hosting or configuration setups
+
+You can run:
+• One Virtual Machine → great for testing, dev, small workloads
+• Many Virtual Machines → high availability, bigger workloads, predictable scaling
+
+When do Virtual Machines make sense?
+• Testing & development
+• Apps with variable demand
+• Extending your datacenter
+• Disaster recovery
+• Lift‑and‑shift migrations
+
+If you need control and reliability, Virtual Machines are the move.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:share:7452013117296754688,2026-04-20 11:19:26,2026-04-20 11:19:39,,04-20-2026 11:19,Monday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7452013117296754688,Microsoft Learn,,Educational,,10697,231,135,3,15,0,231,1,0,2,1137794,0,,,,,2.16,2.16,202604-W3
+Instagram,Always in your corner (literally).,SENT,microsoftlearn,INSTAGRAM,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.instagram.com/reel/DXsf3enD4-E/,2026-04-28 20:22:27,2026-04-28 20:22:27,,04-28-2026 20:22,Tuesday,20:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Video,https://www.instagram.com/reel/DXsf3enD4-E/,microsoftlearn,,Educational,,11343,257,197,19,24,0,10977,2,14,3,127343,0,,,,,2.27,2.27,202604-W4
+LinkedIn,"Finance teams shouldn't spend their sharpest thinking hours on formatting and follow-up. Share this with those that need inspiration on where to start their vibe coding.
+
+Your expertise drives it. AI builds it: https://aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc/?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_AON&UTM_Term=AON",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | Business Users (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7450531678260875264,2026-04-16 09:12:44,2026-04-16 09:12:56,,04-16-2026 09:12,Thursday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7450531678260875264,Microsoft Learn,,Educational,ASN,11001,7055,124,6,17,102,7055,2,4,0,1133533,0,,,,,64.13,2.26,202604-W3
+LinkedIn,"🎓 Students: want to build skills, lead with AI, make an impact that matters?
+The Microsoft Student Ambassadors Program is reimagined and now open to students from all areas of study.
+✅ Learn AI & future-ready skills
+✅ Build experience for your CV & LinkedIn profile
+✅ Join a global student community
+✅ No application required
+👉 Join the Student Ambassadors Program
+📖 Read the blog to learn more: https://aka.ms/StudentAmbassadorsProgram_LN",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7449894248956645376,2026-04-14 15:00:00,2026-04-14 15:00:02,,04-14-2026 15:00,Tuesday,15:00,, , ,Blog, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7449894248956645376,Microsoft Learn,,Brand,Other,11084,400,105,2,26,276,400,2,0,0,1130445,0,,,,,3.61,3.61,202604-W2
+X,"⏰ Final week. Don’t miss it.
+The AI Credentials Accelerator training event is your chance to build job‑ready AI skills with Microsoft Certified Trainers delivering official courseware across:
+• Business workflows
+• AI transformation
+• Copilot Studio agents
+• AI‑assisted development
+• Security & compliance for Microsoft 365 Copilot
+
+Find training now: https://learn.microsoft.com/en-us/training/training-services-partners?wt.mc_id=credentials_aiaccelerator_social_wwl_x",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2047722236719607988,2026-04-24 13:00:00,2026-04-24 13:00:01,,04-24-2026 13:00,Friday,13:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://twitter.com/MicrosoftLearn/status/2047722236719607988,Microsoft Learn,,Informational,Microsoft Learn,11186,633,229,5,26,450,633,2,2,1,494480,0,,,,,5.66,5.66,202604-W4
+X,"A clear path to getting Excel certified:
+• Intermediate Certification: Microsoft Office Specialist: Excel Associate (Microsoft 365 Apps)
+• Advanced Certification: Microsoft Office Specialist: Excel Expert (Microsoft 365 Apps)",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2048869800479228232,2026-04-27 17:00:00,2026-04-27 17:00:01,,04-27-2026 17:00,Monday,17:00,, , ,Microsoft Certifications, ,MSFT Learn | Agency (Dojo) created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2048869800479228232,Microsoft Learn,,Informational,,11298,199,172,7,19,0,199,1,5,1,495230,0,,,,,1.76,1.76,202604-W4
+Instagram,Can't argue with data. 🤷,SENT,microsoftlearn,INSTAGRAM,Emma Casey,MSFT Learn | AON (Universal),https://www.instagram.com/p/DW-RaA1FrHk/,2026-04-11 15:00:00,2026-04-11 15:00:06,,04-11-2026 15:00,Saturday,15:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Carousel,https://www.instagram.com/p/DW-RaA1FrHk/,microsoftlearn,,Conversation,,11304,230,187,11,5,0,230,1,8,2,124239,0,,,,,2.03,2.03,202604-W2
+X,Be honest: How much time do you spend cleaning data vs analyzing it?,SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2041667340656357788,2026-04-07 20:00:00,2026-04-07 20:00:01,,04-07-2026 20:00,Tuesday,20:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://twitter.com/MicrosoftLearn/status/2041667340656357788,Microsoft Learn,,Conversation,,11387,174,131,32,9,0,174,7,19,6,484571,0,,,,,1.53,1.53,202604-W1
+Threads,"Debugging gets easier when you:
+• Isolate the problem first
+• Test one change at a time
+• Stop guessing and start verifying",SENT,microsoftlearn,THREADS,Emma Casey,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXMzxPdmPE8,2026-04-16 13:00:00,2026-04-16 13:00:21,,04-16-2026 13:00,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://www.threads.com/@microsoftlearn/post/DXMzxPdmPE8,microsoftlearn,,Conversation,,11554,21,15,1,5,0,21,1,0,0,15159,0,,,,,0.18,0.18,202604-W3
+LinkedIn,"Building AI skills shouldn’t feel complicated—or like you need five different tabs open to keep track.
+Here’s what’s new in AI Skills Navigator, based on what learners and team leaders asked for most:
+
+• More structure (and visibility) for learning paths, with real‑time progress tracking (smarter skilling playlists)
+• Learn when it works for you, then pick up right where you left off (more flexible skilling sessions)
+• Quickly find instructor‑led options near you that match your needs (Training Services Partners discovery)
+• A better way to show applied AI capability (not just knowledge) (integrated credentials)
+
+If you’re building AI skills for yourself or helping a team level up, take a look at what’s new 👇
+https://aka.ms/ASNBlogSeries2_LN",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7452068574438871042,2026-04-20 15:00:00,2026-04-20 15:00:01,,04-20-2026 15:00,Monday,15:00,, , ,Blog, ,MSFT Learn | Microsoft created,General,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7452068574438871042,Microsoft Learn,,Informational,Other,11805,354,90,3,15,217,354,1,2,0,1137794,0,,,,,3.0,3.0,202604-W3
+X,"Got an idea? Turn it into an AI agent. Learn to build your first agent with confidence at the Microsoft Agent-a-thon.
+
+Register and join us for the live session https://aka.ms/Agentathon_May2026",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2042210921112637551,2026-04-09 08:00:00,2026-04-09 08:00:00,,04-09-2026 08:00,Thursday,08:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://twitter.com/MicrosoftLearn/status/2042210921112637551,Microsoft Learn,,Informational,Other,11870,617,195,8,37,539,617,4,2,2,484631,0,,,,,5.2,5.2,202604-W2
+X,"You don't have to figure out how to work with AI alone. The AI Credentials Accelerator gives you Microsoft Official Courseware taught by certified experts, so you get training that actually prepares you for real work.
+
+Whether you’re closing a skills gap or preparing for what’s next, gain relevant AI skills you can apply immediately. https://learn.microsoft.com/en-us/training/training-services-partners?wt.mc_id=credentials_aiaccelerator_social_wwl_x",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2041486144286699579,2026-04-07 08:00:00,2026-04-07 08:00:00,,04-07-2026 08:00,Tuesday,08:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://twitter.com/MicrosoftLearn/status/2041486144286699579,Microsoft Learn,Credentials Approver Group,Informational,Microsoft Learn,11942,615,221,3,34,435,615,2,1,0,484590,0,,,,,5.15,5.15,202604-W1
+X,"Debugging gets easier when you:
+• Isolate the problem first
+• Test one change at a time
+• Stop guessing and start verifying",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2044823134612631617,2026-04-16 13:00:00,2026-04-16 13:00:01,,04-16-2026 13:00,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://twitter.com/MicrosoftLearn/status/2044823134612631617,Microsoft Learn,,Conversation,,12034,404,341,16,45,0,404,4,8,4,492857,0,,,,,3.36,3.36,202604-W3
+X,"A better way to approach data analysis: start with the decision, then work backward into the data.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2049111390871314880,2026-04-28 09:00:00,2026-04-28 09:00:00,,04-28-2026 09:00,Tuesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2049111390871314880,Microsoft Learn,,Conversation,,12182,311,263,13,34,0,311,2,5,6,495275,0,,,,,2.55,2.55,202604-W4
+LinkedIn,"A lot of technical risks sound small in meetings because the impact isn’t clear.
+For instance, “latency is high” won’t move a meeting but “users are waiting longer to complete actions” might.
+The real skill here is translating the issue into what it means for the business.
+
+Here are few more examples:",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7449622501757800448,2026-04-13 21:00:00,2026-04-13 21:00:12,,04-13-2026 21:00,Monday,21:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7449622501757800448,Microsoft Learn,,Educational,,12187,6483,180,20,22,0,6483,8,12,0,1130445,0,,,,,53.2,1.82,202604-W2
+X,"Understand something well enough that you can explain it.
+Test it with three checks:
+1. One sentence - Can you summarize it in a single line?
+2. One example - Can you show what it looks like in action?
+3. One use case - Can you name a real situation where it applies?",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2050233901700767811,2026-05-01 11:20:28,2026-05-01 11:20:28,,05-01-2026 11:20,Friday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2050233901700767811,Microsoft Learn,,Conversation,,12355,414,347,11,55,0,414,7,4,0,495590,0,,,,,3.35,3.35,202605-W1
+LinkedIn,"Last chance to build job‑ready AI skills. Don’t miss it!
+
+The AI Credentials Accelerator training event is wrapping up soon. This is your opportunity to gain practical, role‑relevant AI skills you can apply immediately, with Microsoft Official Courseware led by Microsoft Certified Trainers.
+Explore training on:
+✔ Transforming business workflows with generative AI
+✔ Driving AI transformation across your organization
+✔ Creating agents with Microsoft Copilot Studio
+✔ Getting started with AI‑assisted development
+✔ Preparing security & compliance for Microsoft 365 Copilot
+
+If you’ve been meaning to skill up, now is the moment, with focused, expert‑led training built for real work.
+👉 Find training now: https://learn.microsoft.com/en-us/training/training-services-partners?wt.mc_id=credentials_aiaccelerator_social_wwl_linkedin",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7453487927701053440,2026-04-24 13:00:00,2026-04-24 13:00:01,,04-24-2026 13:00,Friday,13:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7453487927701053440,Microsoft Learn,,Informational,Microsoft Learn,12685,800,154,2,19,659,800,0,2,0,1141575,0,,,,,6.31,6.31,202604-W4
+LinkedIn,"How can generative AI support academic research—without compromising rigor or integrity?
+
+Our latest blog explores practical ways researchers can use generative AI as a thoughtful, documentable part of their methodology.
+👉 Read the blog and download the paper to get started: https://aka.ms/EDUResearcherblog_LN",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7448037009274834945,2026-04-09 12:00:00,2026-04-09 12:00:01,,04-09-2026 12:00,Thursday,12:00,, , ,Blog, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7448037009274834945,Microsoft Learn,,Informational,Other,12900,507,184,4,55,272,507,4,0,0,1123970,0,,,,,3.93,3.93,202604-W2
+LinkedIn,"Agent 365 is now generally available, and it changes how IT leaders manage AI at scale.
+
+If your organization is navigating the shift to agentic AI, this is the control plane built for that moment.
+
+We've made it easy to get started:
+👉 Learn it hands-on: https://lnkd.in/eCdfjEUF
+👉 Read what it means: https://lnkd.in/e2iWkeMV
+
+If you're an IT leader (or working closely with one), now is the time to get familiar.",SENT,Microsoft Learn,LINKEDIN_COMPANY,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7456096359876608000,2026-05-01 17:44:59,2026-05-01 17:44:59,,05-01-2026 17:45,Friday,17:00,, , ,AI Skills Navigator (AISN), ,MSFT Learn | Microsoft created,IT Pro,,Link,https://www.linkedin.com/feed/update/urn:li:ugcPost:7456096359876608000,Microsoft Learn,,Informational,ASN,13060,524,117,0,10,0,524,0,0,0,1148400,0,,,,,4.01,4.01,202605-W1
+LinkedIn,"Customer service teams see the same patterns every day. Vibe coding helps you turn those patterns into tools that make the whole team faster, more consistent, and better customer satisfaction.
+Describe what you need in plain language. AI builds it. Your frontline expertise powers everything.
+
+Start learning: https://aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc/?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_AON&UTM_Term=AON",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | Business Users (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7448354729727782912,2026-04-10 09:02:18,2026-04-10 09:02:31,,04-10-2026 09:02,Friday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7448354729727782912,Microsoft Learn,,Educational,ASN,13244,8497,146,8,19,126,8497,5,3,0,1125301,0,,,,,64.16,2.26,202604-W2
+X,"Built something with AI? Now make sure it holds up.
+
+Learn how to govern AI in Azure, including:
+• Secure access
+• Cost management
+• Policy enforcement
+• Monitoring + Compliance
+
+Start here → https://learn.microsoft.com/en-us/training/paths/govern-ai-ready-infrastructure/",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2046363282353660265,2026-04-20 19:00:00,2026-04-20 19:00:00,,04-20-2026 19:00,Monday,19:00,, , ,Other, ,MSFT Learn | Microsoft created,IT Pro,,Link,https://twitter.com/MicrosoftLearn/status/2046363282353660265,Microsoft Learn,,Informational,Microsoft Learn,14332,744,298,6,42,311,744,4,2,0,493500,0,,,,,5.19,5.19,202604-W3
+LinkedIn,"If you’ve been waiting for a clean starting point in AI, AI-900 is it. Today, we're highlighting ICAIRE's Women Elevate program, delivered by Spectrum Networks. This global community is helping women build entry-level AI skills and responsible innovation mindset, then prove it with AI‑900: Azure AI Fundamentals, which is designed for both technical and non-technical learners.
+
+Start today and follow their lead: https://aiskillsnavigator.microsoft.com/explore/search/cert-83587e0a0754cfee561ade3e27d9fa1cdaf15ae03be52d2413b2b858d1b4eda4?UTM_Source=STRY_Social&UTM_Medium=Social&UTM_Campaign=Spectrum_customervoice&UTM_Term=customervoice",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7446904546511122432,2026-04-06 09:00:00,2026-04-06 09:00:01,,04-06-2026 09:00,Monday,09:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,Decision Maker/Executive,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7446904546511122432,Microsoft Learn,Other,Informational,ASN,15005,767,152,7,26,468,767,5,2,0,1120593,0,,,,,5.11,5.11,202604-W1
+X,Hot take: Automation without guardrails just moves the problem faster.,SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2046937899178815669,2026-04-22 09:03:19,2026-04-22 09:03:20,,04-22-2026 09:03,Wednesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2046937899178815669,Microsoft Learn,,Conversation,,15218,279,220,25,27,0,279,5,8,12,493616,0,,,,,1.83,1.83,202604-W4
+X,"Have you ever heard the term “VM” and wondered what it actually means? A Virtual Machine (VM) is basically a computer in the cloud.
+• You install the operating system, apps, and tools just like a physical machine.
+• Azure handles the hardware for you.
+Use a VM when you need control, customization, or a fast way to spin up a server.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2044943931087954166,2026-04-16 21:00:00,2026-04-16 21:00:01,,04-16-2026 21:00,Thursday,21:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://twitter.com/MicrosoftLearn/status/2044943931087954166,Microsoft Learn,,Educational,,15244,337,303,6,28,0,337,2,1,3,492936,0,,,,,2.21,2.21,202604-W3
+Threads,"A better way to approach analysis:
+Question → Data → Insight → Action",SENT,microsoftlearn,THREADS,Marlon Zanatti,MSFT Learn | AON (Universal),https://www.threads.com/@microsoftlearn/post/DXQPfqUmHeR,2026-04-17 21:00:00,2026-04-17 21:00:21,,04-17-2026 21:00,Friday,21:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Biz User,,Text,https://www.threads.com/@microsoftlearn/post/DXQPfqUmHeR,microsoftlearn,,Conversation,,15324,12,9,2,1,0,12,1,1,0,15182,0,,,,,0.08,0.08,202604-W3
+X,"Students 👋
+Want skills, experience, and a global network?
+The Microsoft Student Ambassadors Program is open to students from all areas of study—no application required.
+• Learn
+• Lead
+• Build your CV
+Join + read the blog
+https://aka.ms/StudentAmbassadorsProgram_X",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2044128561972265468,2026-04-14 15:00:00,2026-04-14 15:00:02,,04-14-2026 15:00,Tuesday,15:00,, , ,Blog, ,MSFT Learn | Microsoft created,NextGen,,Photo,https://twitter.com/MicrosoftLearn/status/2044128561972265468,Microsoft Learn,,Brand,Other,15581,760,234,1,50,764,760,1,0,0,491926,0,,,,,4.88,4.88,202604-W2
+X,"If you want sharper predictions, faster decisions, and smarter products, machine learning (ML) is the path.
+
+It helps you catch patterns you’d never spot in logs, forecast behavior before it hits production, and make decisions without guessing.
+
+And when data science and engineering are built in the same loop, ML stops being a “model on a notebook” and becomes part of the system, powering personalization, automation, and smarter features.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2044460746172510431,2026-04-15 13:00:00,2026-04-15 13:00:00,,04-15-2026 13:00,Wednesday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2044460746172510431,Microsoft Learn,,Educational,,15846,330,283,14,32,0,330,4,8,2,492452,0,,,,,2.08,2.08,202604-W3
+X,"If you want to build your own Microsoft 365 Copilot Agent, follow this path:
+1. Module: Understand Microsoft 365 Agents SDK
+2. Module: Utilize an Azure OpenAI model to create an Agent
+3. Module: Build your custom Agent using Microsoft 365 Agents SDK",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2041606941965795569,2026-04-07 16:00:00,2026-04-07 16:00:01,,04-07-2026 16:00,Tuesday,16:00,, , ,Other, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2041606941965795569,Microsoft Learn,,Informational,,15955,298,253,11,33,0,298,2,7,2,484590,0,,,,,1.87,1.87,202604-W1
+LinkedIn,"We love seeing the MVP community share how they build 👏
+Jonah Andersson and Håkan Silfvernagel put together “Building Apps Using Microsoft Foundry & MCP Servers”. 
+Watch where they go over Microsoft Learn MCP Server and how it's helping developers use AI agents to quickly find best practices from Learn docs for their code: https://lnkd.in/etfywcsM 
+Learn more about MCP Server here: https://lnkd.in/eqAXN9U7",SENT,Microsoft Learn,LINKEDIN_COMPANY,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:share:7445833484327145472,2026-04-03 10:03:59,2026-04-03 10:03:59,,04-03-2026 10:04,Friday,10:00,, , ,Other, ,MSFT Learn | Microsoft created,Developer,,Link,https://www.linkedin.com/feed/update/urn:li:share:7445833484327145472,Microsoft Learn,,Informational,Microsoft Learn,16088,208,74,3,3,0,208,2,1,0,1118483,0,,,,,1.29,1.29,202604-W1
+LinkedIn,"AI is changing how work gets done. Are your skills keeping up?
+The AI Credentials Accelerator training event delivers focused, expert‑led training to help business leaders and teams apply AI where it matters most.
+Explore training on:
+✔ Transforming business workflows with generative AI
+✔ Driving AI transformation across your organization
+✔ Preparing security & compliance for Microsoft 365 Copilot
+Whether you’re closing a skills gap or planning what’s next, gain practical, role‑relevant AI skills you can use immediately.
+👉 Find training now
+https://learn.microsoft.com/en-us/training/training-services-partners?wt.mc_id=credentials_aiaccelerator_social_wwl_linkedin",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7448414496949231616,2026-04-10 13:00:00,2026-04-10 13:00:01,,04-10-2026 13:00,Friday,13:00,, , ,Other, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7448414496949231616,Microsoft Learn,,Informational,Microsoft Learn,16363,967,180,3,26,527,967,3,0,0,1125301,0,,,,,5.91,5.91,202604-W2
+LinkedIn,"In ops, small improvements compound. The weekly review that takes fewer hours to build. The SOP that's always current. The intake process that routes itself.
+
+Vibe coding helps ops teams turn the processes they already know into tools that scale.
+
+Your expertise drives it. AI builds it: https://aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc/?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_AON&UTM_Term=AON",SENT,Microsoft Learn,LINKEDIN_COMPANY,Marlon Zanatti,MSFT Learn | Business Users (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7451268348459446273,2026-04-18 10:00:00,2026-04-18 10:00:12,,04-18-2026 10:00,Saturday,10:00,, , ,AI Skills Navigator (AISN), ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7451268348459446273,Microsoft Learn,,Educational,ASN,16534,10480,147,3,19,123,10480,1,2,0,1135603,0,,,,,63.38,1.77,202604-W3
+X,"Good systems should be booooooring:
+• So predictable
+• Always monitored
+• Well documented",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2047664500573114375,2026-04-24 09:10:35,2026-04-24 09:10:35,,04-24-2026 09:10,Friday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2047664500573114375,Microsoft Learn,,Conversation,,16558,526,447,25,49,0,526,9,6,10,494480,0,,,,,3.18,3.18,202604-W4
+X,"We know you asked: what else goes into an AI agent?
+At a high level:
+reasoning → the model
+actions → the tools
+context → what it knows
+retrieval → bringing in the right info
+orchestration → how it all works together
+evaluation → how you know it works",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2043043010837909979,2026-04-11 15:06:26,2026-04-11 15:06:26,,04-11-2026 15:06,Saturday,15:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2043043010837909979,Microsoft Learn,,Conversation,,16743,391,344,12,34,0,391,5,6,1,489326,0,,,,,2.34,2.34,202604-W2
+LinkedIn,"There’s no single path to success, and learning shouldn’t be one‑size‑fits‑all.
+
+No matter your role, level, or career goals, Microsoft Certifications broad portfolio helps you validate the AI skills employers need today.
+
+Get ready with free self-paced training, practice assessments, and additional exam readiness resources. See which Certification works for you (with more coming soon!) and start validating those job‑ready skills.
+
+Explore Microsoft Certifications on AI Skills Navigator: https://aiskillsnavigator.microsoft.com/credentials/?UTM_Source=Credentials_social&UTM_Medium=social&UTM_Campaign=Linkedin",SENT,Microsoft Learn,LINKEDIN_COMPANY,Marlon Zanatti,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7451072053258039296,2026-04-17 21:00:00,2026-04-17 21:00:12,,04-17-2026 21:00,Friday,21:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,IT Pro,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7451072053258039296,Microsoft Learn,,Informational,ASN,16772,4619,216,4,27,350,4619,2,1,1,1135603,0,,,,,27.54,3.56,202604-W3
+X,"What's the difference between no-code tools and vibe coding?
+No-code tools are great when the platform fits.
+Vibe coding is for when it doesn't. You describe what you need in plain language → AI generates real code → you get a custom tool for your exact problem.
+The skill isn't coding. It's knowing your work.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2043677251208712596,2026-04-13 09:06:40,2026-04-13 09:06:41,,04-13-2026 09:06,Monday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Text,https://twitter.com/MicrosoftLearn/status/2043677251208712596,Microsoft Learn,,Educational,ASN,16779,366,292,41,31,0,366,24,10,7,491349,0,,,,,2.18,2.18,202604-W2
+LinkedIn,"Save this for your next “why is this so manual” moment:
+No-code helps you work inside the tool, while vibe coding helps you build the tool you need.
+
+Start small: One workflow, one output. No templates, no workarounds.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7449445366225227776,2026-04-13 09:16:07,2026-04-13 09:16:19,,04-13-2026 09:16,Monday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7449445366225227776,Microsoft Learn,,Educational,,17016,5017,219,8,24,0,5017,3,5,0,1128936,0,,,,,29.48,1.48,202604-W2
+X,Your future self will thank you for this prompt upgrade.,SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2044868434102558731,2026-04-16 16:00:00,2026-04-16 16:00:01,,04-16-2026 16:00,Thursday,16:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Photo,https://twitter.com/MicrosoftLearn/status/2044868434102558731,Microsoft Learn,,Educational,,17168,473,406,6,58,0,473,1,2,3,492857,0,,,,,2.76,2.76,202604-W3
+LinkedIn,"The AI Tour is your chance to see AI in action. Join Microsoft experts and innovators as they share what’s working today and how you can apply it in your own workflows. → Reserve your spot. It’s completely free, but spots are limited.
+Register before spots run out: http://aka.ms/AITourFY26",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7445938180865896449,2026-04-03 17:00:00,2026-04-03 17:00:02,,04-03-2026 17:00,Friday,17:00,, , ,Other, ,MSFT Learn | Microsoft created,Decision Maker/Executive,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7445938180865896449,Microsoft Learn,Field Marketing Approver Group,Informational,Other,17451,496,144,0,14,166,496,0,0,0,1118483,0,,,,,2.84,2.84,202604-W1
+LinkedIn,"Big news coming out of AI Tour Sydney today 👀
+
+Excited to see this one go live. Huge moment for AI skilling.
+
+Read all about it ⬇️",SENT,Microsoft Learn,LINKEDIN_COMPANY,SprinklrSystem ,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7453157129261223936,2026-04-23 15:05:32,2026-04-23 15:05:32,,04-23-2026 15:05,Thursday,15:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Text,https://www.linkedin.com/feed/update/urn:li:share:7453157129261223936,Microsoft Learn,,Brand,Other,17479,603,83,1,2,0,603,1,0,0,1140604,0,,,,,3.45,3.45,202604-W4
+LinkedIn,Getting comfortable with AI starts with getting comfortable with the terms. Which term do you think is coming in part 3?,SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7448474941341073408,2026-04-10 17:00:00,2026-04-10 17:00:12,,04-10-2026 17:00,Friday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7448474941341073408,Microsoft Learn,,Educational,,17644,12326,224,8,31,0,12326,4,4,0,1125301,0,,,,,69.86,1.49,202604-W2
+LinkedIn,"It's not random when Copilot gives you different answers to the same question.
+It depends on whether it’s grounded in your work (files, meetings, emails, chats) or the web (public info, research, general knowledge).
+
+Both have their place:
+Use work‑grounded Copilot for work you own.
+Use web‑grounded Copilot for what’s public.
+
+Download or save the guide to keep it within reach.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7450890862592573440,2026-04-17 09:00:00,2026-04-17 09:00:12,,04-17-2026 09:00,Friday,09:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7450890862592573440,Microsoft Learn,,Educational,,17647,8373,232,6,43,0,8373,2,4,0,1134619,0,,,,,47.45,1.59,202604-W3
+LinkedIn,"Have an interview soon? Stop just listing what you’ve done and start framing it the way hiring teams think about it.
+
+Interviews are not just about experience. They are about how clearly you can communicate impact, priorities, and decision‑making. The language you use signals how well you understand the role, the team, and the business behind it.
+
+That is why knowing key interview terms matters. When you understand the words hiring managers use and can confidently use them yourself, you move from sounding prepared to sounding aligned.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7455299913828962304,2026-04-29 13:00:00,2026-04-29 13:00:12,,04-29-2026 13:00,Wednesday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7455299913828962304,Microsoft Learn,,Educational,,17858,11502,209,5,26,0,11502,3,2,0,1146422,0,,,,,64.41,1.34,202604-W5
+LinkedIn,"Save this, remove the repetitive tasks like status updates, risk logs, workback plans, and turn them into tools that build themselves from your notes.
+Your PM skills are the engine. AI handles the assembly.
+
+Your expertise drives it. AI builds it: https://aiskillsnavigator.microsoft.com/player?catalogId=module-744d5ffbc281be45a11c4fd62bc2f60d215718c17036a91cf7da7c13abdebddc/?UTM_Source=SOC_Social&UTM_Medium=Social&UTM_Campaign=VibeCoding_AON&UTM_Term=AON",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | Business Users (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7453133135640170496,2026-04-23 13:30:00,2026-04-23 13:30:12,,04-23-2026 13:30,Thursday,13:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7453133135640170496,Microsoft Learn,,Educational,ASN,17953,12246,209,9,28,271,12246,3,5,1,1140604,0,,,,,68.21,2.88,202604-W4
+X,The best way to learn a new tool? Use it to solve a problem you already have.,SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2044405437894627840,2026-04-15 09:20:13,2026-04-15 09:20:14,,04-15-2026 09:20,Wednesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2044405437894627840,Microsoft Learn,,Conversation,,17959,702,614,25,57,0,702,20,4,1,492452,0,,,,,3.91,3.91,202604-W3
+LinkedIn,"A lot of IT interviews come down to one thing: Can you clearly explain how you think? These questions show up again and again because they reveal how you troubleshoot, prioritize, and handle real issues, not just what you know.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7450172637667966976,2026-04-15 09:26:01,2026-04-15 09:26:14,,04-15-2026 09:26,Wednesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7450172637667966976,Microsoft Learn,,Educational,,18338,12970,259,11,28,0,12970,7,4,0,1131885,0,,,,,70.73,1.63,202604-W3
+LinkedIn,"“Stop asking what content to deliver. Start asking where conversation should happen.”
+A fresh take on why the future of skilling is adaptive, not linear, and how agentic systems can make learning as responsive as a teacher, as patient as a mentor, and as available as the moment curiosity strikes.
+Read more: https://techcommunity.microsoft.com/blog/skills-hub-blog/from-content-to-conversation-learning-that-adapts-in-real-time/4507439?wt.mc_id=stry_social_blog_wwl",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7455677406998269952,2026-04-30 14:00:00,2026-04-30 14:00:13,,04-30-2026 14:00,Thursday,14:00,, , ,Blog, ,MSFT Learn | Microsoft created,General,,Link,https://www.linkedin.com/feed/update/urn:li:share:7455677406998269952,Microsoft Learn,,Informational,Other,18889,134,47,0,3,52,134,0,0,0,1147462,0,,,,,0.71,0.71,202604-W5
+X,"On the job hunt?
+Know these terms:
+• Certification stack: Combining many credentials to show expertise
+• Competency framework: Set of skills and behaviors needed for success
+• Job matching: Aligning abilities and interests to a role
+• Learning roadmap: Planned path for skill acquisition
+• Micro‑credentials: Verified certifications for skills
+• Skill gap analysis: Identifying missing skills for a desired role
+• STAR Method: Structure for answering questions (Situation, Task, Action Result)
+• Upskilling loop: Ongoing process of learning new skills",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2049564375086752143,2026-04-29 15:00:00,2026-04-29 15:00:00,,04-29-2026 15:00,Wednesday,15:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2049564375086752143,Microsoft Learn,,Educational,,21022,485,414,7,61,0,485,3,4,0,495395,0,,,,,2.31,2.31,202604-W5
+LinkedIn,"Whether you’re new to cloud concepts or refreshing the basics, IaaS, PaaS, and SaaS is foundational for anyone exploring cloud computing.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7447614269652807680,2026-04-08 08:00:00,2026-04-08 08:00:12,,04-08-2026 08:00,Wednesday,08:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7447614269652807680,Microsoft Learn,,Educational,,22109,13296,283,11,48,0,13296,6,5,0,1122747,0,,,,,60.14,1.55,202604-W2
+X,"Yes, Virtual Machines can handle local LLMs.
+If you give them enough power, they’ll run the model just fine.
+ 
+Think of it like this: a Virtual Machine is just a clean, contained computer you can mess with freely. It's perfect for running something big without cluttering your actual machine.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2049624771780882718,2026-04-29 19:00:00,2026-04-29 19:00:00,,04-29-2026 19:00,Wednesday,19:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2049624771780882718,Microsoft Learn,,Educational,,23764,247,223,6,18,0,247,2,3,1,495395,0,,,,,1.04,1.04,202604-W5
+LinkedIn,"Ready to level up?
+
+Join us on May 6 to learn how to build AI agents for yourself or your enterprise.
+
+Choose your track and start building:
+• Level 1- Build your first AI agent and learn the fundamentals of agent creation
+• Level 2- Build powerful AI agents and automate work, connect systems, and streamline processes
+• Level 3- Build enterprise-grade AI agents, explore multi-agent capabilities, and secure enterprise workflows
+
+We’ll walk through the different agent levels and tools, so you can confidently choose the approach that fits your goals.
+
+Leave with solutions you can start using right away.
+
+Secure your spot and register: https://aka.ms/Agentathon_May2026",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7453548325435301888,2026-04-24 17:00:00,2026-04-24 17:00:01,,04-24-2026 17:00,Friday,17:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7453548325435301888,Microsoft Learn,,Informational,Other,24995,1662,417,6,111,969,1662,5,1,0,1141575,0,,,,,6.65,6.65,202604-W4
+Instagram,Now this is art.,SENT,microsoftlearn,INSTAGRAM,Marlon Zanatti,MSFT Learn | AON (Universal),https://www.instagram.com/p/DXQpolMln3X/,2026-04-18 22:00:00,2026-04-18 22:00:05,,04-18-2026 22:00,Saturday,22:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,NextGen,,Carousel,https://www.instagram.com/p/DXQpolMln3X/,microsoftlearn,,Conversation,,25980,1086,894,9,66,0,1086,2,3,4,126009,0,,,,,4.18,4.18,202604-W3
+LinkedIn,"Don’t let exam jitters distract you, you got this!
+
+Focus on architectural thinking, not memorization. Microsoft Certification exam AZ‑305 is about how you design systems, and the more real architecture problems you work through, the easier the exam will feel.
+
+Save this and refer back to it when you need it.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7445877827868127232,2026-04-03 13:00:00,2026-04-03 13:00:12,,04-03-2026 13:00,Friday,13:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,IT Pro,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7445877827868127232,Microsoft Learn,IT Pros Approver Group,Informational,,26695,16919,211,7,10,0,16919,3,4,0,1118483,0,,,,,63.38,0.85,202604-W1
+LinkedIn,One of the biggest blockers with AI? Keeping up with all the terminology. Here's part one of our AI A-Z glossary.,SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7448112554213773313,2026-04-09 17:00:00,2026-04-09 17:00:12,,04-09-2026 17:00,Thursday,17:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7448112554213773313,Microsoft Learn,,Educational,,27051,18956,355,15,65,0,18956,7,8,0,1123970,0,,,,,70.08,1.61,202604-W2
+LinkedIn,"Ready to shape the future of business with AI?
+Be among the first to get #MicrosoftCertified for an agent-first, Copilot-driven world – explore these new AI certifications and prepare for the upcoming beta exams to level up your role in the AI era!
+• Microsoft Certified: AI Agent Builder Associate (Exam AI-620 beta)
+• Microsoft Certified: Dynamics 365 Sales AI Consultant Associate (Exam AB-210 beta)
+• Microsoft Certified: Dynamics 365 Contact Center AI Engineer Associate (Exam AB-250 beta)
+• Microsoft Certified: Intelligent Applications Builder Associate (Exam AB-410 beta)
+
+Learn more: https://aka.ms/AIBusinessCredentialsBlog?wt.mc_id=credentials_changes_blog_wwl_LinkedIn",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7445998578939940864,2026-04-03 21:00:00,2026-04-03 21:00:01,,04-03-2026 21:00,Friday,21:00,, , ,Blog, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7445998578939940864,Microsoft Learn,Credentials Approver Group,Informational,Other,27579,1325,265,8,38,710,1325,3,5,0,1119382,0,,,,,4.8,4.8,202604-W1
+LinkedIn,What’s one skill you think everyone (regardless of role) should pick up this year?,SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:share:7448731584817623040,2026-04-11 10:00:00,2026-04-11 10:00:00,,04-11-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://www.linkedin.com/feed/update/urn:li:share:7448731584817623040,Microsoft Learn,,Conversation,,30639,710,56,43,3,0,710,14,29,0,1126317,0,,,,,2.32,2.32,202604-W2
+LinkedIn,"Most AI prompts don’t fail because they’re wrong, but because they’re unfinished.
+Small changes in how you structure a prompt can turn:
+ → Vague summaries
+ → Inconsistent outputs
+ → Generic rewrites
+Into results you can actually use at work.
+This quick guide walks through 4 everyday scenarios, like prioritizing tasks or prepping for meetings, and shows how to upgrade a basic prompt into something more effective using:
+✅ context
+✅ constraints
+✅ structured output
+Save this for the next time you're working with AI to learn faster, write more clearly, or prep in less time.
+
+And then leave a comment on the post saying:
+
+Here's a quick prompt to copy/paste into Copilot:
+Act as a [ROLE].  Help me [GOAL] for [AUDIENCE].  Constraints:
+• Tone: [X]
+• Length: [X]
+• Format: [bullets/table/steps]
+
+Include:
+• [Must‑have elements]
+
+Avoid: 
+• [Things to exclude]
+
+Ask up to [2–3] clarifying questions before completing the task.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7450634170676097025,2026-04-16 16:00:00,2026-04-16 16:00:13,,04-16-2026 16:00,Thursday,16:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7450634170676097025,Microsoft Learn,,Educational,,32406,18594,354,10,81,0,18594,4,6,0,1133533,0,,,,,57.38,1.37,202604-W3
+LinkedIn,"Give us your take:
+What’s a human skill AI can amplify, but never replace?
+
+We’ll be spotlighting top comments during an upcoming Microsoft Learn event 💻 ",SENT,Microsoft Learn,LINKEDIN_COMPANY,SprinklrSystem ,MSFT Learn | AON (Universal),https://www.linkedin.com/feed/update/urn:li:share:7447336217521729536,2026-04-07 19:00:01,2026-04-07 19:00:01,,04-07-2026 19:00,Tuesday,19:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://www.linkedin.com/feed/update/urn:li:share:7447336217521729536,Microsoft Learn,,Conversation,,33287,573,63,49,5,0,573,14,31,4,1121736,0,,,,,1.72,1.72,202604-W1
+LinkedIn,"Got your model working? Good. Now comes the part that decides whether it holds up.
+
+Access, policies, cost control, monitoring. This learning path walks through how to manage all of that in Azure with real scenarios.
+
+Take the next step → https://learn.microsoft.com/en-us/training/paths/govern-ai-ready-infrastructure/",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7452129020399439872,2026-04-20 19:00:00,2026-04-20 19:00:12,,04-20-2026 19:00,Monday,19:00,, , ,Other, ,MSFT Learn | Microsoft created,IT Pro,,Link,https://www.linkedin.com/feed/update/urn:li:share:7452129020399439872,Microsoft Learn,,Informational,Microsoft Learn,33451,784,155,0,23,584,784,0,0,0,1137794,0,,,,,2.34,2.34,202604-W3
+LinkedIn,"Prompting helps you think through a problem, and vibe coding helps you build the solution.
+The real power of vibe coding isn't the AI, it's you. Your domain expertise, your context, your understanding of the problem. AI just gives you the means to turn all of that into a working tool.
+You don't need a programming background. You need knowledge of your work.",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7445273847727222784,2026-04-01 21:00:00,2026-04-01 21:00:12,,04-01-2026 21:00,Wednesday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7445273847727222784,Microsoft Learn,,Educational,,33795,8705,406,23,52,0,8705,8,15,0,1117549,0,,,,,25.76,1.42,202604-W1
+LinkedIn,"What if one training experience could help you build skills you will apply across your entire career? The AI Credentials Accelerator training event gives you Microsoft Official Courseware taught by certified experts, so you build skills that will move your career forward, no matter your role.
+Explore training on:
+• Business workflows
+• AI transformation
+• Copilot Studio agents
+• AI‑assisted development
+
+Get started today! https://learn.microsoft.com/en-us/training/training-services-partners?wt.mc_id=credentials_aiaccelerator_social_wwl_linkedin",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7447251834735472641,2026-04-07 08:00:00,2026-04-07 08:00:01,,04-07-2026 08:00,Tuesday,08:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7447251834735472641,Microsoft Learn,Credentials Approver Group,Informational,Microsoft Learn,34381,2678,436,9,58,1571,2678,8,1,0,1121736,0,,,,,7.79,7.79,202604-W1
+LinkedIn,"AI is changing IT roles fast, and the expectations are higher than ever.
+
+Today’s IT professionals aren’t just keeping systems running; they're securing AI workloads, managing hybrid environments, and supporting teams building intelligent apps and agents.
+
+Microsoft Credentials are evolving to reflect that reality, validating AI skills in production environments with AI Certifications available today, and more coming soon! Get ready with free self-paced training, practice assessments, and additional exam readiness resources.
+
+See which Certification works for you and get started.
+Explore Microsoft Certifications on AI Skills Navigator: https://aiskillsnavigator.microsoft.com/credentials?UTM_Source=Credentials_social&UTM_Medium=social&UTM_Campaign=Linkedin",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7448535340681715713,2026-04-10 21:00:00,2026-04-10 21:00:13,,04-10-2026 21:00,Friday,21:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,IT Pro,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7448535340681715713,Microsoft Learn,,Informational,ASN,34878,2369,415,19,62,1068,2369,9,9,1,1126317,0,,,,,6.79,4.48,202604-W2
+LinkedIn,"Build job‑ready AI skills fast.
+
+The AI Credentials Accelerator training event offers focused, expert‑led training for technical professionals ready to design, build, and scale AI solutions.
+
+Learn how to:
+✔ Create agents with Microsoft Copilot Studio
+✔ Get started with AI‑assisted development
+✔ Prepare secure, compliant AI environments with Microsoft 365 Copilot
+
+Upgrade your skills with practical training built for real-world delivery.
+
+👉 Explore AI training: https://lnkd.in/e946fgC3",SENT,Microsoft Learn,LINKEDIN_COMPANY,Marlon Zanatti,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7451011612020264961,2026-04-17 17:00:00,2026-04-17 17:00:01,,04-17-2026 17:00,Friday,17:00,, , ,Copilot, ,MSFT Learn | Microsoft created,Developer,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7451011612020264961,Microsoft Learn,,Informational,Microsoft Learn,35808,2363,406,7,62,112,2363,3,3,1,1134619,0,,,,,6.6,6.6,202604-W3
+X,"Cybersecurity, explained simply:
+• Firewall = blocks obvious threats
+• MFA = adds a second lock to your account
+• Encryption = scrambles your data so only the right people can read it",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2040429180479824116,2026-04-04 10:00:00,2026-04-04 10:00:00,,04-04-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2040429180479824116,Microsoft Learn,,Educational,,36646,1193,1011,26,145,0,1193,9,16,1,484444,0,,,,,3.26,3.26,202604-W1
+X,Real talk: You don’t really understand a system until something breaks and you have to fix it.,SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2044037958051807556,2026-04-14 09:00:00,2026-04-14 09:00:00,,04-14-2026 09:00,Tuesday,09:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://twitter.com/MicrosoftLearn/status/2044037958051807556,Microsoft Learn,,Conversation,,37055,1567,1304,49,197,0,1567,21,12,16,491926,0,,,,,4.23,4.23,202604-W2
+LinkedIn,"AI is reshaping every part of an organization. Show you’re ready to apply AI in real business contexts to redesign processes, improve outcomes, protect personal and organizational data, and lead organization-wide AI adoption.
+
+Microsoft Credentials are evolving to meet this moment, validating practical, job‑ready skills that translate directly into real business impact with AI-focused Certifications available today, with more coming soon!
+
+Get ready with free self-paced training, practice assessments, and additional exam readiness resources. See which Certification works for you and get started!
+
+Explore more Microsoft Certifications on AI Skills Navigator: https://aiskillsnavigator.microsoft.com/credentials/?UTM_Source=Credentials_social&UTM_Medium=social&UTM_Campaign=Linkedin",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:ugcPost:7446964994082144256,2026-04-06 13:00:00,2026-04-06 13:00:13,,04-06-2026 13:00,Monday,13:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,Biz User,,Document,https://www.linkedin.com/feed/update/urn:li:ugcPost:7446964994082144256,Microsoft Learn,Credentials Approver Group,Informational,ASN,39608,12267,519,11,89,1073,12267,7,4,0,1120593,0,,,,,30.97,4.27,202604-W1
+LinkedIn,"AI is moving fast, and figuring out where to start shouldn’t feel complicated.
+
+AI Skills Day breaks it down into practical, usable steps you can take back to your work.
+
+Register now: http://aka.ms/AISkillsDay-2026",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7445168104202031104,2026-04-01 14:00:00,2026-04-01 14:00:01,,04-01-2026 14:00,Wednesday,14:00,, , ,Other, ,MSFT Learn | Microsoft created,Biz User,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7445168104202031104,Microsoft Learn,Channel Partners Approver Group,Informational,Other,41298,4377,563,6,134,2903,4377,4,2,0,1116405,0,,,,,10.6,10.6,202604-W1
+X,"Nobody:  
+Absolutely nobody: 
+That one person who just created their first agent:
+|￣￣￣￣￣￣￣￣￣￣￣￣￣￣| 
+|                                                               |
+|                   I shouldn't have             | 
+|                   this much power.          | 
+|＿＿＿＿＿＿＿＿＿＿＿＿＿＿| 
+  \ (•◡•) /   
+     \      /   
+     ——    
+      |    |    
+      |_  |_",SENT,Microsoft Learn,TWITTER,SprinklrSystem ,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2041548145532805546,2026-04-07 12:06:22,2026-04-07 12:06:22,,04-07-2026 12:06,Tuesday,12:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,General,,Text,https://twitter.com/MicrosoftLearn/status/2041548145532805546,Microsoft Learn,,Conversation,,41736,479,436,20,22,0,479,4,9,7,484590,0,,,,,1.15,1.15,202604-W1
+X,"Learn automation to become a developer.
+Learn automation to become an IT Pro.
+Learn automation if you’re a business user.
+
+No matter your path, the right skills can change everything.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2043856765528240361,2026-04-13 21:00:00,2026-04-13 21:00:00,,04-13-2026 21:00,Monday,21:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2043856765528240361,Microsoft Learn,,Conversation,,46794,1839,1623,41,165,0,1839,17,21,3,491926,0,,,,,3.93,3.93,202604-W2
+X,"Modern IT roles sit at the intersection of infrastructure, security, and AI. Explore the new Microsoft Certifications available today (with more coming soon), and get started with free self-paced training, practice assessments, and additional exam-readiness resources to help you demonstrate your ability to support the systems organizations rely on next: https://aiskillsnavigator.microsoft.com/credentials/?UTM_Source=Credentials_social&UTM_Medium=social&UTM_Campaign=X",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2042769603021946900,2026-04-10 21:00:00,2026-04-10 21:00:01,,04-10-2026 21:00,Friday,21:00,, , ,Microsoft Certifications, ,MSFT Learn | Microsoft created,IT Pro,,Photo,https://twitter.com/MicrosoftLearn/status/2042769603021946900,Microsoft Learn,,Informational,ASN,51148,1598,831,3,83,1473,1598,1,2,0,489326,0,,,,,3.12,3.12,202604-W2
+X,"Let’s level up your Azure skills this week. If your level is:
+• Beginner: Create an AI agent → Microsoft Applied Skills: Create an AI agent
+• Intermediate: Build a generative AI chat app → Microsoft Applied Skills: Build a generative AI chat app
+• Advanced: Develop generative AI apps with Azure OpenAI and SK → Microsoft Applied Skills: Develop generative AI apps with Azure OpenAI and Semantic Kernel",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2042709203647709230,2026-04-10 17:00:00,2026-04-10 17:00:00,,04-10-2026 17:00,Friday,17:00,, , ,Microsoft Applied Skills, ,MSFT Learn | Agency (Dojo) created,Developer,,Text,https://twitter.com/MicrosoftLearn/status/2042709203647709230,Microsoft Learn,,Informational,,55267,1474,1350,8,113,0,1474,3,4,1,485930,0,,,,,2.67,2.67,202604-W2
+X,"Join the Microsoft Agent-a-thon on May 6 to explore the three levels of agent creation:
+
+• Level 1: Explorer | Build your first AI agent
+• Level 2: Commander | Build powerful AI agents
+• Level 3: Master | Build scalable agents with Microsoft technologies
+
+Which level are you stepping into?
+Secure your spot and register today: https://aka.ms/Agentathon_May2026",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2047843035312988415,2026-04-24 21:00:00,2026-04-24 21:00:01,,04-24-2026 21:00,Friday,21:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Link,https://twitter.com/MicrosoftLearn/status/2047843035312988415,Microsoft Learn,,Informational,Other,58924,3721,832,12,122,2491,3721,3,8,1,494958,0,,,,,6.31,6.31,202604-W4
+LinkedIn,"AI solutions are moving fast and the skills needed to build them are evolving just as quickly.
+Show you’re ready to build AI solutions with new Microsoft Certification exams for AI solution developers and agent builders, now in beta. Get ready with free exam prep resources and then be among the first to be #MicrosoftCertified with these exams. The first 300 candidates per exam can get 80% off.
+🔹AI‑901 (beta): Learn how to implement AI solutions using Microsoft Foundry across common workloads like generative AI, speech, vision, and information extraction.
+🔹AI‑103 (beta): Build and deploy scalable AI apps and agents on Azure using generative AI, multimodal development, and responsible AI practices.
+🔹AB‑620 (beta): Design and manage secure, enterprise‑ready agents in Microsoft Copilot Studio that automate tasks and integrate with real business systems.
+
+Explore the blogs for exam prep resources and offer details and then register now to be among the first to prove your expertise
+🔗 AI‑901 blog: https://aka.ms/AI901CertificationBlog?wt.mc_id=credentials_changes_blog_wwl_LinkedIn
+🔗 AI-103 blog: https://aka.ms/AI103CertificationBetaBlog?wt.mc_id=credentials_changes_blog_wwl_LinkedIn
+🔗 AB-620 blog: https://aka.ms/AB620CertificationBetaBlog?wt.mc_id=credentials_changes_blog_wwl_LinkedIn",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7452823551054737408,2026-04-22 17:00:00,2026-04-22 17:00:01,,04-22-2026 17:00,Wednesday,17:00,, , ,Blog, ,MSFT Learn | Microsoft created,Developer,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7452823551054737408,Microsoft Learn,,Informational,Other,62264,3605,813,13,144,3409,3605,6,5,2,1140068,0,,,,,5.79,5.79,202604-W4
+X,"The 5 generative AI models every leader should know:
+1. Large Language Models (LLMs) = generate and understand natural language text
+2. Code Models = specialized in programming languages and code generation
+3. Diffusion Models = generate images from text prompts
+4. Multimodal Models = handle multiple input types across text, images, and audio
+5. Domain‑Specific Models = fine-tuned for specific industries or tasks",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2044204053727437301,2026-04-14 20:00:00,2026-04-14 20:00:00,,04-14-2026 20:00,Tuesday,20:00,, , ,Not aligned to a product, ,MSFT Learn | Microsoft created,Decision Maker/Executive,,Text,https://twitter.com/MicrosoftLearn/status/2044204053727437301,Microsoft Learn,,Educational,,64570,1543,1325,18,190,0,1543,9,7,2,492452,0,,,,,2.39,2.39,202604-W2
+LinkedIn,"Ready to unlock AI productivity?
+Build your first AI agent with Copilot Agent Builder and learn the fundamentals of agent creation using simple, no‑code tools.
+• Follow a guided, step‑by‑step experience on our early‑access platform hosted by Founderz
+• Get real‑time support
+• Compete for prizes, including a Microsoft Surface Pro grand prize
+Register and join us May 6 https://aka.ms/Agentathon_May2026",SENT,Microsoft Learn,LINKEDIN_COMPANY,Emma Casey,MSFT Learn | OBO (Universal),https://www.linkedin.com/feed/update/urn:li:share:7447976611666235393,2026-04-09 08:00:00,2026-04-09 08:00:01,,04-09-2026 08:00,Thursday,08:00,, , ,Other, ,MSFT Learn | Microsoft created,General,,Photo,https://www.linkedin.com/feed/update/urn:li:share:7447976611666235393,Microsoft Learn,,Informational,Other,74960,5647,1119,17,256,3491,5647,3,14,0,1123970,0,,,,,7.53,7.53,202604-W2
+X,"If you’re putting an AI agent into production, log every action from day one. Not just errors, everything.
+
+Traceability is what makes it reliable over time.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2049505100335391094,2026-04-29 11:04:28,2026-04-29 11:04:28,,04-29-2026 11:04,Wednesday,11:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2049505100335391094,Microsoft Learn,,Conversation,,76172,1466,1281,54,120,0,1466,16,25,13,495395,0,,,,,1.92,1.92,202604-W5
+X,"Before learning cloud tools, understand:
+- networking basics
+- identity & access
+- cost implications
+Which one of these three do you want to learn more of next? We’ll send you a link to a module!",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2042965894763012167,2026-04-11 10:00:00,2026-04-11 10:00:00,,04-11-2026 10:00,Saturday,10:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,IT Pro,,Text,https://twitter.com/MicrosoftLearn/status/2042965894763012167,Microsoft Learn,,Conversation,,94923,2761,2258,300,191,0,2761,20,275,5,489326,0,,,,,2.91,2.91,202604-W2
+X,"A simple way to think about AI agents:
+LLM = reasoning
+Tools = actions
+Memory = context
+Agents combine all three.",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2040100766149460221,2026-04-03 12:15:00,2026-04-03 12:15:00,,04-03-2026 12:15,Friday,12:00,, , ,Not aligned to a product, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2040100766149460221,Microsoft Learn,,Conversation,,150785,3715,3235,72,381,0,3715,23,30,19,483866,0,,,,,2.46,2.46,202604-W1
+X,"New AI Certification exams are now in beta.
+Build real‑world AI & agentic skills from fundamentals to enterprise‑ready solutions:
+🔗 AI‑901 – Implement AI solutions using Microsoft Foundry. https://aka.ms/AI901CertificationBlog?wt.mc_id=credentials_changes_blog_wwl_X
+🔗 AI‑103 – Build scalable AI apps & agents on Azure. https://aka.ms/AI103CertificationBetaBlog?wt.mc_id=credentials_changes_blog_wwl_X
+🔗 AB‑620 – Design enterprise‑ready agents in Copilot Studio. https://aka.ms/AB620CertificationBetaBlog?wt.mc_id=credentials_changes_blog_wwl_X
+
+",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | OBO (Universal),https://twitter.com/MicrosoftLearn/status/2047057860253651385,2026-04-22 17:00:00,2026-04-22 17:00:01,,04-22-2026 17:00,Wednesday,17:00,, , ,Blog, ,MSFT Learn | Microsoft created,Developer,,Photo,https://twitter.com/MicrosoftLearn/status/2047057860253651385,Microsoft Learn,,Informational,Other,738632,8708,2546,46,399,19729,8708,17,23,6,493616,0,,,,,1.18,1.18,202604-W4
+X,"If you want to get Microsoft AI certified, start here:
+• Level 1: Azure AI Fundamentals (AI-900)
+• Level 2: Azure AI Engineer Associate (AI-102)
+• Level 3: Azure Solutions Architect Expert (AZ-305) (not AI‑specific, but useful for architecting AI solutions)",SENT,Microsoft Learn,TWITTER,Emma Casey,MSFT Learn | AON (Universal),https://twitter.com/MicrosoftLearn/status/2042346818244145467,2026-04-09 17:00:00,2026-04-09 17:00:01,,04-09-2026 17:00,Thursday,17:00,, , ,Microsoft Certifications, ,MSFT Learn | Agency (Dojo) created,General,,Text,https://twitter.com/MicrosoftLearn/status/2042346818244145467,Microsoft Learn,,Informational,,3997884,20898,18775,193,1832,0,20898,24,141,28,484631,0,,,,,0.52,0.52,202604-W2

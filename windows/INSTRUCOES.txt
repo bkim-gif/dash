@@ -1,0 +1,55 @@
+=====================================
+COMO RODAR NO WINDOWS
+=====================================
+
+ESTRUTURA DA PASTA (copie tudo isso):
+--------------------------------------
+windows/
+  Pipeline_Local.py
+  app.py
+  config.py
+  run.py
+  requirements.txt
+  components/
+  data/
+    loader.py
+    raw/           (pasta vazia — output do pipeline vai aqui)
+  .streamlit/
+  [seus CSVs aqui — veja lista abaixo]
+
+CSVs QUE DEVEM ESTAR NA RAIZ DA PASTA:
+---------------------------------------
+  - CSV da Sprinklr (posts)
+  - CSV da Meta (stories)
+  - MSFT_Revised_2026 - RAW DATA (1).csv   ← base historica
+  - MSFT_Followers - Página1.csv
+  - MSFT_Comments - Total Comments.csv
+  - Boosted.csv
+
+=====================================
+PASSO A PASSO
+=====================================
+
+1. Copie esta pasta inteira para o Windows
+   (ex: C:\Users\SeuNome\Documents\Dash)
+
+2. Cole os CSVs listados acima nesta mesma pasta
+
+3. Edite Pipeline_Local.py — apenas as linhas SPRINKLR_CSV e META_CSV:
+     SPRINKLR_CSV = BASE_DIR / "nome-do-seu-arquivo-sprinklr.csv"
+     META_CSV     = BASE_DIR / "nome-do-seu-arquivo-meta.csv"
+
+4. Abra o terminal (cmd ou PowerShell) nesta pasta
+
+5. Instale as dependencias (primeira vez apenas):
+     pip install streamlit pandas plotly openpyxl
+
+6. Rode o pipeline para gerar/atualizar os dados:
+     python Pipeline_Local.py
+
+7. Rode o dashboard:
+     python run.py
+
+   O browser abre automaticamente com o dashboard.
+
+=====================================
