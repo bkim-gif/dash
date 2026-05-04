@@ -120,7 +120,7 @@ def chart_timeline(
 
     # Preenche todos os períodos do range selecionado (sem lacunas)
     if date_start is not None and date_end is not None:
-        freq = "7D" if granularity == "Weekly" else "MS"
+        freq = "W-MON" if granularity == "Weekly" else "MS"
         _start = pd.to_datetime(date_start)
         _end   = pd.to_datetime(date_end)
         # Alinha ao primeiro período real igual ou anterior a date_start
