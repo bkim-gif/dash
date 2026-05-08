@@ -185,16 +185,16 @@ st.markdown(f"""
   }}
 </style>
 <script>
-(function() {
-  function removeKeyboardTitles() {
-    document.querySelectorAll('button[title*="keyboard"]').forEach(btn => {
+(function() {{
+  function removeKeyboardTitles() {{
+    document.querySelectorAll('button[title*="keyboard"]').forEach(btn => {{
       btn.removeAttribute('title');
-    });
-  }
+    }});
+  }}
   const observer = new MutationObserver(removeKeyboardTitles);
   observer.observe(document.body, {{ childList: true, subtree: true }});
   removeKeyboardTitles();
-})();
+}})();
 </script>
 """, unsafe_allow_html=True)
 
