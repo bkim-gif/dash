@@ -576,10 +576,12 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
 # 6. STACKED BAR — DISTRIBUIÇÃO DE PILARES POR REDE
 # ---------------------------------------------------------------------------
 
-def chart_pillar_by_network(df: pd.DataFrame) -> go.Figure:
+def chart_pillar_by_network(df: pd.DataFrame, highlight_network: str | None = None) -> go.Figure:
     """
     Barras horizontais empilhadas mostrando % de cada pilar por rede.
     Replicando o painel direito do Slide 4 do relatório.
+    Quando highlight_network é fornecido, a rede selecionada fica em destaque
+    e as demais ficam transparentes.
     """
     df_p = df[df["Pillars"] != "Unknown"]
 
@@ -601,19 +603,34 @@ def chart_pillar_by_network(df: pd.DataFrame) -> go.Figure:
     )
     pivot_pct = pivot.div(pivot.sum(axis=1), axis=0) * 100
 
+    has_highlight = highlight_network and highlight_network in pivot_pct.index
+    networks_list = list(pivot_pct.index)
+
     fig = go.Figure()
     for pillar in pivot_pct.columns:
+        base_hex = PILLAR_COLORS.get(pillar, "#888")
+
+        if has_highlight:
+            r, g, b = int(base_hex[1:3], 16), int(base_hex[3:5], 16), int(base_hex[5:7], 16)
+            colors = [
+                base_hex if net == highlight_network else f"rgba({r},{g},{b},0.18)"
+                for net in networks_list
+            ]
+            text_vals = pivot_pct[pillar].apply(lambda v: f"{v:.0f}%" if v >= 8 else "")
+            text_list = [text_vals[net] if net == highlight_network else "" for net in networks_list]
+        else:
+            colors = base_hex
+            text_list = pivot_pct[pillar].apply(lambda v: f"{v:.0f}%" if v >= 8 else "")
+
         fig.add_trace(go.Bar(
             y             = pivot_pct.index,
             x             = pivot_pct[pillar],
             name          = pillar,
             orientation   = "h",
-            marker_color  = PILLAR_COLORS.get(pillar, "#888"),
+            marker_color  = colors,
             marker_line   = dict(color=THEME["bg_page"], width=1.5),  # gap entre segmentos
             hovertemplate = f"<b>%{{y}}</b><br>{pillar}: %{{x:.0f}}%<extra></extra>",
-            text          = pivot_pct[pillar].apply(
-                lambda v: f"{v:.0f}%" if v >= 8 else ""
-            ),
+            text          = text_list,
             textposition  = "inside",
             textfont      = dict(color="white", size=10),
         ))

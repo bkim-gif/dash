@@ -271,6 +271,7 @@ with st.sidebar:
 # Rede(s) ativas (vem do session_state — botões no topo da página)
 _sel_net = st.session_state.sel_network
 networks = all_networks if (_sel_net == "ALL" or _sel_net not in all_networks) else [_sel_net]
+_hl_net  = _sel_net if _sel_net != "ALL" else None
 
 date_start_ts = pd.Timestamp(date_start)
 date_end_ts   = pd.Timestamp(date_end)
@@ -598,7 +599,11 @@ with tab3:
     with col_donut:
         st.plotly_chart(chart_pillar_donut(df_organic), use_container_width=True, key="pillar_donut")
 
-    st.plotly_chart(chart_pillar_by_network(df_organic), use_container_width=True, key="pillar_by_network")
+    st.plotly_chart(
+        chart_pillar_by_network(df_organic_allnets, highlight_network=_hl_net),
+        use_container_width=True,
+        key="pillar_by_network",
+    )
 
     # Tabela de métricas médias por pilar
     st.markdown(
@@ -682,7 +687,11 @@ with tab4:
     )
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.plotly_chart(chart_by_network(df_organic), use_container_width=True, key="network_detail_by_network")
+    st.plotly_chart(
+        chart_by_network(df_organic_allnets, selected_network=_hl_net),
+        use_container_width=True,
+        key="network_detail_by_network",
+    )
 
 
 # ══════════════════════════════════════════════════════════════════════════
