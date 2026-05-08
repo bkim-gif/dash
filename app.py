@@ -59,6 +59,7 @@ st.set_page_config(
 st.markdown(f"""
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');
 
   html, body, [class*="css"], .stApp, .stMarkdown, p, label, div, span, button, input, textarea, select {{
       font-family: 'Poppins', sans-serif !important;
@@ -68,7 +69,7 @@ st.markdown(f"""
   .stApp {{ background-color: {THEME['bg_page']}; }}
 
   /* Remove padding padrão do Streamlit no topo */
-  .block-container {{ padding-top: 1.5rem !important; }}
+  .block-container {{ padding-top: 3.5rem !important; }}
 
   /* Sidebar */
   [data-testid="stSidebar"] {{

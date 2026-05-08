@@ -339,11 +339,11 @@ def render_kpi_row(
         if foll_val:
             net_label = (
                 _FOLLOWER_NET_LABEL.get(selected_network, selected_network)
-                if selected_network != "ALL" else "All Platforms"
+                if selected_network != "ALL" else ""
             )
             st.markdown(
                 _card_html(
-                    f"Followers · {net_label}",
+                    f"Followers" + (f" · {net_label}" if net_label else ""),
                     foll_val,
                     label_extra=foll_sub,
                     color=foll_color,
@@ -391,7 +391,7 @@ def render_followers_card(
     if selected_network == "ALL":
         followers = int(snap[snap["network"].isin(_FOLLOWER_NET_ORDER)]["followers"].sum())
         color     = THEME["text_primary"]
-        net_label = "All Platforms"
+        net_label = ""
     else:
         row = snap[snap["network"] == selected_network]
         if row.empty:
@@ -399,6 +399,8 @@ def render_followers_card(
         followers = int(row.iloc[0]["followers"])
         color     = NETWORK_COLORS.get(selected_network, THEME["text_secondary"])
         net_label = _FOLLOWER_NET_LABEL.get(selected_network, selected_network)
+
+    title_label = "Followers" + (f" · {net_label}" if net_label else "")
 
     st.markdown(
         f"""
@@ -417,7 +419,7 @@ def render_followers_card(
                 text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px;
                 display:flex;justify-content:space-between;align-items:center;
             ">
-                <span>Followers · {net_label}</span>
+                <span>{title_label}</span>
                 <span style="color:{THEME['text_muted']};font-size:9px;text-transform:none;letter-spacing:0">as of {ref_label}</span>
             </div>
             <div style="

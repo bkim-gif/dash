@@ -279,7 +279,7 @@ def chart_by_network(df: pd.DataFrame, selected_network: str | None = None) -> g
 
     layout = _base_layout(
         title  = dict(text="Impressions by Network", font=dict(size=14)),
-        xaxis  = dict(title="", tickformat=","),
+        xaxis  = dict(title="", tickformat=",", showticklabels=False),
         yaxis  = dict(title=""),
         height = 300,
         margin = dict(l=8, r=80, t=36, b=8),
