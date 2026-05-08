@@ -469,19 +469,22 @@ with tab1:
         date_end         = date_end_ts,
     )
 
-    # ── Row 2: Timeline (largo) + Radar (menor) ───────────────────────────
-    col_tl, col_rd = st.columns([3, 2])
+    # ── Row 2: Timeline (largo) + Impressions by Network ──────────────────
+    col_tl, col_net = st.columns([3, 2])
     with col_tl:
         fig_tl = chart_timeline(df_organic_full, granularity, date_start_ts, date_end_ts)
         fig_tl.update_layout(height=260)
         st.plotly_chart(fig_tl, use_container_width=True, key="overview_timeline")
-    with col_rd:
-        fig_rd = chart_pillar_radar(df_organic)
-        fig_rd.update_layout(height=260, margin=dict(l=20, r=20, t=40, b=20))
-        st.plotly_chart(fig_rd, use_container_width=True, key="overview_radar")
+    with col_net:
+        fig_net = chart_by_network(
+            df_organic_allnets,
+            selected_network = _sel_net if _sel_net != "ALL" else None,
+        )
+        fig_net.update_layout(height=260)
+        st.plotly_chart(fig_net, use_container_width=True, key="overview_by_network")
 
-    # ── Row 3: Comments card | Sentiment por rede | Impressões por rede ───
-    col_comm, col_sent, col_net = st.columns([1, 2, 1])
+    # ── Row 3: Comments card | Sentiment por rede | Radar ─────────────────
+    col_comm, col_sent, col_rd = st.columns([1, 2, 2])
     with col_comm:
         render_comments_card(
             df_organic,
@@ -500,13 +503,10 @@ with tab1:
         )
         fig_sent.update_layout(height=280)
         st.plotly_chart(fig_sent, use_container_width=True, key="overview_comments_sentiment")
-    with col_net:
-        fig_net = chart_by_network(
-            df_organic_allnets,
-            selected_network = _sel_net if _sel_net != "ALL" else None,
-        )
-        fig_net.update_layout(height=280)
-        st.plotly_chart(fig_net, use_container_width=True, key="overview_by_network")
+    with col_rd:
+        fig_rd = chart_pillar_radar(df_organic)
+        fig_rd.update_layout(height=280, margin=dict(l=20, r=20, t=40, b=20))
+        st.plotly_chart(fig_rd, use_container_width=True, key="overview_radar")
 
 
 # ══════════════════════════════════════════════════════════════════════════
