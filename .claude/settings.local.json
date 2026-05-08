@@ -23,7 +23,8 @@
       "Bash(python3 -c \"import ast; ast.parse\\(open\\('Pipeline_Local.py'\\).read\\(\\)\\); print\\('Sintaxe OK'\\)\")",
       "Bash(python3 -c \"import pandas as pd; print\\(pd.__version__\\)\")",
       "Bash(head -5 /Users/bkim/Documents/Dash/data/*.csv)",
-      "Bash(bash publicar.sh)"
+      "Bash(bash publicar.sh)",
+      "Bash(python3)"
     ]
   }
 }
