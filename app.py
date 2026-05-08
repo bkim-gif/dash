@@ -184,6 +184,18 @@ st.markdown(f"""
       padding: 4px 4px 0 4px;
   }}
 </style>
+<script>
+(function() {
+  function removeKeyboardTitles() {
+    document.querySelectorAll('button[title*="keyboard"]').forEach(btn => {
+      btn.removeAttribute('title');
+    });
+  }
+  const observer = new MutationObserver(removeKeyboardTitles);
+  observer.observe(document.body, {{ childList: true, subtree: true }});
+  removeKeyboardTitles();
+})();
+</script>
 """, unsafe_allow_html=True)
 
 
