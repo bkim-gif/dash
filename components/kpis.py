@@ -317,7 +317,7 @@ def render_kpi_row(
                 display:flex;justify-content:space-between;align-items:center;">
                 <span>{label}</span>{label_extra}
             </div>
-            <div style="color:{val_color};font-size:32px;font-weight:700;
+            <div style="color:{val_color};font-size:33px;font-weight:700;
                 line-height:1;font-variant-numeric:tabular-nums;">{value_html}</div>
         </div>"""
 

@@ -497,7 +497,7 @@ with tab1:
         st.plotly_chart(fig_net, use_container_width=True, key="overview_by_network")
 
     # ── Row 3: Comments card | Sentiment por rede | Radar ─────────────────
-    col_comm, col_sent, col_rd = st.columns([1, 2, 2])
+    col_comm, col_sent, col_rd = st.columns([1, 2.5, 1.5])
     with col_comm:
         render_comments_card(
             df_organic,

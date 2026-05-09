@@ -531,7 +531,6 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
       🟣 Remaining Target       (linha roxa — quanto falta)
     """
     from config import FY_START, FY_END
-    import numpy as np
 
     # Gera todos os meses do FY (Aug 25 → Jul 26)
     all_months = pd.date_range(FY_START, FY_END, freq="MS")
@@ -549,10 +548,20 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
     full["cumulative"]       = full["impressions"].cumsum()
     full["remaining"]        = (FY_TARGET - full["cumulative"]).clip(lower=0)
 
-    # Required Monthly Pace = quanto falta antes deste mês / meses restantes (incluindo este)
-    full["cumulative_before"] = full["cumulative"].shift(1, fill_value=0)
-    months_remaining_arr      = np.arange(n_months, 0, -1)  # [12, 11, 10, ..., 1]
-    full["pace"] = (FY_TARGET - full["cumulative_before"]).clip(lower=0) / months_remaining_arr
+    # Required Monthly Pace:
+    #   Aug–Apr: assume pace constante de 2.1M/mês
+    #   Mai–Jul: (25M - impressões entregues até abril) / meses restantes
+    CUTOFF_DATE  = pd.Timestamp("2026-04-01")
+    ASSUMED_PACE = 2_100_000
+
+    cum_through_cutoff   = full[full["month_dt"] <= CUTOFF_DATE]["impressions"].sum()
+    remaining_after      = max(0, FY_TARGET - cum_through_cutoff)
+    months_after_cutoff  = int((full["month_dt"] > CUTOFF_DATE).sum())
+    dynamic_pace         = remaining_after / months_after_cutoff if months_after_cutoff > 0 else 0
+
+    full["pace"] = full["month_dt"].apply(
+        lambda d: ASSUMED_PACE if d <= CUTOFF_DATE else dynamic_pace
+    )
     full["month_label"] = full["month_dt"].dt.strftime("%b").str.upper()
 
     # Cor das barras: verde se bateu o pace dinâmico do mês, vermelho se não
@@ -829,16 +838,16 @@ def chart_comments_by_network(
         ),
         yaxis   = dict(title="", tickfont=dict(size=11)),
         height  = max(260, len(agg) * 60 + 80),
-        margin  = dict(l=8, r=80, t=40, b=8),
+        margin  = dict(l=8, r=110, t=40, b=8),
     )
     fig.update_layout(layout)
     fig.update_layout(
         legend=dict(
             orientation = "v",
-            x           = 0.99,
-            y           = 0.01,
-            xanchor     = "right",
-            yanchor     = "bottom",
+            x           = 1.02,
+            y           = 0.5,
+            xanchor     = "left",
+            yanchor     = "middle",
             bgcolor     = "rgba(15,25,35,0.75)",
             bordercolor = THEME["border"],
             borderwidth = 1,
