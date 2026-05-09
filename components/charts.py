@@ -288,6 +288,61 @@ def chart_by_network(df: pd.DataFrame, selected_network: str | None = None) -> g
     return fig
 
 
+def chart_network_metric(df: pd.DataFrame, metric: str) -> go.Figure:
+    """
+    Barras horizontais mostrando a métrica selecionada (SUM) por rede social.
+    metric: uma das opções — 'Impressions', 'Likes', 'Comments', 'Shares', 'Clicks', 'ER'
+    """
+    METRIC_CONFIG = {
+        "Impressions": dict(col="gdc_impressions_sum",         agg="sum", fmt=_fmt_impressions,      hover="{x:,.0f}"),
+        "Likes":       dict(col="post_likes_and_reactions_sum",agg="sum", fmt=lambda v: f"{v:,.0f}", hover="{x:,.0f}"),
+        "Comments":    dict(col="post_comments_sum",           agg="sum", fmt=lambda v: f"{v:,.0f}", hover="{x:,.0f}"),
+        "Shares":      dict(col="post_shares_sum",             agg="sum", fmt=lambda v: f"{v:,.0f}", hover="{x:,.0f}"),
+        "Clicks":      dict(col="estimated_clicks_sum",        agg="sum", fmt=lambda v: f"{v:,.0f}", hover="{x:,.0f}"),
+        "ER":          dict(col="ER",                          agg="mean",fmt=lambda v: f"{v:.1f}%", hover="{x:.2f}%"),
+    }
+
+    cfg = METRIC_CONFIG.get(metric, METRIC_CONFIG["Impressions"])
+    col = cfg["col"]
+
+    if col not in df.columns:
+        df = df.copy()
+        if metric == "ER" and "gdc_impressions_sum" in df.columns and "gdc_total_engagements_sum" in df.columns:
+            df["ER"] = (df["gdc_total_engagements_sum"] / df["gdc_impressions_sum"].replace(0, 1) * 100)
+        else:
+            fig = go.Figure()
+            fig.update_layout(_base_layout(height=300))
+            return fig
+
+    agg = df.groupby("social_network").agg(value=(col, cfg["agg"])).reset_index()
+    agg = agg.sort_values("value", ascending=True)
+
+    colors = [NETWORK_COLORS.get(n, THEME["accent_purple"]) for n in agg["social_network"]]
+    fmt_fn = cfg["fmt"]
+    hover_fmt = cfg["hover"]
+
+    fig = go.Figure(go.Bar(
+        y             = agg["social_network"],
+        x             = agg["value"],
+        orientation   = "h",
+        marker_color  = colors,
+        opacity       = 0.9,
+        text          = agg["value"].apply(fmt_fn),
+        textposition  = "outside",
+        textfont      = dict(color=THEME["text_primary"], size=10),
+        hovertemplate = f"<b>%{{y}}</b><br>{metric}: %{hover_fmt}<extra></extra>",
+    ))
+
+    fig.update_layout(_base_layout(
+        title  = dict(text=f"{metric} by Network", font=dict(size=14)),
+        xaxis  = dict(title="", showticklabels=False),
+        yaxis  = dict(title=""),
+        height = 300,
+        margin = dict(l=8, r=80, t=36, b=8),
+    ))
+    return fig
+
+
 def chart_er_by_network(df: pd.DataFrame) -> go.Figure:
     """
     Barras de ER médio por rede — complementa o gráfico de impressões.

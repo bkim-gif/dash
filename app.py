@@ -35,7 +35,7 @@ from data.loader import (
 )
 from components.kpis   import render_kpi_row, render_kpis, render_followers_card, render_comments_card
 from components.charts import (
-    chart_timeline, chart_by_network, chart_er_by_network,
+    chart_timeline, chart_by_network, chart_er_by_network, chart_network_metric,
     chart_pillar_donut, chart_pillar_radar, chart_pillar_by_network,
     chart_fy_pacing, chart_fy_posts, chart_comments_by_network,
 )
@@ -667,13 +667,13 @@ with tab4:
         .reset_index()
     )
 
-    # Métricas orgânicas por rede
+    # Métricas orgânicas por rede (average per post)
     network_table = df_organic.groupby("social_network").agg(
-        Impressions = ("gdc_impressions_sum",        "sum"),
-        Likes       = ("post_likes_and_reactions_sum","sum"),
-        Comments    = ("post_comments_sum",           "sum"),
-        Shares      = ("post_shares_sum",             "sum"),
-        Clicks      = ("estimated_clicks_sum",        "sum"),
+        Impressions = ("gdc_impressions_sum",        "mean"),
+        Likes       = ("post_likes_and_reactions_sum","mean"),
+        Comments    = ("post_comments_sum",           "mean"),
+        Shares      = ("post_shares_sum",             "mean"),
+        Clicks      = ("estimated_clicks_sum",        "mean"),
         ER          = ("ER",                          "mean"),
         AQE_post    = ("AQE",                         "mean"),
     ).round(1).reset_index()
@@ -707,11 +707,30 @@ with tab4:
     )
 
     st.markdown("<br>", unsafe_allow_html=True)
-    st.plotly_chart(
-        chart_by_network(df_organic_allnets, selected_network=_hl_net),
-        use_container_width=True,
-        key="network_detail_by_network",
-    )
+
+    _metric_options = ["Impressions", "Likes", "Comments", "Shares", "Clicks", "ER"]
+    _col_filters, _col_chart = st.columns([1, 3])
+
+    with _col_filters:
+        st.markdown(
+            f'<div style="font-size:12px;font-weight:600;color:{THEME["text_muted"]};'
+            f'margin-bottom:12px;text-transform:uppercase;letter-spacing:0.05em">Metric</div>',
+            unsafe_allow_html=True,
+        )
+        _selected_metric = st.radio(
+            label     = "metric_selector",
+            options   = _metric_options,
+            index     = 0,
+            label_visibility = "collapsed",
+            key       = "network_metric_radio",
+        )
+
+    with _col_chart:
+        st.plotly_chart(
+            chart_network_metric(df_organic_allnets, _selected_metric),
+            use_container_width=True,
+            key="network_detail_metric_chart",
+        )
 
 
 # ══════════════════════════════════════════════════════════════════════════
