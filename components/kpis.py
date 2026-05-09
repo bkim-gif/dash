@@ -206,7 +206,7 @@ def render_kpis(
                     ">{label_html}</div>
                     <div style="
                         color:{THEME['text_primary']};
-                        font-size:24px;
+                        font-size:32px;
                         font-weight:700;
                         line-height:1;
                         font-variant-numeric:tabular-nums;
@@ -317,7 +317,7 @@ def render_kpi_row(
                 display:flex;justify-content:space-between;align-items:center;">
                 <span>{label}</span>{label_extra}
             </div>
-            <div style="color:{val_color};font-size:24px;font-weight:700;
+            <div style="color:{val_color};font-size:32px;font-weight:700;
                 line-height:1;font-variant-numeric:tabular-nums;">{value_html}</div>
         </div>"""
 
@@ -422,7 +422,7 @@ def render_followers_card(
                 <span>{title_label}</span>
             </div>
             <div style="
-                color:{color};font-size:24px;font-weight:700;line-height:1;
+                color:{color};font-size:32px;font-weight:700;line-height:1;
                 font-variant-numeric:tabular-nums;
             ">{_fmt(followers)}</div>
         </div>
@@ -520,7 +520,7 @@ def render_comments_card(
                 text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;
             ">Comments</div>
             <div style="
-                color:{THEME['text_primary']};font-size:28px;font-weight:700;
+                color:{THEME['text_primary']};font-size:32px;font-weight:700;
                 line-height:1;font-variant-numeric:tabular-nums;
             ">{_fmt(total)}</div>
             {sentiment_html}

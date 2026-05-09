@@ -598,7 +598,6 @@ with tab2:
 
     with col_chart:
         st.plotly_chart(chart_fy_pacing(monthly_data), use_container_width=True, key="fy_pacing")
-        st.plotly_chart(chart_fy_posts(monthly_data), use_container_width=True, key="fy_posts")
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -693,6 +692,14 @@ with tab4:
     network_table["Impressions"] = network_table["Impressions"].apply(_fmt_imp)
     network_table["ER"]          = network_table["ER"].apply(lambda v: f"{v:.1f}%")
 
+    period_label = f"{date_start_ts.strftime('%b %d')} – {date_end_ts.strftime('%b %d, %Y')}"
+    st.markdown(
+        f'<div class="section-header" style="margin-bottom:8px">'
+        f'Average Metrics by Post'
+        f'<span style="font-size:11px;font-weight:400;color:{THEME["text_muted"]};margin-left:10px">'
+        f'{period_label}</span></div>',
+        unsafe_allow_html=True,
+    )
     st.dataframe(
         network_table,
         use_container_width=True,

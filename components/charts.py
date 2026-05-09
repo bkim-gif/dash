@@ -215,12 +215,12 @@ def chart_timeline(
             yanchor     = "top",
             orientation = "v",
         ),
-        margin = dict(l=8, r=8, t=36, b=44),
+        margin = dict(l=8, r=8, t=36, b=64),
     )
     fig.add_annotation(
         text      = "ⓘ  ER excludes swipe interactions",
         xref      = "paper", yref = "paper",
-        x         = 0.0,     y    = -0.13,
+        x         = 0.0,     y    = -0.20,
         showarrow = False,
         font      = dict(size=10, color=THEME["text_muted"]),
         align     = "left",
