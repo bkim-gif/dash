@@ -722,7 +722,7 @@ with tab4:
 
     with _col_chart:
         st.plotly_chart(
-            chart_network_metric(df_organic_allnets, _selected_metric),
+            chart_network_metric(df_organic_allnets, _selected_metric, st.session_state.sel_network),
             use_container_width=True,
             key="network_detail_metric_chart",
         )

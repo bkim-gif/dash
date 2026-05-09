@@ -181,9 +181,10 @@ def chart_timeline(
         x             = agg["period_label"],
         y             = agg["er_wo_swipes"],
         name          = "ER",
-        mode          = "lines",
-        line          = dict(color=THEME["accent_blue"], width=2.5,
+        mode          = "lines+markers",
+        line          = dict(color=THEME["accent_blue"], width=1.5,
                              shape="spline", smoothing=1.3),
+        marker        = dict(symbol="diamond", size=7, color=THEME["accent_blue"]),
         yaxis         = "y2",
         hovertemplate = "<b>%{x}</b><br>ER w/o swipes: %{y:.2f}%<extra></extra>",
     ))
@@ -288,10 +289,11 @@ def chart_by_network(df: pd.DataFrame, selected_network: str | None = None) -> g
     return fig
 
 
-def chart_network_metric(df: pd.DataFrame, metric: str) -> go.Figure:
+def chart_network_metric(df: pd.DataFrame, metric: str, selected_network: str | None = None) -> go.Figure:
     """
     Barras horizontais mostrando a métrica selecionada (SUM) por rede social.
     metric: uma das opções — 'Impressions', 'Likes', 'Comments', 'Shares', 'Clicks', 'ER'
+    selected_network: se definido, mantém essa rede em destaque e dimma as demais.
     """
     METRIC_CONFIG = {
         "Impressions": dict(col="gdc_impressions_sum",         agg="sum", fmt=_fmt_impressions,      hover="{x:,.0f}"),
@@ -317,9 +319,17 @@ def chart_network_metric(df: pd.DataFrame, metric: str) -> go.Figure:
     agg = df.groupby("social_network").agg(value=(col, cfg["agg"])).reset_index()
     agg = agg.sort_values("value", ascending=True)
 
-    colors = [NETWORK_COLORS.get(n, THEME["accent_purple"]) for n in agg["social_network"]]
     fmt_fn = cfg["fmt"]
     hover_fmt = cfg["hover"]
+
+    has_filter = bool(selected_network and selected_network != "ALL")
+    colors = []
+    for n in agg["social_network"]:
+        base = NETWORK_COLORS.get(n, THEME["accent_purple"])
+        if has_filter and n != selected_network:
+            colors.append(_dim_color(base, 0.22))
+        else:
+            colors.append(base)
 
     fig = go.Figure(go.Bar(
         y             = agg["social_network"],
@@ -485,6 +495,7 @@ def chart_pillar_radar(df: pd.DataFrame) -> go.Figure:
 
     fig.update_layout(
         polar = dict(
+            domain     = dict(x=[0.0, 1.0], y=[0.0, 0.95]),
             bgcolor    = "rgba(0,0,0,0)",
             radialaxis = dict(
                 visible    = True,
@@ -508,10 +519,10 @@ def chart_pillar_radar(df: pd.DataFrame) -> go.Figure:
             bgcolor     = "rgba(0,0,0,0)",
             font        = dict(color=THEME["text_secondary"], size=11),
             orientation = "h",
-            y           = -0.15,
+            y           = -0.08,
         ),
-        margin = dict(l=40, r=40, t=50, b=40),
-        height = 380,
+        margin = dict(l=10, r=10, t=36, b=20),
+        height = 360,
     )
     return fig
 

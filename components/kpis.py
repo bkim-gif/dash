@@ -304,21 +304,21 @@ def render_kpi_row(
     </style>
     """, unsafe_allow_html=True)
 
-    def _card_html(label: str, value_html: str, label_extra: str = "", color: str = "") -> str:
+    def _card_html(label: str, value_html: str, label_extra: str = "", color: str = "", val_size: str = "33px") -> str:
         val_color = color if color else THEME["text_primary"]
         return f"""
         <div style="
             background:{THEME['bg_card']};border:1px solid {THEME['border']};
             border-radius:12px;padding:16px 20px;margin-bottom:8px;
-            min-height:100px;box-sizing:border-box;
+            height:100px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;
         ">
             <div style="color:{THEME['text_secondary']};font-size:10px;font-weight:500;
                 text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px;
                 display:flex;justify-content:space-between;align-items:center;">
                 <span>{label}</span>{label_extra}
             </div>
-            <div style="color:{val_color};font-size:33px;font-weight:700;
-                line-height:1;font-variant-numeric:tabular-nums;">{value_html}</div>
+            <div style="color:{val_color};font-size:{val_size};font-weight:700;
+                line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap;">{value_html}</div>
         </div>"""
 
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -328,7 +328,8 @@ def render_kpi_row(
     with c2:
         st.markdown(_card_html("Impressions", _fmt(impr_cur)), unsafe_allow_html=True)
     with c3:
-        st.markdown(_card_html("Eng. Rate", er_val), unsafe_allow_html=True)
+        _er_size = "21px" if selected_network == "LinkedIn" else "33px"
+        st.markdown(_card_html("Eng. Rate", er_val, val_size=_er_size), unsafe_allow_html=True)
     with c4:
         aqe_label_extra = (
             '<span class="kpi-tooltip-wrap" style="font-size:11px">ⓘ'
