@@ -537,9 +537,6 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
     all_months = pd.date_range(FY_START, FY_END, freq="MS")
     n_months   = len(all_months)
 
-    # Pace mensal necessário para bater 25M
-    monthly_pace = FY_TARGET / n_months
-
     # Merge com dados reais
     monthly_df = monthly_df.copy()
     monthly_df["month_dt"] = pd.to_datetime(monthly_df["month_dt"])
@@ -549,15 +546,19 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
     full["impressions"] = full["impressions"].fillna(0)
 
     # Remaining target = 25M - cumsum das impressões reais
-    full["cumulative"]  = full["impressions"].cumsum()
-    full["remaining"]   = (FY_TARGET - full["cumulative"]).clip(lower=0)
-    full["pace"]        = monthly_pace
+    full["cumulative"]       = full["impressions"].cumsum()
+    full["remaining"]        = (FY_TARGET - full["cumulative"]).clip(lower=0)
+
+    # Required Monthly Pace = quanto falta antes deste mês / meses restantes (incluindo este)
+    full["cumulative_before"] = full["cumulative"].shift(1, fill_value=0)
+    months_remaining_arr      = np.arange(n_months, 0, -1)  # [12, 11, 10, ..., 1]
+    full["pace"] = (FY_TARGET - full["cumulative_before"]).clip(lower=0) / months_remaining_arr
     full["month_label"] = full["month_dt"].dt.strftime("%b").str.upper()
 
-    # Cor das barras: verde se bateu o pace, vermelho se não
+    # Cor das barras: verde se bateu o pace dinâmico do mês, vermelho se não
     bar_colors = [
-        THEME["accent_green"] if imp >= monthly_pace else THEME["accent_red"]
-        for imp in full["impressions"]
+        THEME["accent_green"] if imp >= pace else THEME["accent_red"]
+        for imp, pace in zip(full["impressions"], full["pace"])
     ]
 
     fig = go.Figure()

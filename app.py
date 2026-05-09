@@ -537,17 +537,10 @@ with tab2:
     with col_gauge:
         # Gauge de % atingido
         fig_gauge = go.Figure(go.Indicator(
-            mode  = "gauge+number+delta",
+            mode  = "gauge+number",
             value = pct_fy,
             title = dict(text="FY 2026 Target", font=dict(color=THEME["text_secondary"], size=13)),
-            number= dict(suffix="%", font=dict(color=THEME["text_primary"], size=40)),
-            delta = dict(
-                reference = 100,
-                suffix    = "pp to target",
-                font      = dict(size=12),
-                increasing= dict(color=THEME["accent_green"]),
-                decreasing= dict(color=THEME["accent_red"]),
-            ),
+            number= dict(suffix="%", font=dict(color=THEME["text_primary"], size=36)),
             gauge = dict(
                 axis        = dict(range=[0, 100], tickcolor=THEME["text_muted"],
                                    tickfont=dict(color=THEME["text_muted"])),
@@ -569,8 +562,8 @@ with tab2:
             paper_bgcolor = "rgba(0,0,0,0)",
             plot_bgcolor  = "rgba(0,0,0,0)",
             font          = dict(color=THEME["text_primary"]),
-            height        = 280,
-            margin        = dict(l=20, r=20, t=40, b=20),
+            height        = 230,
+            margin        = dict(l=20, r=20, t=35, b=10),
         )
         st.plotly_chart(fig_gauge, use_container_width=True, key="fy_gauge")
 
@@ -597,7 +590,9 @@ with tab2:
         )
 
     with col_chart:
-        st.plotly_chart(chart_fy_pacing(monthly_data), use_container_width=True, key="fy_pacing")
+        fig_pacing = chart_fy_pacing(monthly_data)
+        fig_pacing.update_layout(height=400)
+        st.plotly_chart(fig_pacing, use_container_width=True, key="fy_pacing")
 
 
 # ══════════════════════════════════════════════════════════════════════════
