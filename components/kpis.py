@@ -272,7 +272,7 @@ def render_kpi_row(
         snap = get_followers_at(df_followers, date_end)
         if not snap.empty:
             ref_label = pd.to_datetime(snap["date"].max()).strftime("%b %d, %Y")
-            foll_sub  = f'<div style="color:{THEME["text_muted"]};font-size:9px;margin-top:4px">as of {ref_label}</div>'
+            foll_sub  = ""
             if selected_network == "ALL":
                 followers  = int(snap[snap["network"].isin(_FOLLOWER_NET_ORDER)]["followers"].sum())
                 foll_color = THEME["text_primary"]
@@ -420,7 +420,6 @@ def render_followers_card(
                 display:flex;justify-content:space-between;align-items:center;
             ">
                 <span>{title_label}</span>
-                <span style="color:{THEME['text_muted']};font-size:9px;text-transform:none;letter-spacing:0">as of {ref_label}</span>
             </div>
             <div style="
                 color:{color};font-size:24px;font-weight:700;line-height:1;
@@ -512,7 +511,7 @@ def render_comments_card(
             border-radius:12px;
             padding:20px 24px;
             margin-bottom:8px;
-            height:100%;
+            min-height:280px;
             box-sizing:border-box;
         ">
             <div style="
