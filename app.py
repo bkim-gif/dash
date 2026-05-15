@@ -183,6 +183,38 @@ st.markdown(f"""
       background-color: {THEME['bg_card']};
       padding: 4px 4px 0 4px;
   }}
+
+  /* AG Grid — column context menu (3-dot menu) */
+  .ag-menu {{
+      background-color: {THEME['bg_card']} !important;
+      border: 1px solid {THEME['border']} !important;
+      border-radius: 6px !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
+      z-index: 9999 !important;
+  }}
+  .ag-menu-list {{
+      background-color: {THEME['bg_card']} !important;
+      padding: 4px 0 !important;
+  }}
+  .ag-menu-option {{
+      background-color: {THEME['bg_card']} !important;
+      color: {THEME['text_primary']} !important;
+  }}
+  .ag-menu-option:hover, .ag-menu-option-active {{
+      background-color: {THEME['bg_card2']} !important;
+      color: {THEME['text_primary']} !important;
+  }}
+  .ag-menu-option-text {{
+      color: {THEME['text_primary']} !important;
+      font-family: 'Poppins', sans-serif !important;
+      font-size: 13px !important;
+  }}
+  .ag-menu-option-icon {{
+      color: {THEME['text_secondary']} !important;
+  }}
+  .ag-menu-separator {{
+      border-top: 1px solid {THEME['border']} !important;
+  }}
 </style>
 <script>
 (function() {{
