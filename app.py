@@ -218,14 +218,64 @@ st.markdown(f"""
 </style>
 <script>
 (function() {{
+  var agMenuCSS = `
+    .ag-menu {{
+      background-color: {THEME['bg_card']} !important;
+      border: 1px solid {THEME['border']} !important;
+      border-radius: 6px !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
+    }}
+    .ag-menu-list {{
+      background-color: {THEME['bg_card']} !important;
+      padding: 4px 0 !important;
+    }}
+    .ag-menu-option {{
+      background-color: {THEME['bg_card']} !important;
+      color: {THEME['text_primary']} !important;
+    }}
+    .ag-menu-option:hover, .ag-menu-option-active {{
+      background-color: {THEME['bg_card2']} !important;
+      color: {THEME['text_primary']} !important;
+    }}
+    .ag-menu-option-text {{
+      color: {THEME['text_primary']} !important;
+      font-size: 13px !important;
+    }}
+    .ag-menu-option-icon span {{
+      color: {THEME['text_secondary']} !important;
+    }}
+    .ag-menu-separator-part {{
+      border-top: 1px solid {THEME['border']} !important;
+    }}
+  `;
+
+  function injectIntoIframes() {{
+    document.querySelectorAll('iframe').forEach(function(iframe) {{
+      try {{
+        var doc = iframe.contentDocument || iframe.contentWindow.document;
+        if (doc && !doc.getElementById('ag-menu-dark-fix')) {{
+          var style = doc.createElement('style');
+          style.id = 'ag-menu-dark-fix';
+          style.textContent = agMenuCSS;
+          doc.head.appendChild(style);
+        }}
+      }} catch(e) {{}}
+    }});
+  }}
+
   function removeKeyboardTitles() {{
     document.querySelectorAll('button[title*="keyboard"]').forEach(btn => {{
       btn.removeAttribute('title');
     }});
   }}
-  const observer = new MutationObserver(removeKeyboardTitles);
+
+  var observer = new MutationObserver(function() {{
+    removeKeyboardTitles();
+    injectIntoIframes();
+  }});
   observer.observe(document.body, {{ childList: true, subtree: true }});
   removeKeyboardTitles();
+  injectIntoIframes();
 }})();
 </script>
 """, unsafe_allow_html=True)
