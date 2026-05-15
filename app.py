@@ -536,11 +536,14 @@ with tab2:
 
     with col_gauge:
         # Gauge de % atingido
+        remaining = max(0, FY_TARGET - total_fy)
+        _GAUGE_H  = 400   # mesma altura do gráfico ao lado
+
         fig_gauge = go.Figure(go.Indicator(
             mode  = "gauge",
             value = pct_fy,
             title = dict(text="FY 2026 Target", font=dict(color=THEME["text_secondary"], size=12)),
-            domain= dict(x=[0, 1], y=[0.15, 1]),
+            domain= dict(x=[0.05, 0.95], y=[0.42, 0.98]),
             gauge = dict(
                 axis        = dict(range=[0, 100], tickcolor=THEME["text_muted"],
                                    tickfont=dict(color=THEME["text_muted"], size=10)),
@@ -558,47 +561,50 @@ with tab2:
                 ),
             ),
         ))
-        # Percentage label centered below the arc
+
+        # Percentual centralizado logo abaixo do arco
         fig_gauge.add_annotation(
-            x=0.5, y=0.15, xref="paper", yref="paper",
+            x=0.5, y=0.40, xref="paper", yref="paper",
             text=f"<b>{pct_fy:.1f}%</b>",
             showarrow=False,
-            font=dict(color=THEME["text_primary"], size=28),
-            xanchor="center", yanchor="middle",
+            font=dict(color=THEME["text_primary"], size=30),
+            xanchor="center", yanchor="top",
         )
+        # Stats: ACHIEVED
+        fig_gauge.add_annotation(
+            x=0.5, y=0.30, xref="paper", yref="paper",
+            text=f"<span style='font-size:11px;color:{THEME[\"text_muted\"]}'>ACHIEVED</span>",
+            showarrow=False, xanchor="center", yanchor="top",
+        )
+        fig_gauge.add_annotation(
+            x=0.5, y=0.22, xref="paper", yref="paper",
+            text=f"<b><span style='font-size:22px;color:{THEME[\"accent_blue\"]}'>{total_fy/1e6:.1f}M</span></b>",
+            showarrow=False, xanchor="center", yanchor="top",
+        )
+        # Stats: REMAINING
+        fig_gauge.add_annotation(
+            x=0.5, y=0.11, xref="paper", yref="paper",
+            text=f"<span style='font-size:11px;color:{THEME[\"text_muted\"]}'>REMAINING</span>",
+            showarrow=False, xanchor="center", yanchor="top",
+        )
+        fig_gauge.add_annotation(
+            x=0.5, y=0.03, xref="paper", yref="paper",
+            text=f"<b><span style='font-size:20px;color:{THEME[\"accent_yellow\"]}'>{remaining/1e6:.1f}M</span></b>",
+            showarrow=False, xanchor="center", yanchor="top",
+        )
+
         fig_gauge.update_layout(
             paper_bgcolor = "rgba(0,0,0,0)",
             plot_bgcolor  = "rgba(0,0,0,0)",
             font          = dict(color=THEME["text_primary"]),
-            height        = 200,
-            margin        = dict(l=20, r=20, t=30, b=10),
+            height        = _GAUGE_H,
+            margin        = dict(l=10, r=10, t=10, b=10),
         )
         st.plotly_chart(fig_gauge, use_container_width=True, key="fy_gauge")
 
-        # Stats card
-        remaining = max(0, FY_TARGET - total_fy)
-        st.markdown(
-            f"""
-            <div style="background:{THEME['bg_card']};border:1px solid {THEME['border']};
-                border-radius:10px;padding:16px;text-align:center">
-                <div style="color:{THEME['text_muted']};font-size:11px;margin-bottom:4px">ACHIEVED</div>
-                <div style="color:{THEME['accent_blue']};font-size:24px;font-weight:700">
-                    {total_fy/1e6:.1f}M
-                </div>
-                <div style="color:{THEME['text_muted']};font-size:11px;margin:8px 0 4px">REMAINING</div>
-                <div style="color:{THEME['accent_yellow']};font-size:20px;font-weight:600">
-                    {remaining/1e6:.1f}M
-                </div>
-                <div style="color:{THEME['text_muted']};font-size:10px;margin-top:8px">
-                    Target: {FY_TARGET/1e6:.0f}M · Aug 2025 – Jul 2026
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
     with col_chart:
         fig_pacing = chart_fy_pacing(monthly_data)
+        fig_pacing.update_layout(height=_GAUGE_H)
         st.plotly_chart(fig_pacing, use_container_width=True, key="fy_pacing")
 
 
