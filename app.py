@@ -537,10 +537,10 @@ with tab2:
     with col_gauge:
         # Gauge de % atingido
         fig_gauge = go.Figure(go.Indicator(
-            mode  = "gauge+number",
+            mode  = "gauge",
             value = pct_fy,
             title = dict(text="FY 2026 Target", font=dict(color=THEME["text_secondary"], size=12)),
-            number= dict(suffix="%", font=dict(color=THEME["text_primary"], size=26)),
+            domain= dict(x=[0, 1], y=[0.15, 1]),
             gauge = dict(
                 axis        = dict(range=[0, 100], tickcolor=THEME["text_muted"],
                                    tickfont=dict(color=THEME["text_muted"], size=10)),
@@ -558,16 +558,24 @@ with tab2:
                 ),
             ),
         ))
+        # Percentage label centered below the arc
+        fig_gauge.add_annotation(
+            x=0.5, y=0.15, xref="paper", yref="paper",
+            text=f"<b>{pct_fy:.1f}%</b>",
+            showarrow=False,
+            font=dict(color=THEME["text_primary"], size=28),
+            xanchor="center", yanchor="middle",
+        )
         fig_gauge.update_layout(
             paper_bgcolor = "rgba(0,0,0,0)",
             plot_bgcolor  = "rgba(0,0,0,0)",
             font          = dict(color=THEME["text_primary"]),
             height        = 200,
-            margin        = dict(l=30, r=30, t=30, b=0),
+            margin        = dict(l=20, r=20, t=30, b=10),
         )
         st.plotly_chart(fig_gauge, use_container_width=True, key="fy_gauge")
 
-        # Números embaixo do gauge
+        # Stats card
         remaining = max(0, FY_TARGET - total_fy)
         st.markdown(
             f"""
