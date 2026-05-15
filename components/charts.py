@@ -587,12 +587,23 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
     fig = go.Figure()
 
     # Barras de impressões entregues
+    delivered_labels = [
+        f"{v/1e6:.1f}M" if v > 0 else ""
+        for v in full["impressions"]
+    ]
     fig.add_trace(go.Bar(
         x           = full["month_label"],
         y           = full["impressions"],
         name        = "Impressions Delivered",
-        marker_color= bar_colors,
-        opacity     = 0.9,
+        marker      = dict(
+            color        = bar_colors,
+            cornerradius = 6,
+            opacity      = 0.9,
+        ),
+        text          = delivered_labels,
+        textposition  = "outside",
+        textfont      = dict(color=THEME["text_primary"], size=10),
+        cliponaxis    = False,
         hovertemplate = "<b>%{x}</b><br>Delivered: %{y:.2s}<extra></extra>",
     ))
 
@@ -601,8 +612,11 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
         x           = full["month_label"],
         y           = full["pace"],
         name        = "Required Monthly Pace",
-        marker_color= THEME["text_muted"],
-        opacity     = 0.3,
+        marker      = dict(
+            color        = THEME["text_muted"],
+            cornerradius = 6,
+            opacity      = 0.3,
+        ),
         hovertemplate = "<b>%{x}</b><br>Required pace: %{y:.2s}<extra></extra>",
     ))
 
@@ -630,8 +644,8 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
             tickformat  = ".2s",
         ),
         yaxis    = dict(tickformat=".2s"),
-        height   = 340,
-        margin   = dict(l=8, r=8, t=50, b=50),
+        height   = 360,
+        margin   = dict(l=8, r=8, t=55, b=50),
     )
     fig.update_layout(layout)
 
@@ -640,7 +654,7 @@ def chart_fy_pacing(monthly_df: pd.DataFrame) -> go.Figure:
         legend=dict(
             orientation = "h",
             x           = 0,
-            y           = -0.18,
+            y           = -0.16,
             xanchor     = "left",
             yanchor     = "top",
             bgcolor     = "rgba(0,0,0,0)",
