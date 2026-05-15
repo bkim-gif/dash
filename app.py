@@ -534,7 +534,7 @@ with tab2:
     # Gauge + número grande
     col_gauge, col_chart = st.columns([1, 2])
 
-    _PACING_H = 450   # altura do gráfico de pacing (lado direito)
+    _PACING_H = 410   # altura do gráfico de pacing (lado direito)
 
     with col_gauge:
         remaining = max(0, FY_TARGET - total_fy)
@@ -578,7 +578,7 @@ with tab2:
             paper_bgcolor = "rgba(0,0,0,0)",
             plot_bgcolor  = "rgba(0,0,0,0)",
             font          = dict(color=c_text),
-            height        = 220,
+            height        = 180,
             margin        = dict(l=10, r=10, t=30, b=0),
         )
         st.plotly_chart(fig_gauge, use_container_width=True, key="fy_gauge")
