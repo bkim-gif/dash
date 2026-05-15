@@ -562,34 +562,39 @@ with tab2:
             ),
         ))
 
+        c_muted  = THEME["text_muted"]
+        c_blue   = THEME["accent_blue"]
+        c_yellow = THEME["accent_yellow"]
+        c_text   = THEME["text_primary"]
+
         # Percentual centralizado logo abaixo do arco
         fig_gauge.add_annotation(
             x=0.5, y=0.40, xref="paper", yref="paper",
             text=f"<b>{pct_fy:.1f}%</b>",
             showarrow=False,
-            font=dict(color=THEME["text_primary"], size=30),
+            font=dict(color=c_text, size=30),
             xanchor="center", yanchor="top",
         )
         # Stats: ACHIEVED
         fig_gauge.add_annotation(
             x=0.5, y=0.30, xref="paper", yref="paper",
-            text=f"<span style='font-size:11px;color:{THEME[\"text_muted\"]}'>ACHIEVED</span>",
+            text=f"<span style='font-size:11px;color:{c_muted}'>ACHIEVED</span>",
             showarrow=False, xanchor="center", yanchor="top",
         )
         fig_gauge.add_annotation(
             x=0.5, y=0.22, xref="paper", yref="paper",
-            text=f"<b><span style='font-size:22px;color:{THEME[\"accent_blue\"]}'>{total_fy/1e6:.1f}M</span></b>",
+            text=f"<b><span style='font-size:22px;color:{c_blue}'>{total_fy/1e6:.1f}M</span></b>",
             showarrow=False, xanchor="center", yanchor="top",
         )
         # Stats: REMAINING
         fig_gauge.add_annotation(
             x=0.5, y=0.11, xref="paper", yref="paper",
-            text=f"<span style='font-size:11px;color:{THEME[\"text_muted\"]}'>REMAINING</span>",
+            text=f"<span style='font-size:11px;color:{c_muted}'>REMAINING</span>",
             showarrow=False, xanchor="center", yanchor="top",
         )
         fig_gauge.add_annotation(
             x=0.5, y=0.03, xref="paper", yref="paper",
-            text=f"<b><span style='font-size:20px;color:{THEME[\"accent_yellow\"]}'>{remaining/1e6:.1f}M</span></b>",
+            text=f"<b><span style='font-size:20px;color:{c_yellow}'>{remaining/1e6:.1f}M</span></b>",
             showarrow=False, xanchor="center", yanchor="top",
         )
 
