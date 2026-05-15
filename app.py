@@ -219,11 +219,31 @@ st.markdown(f"""
 <script>
 (function() {{
   var agMenuCSS = `
+    /* AG Grid theme CSS variables */
+    .ag-theme-streamlit, .ag-theme-alpine, [class*="ag-theme-"] {{
+      --ag-background-color: {THEME['bg_card']};
+      --ag-foreground-color: {THEME['text_primary']};
+      --ag-border-color: {THEME['border']};
+      --ag-secondary-border-color: {THEME['border']};
+      --ag-row-hover-color: {THEME['bg_card2']};
+      --ag-selected-row-background-color: {THEME['bg_card2']};
+      --ag-popup-shadow: 0 4px 16px rgba(0,0,0,0.6);
+    }}
+    /* Popup container — must be above grid cells */
+    .ag-popup {{
+      z-index: 99999 !important;
+    }}
+    .ag-popup-child {{
+      z-index: 99999 !important;
+    }}
+    /* Menu panel */
     .ag-menu {{
       background-color: {THEME['bg_card']} !important;
       border: 1px solid {THEME['border']} !important;
       border-radius: 6px !important;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.5) !important;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.6) !important;
+      z-index: 99999 !important;
+      overflow: hidden !important;
     }}
     .ag-menu-list {{
       background-color: {THEME['bg_card']} !important;
@@ -246,6 +266,14 @@ st.markdown(f"""
     }}
     .ag-menu-separator-part {{
       border-top: 1px solid {THEME['border']} !important;
+    }}
+    /* Column header chip inside menu */
+    .ag-column-select-header, .ag-column-drop-wrapper {{
+      background-color: {THEME['bg_card']} !important;
+    }}
+    /* Pill/chip showing column name at top of menu */
+    .ag-menu .ag-tab-body, .ag-tabs-body {{
+      background-color: {THEME['bg_card']} !important;
     }}
   `;
 
