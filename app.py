@@ -277,15 +277,42 @@ st.markdown(f"""
     }}
   `;
 
+  function applyMenuInlineStyles(doc) {{
+    doc.querySelectorAll('.ag-menu').forEach(function(el) {{
+      el.style.setProperty('background-color', '{THEME['bg_card']}', 'important');
+      el.style.setProperty('border', '1px solid {THEME['border']}', 'important');
+      el.style.setProperty('border-radius', '6px', 'important');
+      el.style.setProperty('box-shadow', '0 4px 16px rgba(0,0,0,0.6)', 'important');
+      el.style.setProperty('overflow', 'hidden', 'important');
+    }});
+    doc.querySelectorAll('.ag-menu-list').forEach(function(el) {{
+      el.style.setProperty('background-color', '{THEME['bg_card']}', 'important');
+    }});
+    doc.querySelectorAll('.ag-menu-option').forEach(function(el) {{
+      el.style.setProperty('background-color', '{THEME['bg_card']}', 'important');
+      el.style.setProperty('color', '{THEME['text_primary']}', 'important');
+    }});
+    doc.querySelectorAll('.ag-menu-option-text').forEach(function(el) {{
+      el.style.setProperty('color', '{THEME['text_primary']}', 'important');
+    }});
+  }}
+
   function injectIntoIframes() {{
     document.querySelectorAll('iframe').forEach(function(iframe) {{
       try {{
         var doc = iframe.contentDocument || iframe.contentWindow.document;
-        if (doc && !doc.getElementById('ag-menu-dark-fix')) {{
+        if (!doc || !doc.head) return;
+        if (!doc.getElementById('ag-menu-dark-fix')) {{
           var style = doc.createElement('style');
           style.id = 'ag-menu-dark-fix';
           style.textContent = agMenuCSS;
           doc.head.appendChild(style);
+        }}
+        if (!iframe._agInnerObserver && doc.body) {{
+          iframe._agInnerObserver = new MutationObserver(function() {{
+            applyMenuInlineStyles(doc);
+          }});
+          iframe._agInnerObserver.observe(doc.body, {{ childList: true, subtree: true }});
         }}
       }} catch(e) {{}}
     }});
