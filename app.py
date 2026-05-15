@@ -534,7 +534,7 @@ with tab2:
     # Gauge + número grande
     col_gauge, col_chart = st.columns([1, 2])
 
-    _PACING_H = 400   # altura do gráfico de pacing (lado direito)
+    _PACING_H = 450   # altura do gráfico de pacing (lado direito)
 
     with col_gauge:
         remaining = max(0, FY_TARGET - total_fy)
