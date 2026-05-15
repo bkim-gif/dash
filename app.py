@@ -602,15 +602,44 @@ with tab3:
 
     col_radar, col_donut = st.columns(2)
     with col_radar:
-        st.plotly_chart(chart_pillar_radar(df_organic), use_container_width=True, key="pillar_radar")
+        fig_radar = chart_pillar_radar(df_organic)
+        fig_radar.update_layout(height=310)
+        st.plotly_chart(fig_radar, use_container_width=True, key="pillar_radar")
     with col_donut:
-        st.plotly_chart(chart_pillar_donut(df_organic), use_container_width=True, key="pillar_donut")
+        fig_donut = chart_pillar_donut(df_organic)
+        fig_donut.update_layout(height=310)
+        st.plotly_chart(fig_donut, use_container_width=True, key="pillar_donut")
 
-    st.plotly_chart(
-        chart_pillar_by_network(df_organic_allnets, highlight_network=_hl_net),
-        use_container_width=True,
-        key="pillar_by_network",
-    )
+    col_by_net, col_target_tbl = st.columns([3, 2])
+    with col_by_net:
+        fig_pbn = chart_pillar_by_network(df_organic_allnets, highlight_network=_hl_net)
+        fig_pbn.update_layout(height=220)
+        st.plotly_chart(fig_pbn, use_container_width=True, key="pillar_by_network")
+    with col_target_tbl:
+        # Tabela: % atual de cada pilar vs target do playbook
+        df_p_tbl = df_organic[df_organic["Pillars"] != "Unknown"]
+        total_tbl = len(df_p_tbl)
+        rows = []
+        for pil, tgt in PILLAR_TARGETS.items():
+            cur_pct = (df_p_tbl["Pillars"].value_counts().get(pil, 0) / total_tbl * 100) if total_tbl > 0 else 0
+            pct_of_target = (cur_pct / tgt * 100) if tgt > 0 else 0
+            rows.append({
+                "Pillar":    pil,
+                "Current":   f"{cur_pct:.0f}%",
+                "Target":    f"{tgt:.0f}%",
+                "vs Target": f"{pct_of_target:.0f}%",
+            })
+        st.markdown(
+            f'<div style="font-size:11px;font-weight:600;color:{THEME["text_secondary"]};'
+            f'text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">'
+            f'Pillar vs Target</div>',
+            unsafe_allow_html=True,
+        )
+        st.dataframe(
+            pd.DataFrame(rows),
+            use_container_width=True,
+            hide_index=True,
+        )
 
     # Tabela de métricas médias por pilar
     st.markdown(

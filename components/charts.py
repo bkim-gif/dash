@@ -216,15 +216,18 @@ def chart_timeline(
             yanchor     = "top",
             orientation = "v",
         ),
-        margin = dict(l=8, r=8, t=36, b=64),
+        margin = dict(l=8, r=8, t=36, b=8),
     )
     fig.add_annotation(
         text      = "ⓘ  ER excludes swipe interactions",
         xref      = "paper", yref = "paper",
-        x         = 0.0,     y    = -0.20,
+        x         = 0.99,    y    = 0.97,
+        xanchor   = "right",
+        yanchor   = "top",
         showarrow = False,
         font      = dict(size=10, color=THEME["text_muted"]),
-        align     = "left",
+        align     = "right",
+        bgcolor   = "rgba(15,25,35,0.75)",
     )
     return fig
 
@@ -835,7 +838,7 @@ def chart_comments_by_network(
         hovertemplate = "<b>%{y}</b><br>Negative: %{x:.1f}%<extra></extra>",
     ))
 
-    max_pct = max(agg["pct_pos"].max(), 1) * 1.3
+    max_pct = max(agg["pct_pos"].max(), agg["pct_neg"].max(), 1) * 1.3
 
     layout = _base_layout(
         title   = dict(text="Comment Sentiment by Network", font=dict(size=14)),
@@ -847,9 +850,9 @@ def chart_comments_by_network(
             zeroline        = False,
             range           = [0, max_pct],
         ),
-        yaxis   = dict(title="", tickfont=dict(size=11)),
+        yaxis   = dict(title="", tickfont=dict(size=11), automargin=False),
         height  = max(260, len(agg) * 60 + 80),
-        margin  = dict(l=8, r=110, t=40, b=8),
+        margin  = dict(l=130, r=80, t=40, b=8),
     )
     fig.update_layout(layout)
     fig.update_layout(
